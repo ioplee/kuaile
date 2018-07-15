@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Map;
 
 @Service
 public class UserServicesImpl implements UserServices {
@@ -19,7 +20,18 @@ public class UserServicesImpl implements UserServices {
     @Override
     public Page<UserDomain> findUserByPage(int pageNo, int pageSize) {
         PageHelper.startPage(pageNo, pageSize);
-        Page<UserDomain> list = userMapper.findAllByPage() ;
-        return list;
+        return userMapper.findAllByPage() ;
+    }
+
+    @Override
+    public Page<UserDomain> findUserByPage(Map<String, String> params, int pageNo, int pageSize) {
+        PageHelper.startPage(pageNo, pageSize);
+        return userMapper.findSameByPage(params);
+    }
+
+    @Override
+    public Page<UserDomain> findUserByPage(UserDomain user, int pageNo, int pageSize) {
+        PageHelper.startPage(pageNo, pageSize);
+        return userMapper.findUserByPage(user);
     }
 }

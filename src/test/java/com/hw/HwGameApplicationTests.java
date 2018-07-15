@@ -11,6 +11,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
+import java.util.Map;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -43,6 +45,16 @@ public class HwGameApplicationTests {
 
         int d = userMapper.delete(user1) ;
         Assert.assertTrue(d > 0);
+    }
+
+    @Test
+    public void testDynaSql() {
+        Map<String,String> params = new HashMap<>() ;
+        params.put("name","12345678") ;
+        params.put("phone","13588739892") ;
+
+        Page<UserDomain> list = userServices.findUserByPage(params,1,1) ;
+        Assert.assertEquals(list.getPages(), 1);
     }
 
 }
