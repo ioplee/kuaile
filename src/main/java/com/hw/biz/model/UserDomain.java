@@ -1,28 +1,32 @@
 package com.hw.biz.model;
 
+/**
+ * 用户表
+ */
+@SuppressWarnings("serial")
 public class UserDomain {
-    private Integer userId;
+    private Integer id ;
 
-    private String userName;
+    private String name;
 
     private String password;
 
     private String phone;
 
-    public Integer getUserId() {
-        return userId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getName() {
+        return name;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPassword() {
@@ -39,5 +43,10 @@ public class UserDomain {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    @Override
+    public String toString() {
+        return "User [id=" + this.getId() + ", name=" + name + ", phone=" + phone + "]";
     }
 }
