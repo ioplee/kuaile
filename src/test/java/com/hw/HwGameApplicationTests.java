@@ -1,7 +1,9 @@
 package com.hw;
 
+import com.github.pagehelper.Page;
 import com.hw.biz.dao.UserMapper;
 import com.hw.biz.model.UserDomain;
+import com.hw.services.UserServices;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,20 +19,27 @@ public class HwGameApplicationTests {
     @Resource
     private UserMapper userMapper ;
 
+    @Resource
+    private UserServices userServices ;
+
     @Test
     public void contextLoads() {
         Assert.assertNotNull(userMapper) ;
         UserDomain user = new UserDomain() ;
-        user.setId(2);
-        user.setName("1234567");
-        user.setPassword("qwertyr");
-        user.setPhone("13588739891");
+        user.setId(4);
+        user.setName("123456789");
+        user.setPassword("qwertyrui");
+        user.setPhone("13588739893");
 
         int c = userMapper.insert(user) ;
         Assert.assertTrue(c > 0);
 
         UserDomain user1 = userMapper.findUserByPhone("13588739891") ;
         Assert.assertNotNull(user1) ;
+
+        Page<UserDomain> page = userServices.findUserByPage(2,1) ;
+
+        Assert.assertTrue(page.getPages() > 1);
 
         int d = userMapper.delete(user1) ;
         Assert.assertTrue(d > 0);

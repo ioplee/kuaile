@@ -1,5 +1,6 @@
 package com.hw.biz.dao;
 
+import com.github.pagehelper.Page;
 import com.hw.biz.model.UserDomain;
 import org.apache.ibatis.annotations.*;
 
@@ -12,6 +13,9 @@ public interface UserMapper {
 
     @Select("SELECT * FROM T_USER WHERE PHONE = #{phone}")
     UserDomain findUserByPhone(@Param("phone") String phone);
+
+    @Select("SELECT * FROM T_USER")
+    Page<UserDomain> findAllByPage() ;
 
     /**
      * 这里把id带上了，ID如果是自增的话，就不需要加上ID
