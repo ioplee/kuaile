@@ -1,6 +1,7 @@
 package com.hw.biz.dao.provider;
 
 import com.hw.biz.model.UserDomain;
+import com.hw.biz.model.UserDO;
 import org.apache.ibatis.jdbc.SQL;
 
 import java.util.Map;
@@ -54,4 +55,48 @@ public class UserDynaSqlProvider {
 
         }.toString();
     }
+
+    public String updateUserSql(UserDO userDO) {
+        return new SQL() {
+            {
+                UPDATE("hw_user");
+                if(null != userDO.getNick()) {
+                    SET("nick=#{nick}");
+                }
+                if(null != userDO.getPassword()) {
+                    SET("password=#{password}");
+                }
+                if(null != userDO.getPhone()) {
+                    SET("phone=#{phone}");
+                }
+                if(null != userDO.getQq()) {
+                    SET("qq=#{qq}");
+                }
+                if(null != userDO.getEmail()) {
+                    SET("email=#{email}");
+                }
+                if(null != userDO.getName()) {
+                    SET("name=#{name}");
+                }
+                if(null != userDO.getType()) {
+                    SET("type=#{type}");
+                }
+                if(null != userDO.getHeadImage()) {
+                    SET("head_image=#{headImage}");
+                }
+                if(null != userDO.getSecretPassword()) {
+                    SET("secret_password=#{secretPassword}");
+                }
+                if(null != userDO.getWeixinNick()) {
+                    SET("weixin_nick=#{weixinNick}");
+                }
+                if(null != userDO.getWeixinOpenId()) {
+                    SET("weixin_open_id=#{weixinOpenId}");
+                }
+                SET("gmt_modify=now()");
+                WHERE("id=#{id}");
+            }
+        }.toString();
+    }
+
 }
