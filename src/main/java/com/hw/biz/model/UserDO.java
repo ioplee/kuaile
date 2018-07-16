@@ -33,6 +33,8 @@ public class UserDO implements java.io.Serializable {
 
     private Integer type;
 
+    private Integer status;
+
     private Date gmtCreate;
 
     private Date gmtModify;
@@ -131,6 +133,14 @@ public class UserDO implements java.io.Serializable {
 
     public void setType(Integer type) {
         this.type = type;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public Date getGmtCreate() {

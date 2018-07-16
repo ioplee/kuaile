@@ -93,6 +93,9 @@ public class UserDynaSqlProvider {
                 if(null != userDO.getWeixinOpenId()) {
                     SET("weixin_open_id=#{weixinOpenId}");
                 }
+                if(null != userDO.getStatus()) {
+                    SET("status=#{status}");
+                }
                 SET("gmt_modify=now()");
                 WHERE("id=#{id}");
             }

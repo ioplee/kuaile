@@ -38,7 +38,7 @@ public class UserDAOTest {
 
     @Test
     public void testFindUserById() {
-        UserDO userDO =  userDAO.findUserById(5l);
+        UserDO userDO =  userDAO.findUserById(8l);
         Assert.assertNotNull(userDO);
     }
 
@@ -57,13 +57,14 @@ public class UserDAOTest {
         userDO.setSecretPassword("333222");
         userDO.setHeadImage("22");
         userDO.setWeixinOpenId("10002003");
+        userDO.setStatus(1);
         int num = userDAO.update(userDO);
         Assert.assertTrue(num > 0);
     }
 
     @Test
     public void testDelete() {
-        int num = userDAO.delete(10l);
+        int num = userDAO.delete(11l);
         Assert.assertTrue(num > 0);
     }
 
