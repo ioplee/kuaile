@@ -7,6 +7,12 @@ import org.apache.ibatis.annotations.*;
 @Mapper
 public interface UserDAO {
 
+    /**
+     * 通过手机号码与密码查询用户信息
+     * @param phone
+     * @param password
+     * @return
+     */
     @Results({
             @Result(property = "secretPassword", column = "secret_password"),
             @Result(property = "weixinOpenId", column = "weixin_open_id"),
@@ -21,6 +27,11 @@ public interface UserDAO {
     @Insert("INSERT INTO hw_user(nick, password, phone, status, type, gmt_create, gmt_modify) VALUES(#{nick}, #{password}, #{phone}, #{status}, #{type}, now(), now())")
     int insert(UserDO userDO);
 
+    /**
+     * 通过用户id查询用户信息
+     * @param id
+     * @return
+     */
     @Results({
             @Result(property = "secretPassword", column = "secret_password"),
             @Result(property = "weixinOpenId", column = "weixin_open_id"),
