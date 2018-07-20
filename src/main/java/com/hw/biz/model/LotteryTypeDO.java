@@ -15,10 +15,19 @@ public class LotteryTypeDO implements Serializable {
 
     private String lotteryTypeName;
 
+    /**
+     * 外部彩票id
+     */
     private Long externalId;
 
+    /**
+     * 外部彩票
+     */
     private ExternalLotteryDO externalLottery;
 
+    /**
+     * 投注项列表
+     */
     private List<TargetDO> targetList;
 
     private Integer status;

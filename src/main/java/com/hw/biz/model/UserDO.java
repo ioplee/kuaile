@@ -11,8 +11,14 @@ public class UserDO implements java.io.Serializable {
 
     private Long id;
 
+    /**
+     * 昵称
+     */
     private String nick;
 
+    /**
+     * 密码
+     */
     private String password;
 
     private String phone;
@@ -21,18 +27,36 @@ public class UserDO implements java.io.Serializable {
 
     private String qq;
 
+    /**
+     * 安全密码
+     */
     private String secretPassword;
 
     private String name;
 
+    /**
+     * 微信open_id
+     */
     private String weixinOpenId;
 
+    /**
+     * 微信昵称
+     */
     private String weixinNick;
 
+    /**
+     * 头像
+     */
     private String headImage;
 
+    /**
+     * 玩家类型
+     */
     private Integer type;
 
+    /**
+     * 用户状态
+     */
     private Integer status;
 
     private Date gmtCreate;

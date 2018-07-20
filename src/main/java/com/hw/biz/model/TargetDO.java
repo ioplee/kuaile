@@ -3,14 +3,23 @@ package com.hw.biz.model;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * 投注项
+ */
 public class TargetDO implements Serializable {
 
     private static final long serialVersionUID = -5759573841030727491L;
 
     private Long id;
 
+    /**
+     * 投资项名称
+     */
     private String targetName;
 
+    /**
+     * 理论赔率
+     */
     private Float theoreticalOdds;
 
     private Integer status;

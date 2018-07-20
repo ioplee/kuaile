@@ -11,14 +11,29 @@ public class RankingDO implements java.io.Serializable {
 
     private Long id;
 
+    /**
+     * 昵称
+     */
     private String nick;
 
+    /**
+     * 金豆
+     */
     private Long jindou;
 
+    /**
+     * 奖励
+     */
     private Long reward;
 
+    /**
+     * 排序
+     */
     private Integer rank;
 
+    /**
+     * 排行榜类型
+     */
     private Integer type;
 
     private Integer status;
