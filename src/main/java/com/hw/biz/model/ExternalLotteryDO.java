@@ -12,12 +12,21 @@ public class ExternalLotteryDO implements Serializable {
 
     private Long id;
 
+    /**
+     * 外部彩票名称
+     */
     private String name;
 
+    /**
+     * 外部彩票网站URL
+     */
     private String url;
 
     private Integer status;
 
+    /**
+     * 玩法描述
+     */
     private String remark;
 
     private Date gmtModify;
