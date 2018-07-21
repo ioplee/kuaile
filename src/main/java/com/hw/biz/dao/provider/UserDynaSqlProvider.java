@@ -7,7 +7,7 @@ import org.apache.ibatis.jdbc.SQL;
 import java.util.Map;
 
 /**
- * 动态sql查询范例
+ * User动态sql查询
  */
 public class UserDynaSqlProvider {
     public String selectWhitParamSql(Map<String, Object> param) {

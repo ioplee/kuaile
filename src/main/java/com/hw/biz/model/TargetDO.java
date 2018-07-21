@@ -22,6 +22,16 @@ public class TargetDO implements Serializable {
      */
     private Float theoreticalOdds;
 
+    /**
+     * 一局彩票的所有投注
+     */
+    private Long totalJindou;
+
+    /**
+     * 实际赔率
+     */
+    private Float actualOdds;
+
     private Integer status;
 
     private Date gmtModify;
@@ -50,6 +60,22 @@ public class TargetDO implements Serializable {
 
     public void setTheoreticalOdds(Float theoreticalOdds) {
         this.theoreticalOdds = theoreticalOdds;
+    }
+
+    public Long getTotalJindou() {
+        return totalJindou;
+    }
+
+    public void setTotalJindou(Long totalJindou) {
+        this.totalJindou = totalJindou;
+    }
+
+    public Float getActualOdds() {
+        return actualOdds;
+    }
+
+    public void setActualOdds(Float actualOdds) {
+        this.actualOdds = actualOdds;
     }
 
     public Integer getStatus() {
