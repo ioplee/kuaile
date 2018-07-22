@@ -22,7 +22,7 @@ public interface TypeTargetDAO {
             @Result(property = "gmtCreate", column = "gmt_create")
     })
     @Select("SELECT hw_target.id id, hw_target.target_name target_name, hw_type_target.theoretical_odds theoretical_odds, hw_target.status status, hw_target.gmt_modify gmt_modify, hw_target.gmt_create gmt_create " +
-            " FROM hw_type_target, hw_target WHERE hw_type_target.type_id = #{typeId} AND hw_type_target.target_id = hw_target.id AND hw_type_target.status = 1 AND hw_target.status = 1")
+            " FROM hw_type_target, hw_target WHERE hw_type_target.type_id = #{typeId} AND hw_type_target.target_id = hw_target.id AND hw_type_target.status <> -1 AND hw_target.status <> -1")
     List<TargetDO> findTargetListByTypeId(@Param("typeId") Long typeId);
 
 }
