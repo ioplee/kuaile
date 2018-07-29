@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 投注项
+ * 属性值
  */
 public class TargetDO implements Serializable {
 
@@ -13,7 +13,7 @@ public class TargetDO implements Serializable {
     private Long id;
 
     /**
-     * 投资项名称
+     * 属性值名称
      */
     private String targetName;
 

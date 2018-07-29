@@ -26,9 +26,14 @@ public class LotteryTypeDO implements Serializable {
     private ExternalLotteryDO externalLottery;
 
     /**
-     * 投注项列表
+     * 玩法列表
      */
-    private List<TargetDO> targetList;
+    private List<WayOfPlayingDO> wayOfPlayingList;
+
+    /**
+     * 分类：时时彩、全天彩、11选5、快3、快乐8、其他
+     */
+    private Integer type;
 
     private Integer status;
 
@@ -68,12 +73,20 @@ public class LotteryTypeDO implements Serializable {
         this.externalLottery = externalLottery;
     }
 
-    public List<TargetDO> getTargetList() {
-        return targetList;
+    public List<WayOfPlayingDO> getWayOfPlayingList() {
+        return wayOfPlayingList;
     }
 
-    public void setTargetList(List<TargetDO> targetList) {
-        this.targetList = targetList;
+    public void setWayOfPlayingList(List<WayOfPlayingDO> wayOfPlayingList) {
+        this.wayOfPlayingList = wayOfPlayingList;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
     }
 
     public Integer getStatus() {

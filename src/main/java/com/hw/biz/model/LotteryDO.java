@@ -17,8 +17,6 @@ public class LotteryDO implements Serializable {
 
     private LotteryTypeDO lotteryTypeDO;
 
-    private List<TargetDO> targetList;
-
     /**
      * 期号
      */
@@ -74,14 +72,6 @@ public class LotteryDO implements Serializable {
 
     public void setLotteryTypeDO(LotteryTypeDO lotteryTypeDO) {
         this.lotteryTypeDO = lotteryTypeDO;
-    }
-
-    public List<TargetDO> getTargetList() {
-        return targetList;
-    }
-
-    public void setTargetList(List<TargetDO> targetList) {
-        this.targetList = targetList;
     }
 
     public String getNumber() {

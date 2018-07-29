@@ -3,6 +3,8 @@ package com.hw.biz.dao;
 import com.hw.biz.model.LotteryTypeDO;
 import org.apache.ibatis.annotations.*;
 
+import java.util.List;
+
 @Mapper
 public interface LotteryTypeDAO {
 
@@ -12,5 +14,7 @@ public interface LotteryTypeDAO {
     })
     @Select("SELECT * FROM hw_lottery_type WHERE id = #{id}")
     LotteryTypeDO findLotteryTypeById(@Param("id") Long id);
+
+    List<LotteryTypeDO> findAllLotteryType();
 
 }
