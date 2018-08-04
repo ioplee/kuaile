@@ -35,6 +35,8 @@ public class LotteryTypeDO implements Serializable {
      */
     private Integer type;
 
+    private String typeName;
+
     private Integer status;
 
     private Date gmtModify;
@@ -87,6 +89,14 @@ public class LotteryTypeDO implements Serializable {
 
     public void setType(Integer type) {
         this.type = type;
+    }
+
+    public String getTypeName() {
+        return typeName;
+    }
+
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
     }
 
     public Integer getStatus() {

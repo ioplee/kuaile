@@ -5,6 +5,9 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
+/**
+ * 排行榜接口
+ */
 public interface RankingServices {
 
     public List<RankingDO> findRankingListByType(Integer type);

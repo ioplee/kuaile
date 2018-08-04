@@ -1,0 +1,27 @@
+package com.hw.services;
+
+import com.hw.biz.model.LotteryDO;
+import com.hw.biz.model.LotteryTypeDO;
+
+import java.util.List;
+
+public interface LotteryServices {
+
+    /**
+     * 根据彩票类型ID查询最近50条彩票信息
+     * @param lotteryTypeId
+     * @return
+     */
+    public List<LotteryDO> findLotteryList(Long lotteryTypeId);
+
+    public String findLastestNumber();
+
+    public LotteryDO findLotteryById(Long id);
+
+    public void createLottery(LotteryTypeDO lotteryTypeDO);
+
+    public void modifyLottery(LotteryDO lotteryDO);
+
+    public void removeLottery(Long id);
+
+}

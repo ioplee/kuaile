@@ -4,6 +4,9 @@ import com.hw.biz.model.BusinessCooperationDO;
 
 import java.util.List;
 
+/**
+ * 合作商相关接口
+ */
 public interface BizCoopServices {
 
     public List<BusinessCooperationDO> findAllBusinessCooperation();
