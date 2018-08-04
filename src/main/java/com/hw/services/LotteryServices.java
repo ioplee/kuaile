@@ -5,6 +5,9 @@ import com.hw.biz.model.LotteryTypeDO;
 
 import java.util.List;
 
+/**
+ * 每期彩票相关接口
+ */
 public interface LotteryServices {
 
     /**

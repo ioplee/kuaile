@@ -5,6 +5,9 @@ import com.hw.biz.model.LotteryTypeDO;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 彩票类型相关接口
+ */
 public interface LotteryTypeServices {
 
     public List<LotteryTypeDO> findAllLotteryType();
