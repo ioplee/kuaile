@@ -17,7 +17,7 @@ public interface LotteryServices {
      */
     public List<LotteryDO> findLotteryList(Long lotteryTypeId);
 
-    public String findLastestNumber();
+    public String findLastestNumber(Long lotteryTypeId);
 
     public LotteryDO findLotteryById(Long id);
 

@@ -1,6 +1,7 @@
 package com.hw.services;
 
 import com.github.pagehelper.Page;
+import com.hw.biz.model.LotteryDO;
 import com.hw.biz.model.OrderDO;
 
 import java.util.List;
@@ -14,5 +15,7 @@ public interface OrderServices {
     public Page<OrderDO> findOrderListByPage(Map<String,String> params, int pageNo, int pageSize);
 
     public void bet(List<Long> orderIds);
+
+    public void bet(LotteryDO lotteryDO);
 
 }
