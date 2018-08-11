@@ -12,10 +12,36 @@ import java.util.Map;
  */
 public interface OrderServices {
 
-    public Page<OrderDO> findOrderListByPage(Map<String,String> params, int pageNo, int pageSize);
+    public Page<OrderDO> findOrderByPage(Map<String,String> params, int pageNo, int pageSize);
 
+    public List<OrderDO> findOrderByUserId(Long userId);
+
+    /**
+     * 根据账期、用户ID计算流水额
+     * @param period 账期
+     * @param userId 用户ID
+     * @return
+     */
+    public Long calculateFlowNum(Integer period, Long userId);
+
+    /**
+     * 根据账期、用户ID计算亏损额
+     * @param period 账期
+     * @param userId 用户ID
+     * @return
+     */
+    public Long calculateLossNum(Integer period, Long userId);
+
+    /**
+     * 根据订单ID列表下注
+     * @param orderIds
+     */
     public void bet(List<Long> orderIds);
 
-    public void bet(LotteryDO lotteryDO);
+    /**
+     * 直接下注
+     * @param orderDO
+     */
+    public void bet(OrderDO orderDO);
 
 }

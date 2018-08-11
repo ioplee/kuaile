@@ -65,6 +65,16 @@ public class UserDO implements java.io.Serializable {
     private Float peiLv;
 
     /**
+     * 上级账号ID
+     */
+    private Long fatherId;
+
+    /**
+     * 密码修改状态
+     */
+    private Integer passwordStatus;
+
+    /**
      * 用户状态
      */
     private Integer status;
@@ -183,6 +193,22 @@ public class UserDO implements java.io.Serializable {
 
     public void setPeiLv(Float peiLv) {
         this.peiLv = peiLv;
+    }
+
+    public Long getFatherId() {
+        return fatherId;
+    }
+
+    public void setFatherId(Long fatherId) {
+        this.fatherId = fatherId;
+    }
+
+    public Integer getPasswordStatus() {
+        return passwordStatus;
+    }
+
+    public void setPasswordStatus(Integer passwordStatus) {
+        this.passwordStatus = passwordStatus;
     }
 
     public Integer getStatus() {

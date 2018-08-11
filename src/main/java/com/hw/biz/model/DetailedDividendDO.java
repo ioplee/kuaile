@@ -27,6 +27,8 @@ public class DetailedDividendDO implements Serializable {
      */
     private String period;
 
+    private Integer status;
+
     private Date gmtCreate;
 
     private Date gmtModify;
@@ -61,6 +63,14 @@ public class DetailedDividendDO implements Serializable {
 
     public void setPeriod(String period) {
         this.period = period;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public Date getGmtCreate() {

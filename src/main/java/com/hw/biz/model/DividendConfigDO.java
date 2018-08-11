@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 分红属性
+ * 分红配置信息
  */
 public class DividendConfigDO implements Serializable {
 
@@ -20,7 +20,7 @@ public class DividendConfigDO implements Serializable {
     /**
      * 流水要求
      */
-    private Long tallyNum;
+    private Long flowNum;
 
     /**
      * 亏损要求
@@ -36,6 +36,13 @@ public class DividendConfigDO implements Serializable {
      * 赔率要求
      */
     private Float peiLv;
+
+    /**
+     * 上级代理ID
+     */
+    private Long fatherId;
+
+    private Integer status;
 
     private Date gmtCreate;
 
@@ -57,12 +64,12 @@ public class DividendConfigDO implements Serializable {
         this.userId = userId;
     }
 
-    public Long getTallyNum() {
-        return tallyNum;
+    public Long getFlowNum() {
+        return flowNum;
     }
 
-    public void setTallyNum(Long tallyNum) {
-        this.tallyNum = tallyNum;
+    public void setFlowNum(Long flowNum) {
+        this.flowNum = flowNum;
     }
 
     public Long getLossNum() {
@@ -87,6 +94,22 @@ public class DividendConfigDO implements Serializable {
 
     public void setPeiLv(Float peiLv) {
         this.peiLv = peiLv;
+    }
+
+    public Long getFatherId() {
+        return fatherId;
+    }
+
+    public void setFatherId(Long fatherId) {
+        this.fatherId = fatherId;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public Date getGmtCreate() {
