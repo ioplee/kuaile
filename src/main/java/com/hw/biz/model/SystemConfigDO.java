@@ -3,29 +3,18 @@ package com.hw.biz.model;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * 账户流水
- */
-public class AccountTallyDO implements Serializable {
+public class SystemConfigDO implements Serializable {
 
-    private static final long serialVersionUID = -4760669461687639845L;
+    private static final long serialVersionUID = 893598319792761977L;
 
     private Long id;
 
     /**
-     * 收入支出类型
+     * 配置信息：最低赔率、分红日期
      */
-    private Integer inOut;
+    private String key;
 
-    /**
-     * 流水数额
-     */
-    private Long flowNum;
-
-    /**
-     * 流水类型：充值、提现、抽佣、转账、返点
-     */
-    private Integer type;
+    private String value;
 
     private String remarks;
 
@@ -41,28 +30,20 @@ public class AccountTallyDO implements Serializable {
         this.id = id;
     }
 
-    public Integer getInOut() {
-        return inOut;
+    public String getKey() {
+        return key;
     }
 
-    public void setInOut(Integer inOut) {
-        this.inOut = inOut;
+    public void setKey(String key) {
+        this.key = key;
     }
 
-    public Long getFlowNum() {
-        return flowNum;
+    public String getValue() {
+        return value;
     }
 
-    public void setFlowNum(Long flowNum) {
-        this.flowNum = flowNum;
-    }
-
-    public Integer getType() {
-        return type;
-    }
-
-    public void setType(Integer type) {
-        this.type = type;
+    public void setValue(String value) {
+        this.value = value;
     }
 
     public String getRemarks() {

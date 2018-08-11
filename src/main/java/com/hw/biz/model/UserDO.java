@@ -50,9 +50,19 @@ public class UserDO implements java.io.Serializable {
     private String headImage;
 
     /**
-     * 玩家类型
+     * 玩家类型：玩家、代理
      */
     private Integer type;
+
+    /**
+     * 账号返点
+     */
+    private Float fanDian;
+
+    /**
+     * 账号赔率
+     */
+    private Float peiLv;
 
     /**
      * 用户状态
@@ -157,6 +167,22 @@ public class UserDO implements java.io.Serializable {
 
     public void setType(Integer type) {
         this.type = type;
+    }
+
+    public Float getFanDian() {
+        return fanDian;
+    }
+
+    public void setFanDian(Float fanDian) {
+        this.fanDian = fanDian;
+    }
+
+    public Float getPeiLv() {
+        return peiLv;
+    }
+
+    public void setPeiLv(Float peiLv) {
+        this.peiLv = peiLv;
     }
 
     public Integer getStatus() {
