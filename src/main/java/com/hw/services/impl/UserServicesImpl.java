@@ -5,7 +5,6 @@ import com.github.pagehelper.PageHelper;
 import com.hw.biz.dao.UserMapper;
 import com.hw.biz.model.UserDomain;
 import com.hw.services.UserServices;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

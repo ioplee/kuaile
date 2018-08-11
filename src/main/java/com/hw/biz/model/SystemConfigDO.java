@@ -3,6 +3,9 @@ package com.hw.biz.model;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * 系统配置
+ */
 public class SystemConfigDO implements Serializable {
 
     private static final long serialVersionUID = 893598319792761977L;
