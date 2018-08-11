@@ -19,8 +19,9 @@ public interface AgentServices {
 
     /**
      * 计算分红
+     * @param period
      * @param userId
      */
-    public void payDividend(Long userId);
+    public void payDividend(Integer period, Long userId);
 
 }
