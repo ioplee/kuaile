@@ -28,6 +28,11 @@ public class OrderServicesImpl implements OrderServices {
     }
 
     @Override
+    public List<OrderDO> findOrderByParams(Map<String, String> params) {
+        return null;
+    }
+
+    @Override
     public List<OrderDO> findOrderByUserId(Long userId) {
         return null;
     }

@@ -23,7 +23,7 @@ public class AccountTallyDO implements Serializable {
     private Long flowNum;
 
     /**
-     * 流水类型：充值、提现、抽佣、转账、返点
+     * 流水类型：充值、提现、抽佣、转账、返点、下注、中奖
      */
     private Integer type;
 

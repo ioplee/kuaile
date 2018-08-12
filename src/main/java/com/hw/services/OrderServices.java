@@ -14,6 +14,8 @@ public interface OrderServices {
 
     public Page<OrderDO> findOrderByPage(Map<String,String> params, int pageNo, int pageSize);
 
+    public List<OrderDO> findOrderByParams(Map<String,String> params);
+
     public List<OrderDO> findOrderByUserId(Long userId);
 
     /**

@@ -2,6 +2,7 @@ package com.hw.services.impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.hw.biz.dao.UserDAO;
 import com.hw.biz.dao.UserMapper;
 import com.hw.biz.model.UserDO;
 import com.hw.biz.model.UserDomain;
@@ -9,6 +10,7 @@ import com.hw.services.UserServices;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -17,6 +19,8 @@ public class UserServicesImpl implements UserServices {
 
     @Resource
     private UserMapper userMapper ;
+
+    private UserDAO userDAO;
 
     @Override
     public Page<UserDomain> findUserByPage(int pageNo, int pageSize) {
@@ -43,6 +47,33 @@ public class UserServicesImpl implements UserServices {
 
     @Override
     public List<UserDO> findAllChildrenByUserId(Long userId) {
+        List<UserDO> userDOList = new ArrayList<UserDO>();
+        return findChildrenByUserId(userDOList, userId);
+    }
+
+    /**
+     * 迭代查询所有孩子节点信息
+     * @param userDOList
+     * @param userId
+     * @return
+     */
+    private List<UserDO> findChildrenByUserId(List<UserDO> userDOList, Long userId) {
+        if(null == userDOList) {
+            userDOList = new ArrayList<UserDO>();
+        }
+        List<UserDO> childrenList = findChildrenByUserId(userId);
+        if(null == childrenList || childrenList.size() == 0) {
+            return userDOList;
+        }
+        userDOList.addAll(childrenList);
+        for(UserDO children : childrenList) {
+            findChildrenByUserId(userDOList, children.getId());
+        }
+        return userDOList;
+    }
+
+    @Override
+    public UserDO findUserById(Long id) {
         return null;
     }
 }

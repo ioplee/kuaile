@@ -1,6 +1,7 @@
 package com.hw.services;
 
 import com.github.pagehelper.Page;
+import com.hw.biz.dao.UserDAO;
 import com.hw.biz.model.UserDO;
 import com.hw.biz.model.UserDomain;
 
@@ -31,6 +32,9 @@ public interface UserServices {
      * @return
      */
     public List<UserDO> findAllChildrenByUserId(Long userId);
+
+    public UserDO findUserById(Long id);
+
 
 
 }

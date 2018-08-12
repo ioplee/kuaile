@@ -22,6 +22,6 @@ public interface AgentServices {
      * @param period
      * @param userId
      */
-    public void payDividend(Integer period, Long userId);
+    public void payAllDividend(String period, Long userId);
 
 }

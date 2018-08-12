@@ -4,6 +4,8 @@ import com.hw.biz.dao.provider.UserDynaSqlProvider;
 import com.hw.biz.model.UserDO;
 import org.apache.ibatis.annotations.*;
 
+import java.util.List;
+
 @Mapper
 public interface UserDAO {
 
@@ -48,5 +50,21 @@ public interface UserDAO {
 
     @Update("UPDATE hw_user SET status=-1, gmt_modify=now() WHERE id=#{id}")
     int delete(@Param("id") Long id);
+
+    /**
+     * 根据父节点ID查询孩子用户信息
+     * @param fatherId
+     * @return
+     */
+    @Results({
+            @Result(property = "secretPassword", column = "secret_password"),
+            @Result(property = "weixinOpenId", column = "weixin_open_id"),
+            @Result(property = "weixinNick", column = "weixin_nick"),
+            @Result(property = "headImage", column = "head_image"),
+            @Result(property = "gmtModify", column = "gmt_modify"),
+            @Result(property = "gmtCreate", column = "gmt_create")
+    })
+    @Select("SELECT * FROM hw_user WHERE father_id = #{fatherId}")
+    List<UserDO> findChildrenByUserId(@Param("fatherId") Long fatherId);
 
 }
