@@ -44,4 +44,12 @@ public interface OrderServices {
      */
     public void bet(OrderDO orderDO);
 
+    /**
+     * 支付回调接口
+     * @param orderIds
+     * @param paymentChannel
+     * @param channelOrderId
+     */
+    public void payCallback(String orderIds, Integer paymentChannel, String channelOrderId);
+
 }

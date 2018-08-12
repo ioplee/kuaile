@@ -30,12 +30,12 @@ public class DividendConfigDO implements Serializable {
     /**
      * 分红比例
      */
-    private Float dividendProportion;
+    private Integer dividendProportion;
 
     /**
      * 赔率要求
      */
-    private Float peiLv;
+    private Integer peiLv;
 
     /**
      * 上级代理ID
@@ -80,19 +80,19 @@ public class DividendConfigDO implements Serializable {
         this.lossNum = lossNum;
     }
 
-    public Float getDividendProportion() {
+    public Integer getDividendProportion() {
         return dividendProportion;
     }
 
-    public void setDividendProportion(Float dividendProportion) {
+    public void setDividendProportion(Integer dividendProportion) {
         this.dividendProportion = dividendProportion;
     }
 
-    public Float getPeiLv() {
+    public Integer getPeiLv() {
         return peiLv;
     }
 
-    public void setPeiLv(Float peiLv) {
+    public void setPeiLv(Integer peiLv) {
         this.peiLv = peiLv;
     }
 

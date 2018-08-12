@@ -30,7 +30,7 @@ public class TargetDO implements Serializable {
     /**
      * 实际赔率
      */
-    private Float actualOdds;
+    private Integer actualOdds;
 
     private Integer status;
 
@@ -70,11 +70,11 @@ public class TargetDO implements Serializable {
         this.totalJindou = totalJindou;
     }
 
-    public Float getActualOdds() {
+    public Integer getActualOdds() {
         return actualOdds;
     }
 
-    public void setActualOdds(Float actualOdds) {
+    public void setActualOdds(Integer actualOdds) {
         this.actualOdds = actualOdds;
     }
 

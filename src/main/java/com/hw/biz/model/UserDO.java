@@ -57,12 +57,12 @@ public class UserDO implements java.io.Serializable {
     /**
      * 账号返点
      */
-    private Float fanDian;
+    private Integer fanDian;
 
     /**
      * 账号赔率
      */
-    private Float peiLv;
+    private Integer peiLv;
 
     /**
      * 上级账号ID
@@ -179,19 +179,19 @@ public class UserDO implements java.io.Serializable {
         this.type = type;
     }
 
-    public Float getFanDian() {
+    public Integer getFanDian() {
         return fanDian;
     }
 
-    public void setFanDian(Float fanDian) {
+    public void setFanDian(Integer fanDian) {
         this.fanDian = fanDian;
     }
 
-    public Float getPeiLv() {
+    public Integer getPeiLv() {
         return peiLv;
     }
 
-    public void setPeiLv(Float peiLv) {
+    public void setPeiLv(Integer peiLv) {
         this.peiLv = peiLv;
     }
 

@@ -2,6 +2,7 @@ package com.hw.biz.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 投注订单
@@ -18,9 +19,7 @@ public class OrderDO implements Serializable {
 
     private LotteryDO lotteryDO;
 
-    private Long targetId;
-
-    private TargetDO targetDO;
+    private List<AttributeDO> attributeDOList;
 
     /**
      * 下注额
@@ -37,6 +36,19 @@ public class OrderDO implements Serializable {
      */
     private Long winningJindou;
 
+    /**
+     * 下注倍率
+     */
+    private Integer beiLv;
+
+    /**
+     * 下注赔率
+     */
+    private Integer betPeiLv;
+
+    /**
+     * 订单状态：新建、支付中、已付款、已删除
+     */
     private Integer status;
 
     private Date gmtModify;
@@ -75,20 +87,12 @@ public class OrderDO implements Serializable {
         this.lotteryDO = lotteryDO;
     }
 
-    public Long getTargetId() {
-        return targetId;
+    public List<AttributeDO> getAttributeDOList() {
+        return attributeDOList;
     }
 
-    public void setTargetId(Long targetId) {
-        this.targetId = targetId;
-    }
-
-    public TargetDO getTargetDO() {
-        return targetDO;
-    }
-
-    public void setTargetDO(TargetDO targetDO) {
-        this.targetDO = targetDO;
+    public void setAttributeDOList(List<AttributeDO> attributeDOList) {
+        this.attributeDOList = attributeDOList;
     }
 
     public Long getAmountBet() {
@@ -113,6 +117,22 @@ public class OrderDO implements Serializable {
 
     public void setWinningJindou(Long winningJindou) {
         this.winningJindou = winningJindou;
+    }
+
+    public Integer getBeiLv() {
+        return beiLv;
+    }
+
+    public void setBeiLv(Integer beiLv) {
+        this.beiLv = beiLv;
+    }
+
+    public Integer getBetPeiLv() {
+        return betPeiLv;
+    }
+
+    public void setBetPeiLv(Integer betPeiLv) {
+        this.betPeiLv = betPeiLv;
     }
 
     public Integer getStatus() {
