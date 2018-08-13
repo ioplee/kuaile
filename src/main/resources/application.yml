@@ -44,3 +44,6 @@ pagehelper:
     supportMethodsArguments: true
     params: count=countSql
     returnPageInfo: check
+
+logging:
+  config: classpath:log4j2.xml
