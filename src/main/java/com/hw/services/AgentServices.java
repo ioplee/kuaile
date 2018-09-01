@@ -5,6 +5,9 @@ import com.hw.biz.model.UserDO;
 
 import java.util.List;
 
+/**
+ * 代理服务
+ */
 public interface AgentServices {
 
     public List<UserDO> findFirstLevelAgent();

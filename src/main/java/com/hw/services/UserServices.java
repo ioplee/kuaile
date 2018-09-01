@@ -35,6 +35,7 @@ public interface UserServices {
 
     public UserDO findUserById(Long id);
 
+    public void insert(UserDO userDO);
 
 
 }
