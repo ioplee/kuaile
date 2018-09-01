@@ -35,7 +35,10 @@ public interface UserServices {
 
     public UserDO findUserById(Long id);
 
-    public void insert(UserDO userDO);
+    public void createUser(UserDO userDO);
 
+    public void modifyUser(UserDO userDO);
+
+    public void removeUser(Long id);
 
 }

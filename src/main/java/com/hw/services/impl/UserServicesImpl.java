@@ -7,6 +7,8 @@ import com.hw.biz.dao.UserMapper;
 import com.hw.biz.model.UserDO;
 import com.hw.biz.model.UserDomain;
 import com.hw.services.UserServices;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -17,9 +19,12 @@ import java.util.Map;
 @Service
 public class UserServicesImpl implements UserServices {
 
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
+
     @Resource
     private UserMapper userMapper ;
 
+    @Resource
     private UserDAO userDAO;
 
     @Override
@@ -48,7 +53,12 @@ public class UserServicesImpl implements UserServices {
      */
     @Override
     public List<UserDO> findChildrenByUserId(Long userId) {
-        return null;
+        try {
+            return userDAO.findChildrenByUserId(userId);
+        } catch (Exception e) {
+            log.error("根据用户ID查询下级用户列表（一级）", e);
+            return null;
+        }
     }
 
     /**
@@ -85,12 +95,40 @@ public class UserServicesImpl implements UserServices {
 
     @Override
     public UserDO findUserById(Long id) {
-        return null;
+        UserDO userDO = null;
+        try {
+            userDO = userDAO.findUserById(id);
+        } catch (Exception e) {
+            log.error("根据ID查询用户信息", e);
+        }
+        return userDO;
     }
 
     @Override
-    public void insert(UserDO userDO) {
+    public void createUser(UserDO userDO) {
+        try {
+            userDAO.insert(userDO);
+        } catch(Exception e) {
+            log.error("新增用户", e);
+        }
+    }
 
+    @Override
+    public void modifyUser(UserDO userDO) {
+        try {
+            userDAO.update(userDO);
+        } catch(Exception e) {
+            log.error("修改用户", e);
+        }
+    }
+
+    @Override
+    public void removeUser(Long id) {
+        try {
+            userDAO.delete(id);
+        } catch(Exception e) {
+            log.error("移除用户", e);
+        }
     }
 
 }
