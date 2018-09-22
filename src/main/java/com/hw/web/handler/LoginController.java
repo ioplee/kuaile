@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,5 +19,11 @@ public class LoginController {
     public ModelAndView login(HttpServletRequest request, HttpServletResponse response  , @RequestHeader(value = "referer", required = false) String referer , @Valid String msg) {
         ModelAndView view = new ModelAndView("redirect:/") ;//先设定一个跳转到默认页面得view，当登录不成功时直接跳转到这个页面
         return view ;
+    }
+
+    @RequestMapping(value = "/testInfo")
+    @ResponseBody
+    public String testInfo() {
+        return "hello 猩猩" ;
     }
 }

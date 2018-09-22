@@ -17,6 +17,7 @@ public class WebAppConfigurer extends WebMvcConfigurerAdapter {
         registry.addInterceptor(new UserInterceptorHandler()).addPathPatterns("/**")
                 .excludePathPatterns(
                         "/login.html",
+                        "/testInfo",
                         "/api/**",
                         "/android/**",
                         "/tokens",
