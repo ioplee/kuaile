@@ -18,7 +18,7 @@ public class LoginController {
     @RequestMapping(value = "/login" , method = {RequestMethod.GET,RequestMethod.POST})
     @Menu(type = "apps" , subtype = "user" , access = true)//access==true时，不做校验
     public String login(HttpServletRequest request, HttpServletResponse response  , @RequestHeader(value = "referer", required = false) String referer , @Valid String msg) {
-        return "index" ;
+        return "admin/index" ;
     }
 
     @RequestMapping(value = "/testInfo")
