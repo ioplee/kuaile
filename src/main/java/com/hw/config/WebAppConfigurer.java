@@ -4,10 +4,19 @@ import com.hw.interceptor.CrossInterceptorHandler;
 import com.hw.interceptor.UserInterceptorHandler;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-public class WebAppConfigurer extends WebMvcConfigurerAdapter {
+public class WebAppConfigurer implements WebMvcConfigurer {
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        // 配置模板资源路径
+        registry.addResourceHandler("/images/**").addResourceLocations("classpath:/static/images/");
+        registry.addResourceHandler("/lay/**").addResourceLocations("classpath:/static/lui/");
+        registry.addResourceHandler("/pure/**").addResourceLocations("classpath:/static/pure/");
+    }
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
@@ -17,30 +26,18 @@ public class WebAppConfigurer extends WebMvcConfigurerAdapter {
         registry.addInterceptor(new UserInterceptorHandler()).addPathPatterns("/**")
                 .excludePathPatterns(
                         "/login.html",
+                        "/index",
                         "/testInfo",
                         "/api/**",
                         "/android/**",
                         "/tokens",
-                        "/registerPlayer/**",
-                        "/presentapp/**",
-                        "/wxController/**",
-                        "/record/**",
-                        "/situation/**",
-                        "/activity/**",
-                        "/gameNotice/**",
-                        "/help/**",
-                        "/userInfo/**",
-                        "/match/**",
-                        "/shop/**",
-                        "/rankingList/**",
-                        "/gamePrizeActivity/**",
-                        "/ipay/**",
-                        "/gameAnnouncement/**",
-                        "/gonggaoGame/**",
-                        "/gameVersion/**",
-                        "/cash_bonus/**"
+                        "/images/**",
+                        "/lay/**",
+                        "/pure/**"
                 );
-        registry.addInterceptor(new CrossInterceptorHandler()).addPathPatterns("/**");
-        super.addInterceptors(registry);
+        registry.addInterceptor(new CrossInterceptorHandler()).addPathPatterns("/**")
+                .excludePathPatterns("/images/**",
+                        "/lay/**",
+                        "/pure/**");
     }
 }
