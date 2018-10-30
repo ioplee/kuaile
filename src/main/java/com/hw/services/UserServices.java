@@ -33,12 +33,29 @@ public interface UserServices {
      */
     public List<UserDO> findAllChildrenByUserId(Long userId);
 
+    /**
+     * 根据ID查询用户信息
+     * @param id
+     * @return
+     */
     public UserDO findUserById(Long id);
 
+    /**
+     * 创建用户
+     * @param userDO
+     */
     public void createUser(UserDO userDO);
 
+    /**
+     * 修改用户信息
+     * @param userDO
+     */
     public void modifyUser(UserDO userDO);
 
+    /**
+     * 删除用户
+     * @param id
+     */
     public void removeUser(Long id);
 
 }

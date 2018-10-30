@@ -45,12 +45,6 @@ public class UserServicesImpl implements UserServices {
         return userMapper.findUserByPage(user);
     }
 
-
-    /**
-     * 根据用户ID查询下级用户列表（一级）
-     * @param userId
-     * @return
-     */
     @Override
     public List<UserDO> findChildrenByUserId(Long userId) {
         try {
@@ -61,11 +55,6 @@ public class UserServicesImpl implements UserServices {
         }
     }
 
-    /**
-     * 根据用户ID查询所有下级用户列表（所有）
-     * @param userId
-     * @return
-     */
     @Override
     public List<UserDO> findAllChildrenByUserId(Long userId) {
         List<UserDO> userDOList = new ArrayList<UserDO>();
