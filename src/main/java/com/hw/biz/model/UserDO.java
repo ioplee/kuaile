@@ -21,10 +21,19 @@ public class UserDO implements java.io.Serializable {
      */
     private String password;
 
+    /**
+     * 电话号码
+     */
     private String phone;
 
+    /**
+     * 电邮
+     */
     private String email;
 
+    /**
+     * qq
+     */
     private String qq;
 
     /**
@@ -32,7 +41,10 @@ public class UserDO implements java.io.Serializable {
      */
     private String secretPassword;
 
-    private String name;
+    /**
+     * 支付宝账号
+     */
+    private String alipayId;
 
     /**
      * 微信open_id
@@ -47,7 +59,7 @@ public class UserDO implements java.io.Serializable {
     /**
      * 头像
      */
-    private String headImage;
+    private String headImageUrl;
 
     /**
      * 玩家类型：玩家、代理
@@ -55,14 +67,9 @@ public class UserDO implements java.io.Serializable {
     private Integer type;
 
     /**
-     * 账号返点
+     * 账号彩票返点
      */
-    private Integer fanDian;
-
-    /**
-     * 账号赔率
-     */
-    private Integer peiLv;
+    private Integer caiPiaoFanDian;
 
     /**
      * 上级账号ID
@@ -79,9 +86,20 @@ public class UserDO implements java.io.Serializable {
      */
     private Integer status;
 
+    /**
+     * 创建时间
+     */
     private Date gmtCreate;
 
+    /**
+     * 最后修改时间
+     */
     private Date gmtModify;
+
+    /**
+     * 备注字段
+     */
+    private String back;
 
     public Long getId() {
         return id;
@@ -139,12 +157,12 @@ public class UserDO implements java.io.Serializable {
         this.secretPassword = secretPassword;
     }
 
-    public String getName() {
-        return name;
+    public String getAlipayId() {
+        return alipayId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAlipayId(String alipayId) {
+        this.alipayId = alipayId;
     }
 
     public String getWeixinOpenId() {
@@ -163,12 +181,12 @@ public class UserDO implements java.io.Serializable {
         this.weixinNick = weixinNick;
     }
 
-    public String getHeadImage() {
-        return headImage;
+    public String getHeadImageUrl() {
+        return headImageUrl;
     }
 
-    public void setHeadImage(String headImage) {
-        this.headImage = headImage;
+    public void setHeadImageUrl(String headImageUrl) {
+        this.headImageUrl = headImageUrl;
     }
 
     public Integer getType() {
@@ -179,20 +197,12 @@ public class UserDO implements java.io.Serializable {
         this.type = type;
     }
 
-    public Integer getFanDian() {
-        return fanDian;
+    public Integer getCaiPiaoFanDian() {
+        return caiPiaoFanDian;
     }
 
-    public void setFanDian(Integer fanDian) {
-        this.fanDian = fanDian;
-    }
-
-    public Integer getPeiLv() {
-        return peiLv;
-    }
-
-    public void setPeiLv(Integer peiLv) {
-        this.peiLv = peiLv;
+    public void setCaiPiaoFanDian(Integer caiPiaoFanDian) {
+        this.caiPiaoFanDian = caiPiaoFanDian;
     }
 
     public Long getFatherId() {
@@ -234,4 +244,13 @@ public class UserDO implements java.io.Serializable {
     public void setGmtModify(Date gmtModify) {
         this.gmtModify = gmtModify;
     }
+
+    public String getBack() {
+        return back;
+    }
+
+    public void setBack(String back) {
+        this.back = back;
+    }
+
 }
