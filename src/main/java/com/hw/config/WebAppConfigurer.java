@@ -33,7 +33,8 @@ public class WebAppConfigurer implements WebMvcConfigurer {
                         "/tokens",
                         "/images/**",
                         "/lay/**",
-                        "/pure/**"
+                        "/pure/**",
+                        "/**"
                 );
         registry.addInterceptor(new CrossInterceptorHandler()).addPathPatterns("/**")
                 .excludePathPatterns("/images/**",
