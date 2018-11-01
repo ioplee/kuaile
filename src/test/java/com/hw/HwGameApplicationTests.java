@@ -51,7 +51,7 @@ public class HwGameApplicationTests {
     public void testDynaSql() {
         Map<String,String> params = new HashMap<>() ;
         params.put("name","12345678") ;
-        params.put("phone","13588739892") ;
+        params.put("phone","15924186666") ;
 
         Page<UserDomain> list = userServices.findUserByPage(params,1,1) ;
         Assert.assertEquals(list.getPages(), 1);
