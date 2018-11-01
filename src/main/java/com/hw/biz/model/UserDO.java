@@ -62,14 +62,19 @@ public class UserDO implements java.io.Serializable {
     private String headImageUrl;
 
     /**
-     * 玩家类型：玩家、代理
+     * 玩家类型：玩家-0、代理-1
      */
     private Integer type;
 
     /**
-     * 账号彩票返点
+     * 账号彩票返点：8%存储为8
      */
     private Integer caiPiaoFanDian;
+
+    /**
+     * 玩家赔率：1980
+     */
+    private Integer peiLv;
 
     /**
      * 上级账号ID
@@ -77,12 +82,7 @@ public class UserDO implements java.io.Serializable {
     private Long fatherId;
 
     /**
-     * 密码修改状态
-     */
-    private Integer passwordStatus;
-
-    /**
-     * 用户状态
+     * 用户状态：1为正常，-1为删除
      */
     private Integer status;
 
@@ -205,20 +205,20 @@ public class UserDO implements java.io.Serializable {
         this.caiPiaoFanDian = caiPiaoFanDian;
     }
 
+    public Integer getPeiLv() {
+        return peiLv;
+    }
+
+    public void setPeiLv(Integer peiLv) {
+        this.peiLv = peiLv;
+    }
+
     public Long getFatherId() {
         return fatherId;
     }
 
     public void setFatherId(Long fatherId) {
         this.fatherId = fatherId;
-    }
-
-    public Integer getPasswordStatus() {
-        return passwordStatus;
-    }
-
-    public void setPasswordStatus(Integer passwordStatus) {
-        this.passwordStatus = passwordStatus;
     }
 
     public Integer getStatus() {

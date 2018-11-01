@@ -19,52 +19,59 @@ public class UserDAOTest {
     @Test
     public void testInsert() {
         UserDO userDO = new UserDO();
-        userDO.setPhone("13600000001");
-        userDO.setNick("nainiu999");
+        userDO.setNick("test_001");
         userDO.setPassword("12345678");
-        //userDO.setPhone("1");
-        //userDO.setNick("1");
-        //userDO.setPassword("1");
+        userDO.setPhone("13600000001");
+        userDO.setEmail("test@163.com");
+        userDO.setQq("12432123");
+        userDO.setSecretPassword("88888888");
+        userDO.setAlipayId("13600003456@vip.163.com");
+        userDO.setWeixinOpenId("aedsbid-da0fafa23");
+        userDO.setWeixinNick("大猩猩");
+        userDO.setHeadImageUrl("http://img.177pic.info/uploads/2018/09b/b001-314.jpg");
         userDO.setType(0);
+        userDO.setCaiPiaoFanDian(8);
+        userDO.setPeiLv(1980);
+        userDO.setStatus(1);
+        userDO.setBack("测试看看");
         int num = userDAO.insert(userDO);
         Assert.assertTrue(num > 0);
     }
 
     @Test
     public void testFindUserByPhoneAndPassword() {
-        UserDO userDO = userDAO.findUserByPhoneAndPassword("13600000000","12345678");
+        UserDO userDO = userDAO.findUserByPhoneAndPassword("13600000001","12345678");
         Assert.assertNotNull(userDO);
     }
 
     @Test
     public void testFindUserById() {
-        UserDO userDO =  userDAO.findUserById(8l);
+        UserDO userDO =  userDAO.findUserById(1l);
         Assert.assertNotNull(userDO);
     }
 
     @Test
     public void testUpdate() {
-        UserDO userDO = new UserDO();
-        userDO.setId(8l);
-        userDO.setNick("martin999");
-        userDO.setPassword("009900");
-        userDO.setQq("85172930");
-        userDO.setEmail("8517@qq.com");
-        userDO.setType(1);
-        userDO.setPhone("15924186666");
-        userDO.setName("狐狸");
-        userDO.setWeixinNick("猩猩");
-        userDO.setSecretPassword("333222");
-        userDO.setHeadImage("22");
-        userDO.setWeixinOpenId("10002003");
-        userDO.setStatus(1);
+        UserDO userDO = userDAO.findUserById(1l);
+        if(null != userDO) {
+            userDO.setNick("martin999");
+            userDO.setPassword("009900");
+            userDO.setQq("85172930");
+            userDO.setEmail("8517@qq.com");
+            userDO.setType(1);
+            userDO.setPhone("15924186666");
+            userDO.setWeixinNick("猩猩");
+            userDO.setSecretPassword("333222");
+            userDO.setWeixinOpenId("10002003");
+            userDO.setStatus(1);
+        }
         int num = userDAO.update(userDO);
         Assert.assertTrue(num > 0);
     }
 
     @Test
     public void testDelete() {
-        int num = userDAO.delete(11l);
+        int num = userDAO.delete(1l);
         Assert.assertTrue(num > 0);
     }
 

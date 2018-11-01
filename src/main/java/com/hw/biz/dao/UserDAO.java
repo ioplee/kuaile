@@ -16,17 +16,33 @@ public interface UserDAO {
      * @return
      */
     @Results({
+            @Result(property = "nick", column = "nick"),
+            @Result(property = "password", column = "password"),
+            @Result(property = "phone", column = "phone"),
+            @Result(property = "email", column = "email"),
+            @Result(property = "qq", column = "qq"),
             @Result(property = "secretPassword", column = "secret_password"),
+            @Result(property = "alipayId", column = "alipay_id"),
             @Result(property = "weixinOpenId", column = "weixin_open_id"),
             @Result(property = "weixinNick", column = "weixin_nick"),
-            @Result(property = "headImage", column = "head_image"),
+            @Result(property = "headImageUrl", column = "head_image_url"),
+            @Result(property = "type", column = "type"),
+            @Result(property = "caiPiaoFanDian", column = "cai_piao_fan_dian"),
+            @Result(property = "peiLv", column = "pei_lv"),
+            @Result(property = "fatherId", column = "father_id"),
+            @Result(property = "status", column = "status"),
+            @Result(property = "gmtCreate", column = "gmt_create"),
             @Result(property = "gmtModify", column = "gmt_modify"),
-            @Result(property = "gmtCreate", column = "gmt_create")
+            @Result(property = "back", column = "back")
     })
     @Select("SELECT * FROM hw_user WHERE phone = #{phone} AND password = #{password}")
     UserDO findUserByPhoneAndPassword(@Param("phone") String phone, @Param("password") String password);
 
-    @Insert("INSERT INTO hw_user(nick, password, phone, status, type, gmt_create, gmt_modify) VALUES(#{nick}, #{password}, #{phone}, #{status}, #{type}, now(), now())")
+    @Insert("INSERT INTO hw_user(nick, password, phone, email, qq, secret_password, alipay_id, weixin_open_id," +
+            " weixin_nick, head_image_url, type, cai_piao_fan_dian, pei_lv, father_id, status, gmt_create," +
+            " gmt_modify, back) VALUES( #{nick}, #{password}, #{phone}, #{email}, #{qq}, #{secretPassword}," +
+            " #{alipayId}, #{weixinOpenId}, #{weixinNick}, #{headImageUrl}, #{type}, #{caiPiaoFanDian}, #{peiLv}," +
+            " #{fatherId}, #{status}, now(), now(), #{back})")
     int insert(UserDO userDO);
 
     /**
@@ -35,12 +51,24 @@ public interface UserDAO {
      * @return
      */
     @Results({
+            @Result(property = "nick", column = "nick"),
+            @Result(property = "password", column = "password"),
+            @Result(property = "phone", column = "phone"),
+            @Result(property = "email", column = "email"),
+            @Result(property = "qq", column = "qq"),
             @Result(property = "secretPassword", column = "secret_password"),
+            @Result(property = "alipayId", column = "alipay_id"),
             @Result(property = "weixinOpenId", column = "weixin_open_id"),
             @Result(property = "weixinNick", column = "weixin_nick"),
-            @Result(property = "headImage", column = "head_image"),
+            @Result(property = "headImageUrl", column = "head_image_url"),
+            @Result(property = "type", column = "type"),
+            @Result(property = "caiPiaoFanDian", column = "cai_piao_fan_dian"),
+            @Result(property = "peiLv", column = "pei_lv"),
+            @Result(property = "fatherId", column = "father_id"),
+            @Result(property = "status", column = "status"),
+            @Result(property = "gmtCreate", column = "gmt_create"),
             @Result(property = "gmtModify", column = "gmt_modify"),
-            @Result(property = "gmtCreate", column = "gmt_create")
+            @Result(property = "back", column = "back")
     })
     @Select("SELECT * FROM hw_user WHERE id = #{id}")
     UserDO findUserById(@Param("id") Long id);
@@ -57,12 +85,24 @@ public interface UserDAO {
      * @return
      */
     @Results({
+            @Result(property = "nick", column = "nick"),
+            @Result(property = "password", column = "password"),
+            @Result(property = "phone", column = "phone"),
+            @Result(property = "email", column = "email"),
+            @Result(property = "qq", column = "qq"),
             @Result(property = "secretPassword", column = "secret_password"),
+            @Result(property = "alipayId", column = "alipay_id"),
             @Result(property = "weixinOpenId", column = "weixin_open_id"),
             @Result(property = "weixinNick", column = "weixin_nick"),
-            @Result(property = "headImage", column = "head_image"),
+            @Result(property = "headImageUrl", column = "head_image_url"),
+            @Result(property = "type", column = "type"),
+            @Result(property = "caiPiaoFanDian", column = "cai_piao_fan_dian"),
+            @Result(property = "peiLv", column = "pei_lv"),
+            @Result(property = "fatherId", column = "father_id"),
+            @Result(property = "status", column = "status"),
+            @Result(property = "gmtCreate", column = "gmt_create"),
             @Result(property = "gmtModify", column = "gmt_modify"),
-            @Result(property = "gmtCreate", column = "gmt_create")
+            @Result(property = "back", column = "back")
     })
     @Select("SELECT * FROM hw_user WHERE father_id = #{fatherId}")
     List<UserDO> findChildrenByUserId(@Param("fatherId") Long fatherId);

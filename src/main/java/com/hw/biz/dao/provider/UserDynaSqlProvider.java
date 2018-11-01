@@ -69,34 +69,46 @@ public class UserDynaSqlProvider {
                 if(null != userDO.getPhone()) {
                     SET("phone=#{phone}");
                 }
-                if(null != userDO.getQq()) {
-                    SET("qq=#{qq}");
-                }
                 if(null != userDO.getEmail()) {
                     SET("email=#{email}");
                 }
-                if(null != userDO.getName()) {
-                    SET("name=#{name}");
-                }
-                if(null != userDO.getType()) {
-                    SET("type=#{type}");
-                }
-                if(null != userDO.getHeadImage()) {
-                    SET("head_image=#{headImage}");
+                if(null != userDO.getQq()) {
+                    SET("qq=#{qq}");
                 }
                 if(null != userDO.getSecretPassword()) {
                     SET("secret_password=#{secretPassword}");
                 }
-                if(null != userDO.getWeixinNick()) {
-                    SET("weixin_nick=#{weixinNick}");
+                if(null != userDO.getAlipayId()) {
+                    SET("alipay_id=#{alipayId}");
                 }
                 if(null != userDO.getWeixinOpenId()) {
                     SET("weixin_open_id=#{weixinOpenId}");
+                }
+                if(null != userDO.getWeixinNick()) {
+                    SET("weixin_nick=#{weixinNick}");
+                }
+                if(null != userDO.getHeadImageUrl()) {
+                    SET("head_image_url=#{headImageUrl}");
+                }
+                if(null != userDO.getType()) {
+                    SET("type=#{type}");
+                }
+                if(null != userDO.getCaiPiaoFanDian()) {
+                    SET("cai_piao_fan_dian=#{caiPiaoFanDian}");
+                }
+                if(null != userDO.getPeiLv()) {
+                    SET("pei_lv=#{peiLv}");
+                }
+                if(null != userDO.getFatherId()) {
+                    SET("father_id=#{fatherId}");
                 }
                 if(null != userDO.getStatus()) {
                     SET("status=#{status}");
                 }
                 SET("gmt_modify=now()");
+                if(null != userDO.getBack()) {
+                    SET("back=#{back}");
+                }
                 WHERE("id=#{id}");
             }
         }.toString();
