@@ -4,6 +4,7 @@ import com.github.pagehelper.Page;
 import com.hw.biz.dao.UserDAO;
 import com.hw.biz.model.UserDO;
 import com.hw.biz.model.UserDomain;
+import com.hw.biz.model.common.ResultDO;
 
 import java.util.List;
 import java.util.Map;
@@ -32,6 +33,13 @@ public interface UserServices {
      * @return
      */
     public List<UserDO> findAllChildrenByUserId(Long userId);
+
+    /**
+     * 根据ID查询用户信息
+     * @param id
+     * @return
+     */
+    public ResultDO<UserDO> findUserResultById(Long id);
 
     /**
      * 根据ID查询用户信息

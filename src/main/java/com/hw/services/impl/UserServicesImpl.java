@@ -6,6 +6,7 @@ import com.hw.biz.dao.UserDAO;
 import com.hw.biz.dao.UserMapper;
 import com.hw.biz.model.UserDO;
 import com.hw.biz.model.UserDomain;
+import com.hw.biz.model.common.ResultDO;
 import com.hw.services.UserServices;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -80,6 +81,26 @@ public class UserServicesImpl implements UserServices {
             findChildrenByUserId(userDOList, children.getId());
         }
         return userDOList;
+    }
+
+    @Override
+    public ResultDO<UserDO> findUserResultById(Long id) {
+        ResultDO<UserDO> resultDO = new ResultDO<>();
+        try {
+            UserDO userDO = userDAO.findUserById(id);
+            if(null == userDO) {
+                resultDO.setSuccess(false);
+                resultDO.setMessage("用户信息不存在");
+            }else{
+                resultDO.setSuccess(true);
+                resultDO.setResultObject(userDO);
+            }
+        } catch (Exception e) {
+            resultDO.setSuccess(false);
+            resultDO.setMessage("系统异常");
+            log.error("根据ID查询用户信息", e);
+        }
+        return resultDO;
     }
 
     @Override
