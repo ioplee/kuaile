@@ -12,6 +12,11 @@ public class UserDO implements java.io.Serializable {
     private Long id;
 
     /**
+     * 登录的会话id
+     */
+    private String uuid;
+
+    /**
      * 昵称
      */
     private String nick;
@@ -107,6 +112,14 @@ public class UserDO implements java.io.Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 
     public String getNick() {

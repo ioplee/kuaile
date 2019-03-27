@@ -39,8 +39,8 @@ public class UserDAOTest {
     }
 
     @Test
-    public void testFindUserByPhoneAndPassword() {
-        UserDO userDO = userDAO.findUserByPhoneAndPassword("13600000001","12345678");
+    public void testFindUserByNickAndPassword() {
+        UserDO userDO = userDAO.findUserByNickAndPassword("13600000001","12345678");
         Assert.assertNotNull(userDO);
     }
 
@@ -54,6 +54,7 @@ public class UserDAOTest {
     public void testUpdate() {
         UserDO userDO = userDAO.findUserById(1l);
         if(null != userDO) {
+            userDO.setUuid("90faf80erdafader932");
             userDO.setNick("martin999");
             userDO.setPassword("009900");
             userDO.setQq("85172930");

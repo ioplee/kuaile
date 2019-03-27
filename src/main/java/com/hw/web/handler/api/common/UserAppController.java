@@ -25,8 +25,29 @@ public class UserAppController {
 	public String findUserInfoByKey(HttpServletRequest request, HttpServletResponse response) {
 		String key = request.getParameter("key");
 		ResultDO<UserDO> resultDO = userServices.findUserResultById(new Long(key));
-		String userInfo = JSONObject.toJSON(resultDO).toString();
-		return userInfo;
+		return JSONObject.toJSON(resultDO).toString();
+	}
+
+	@RequestMapping(value = "/api/common/loginByPassword", method = {RequestMethod.GET,RequestMethod.POST})
+	@ResponseBody
+	public String loginByPassword(HttpServletRequest request, HttpServletResponse response) {
+		String nick = request.getParameter("nick");
+		String password = request.getParameter("password");
+		ResultDO<UserDO> resultDO = userServices.loginByPassword(nick, password);
+		return JSONObject.toJSON(resultDO).toString();
+	}
+
+	@RequestMapping(value = "/api/common/register", method = {RequestMethod.GET,RequestMethod.POST})
+	@ResponseBody
+	public String register(HttpServletRequest request, HttpServletResponse response) {
+		String nick = request.getParameter("nick");
+		String password = request.getParameter("password");
+		String phone = request.getParameter("phone");
+		String peiLv = "1900";
+		String caiPiaoFanDian = "5";
+
+		ResultDO<UserDO> resultDO = userServices.loginByPassword(nick, password);
+		return JSONObject.toJSON(resultDO).toString();
 	}
 
 }

@@ -60,6 +60,9 @@ public class UserDynaSqlProvider {
         return new SQL() {
             {
                 UPDATE("hw_user");
+                if(null != userDO.getUuid()) {
+                    SET("uuid=#{uuid}");
+                }
                 if(null != userDO.getNick()) {
                     SET("nick=#{nick}");
                 }

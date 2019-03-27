@@ -13,9 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class UserServicesImpl implements UserServices {
@@ -91,7 +89,8 @@ public class UserServicesImpl implements UserServices {
             if(null == userDO) {
                 resultDO.setSuccess(false);
                 resultDO.setMessage("用户信息不存在");
-            }else{
+            } else {
+                userDO.setPassword(null);
                 resultDO.setSuccess(true);
                 resultDO.setResultObject(userDO);
             }
@@ -139,6 +138,39 @@ public class UserServicesImpl implements UserServices {
         } catch(Exception e) {
             log.error("移除用户", e);
         }
+    }
+
+    @Override
+    public ResultDO<UserDO> loginByPassword(String nick, String password) {
+        ResultDO<UserDO> resultDO = new ResultDO<>();
+        try {
+            UserDO userDO = userDAO.findUserByNickAndPassword(nick, password);
+            if(null == userDO) {
+                resultDO.setSuccess(false);
+                resultDO.setMessage("用户名或密码不存在");
+                return resultDO;
+            }
+            UserDO temp = new UserDO();
+            temp.setId(userDO.getId());
+            String uuid = UUID.randomUUID().toString().replace("-", "");
+            temp.setUuid(uuid);
+            int num = userDAO.update(temp);
+            if(num == 0) {
+                resultDO.setSuccess(false);
+                resultDO.setMessage("生成口令失败");
+                return resultDO;
+            }
+            userDO.setUuid(uuid);
+            userDO.setPassword(null);
+            userDO.setGmtModify(new Date());
+            resultDO.setSuccess(true);
+            resultDO.setResultObject(userDO);
+        } catch(Exception e) {
+            resultDO.setSuccess(false);
+            resultDO.setMessage("系统异常");
+            log.error("用户名密码登录异常", e);
+        }
+        return resultDO;
     }
 
 }

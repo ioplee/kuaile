@@ -10,12 +10,13 @@ import java.util.List;
 public interface UserDAO {
 
     /**
-     * 通过手机号码与密码查询用户信息
-     * @param phone
+     * 通过用户名与密码查询用户信息
+     * @param nick
      * @param password
      * @return
      */
     @Results({
+            @Result(property = "uuid", column = "uuid"),
             @Result(property = "nick", column = "nick"),
             @Result(property = "password", column = "password"),
             @Result(property = "phone", column = "phone"),
@@ -35,10 +36,10 @@ public interface UserDAO {
             @Result(property = "gmtModify", column = "gmt_modify"),
             @Result(property = "back", column = "back")
     })
-    @Select("SELECT * FROM hw_user WHERE phone = #{phone} AND password = #{password}")
-    UserDO findUserByPhoneAndPassword(@Param("phone") String phone, @Param("password") String password);
+    @Select("SELECT * FROM hw_user WHERE nick = #{nick} AND password = #{password}")
+    UserDO findUserByNickAndPassword(@Param("nick") String nick, @Param("password") String password);
 
-    @Insert("INSERT INTO hw_user(nick, password, phone, email, qq, secret_password, alipay_id, weixin_open_id," +
+    @Insert("INSERT INTO hw_user(uuid, nick, password, phone, email, qq, secret_password, alipay_id, weixin_open_id," +
             " weixin_nick, head_image_url, type, cai_piao_fan_dian, pei_lv, father_id, status, gmt_create," +
             " gmt_modify, back) VALUES( #{nick}, #{password}, #{phone}, #{email}, #{qq}, #{secretPassword}," +
             " #{alipayId}, #{weixinOpenId}, #{weixinNick}, #{headImageUrl}, #{type}, #{caiPiaoFanDian}, #{peiLv}," +
@@ -51,6 +52,7 @@ public interface UserDAO {
      * @return
      */
     @Results({
+            @Result(property = "uuid", column = "uuid"),
             @Result(property = "nick", column = "nick"),
             @Result(property = "password", column = "password"),
             @Result(property = "phone", column = "phone"),
@@ -85,6 +87,7 @@ public interface UserDAO {
      * @return
      */
     @Results({
+            @Result(property = "uuid", column = "uuid"),
             @Result(property = "nick", column = "nick"),
             @Result(property = "password", column = "password"),
             @Result(property = "phone", column = "phone"),

@@ -66,4 +66,12 @@ public interface UserServices {
      */
     public void removeUser(Long id);
 
+    /**
+     * 根据用户名、密码登录系统
+     * @param nick
+     * @param password
+     * @return 用户信息
+     */
+    public ResultDO<UserDO> loginByPassword(String nick, String password);
+
 }
