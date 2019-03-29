@@ -19,6 +19,7 @@ public class UserDAOTest {
     @Test
     public void testInsert() {
         UserDO userDO = new UserDO();
+        userDO.setUuid("90faf80erdafader932");
         userDO.setNick("test_001");
         userDO.setPassword("12345678");
         userDO.setPhone("13600000001");
@@ -40,7 +41,7 @@ public class UserDAOTest {
 
     @Test
     public void testFindUserByNickAndPassword() {
-        UserDO userDO = userDAO.findUserByNickAndPassword("13600000001","12345678");
+        UserDO userDO = userDAO.findUserByNickAndPassword("test_001","12345678");
         Assert.assertNotNull(userDO);
     }
 

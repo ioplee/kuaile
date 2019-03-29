@@ -41,7 +41,7 @@ public interface UserDAO {
 
     @Insert("INSERT INTO hw_user(uuid, nick, password, phone, email, qq, secret_password, alipay_id, weixin_open_id," +
             " weixin_nick, head_image_url, type, cai_piao_fan_dian, pei_lv, father_id, status, gmt_create," +
-            " gmt_modify, back) VALUES( #{nick}, #{password}, #{phone}, #{email}, #{qq}, #{secretPassword}," +
+            " gmt_modify, back) VALUES( #{uuid}, #{nick}, #{password}, #{phone}, #{email}, #{qq}, #{secretPassword}," +
             " #{alipayId}, #{weixinOpenId}, #{weixinNick}, #{headImageUrl}, #{type}, #{caiPiaoFanDian}, #{peiLv}," +
             " #{fatherId}, #{status}, now(), now(), #{back})")
     int insert(UserDO userDO);
