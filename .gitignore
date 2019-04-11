@@ -26,4 +26,8 @@ hs_err_pid*
 
 \.idea/
 \target/
+<<<<<<< HEAD
 >>>>>>> 增加过滤文件
+=======
+/hw-game.iml
+>>>>>>> 添加排除idea工具配置文件
