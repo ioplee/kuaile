@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hw.biz.dao.TUserDAO">
+    <resultMap id="tuserMapper" type="com.hw.bean.VO.TUserVO">
+        <result column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="password" property="password"/>
+        <result column="phone" property="phone"/>
+        <result column="user_status" property="userStatus"/>
+    </resultMap>
+    <insert id="addUser" parameterType="com.hw.bean.PO.TUserPO">
+        INSERT INTO t_user(
+          name,
+          password,
+          phone,
+          user_status
+        ) VALUES (
+          #{name},
+          #{password},
+          #{phone},
+          1
+        )
+    </insert>
+    <update id="modifyUser" parameterType="com.hw.bean.PO.TUserPO">
+        UPDATE t_user SET
+          name = #{name},
+          password = #{password},
+          phone = #{phone},
+          user_status = #{userStatus}
+        WHERE id = #{id}
+    </update>
+    <update id="setUserStatus" parameterType="com.hw.bean.PO.TUserPO">
+        UPDATE t_user SET
+          user_status = #{userStatus}
+        WHERE id = #{id}
+    </update>
+    <select id="getUserList" resultMap="tuserMapper" parameterType="com.hw.bean.BO.QueryTUserPageBO">
+        SELECT
+          id,
+          name,
+          password,
+          phone,
+          user_status
+        FROM t_user
+        WHERE user_status != -1
+        <if test="name != null">
+            AND name LIKE CONCAT('%',#{name},'%')
+        </if>
+        <if test="userStatus != -1">
+            AND user_status = #{userStatus}
+        </if>
+        LIMIT #{pageIndex} , #{pageSize}
+    </select>
+    <select id="getUserListCount" resultType="java.lang.Integer">
+        SELECT
+          count(1)
+        FROM t_user
+        WHERE user_status != -1
+        <if test="name != null">
+            AND name LIKE CONCAT('%',#{name},'%')
+        </if>
+        <if test="userStatus != -1">
+            AND user_status = #{userStatus}
+        </if>
+    </select>
+
+
+</mapper>

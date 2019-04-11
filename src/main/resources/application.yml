@@ -1,6 +1,9 @@
 server:
   port: 8080
-
+  servlet:
+      session:
+        timeout: 10m
+      context-path: /hwgame
 
 spring:
     datasource:
@@ -49,8 +52,10 @@ spring:
               paths: /**
 
 mybatis:
-  #mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.hw.biz.dao
+  mapper-locations: classpath:mapper/*/*.xml
+  type-aliases-package: com.hw.bean
+
+
 
 #pagehelper
 pagehelper:
