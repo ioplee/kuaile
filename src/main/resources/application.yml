@@ -68,6 +68,6 @@ pagehelper:
 logging:
   config: classpath:log4j2.xml
 
-## swagger 文档开关,true打开false关闭
+## swagger 文档开关,true打开false关闭(生产系统建议关闭)
 swagger:
   enable: true
