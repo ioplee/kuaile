@@ -12,9 +12,9 @@ spring:
           filters: stat
           driver-class-name: com.mysql.jdbc.Driver
           #基本属性
-          url: jdbc:mysql://127.0.0.1:3306/hwgame?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
-          username: root
-          password: 12345678
+          url: jdbc:mysql://148.70.77.67:33666/hwgame?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+          username: gameuser
+          password: game1Power.
           #配置初始化大小/最小/最大
           initial-size: 1
           min-idle: 1
@@ -62,3 +62,7 @@ pagehelper:
 
 logging:
   config: classpath:log4j2.xml
+
+## swagger 文档开关,true打开false关闭
+swagger:
+  enable: true
