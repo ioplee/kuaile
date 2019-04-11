@@ -10,9 +10,11 @@ import com.hw.services.client.TUserService;
 import com.hw.utils.BaseResultDTO;
 import com.hw.utils.BatchResultDTO;
 import lombok.extern.slf4j.Slf4j;
+import org.jasypt.encryption.StringEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.DigestUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,10 +33,14 @@ public class TUserServiceImpl implements TUserService {
     @Autowired
     private TUserDAO tUserDAO;
 
+    @Autowired
+    StringEncryptor stringEncryptor;
+
     @Override
     public BaseResultDTO addTUser(TUserPO tUserPO) {
         BaseResultDTO resultDTO = new BaseResultDTO();
         try {
+            tUserPO.setPassword(DigestUtils.md5DigestAsHex(tUserPO.getPassword().getBytes()));
             Integer number = tUserDAO.addUser(tUserPO);
             if (number == 1){
                 resultDTO.setResultCode("1");
@@ -57,6 +63,7 @@ public class TUserServiceImpl implements TUserService {
     public BaseResultDTO modifyTUser(TUserPO tUserPO) {
         BaseResultDTO resultDTO = new BaseResultDTO();
         try {
+            tUserPO.setPassword(DigestUtils.md5DigestAsHex(tUserPO.getPassword().getBytes()));
             Integer number = tUserDAO.modifyUser(tUserPO);
             if (number == 1){
                 resultDTO.setResultCode("1");
