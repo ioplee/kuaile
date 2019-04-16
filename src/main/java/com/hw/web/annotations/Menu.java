@@ -5,6 +5,11 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+/**
+ * Created by robin on 2019/4/16.
+ */
+
+
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Menu {
@@ -22,3 +27,4 @@ public @interface Menu {
 
     public String name() default "methodName";
 }
+

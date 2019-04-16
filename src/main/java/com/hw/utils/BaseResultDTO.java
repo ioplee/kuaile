@@ -3,10 +3,8 @@ package com.hw.utils;/**
  */
 
 import lombok.Data;
-import org.springframework.validation.FieldError;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * @author: Robin
@@ -28,8 +26,8 @@ public class BaseResultDTO implements Serializable {
     /** The error detail. 错误描述*/
     protected String errorDetail;
 
-    /**
-     * 校验错误
-     */
-    protected List<FieldError> errors;
+//    /**
+//     * 校验错误
+//     */
+//    protected List<FieldError> errors;
 }

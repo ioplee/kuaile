@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hw.dao.MemberInfoDAO">
+
+    <resultMap id="BaseResultMap" type="com.hw.bean.VO.MemberInfoVO">
+        <id column="member_id" jdbcType="BIGINT" property="memberId" />
+        <result column="member_name" jdbcType="VARCHAR" property="memberName" />
+        <result column="member_nickname" jdbcType="VARCHAR" property="memberNickname" />
+        <result column="user_name" jdbcType="VARCHAR" property="userName" />
+        <result column="member_icon_url" jdbcType="VARCHAR" property="memberIconUrl" />
+        <result column="member_mobile" jdbcType="VARCHAR" property="memberMobile" />
+        <result column="member_qq" jdbcType="VARCHAR" property="memberQq" />
+        <result column="member_email" jdbcType="VARCHAR" property="memberEmail" />
+        <result column="member_wx" jdbcType="VARCHAR" property="memberWx" />
+        <result column="is_wxcheck" jdbcType="BIT" property="isWxcheck" />
+        <result column="member_level" jdbcType="BIT" property="memberLevel" />
+        <result column="member_xp" jdbcType="BIGINT" property="memberXp" />
+        <result column="register_date" jdbcType="TIMESTAMP" property="registerDate" />
+        <result column="member_status" jdbcType="BIT" property="memberStatus" />
+        <result column="extend_links" jdbcType="VARCHAR" property="extendLinks" />
+        <result column="parent_id" jdbcType="BIGINT" property="parentId" />
+        <result column="last_ip" jdbcType="VARCHAR" property="lastIp" />
+        <result column="last_logintime" jdbcType="TIMESTAMP" property="lastLogintime" />
+        <result column="singin_counts" jdbcType="BIT" property="singinCounts" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        member_id, member_name, member_nickname, user_name, member_icon_url, member_mobile,
+        member_qq, member_email, member_wx, is_wxcheck, member_level, member_xp, register_date,
+        member_status, extend_links, parent_id, last_ip, last_logintime, singin_counts, gmt_create,
+        gmt_modified
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from member_info
+        where member_id = #{memberID}
+    </select>
+
+    <insert id="insert" keyColumn="member_id" keyProperty="memberId" parameterType="com.hw.bean.PO.MemberInfoPO" useGeneratedKeys="true">
+        insert into member_info (
+            member_name,
+            member_nickname,
+            member_icon_url,
+            member_mobile,
+            member_level,
+            member_xp,
+            register_date,
+            member_status,
+            parent_id,
+            singin_counts,
+            gmt_create,
+            gmt_modified)
+        values (
+            #{memberName,jdbcType=VARCHAR},
+            #{memberNickname,jdbcType=VARCHAR},
+            "",
+            #{memberMobile,jdbcType=VARCHAR},
+            0,
+            0,
+            #{registerDate,jdbcType=TIMESTAMP},
+            1,
+            #{parentId,jdbcType=BIGINT},
+            0,
+            NOW(),
+            NOW()
+        )
+    </insert>
+
+
+    <update id="updateByPrimaryKey" parameterType="com.hw.bean.PO.MemberInfoPO">
+        update member_info
+        set member_name = #{memberName,jdbcType=VARCHAR},
+        member_nickname = #{memberNickname,jdbcType=VARCHAR},
+        user_name = #{userName,jdbcType=VARCHAR},
+        member_icon_url = #{memberIconUrl,jdbcType=VARCHAR},
+        member_email = #{memberEmail,jdbcType=VARCHAR},
+        is_wxcheck = #{isWxcheck,jdbcType=BIT},
+        gmt_modified = NOW()
+        where member_id = #{memberId,jdbcType=BIGINT}
+    </update>
+    <update id="setMemberInfoStatus">
+        update member_info
+        set member_status = #{status},
+        gmt_modified = NOW()
+        WHERE member_id = #{memberID}
+    </update>
+    <update id="setQQ">
+        UPDATE member_info
+        SET member_qq = #{qq},
+        gmt_modified = NOW()
+        WHERE member_id = #{memberID}
+    </update>
+    <update id="setWX">
+        UPDATE member_info
+        SET member_wx = #{wx},
+        gmt_modified = NOW()
+        WHERE member_id = #{memberID}
+    </update>
+    <update id="setLevel">
+        UPDATE member_info
+        SET member_level = #{level},
+        gmt_modified = NOW()
+        WHERE member_id = #{memberID}
+    </update>
+    <update id="setXP">
+        UPDATE member_info
+        SET member_xp = #{xp},
+        gmt_modified = NOW()
+        WHERE member_id = #{memberID}
+    </update>
+    <update id="setSingin">
+        UPDATE member_info
+        SET singin_counts = #{singinCount},
+        gmt_modified = NOW()
+        WHERE member_id = #{memberID}
+    </update>
+    <update id="setLastLogin">
+        UPDATE member_info
+        SET last_ip = #{loginIP},
+        last_logintime = #{loginTime},
+        gmt_modified = NOW()
+        WHERE member_id = #{memberID}
+    </update>
+
+    <select id="selectListCount" parameterType="com.hw.bean.BO.memberInfo.QueryMemberInfoListBO" resultType="java.lang.Integer">
+        select
+        count(1)
+        from member_info
+        where member_status != -1
+    </select>
+    <select id="selectList" resultMap="BaseResultMap" parameterType="com.hw.bean.BO.memberInfo.QueryMemberInfoListBO">
+        select
+        <include refid="Base_Column_List"/>
+        from member_info
+        where member_status != -1
+        LIMIT #{pageIndex},#{pageSize}
+    </select>
+    <select id="exisit" resultType="java.lang.Integer">
+        SELECT count(1)
+        FROM member_info
+        WHERE member_status != -1 AND member_mobile = #{mobile}
+    </select>
+
+</mapper>
