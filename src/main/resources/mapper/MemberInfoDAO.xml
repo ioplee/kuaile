@@ -67,8 +67,6 @@
             NOW()
         )
     </insert>
-
-
     <update id="updateByPrimaryKey" parameterType="com.hw.bean.PO.MemberInfoPO">
         update member_info
         set member_name = #{memberName,jdbcType=VARCHAR},
