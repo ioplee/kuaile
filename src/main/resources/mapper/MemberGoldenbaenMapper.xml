@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hw.dao.MemberGoldenbaenDAO">
+
+    <resultMap id="BaseResultMap" type="com.hw.bean.VO.MemberGoldenbaenVO">
+        <id column="bean_id" property="beanId" />
+        <result column="member_id" property="memberId" />
+        <result column="bean_count" property="beanCount" />
+        <result column="bean_status" property="beanStatus" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        member_id,
+        bean_count,
+        bean_status,
+        bean_id
+    </sql>
+
+    <select id="getMemberGoldenbaenByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from member_info
+        where bean_id = #{PRI}
+    </select>
+
+    <insert id="insertMemberGoldenbaen" keyColumn="bean_id" keyProperty="beanId" parameterType="com.hw.bean.PO.MemberGoldenbaenPO" useGeneratedKeys="true">
+        insert into member_goldenbaen (
+            member_id,
+            bean_count,
+            bean_status,
+            gmt_create,
+            gmt_modified
+        ) values (
+            #{memberId},
+            #{beanCount},
+            #{beanStatus},
+            NOW(),
+            NOW()
+        )
+    </insert>
+
+    <update id="updateMemberGoldenbaen" parameterType="com.hw.bean.PO.MemberGoldenbaenPO">
+        update member_goldenbaen set
+            member_id = #{memberId},
+            bean_count = #{beanCount},
+            bean_status = #{beanStatus},
+            gmt_modified = NOW()
+        where bean_id = #{beanId}
+    </update>
+
+    <select id="getPageList" parameterType="com.hw.bean.BO.QueryMemberGoldenbaenPage" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from member_goldenbaen
+        limit #{pageIndex},#{pageSize}
+    </select>
+
+    <select id="getPageCount" parameterType="com.hw.bean.BO.QueryMemberGoldenbaenPage" resultType="java.lang.Integer">
+        select
+            count(1)
+        from member_goldenbaen
+    </select>
+
+</mapper>

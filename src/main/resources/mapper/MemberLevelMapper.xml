@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hw.dao.MemberLevelDAO">
+
+    <resultMap id="BaseResultMap" type="com.hw.bean.VO.MemberLevelVO">
+        <id column="level_id" property="levelId" />
+        <result column="level_title" property="levelTitle" />
+        <result column="level_xp" property="levelXp" />
+        <result column="level_up_reward" property="levelUpReward" />
+        <result column="level_credit_commision" property="levelCreditCommision" />
+        <result column="level_signin_multiples" property="levelSigninMultiples" />
+        <result column="level_alms_bean" property="levelAlmsBean" />
+        <result column="level_status" property="levelStatus" />
+        <result column="level_index" property="levelIndex" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        level_title,
+        level_xp,
+        level_up_reward,
+        level_credit_commision,
+        level_signin_multiples,
+        level_alms_bean,
+        level_status,
+        level_index,
+        level_id
+    </sql>
+
+    <select id="getMemberLevelByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from member_info
+        where level_id = #{PRI}
+    </select>
+
+    <insert id="insertMemberLevel" keyColumn="level_id" keyProperty="levelId" parameterType="com.hw.bean.PO.MemberLevelPO" useGeneratedKeys="true">
+        insert into member_level (
+            level_title,
+            level_xp,
+            level_up_reward,
+            level_credit_commision,
+            level_signin_multiples,
+            level_alms_bean,
+            level_status,
+            level_index,
+            gmt_create,
+            gmt_modified
+        ) values (
+            #{levelTitle},
+            #{levelXp},
+            #{levelUpReward},
+            #{levelCreditCommision},
+            #{levelSigninMultiples},
+            #{levelAlmsBean},
+            #{levelStatus},
+            #{levelIndex},
+            NOW(),
+            NOW()
+        )
+    </insert>
+
+    <update id="updateMemberLevel" parameterType="com.hw.bean.PO.MemberLevelPO">
+        update member_level set
+            level_title = #{levelTitle},
+            level_xp = #{levelXp},
+            level_up_reward = #{levelUpReward},
+            level_credit_commision = #{levelCreditCommision},
+            level_signin_multiples = #{levelSigninMultiples},
+            level_alms_bean = #{levelAlmsBean},
+            level_status = #{levelStatus},
+            level_index = #{levelIndex},
+            gmt_modified = NOW()
+        where level_id = #{levelId}
+    </update>
+
+    <select id="getPageList" parameterType="com.hw.bean.BO.QueryMemberLevelPage" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from member_level
+        limit #{pageIndex},#{pageSize}
+    </select>
+
+    <select id="getPageCount" parameterType="com.hw.bean.BO.QueryMemberLevelPage" resultType="java.lang.Integer">
+        select
+            count(1)
+        from member_level
+    </select>
+
+</mapper>

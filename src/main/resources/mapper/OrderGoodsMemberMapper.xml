@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hw.dao.OrderGoodsMemberDAO">
+
+    <resultMap id="BaseResultMap" type="com.hw.bean.VO.OrderGoodsMemberVO">
+        <id column="order_id" property="orderId" />
+        <result column="member_id" property="memberId" />
+        <result column="goods_id" property="goodsId" />
+        <result column="bean_total" property="beanTotal" />
+        <result column="bean_base" property="beanBase" />
+        <result column="bean_rebate" property="beanRebate" />
+        <result column="order_date" property="orderDate" />
+        <result column="order_status" property="orderStatus" />
+        <result column="agent_id" property="agentId" />
+        <result column="grant_date" property="grantDate" />
+        <result column="grant_bean" property="grantBean" />
+        <result column="grant_rebate" property="grantRebate" />
+        <result column="buy_back_date" property="buyBackDate" />
+        <result column="buy_back_bean" property="buyBackBean" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        member_id,
+        goods_id,
+        bean_total,
+        bean_base,
+        bean_rebate,
+        order_date,
+        order_status,
+        agent_id,
+        grant_date,
+        grant_bean,
+        grant_rebate,
+        buy_back_date,
+        buy_back_bean,
+        order_id
+    </sql>
+
+    <select id="getOrderGoodsMemberByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from member_info
+        where order_id = #{PRI}
+    </select>
+
+    <insert id="insertOrderGoodsMember" keyColumn="order_id" keyProperty="orderId" parameterType="com.hw.bean.PO.OrderGoodsMemberPO" useGeneratedKeys="true">
+        insert into order_goods_member (
+            member_id,
+            goods_id,
+            bean_total,
+            bean_base,
+            bean_rebate,
+            order_date,
+            order_status,
+            agent_id,
+            grant_date,
+            grant_bean,
+            grant_rebate,
+            buy_back_date,
+            buy_back_bean,
+            gmt_create,
+            gmt_modified
+        ) values (
+            #{memberId},
+            #{goodsId},
+            #{beanTotal},
+            #{beanBase},
+            #{beanRebate},
+            #{orderDate},
+            #{orderStatus},
+            #{agentId},
+            #{grantDate},
+            #{grantBean},
+            #{grantRebate},
+            #{buyBackDate},
+            #{buyBackBean},
+            NOW(),
+            NOW()
+        )
+    </insert>
+
+    <update id="updateOrderGoodsMember" parameterType="com.hw.bean.PO.OrderGoodsMemberPO">
+        update order_goods_member set
+            member_id = #{memberId},
+            goods_id = #{goodsId},
+            bean_total = #{beanTotal},
+            bean_base = #{beanBase},
+            bean_rebate = #{beanRebate},
+            order_date = #{orderDate},
+            order_status = #{orderStatus},
+            agent_id = #{agentId},
+            grant_date = #{grantDate},
+            grant_bean = #{grantBean},
+            grant_rebate = #{grantRebate},
+            buy_back_date = #{buyBackDate},
+            buy_back_bean = #{buyBackBean},
+            gmt_modified = NOW()
+        where order_id = #{orderId}
+    </update>
+
+    <select id="getPageList" parameterType="com.hw.bean.BO.QueryOrderGoodsMemberPage" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from order_goods_member
+        limit #{pageIndex},#{pageSize}
+    </select>
+
+    <select id="getPageCount" parameterType="com.hw.bean.BO.QueryOrderGoodsMemberPage" resultType="java.lang.Integer">
+        select
+            count(1)
+        from order_goods_member
+    </select>
+
+</mapper>

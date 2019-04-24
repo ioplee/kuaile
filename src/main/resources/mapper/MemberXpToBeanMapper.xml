@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hw.dao.MemberXpToBeanDAO">
+
+    <resultMap id="BaseResultMap" type="com.hw.bean.VO.MemberXpToBeanVO">
+        <id column="exchange_id" property="exchangeId" />
+        <result column="member_id" property="memberId" />
+        <result column="exchange_date" property="exchangeDate" />
+        <result column="xp_counts" property="xpCounts" />
+        <result column="bean_counts" property="beanCounts" />
+        <result column="exchange_status" property="exchangeStatus" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        member_id,
+        exchange_date,
+        xp_counts,
+        bean_counts,
+        exchange_status,
+        exchange_id
+    </sql>
+
+    <select id="getMemberXpToBeanByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from member_info
+        where exchange_id = #{PRI}
+    </select>
+
+    <insert id="insertMemberXpToBean" keyColumn="exchange_id" keyProperty="exchangeId" parameterType="com.hw.bean.PO.MemberXpToBeanPO" useGeneratedKeys="true">
+        insert into member_xp_to_bean (
+            member_id,
+            exchange_date,
+            xp_counts,
+            bean_counts,
+            exchange_status,
+            gmt_create,
+            gmt_modified
+        ) values (
+            #{memberId},
+            #{exchangeDate},
+            #{xpCounts},
+            #{beanCounts},
+            #{exchangeStatus},
+            NOW(),
+            NOW()
+        )
+    </insert>
+
+    <update id="updateMemberXpToBean" parameterType="com.hw.bean.PO.MemberXpToBeanPO">
+        update member_xp_to_bean set
+            member_id = #{memberId},
+            exchange_date = #{exchangeDate},
+            xp_counts = #{xpCounts},
+            bean_counts = #{beanCounts},
+            exchange_status = #{exchangeStatus},
+            gmt_modified = NOW()
+        where exchange_id = #{exchangeId}
+    </update>
+
+    <select id="getPageList" parameterType="com.hw.bean.BO.QueryMemberXpToBeanPage" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from member_xp_to_bean
+        limit #{pageIndex},#{pageSize}
+    </select>
+
+    <select id="getPageCount" parameterType="com.hw.bean.BO.QueryMemberXpToBeanPage" resultType="java.lang.Integer">
+        select
+            count(1)
+        from member_xp_to_bean
+    </select>
+
+</mapper>

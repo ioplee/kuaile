@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hw.dao.PlamVerificationCodeDAO">
+
+    <resultMap id="BaseResultMap" type="com.hw.bean.VO.PlamVerificationCodeVO">
+        <id column="code_id" property="codeId" />
+        <result column="code_type" property="codeType" />
+        <result column="member_id" property="memberId" />
+        <result column="mobile_no" property="mobileNo" />
+        <result column="code_info" property="codeInfo" />
+        <result column="limit_time" property="limitTime" />
+        <result column="code_status" property="codeStatus" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        code_type,
+        member_id,
+        mobile_no,
+        code_info,
+        limit_time,
+        code_status,
+        code_id
+    </sql>
+
+    <select id="getPlamVerificationCodeByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from member_info
+        where code_id = #{PRI}
+    </select>
+
+    <insert id="insertPlamVerificationCode" keyColumn="code_id" keyProperty="codeId" parameterType="com.hw.bean.PO.PlamVerificationCodePO" useGeneratedKeys="true">
+        insert into plam_verification_code (
+            code_type,
+            member_id,
+            mobile_no,
+            code_info,
+            limit_time,
+            code_status,
+            gmt_create,
+            gmt_modified
+        ) values (
+            #{codeType},
+            #{memberId},
+            #{mobileNo},
+            #{codeInfo},
+            #{limitTime},
+            #{codeStatus},
+            NOW(),
+            NOW()
+        )
+    </insert>
+
+    <update id="updatePlamVerificationCode" parameterType="com.hw.bean.PO.PlamVerificationCodePO">
+        update plam_verification_code set
+            code_type = #{codeType},
+            member_id = #{memberId},
+            mobile_no = #{mobileNo},
+            code_info = #{codeInfo},
+            limit_time = #{limitTime},
+            code_status = #{codeStatus},
+            gmt_modified = NOW()
+        where code_id = #{codeId}
+    </update>
+
+    <select id="getPageList" parameterType="com.hw.bean.BO.QueryPlamVerificationCodePage" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from plam_verification_code
+        limit #{pageIndex},#{pageSize}
+    </select>
+
+    <select id="getPageCount" parameterType="com.hw.bean.BO.QueryPlamVerificationCodePage" resultType="java.lang.Integer">
+        select
+            count(1)
+        from plam_verification_code
+    </select>
+
+</mapper>

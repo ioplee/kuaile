@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hw.dao.BaseLotteryInfoDAO">
+
+    <resultMap id="BaseResultMap" type="com.hw.bean.VO.BaseLotteryInfoVO">
+        <id column="lottery_id" property="lotteryId" />
+        <result column="lottery_title" property="lotteryTitle" />
+        <result column="lottery_content" property="lotteryContent" />
+        <result column="begin_date" property="beginDate" />
+        <result column="end_date" property="endDate" />
+        <result column="img_url" property="imgUrl" />
+        <result column="target_member" property="targetMember" />
+        <result column="lottery_status" property="lotteryStatus" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        lottery_title,
+        lottery_content,
+        begin_date,
+        end_date,
+        img_url,
+        target_member,
+        lottery_status,
+        lottery_id
+    </sql>
+
+    <select id="getBaseLotteryInfoByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from member_info
+        where lottery_id = #{PRI}
+    </select>
+
+    <insert id="insertBaseLotteryInfo" keyColumn="lottery_id" keyProperty="lotteryId" parameterType="com.hw.bean.PO.BaseLotteryInfoPO" useGeneratedKeys="true">
+        insert into base_lottery_info (
+            lottery_title,
+            lottery_content,
+            begin_date,
+            end_date,
+            img_url,
+            target_member,
+            lottery_status,
+            gmt_create,
+            gmt_modified
+        ) values (
+            #{lotteryTitle},
+            #{lotteryContent},
+            #{beginDate},
+            #{endDate},
+            #{imgUrl},
+            #{targetMember},
+            #{lotteryStatus},
+            NOW(),
+            NOW()
+        )
+    </insert>
+
+    <update id="updateBaseLotteryInfo" parameterType="com.hw.bean.PO.BaseLotteryInfoPO">
+        update base_lottery_info set
+            lottery_title = #{lotteryTitle},
+            lottery_content = #{lotteryContent},
+            begin_date = #{beginDate},
+            end_date = #{endDate},
+            img_url = #{imgUrl},
+            target_member = #{targetMember},
+            lottery_status = #{lotteryStatus},
+            gmt_modified = NOW()
+        where lottery_id = #{lotteryId}
+    </update>
+
+    <select id="getPageList" parameterType="com.hw.bean.BO.QueryBaseLotteryInfoPage" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from base_lottery_info
+        limit #{pageIndex},#{pageSize}
+    </select>
+
+    <select id="getPageCount" parameterType="com.hw.bean.BO.QueryBaseLotteryInfoPage" resultType="java.lang.Integer">
+        select
+            count(1)
+        from base_lottery_info
+    </select>
+
+</mapper>

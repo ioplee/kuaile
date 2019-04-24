@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hw.dao.AgentGoldenbeanDAO">
+
+    <resultMap id="BaseResultMap" type="com.hw.bean.VO.AgentGoldenbeanVO">
+        <id column="info_id" property="infoId" />
+        <result column="agent_id" property="agentId" />
+        <result column="bean_counts" property="beanCounts" />
+        <result column="agent_status" property="agentStatus" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        agent_id,
+        bean_counts,
+        agent_status,
+        info_id
+    </sql>
+
+    <select id="getAgentGoldenbeanByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from member_info
+        where info_id = #{PRI}
+    </select>
+
+    <insert id="insertAgentGoldenbean" keyColumn="info_id" keyProperty="infoId" parameterType="com.hw.bean.PO.AgentGoldenbeanPO" useGeneratedKeys="true">
+        insert into agent_goldenbean (
+            agent_id,
+            bean_counts,
+            agent_status,
+            gmt_create,
+            gmt_modified
+        ) values (
+            #{agentId},
+            #{beanCounts},
+            #{agentStatus},
+            NOW(),
+            NOW()
+        )
+    </insert>
+
+    <update id="updateAgentGoldenbean" parameterType="com.hw.bean.PO.AgentGoldenbeanPO">
+        update agent_goldenbean set
+            agent_id = #{agentId},
+            bean_counts = #{beanCounts},
+            agent_status = #{agentStatus},
+            gmt_modified = NOW()
+        where info_id = #{infoId}
+    </update>
+
+    <select id="getPageList" parameterType="com.hw.bean.BO.QueryAgentGoldenbeanPage" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from agent_goldenbean
+        limit #{pageIndex},#{pageSize}
+    </select>
+
+    <select id="getPageCount" parameterType="com.hw.bean.BO.QueryAgentGoldenbeanPage" resultType="java.lang.Integer">
+        select
+            count(1)
+        from agent_goldenbean
+    </select>
+
+</mapper>

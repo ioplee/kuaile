@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hw.dao.MemberXpInfoDAO">
+
+    <resultMap id="BaseResultMap" type="com.hw.bean.VO.MemberXpInfoVO">
+        <id column="info_id" property="infoId" />
+        <result column="member_id" property="memberId" />
+        <result column="xp_type" property="xpType" />
+        <result column="xp_value" property="xpValue" />
+        <result column="xp_gettime" property="xpGettime" />
+        <result column="info_status" property="infoStatus" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        member_id,
+        xp_type,
+        xp_value,
+        xp_gettime,
+        info_status,
+        info_id
+    </sql>
+
+    <select id="getMemberXpInfoByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from member_info
+        where info_id = #{PRI}
+    </select>
+
+    <insert id="insertMemberXpInfo" keyColumn="info_id" keyProperty="infoId" parameterType="com.hw.bean.PO.MemberXpInfoPO" useGeneratedKeys="true">
+        insert into member_xp_info (
+            member_id,
+            xp_type,
+            xp_value,
+            xp_gettime,
+            info_status,
+            gmt_create,
+            gmt_modified
+        ) values (
+            #{memberId},
+            #{xpType},
+            #{xpValue},
+            #{xpGettime},
+            #{infoStatus},
+            NOW(),
+            NOW()
+        )
+    </insert>
+
+    <update id="updateMemberXpInfo" parameterType="com.hw.bean.PO.MemberXpInfoPO">
+        update member_xp_info set
+            member_id = #{memberId},
+            xp_type = #{xpType},
+            xp_value = #{xpValue},
+            xp_gettime = #{xpGettime},
+            info_status = #{infoStatus},
+            gmt_modified = NOW()
+        where info_id = #{infoId}
+    </update>
+
+    <select id="getPageList" parameterType="com.hw.bean.BO.QueryMemberXpInfoPage" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from member_xp_info
+        limit #{pageIndex},#{pageSize}
+    </select>
+
+    <select id="getPageCount" parameterType="com.hw.bean.BO.QueryMemberXpInfoPage" resultType="java.lang.Integer">
+        select
+            count(1)
+        from member_xp_info
+    </select>
+
+</mapper>

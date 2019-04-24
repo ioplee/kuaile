@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hw.dao.ActivityLotteryDAO">
+
+    <resultMap id="BaseResultMap" type="com.hw.bean.VO.ActivityLotteryVO">
+        <id column="item_id" property="itemId" />
+        <result column="item_title" property="itemTitle" />
+        <result column="item_img_url" property="itemImgUrl" />
+        <result column="item_bean_counts" property="itemBeanCounts" />
+        <result column="item_probability" property="itemProbability" />
+        <result column="item_status" property="itemStatus" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        item_title,
+        item_img_url,
+        item_bean_counts,
+        item_probability,
+        item_status,
+        item_id
+    </sql>
+
+    <select id="getActivityLotteryByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from member_info
+        where item_id = #{PRI}
+    </select>
+
+    <insert id="insertActivityLottery" keyColumn="item_id" keyProperty="itemId" parameterType="com.hw.bean.PO.ActivityLotteryPO" useGeneratedKeys="true">
+        insert into activity_lottery (
+            item_title,
+            item_img_url,
+            item_bean_counts,
+            item_probability,
+            item_status,
+            gmt_create,
+            gmt_modified
+        ) values (
+            #{itemTitle},
+            #{itemImgUrl},
+            #{itemBeanCounts},
+            #{itemProbability},
+            #{itemStatus},
+            NOW(),
+            NOW()
+        )
+    </insert>
+
+    <update id="updateActivityLottery" parameterType="com.hw.bean.PO.ActivityLotteryPO">
+        update activity_lottery set
+            item_title = #{itemTitle},
+            item_img_url = #{itemImgUrl},
+            item_bean_counts = #{itemBeanCounts},
+            item_probability = #{itemProbability},
+            item_status = #{itemStatus},
+            gmt_modified = NOW()
+        where item_id = #{itemId}
+    </update>
+
+    <select id="getPageList" parameterType="com.hw.bean.BO.QueryActivityLotteryPage" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from activity_lottery
+        limit #{pageIndex},#{pageSize}
+    </select>
+
+    <select id="getPageCount" parameterType="com.hw.bean.BO.QueryActivityLotteryPage" resultType="java.lang.Integer">
+        select
+            count(1)
+        from activity_lottery
+    </select>
+
+</mapper>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hw.dao.OrderGoodsDAO">
+
+    <resultMap id="BaseResultMap" type="com.hw.bean.VO.OrderGoodsVO">
+        <id column="goods_id" property="goodsId" />
+        <result column="goods_type" property="goodsType" />
+        <result column="goods_name" property="goodsName" />
+        <result column="goods_price" property="goodsPrice" />
+        <result column="goods_img_url" property="goodsImgUrl" />
+        <result column="goods_beans" property="goodsBeans" />
+        <result column="goods_desc" property="goodsDesc" />
+        <result column="p0_beans" property="p0Beans" />
+        <result column="p1_beans" property="p1Beans" />
+        <result column="p2_beans" property="p2Beans" />
+        <result column="p3_beans" property="p3Beans" />
+        <result column="p4_beans" property="p4Beans" />
+        <result column="p5_beans" property="p5Beans" />
+        <result column="p6_beans" property="p6Beans" />
+        <result column="p7_beans" property="p7Beans" />
+        <result column="goods_status" property="goodsStatus" />
+        <result column="goods_amount" property="goodsAmount" />
+        <result column="recommend" property="recommend" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        goods_type,
+        goods_name,
+        goods_price,
+        goods_img_url,
+        goods_beans,
+        goods_desc,
+        p0_beans,
+        p1_beans,
+        p2_beans,
+        p3_beans,
+        p4_beans,
+        p5_beans,
+        p6_beans,
+        p7_beans,
+        goods_status,
+        goods_amount,
+        recommend,
+        goods_id
+    </sql>
+
+    <select id="getOrderGoodsByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from member_info
+        where goods_id = #{PRI}
+    </select>
+
+    <insert id="insertOrderGoods" keyColumn="goods_id" keyProperty="goodsId" parameterType="com.hw.bean.PO.OrderGoodsPO" useGeneratedKeys="true">
+        insert into order_goods (
+            goods_type,
+            goods_name,
+            goods_price,
+            goods_img_url,
+            goods_beans,
+            goods_desc,
+            p0_beans,
+            p1_beans,
+            p2_beans,
+            p3_beans,
+            p4_beans,
+            p5_beans,
+            p6_beans,
+            p7_beans,
+            goods_status,
+            goods_amount,
+            recommend,
+            gmt_create,
+            gmt_modified
+        ) values (
+            #{goodsType},
+            #{goodsName},
+            #{goodsPrice},
+            #{goodsImgUrl},
+            #{goodsBeans},
+            #{goodsDesc},
+            #{p0Beans},
+            #{p1Beans},
+            #{p2Beans},
+            #{p3Beans},
+            #{p4Beans},
+            #{p5Beans},
+            #{p6Beans},
+            #{p7Beans},
+            #{goodsStatus},
+            #{goodsAmount},
+            #{recommend},
+            NOW(),
+            NOW()
+        )
+    </insert>
+
+    <update id="updateOrderGoods" parameterType="com.hw.bean.PO.OrderGoodsPO">
+        update order_goods set
+            goods_type = #{goodsType},
+            goods_name = #{goodsName},
+            goods_price = #{goodsPrice},
+            goods_img_url = #{goodsImgUrl},
+            goods_beans = #{goodsBeans},
+            goods_desc = #{goodsDesc},
+            p0_beans = #{p0Beans},
+            p1_beans = #{p1Beans},
+            p2_beans = #{p2Beans},
+            p3_beans = #{p3Beans},
+            p4_beans = #{p4Beans},
+            p5_beans = #{p5Beans},
+            p6_beans = #{p6Beans},
+            p7_beans = #{p7Beans},
+            goods_status = #{goodsStatus},
+            goods_amount = #{goodsAmount},
+            recommend = #{recommend},
+            gmt_modified = NOW()
+        where goods_id = #{goodsId}
+    </update>
+
+    <select id="getPageList" parameterType="com.hw.bean.BO.QueryOrderGoodsPage" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from order_goods
+        limit #{pageIndex},#{pageSize}
+    </select>
+
+    <select id="getPageCount" parameterType="com.hw.bean.BO.QueryOrderGoodsPage" resultType="java.lang.Integer">
+        select
+            count(1)
+        from order_goods
+    </select>
+
+</mapper>

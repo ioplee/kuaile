@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hw.dao.MemberBankcardDAO">
+
+    <resultMap id="BaseResultMap" type="com.hw.bean.VO.MemberBankcardVO">
+        <id column="card_id" property="cardId" />
+        <result column="member_id" property="memberId" />
+        <result column="account_balance" property="accountBalance" />
+        <result column="card_status" property="cardStatus" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        member_id,
+        account_balance,
+        card_status,
+        card_id
+    </sql>
+
+    <select id="getMemberBankcardByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from member_info
+        where card_id = #{PRI}
+    </select>
+
+    <insert id="insertMemberBankcard" keyColumn="card_id" keyProperty="cardId" parameterType="com.hw.bean.PO.MemberBankcardPO" useGeneratedKeys="true">
+        insert into member_bankcard (
+            member_id,
+            account_balance,
+            card_status,
+            gmt_create,
+            gmt_modified
+        ) values (
+            #{memberId},
+            #{accountBalance},
+            #{cardStatus},
+            NOW(),
+            NOW()
+        )
+    </insert>
+
+    <update id="updateMemberBankcard" parameterType="com.hw.bean.PO.MemberBankcardPO">
+        update member_bankcard set
+            member_id = #{memberId},
+            account_balance = #{accountBalance},
+            card_status = #{cardStatus},
+            gmt_modified = NOW()
+        where card_id = #{cardId}
+    </update>
+
+    <select id="getPageList" parameterType="com.hw.bean.BO.QueryMemberBankcardPage" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from member_bankcard
+        limit #{pageIndex},#{pageSize}
+    </select>
+
+    <select id="getPageCount" parameterType="com.hw.bean.BO.QueryMemberBankcardPage" resultType="java.lang.Integer">
+        select
+            count(1)
+        from member_bankcard
+    </select>
+
+</mapper>

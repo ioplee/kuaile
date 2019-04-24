@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hw.dao.BaseNewsDAO">
+
+    <resultMap id="BaseResultMap" type="com.hw.bean.VO.BaseNewsVO">
+        <id column="news_id" property="newsId" />
+        <result column="news_title" property="newsTitle" />
+        <result column="news_date" property="newsDate" />
+        <result column="news_content" property="newsContent" />
+        <result column="news_status" property="newsStatus" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        news_title,
+        news_date,
+        news_content,
+        news_status,
+        news_id
+    </sql>
+
+    <select id="getBaseNewsByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from member_info
+        where news_id = #{PRI}
+    </select>
+
+    <insert id="insertBaseNews" keyColumn="news_id" keyProperty="newsId" parameterType="com.hw.bean.PO.BaseNewsPO" useGeneratedKeys="true">
+        insert into base_news (
+            news_title,
+            news_date,
+            news_content,
+            news_status,
+            gmt_create,
+            gmt_modified
+        ) values (
+            #{newsTitle},
+            #{newsDate},
+            #{newsContent},
+            #{newsStatus},
+            NOW(),
+            NOW()
+        )
+    </insert>
+
+    <update id="updateBaseNews" parameterType="com.hw.bean.PO.BaseNewsPO">
+        update base_news set
+            news_title = #{newsTitle},
+            news_date = #{newsDate},
+            news_content = #{newsContent},
+            news_status = #{newsStatus},
+            gmt_modified = NOW()
+        where news_id = #{newsId}
+    </update>
+
+    <select id="getPageList" parameterType="com.hw.bean.BO.QueryBaseNewsPage" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from base_news
+        limit #{pageIndex},#{pageSize}
+    </select>
+
+    <select id="getPageCount" parameterType="com.hw.bean.BO.QueryBaseNewsPage" resultType="java.lang.Integer">
+        select
+            count(1)
+        from base_news
+    </select>
+
+</mapper>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hw.dao.AgentInfoDAO">
+
+    <resultMap id="BaseResultMap" type="com.hw.bean.VO.AgentInfoVO">
+        <id column="agent_id" property="agentId" />
+        <result column="agent_name" property="agentName" />
+        <result column="agent_code" property="agentCode" />
+        <result column="qq" property="qq" />
+        <result column="agent_desc" property="agentDesc" />
+        <result column="mobile" property="mobile" />
+        <result column="agent_status" property="agentStatus" />
+        <result column="creator" property="creator" />
+        <result column="recharge_point" property="rechargePoint" />
+        <result column="cash_point" property="cashPoint" />
+        <result column="register_date" property="registerDate" />
+        <result column="agent_account" property="agentAccount" />
+        <result column="agent_password" property="agentPassword" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        agent_name,
+        agent_code,
+        qq,
+        agent_desc,
+        mobile,
+        agent_status,
+        creator,
+        recharge_point,
+        cash_point,
+        register_date,
+        agent_account,
+        agent_password,
+        agent_id
+    </sql>
+
+    <select id="getAgentInfoByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from member_info
+        where agent_id = #{PRI}
+    </select>
+
+    <insert id="insertAgentInfo" keyColumn="agent_id" keyProperty="agentId" parameterType="com.hw.bean.PO.AgentInfoPO" useGeneratedKeys="true">
+        insert into agent_info (
+            agent_name,
+            agent_code,
+            qq,
+            agent_desc,
+            mobile,
+            agent_status,
+            creator,
+            recharge_point,
+            cash_point,
+            register_date,
+            agent_account,
+            agent_password,
+            gmt_create,
+            gmt_modified
+        ) values (
+            #{agentName},
+            #{agentCode},
+            #{qq},
+            #{agentDesc},
+            #{mobile},
+            #{agentStatus},
+            #{creator},
+            #{rechargePoint},
+            #{cashPoint},
+            #{registerDate},
+            #{agentAccount},
+            #{agentPassword},
+            NOW(),
+            NOW()
+        )
+    </insert>
+
+    <update id="updateAgentInfo" parameterType="com.hw.bean.PO.AgentInfoPO">
+        update agent_info set
+            agent_name = #{agentName},
+            agent_code = #{agentCode},
+            qq = #{qq},
+            agent_desc = #{agentDesc},
+            mobile = #{mobile},
+            agent_status = #{agentStatus},
+            creator = #{creator},
+            recharge_point = #{rechargePoint},
+            cash_point = #{cashPoint},
+            register_date = #{registerDate},
+            agent_account = #{agentAccount},
+            agent_password = #{agentPassword},
+            gmt_modified = NOW()
+        where agent_id = #{agentId}
+    </update>
+
+    <select id="getPageList" parameterType="com.hw.bean.BO.QueryAgentInfoPage" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from agent_info
+        limit #{pageIndex},#{pageSize}
+    </select>
+
+    <select id="getPageCount" parameterType="com.hw.bean.BO.QueryAgentInfoPage" resultType="java.lang.Integer">
+        select
+            count(1)
+        from agent_info
+    </select>
+
+</mapper>
