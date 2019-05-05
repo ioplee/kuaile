@@ -27,7 +27,7 @@
     <select id="getBaseLotteryInfoByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
-        from member_info
+        from base_lottery_info
         where lottery_id = #{PRI}
     </select>
 

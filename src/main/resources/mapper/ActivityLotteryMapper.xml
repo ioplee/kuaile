@@ -23,7 +23,7 @@
     <select id="getActivityLotteryByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
-        from member_info
+        from activity_lottery
         where item_id = #{PRI}
     </select>
 

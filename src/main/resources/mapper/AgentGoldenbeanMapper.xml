@@ -19,7 +19,7 @@
     <select id="getAgentGoldenbeanByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
-        from member_info
+        from agent_goldenbean
         where info_id = #{PRI}
     </select>
 

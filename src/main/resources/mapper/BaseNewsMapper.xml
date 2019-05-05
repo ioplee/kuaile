@@ -21,7 +21,7 @@
     <select id="getBaseNewsByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
-        from member_info
+        from base_news
         where news_id = #{PRI}
     </select>
 

@@ -21,7 +21,7 @@
     <select id="getMemberAlmsbeanInfoByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
-        from member_info
+        from member_almsbean_info
         where info_id = #{PRI}
     </select>
 

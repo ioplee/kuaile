@@ -21,7 +21,7 @@
     <select id="getBaseBannerByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
-        from member_info
+        from base_banner
         where banner_id = #{PRI}
     </select>
 

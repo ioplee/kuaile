@@ -25,7 +25,7 @@
     <select id="getMemberAccountChangeByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
-        from member_info
+        from member_account_change
         where info_id = #{PRI}
     </select>
 

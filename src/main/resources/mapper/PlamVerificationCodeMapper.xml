@@ -25,7 +25,7 @@
     <select id="getPlamVerificationCodeByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
-        from member_info
+        from plam_verification_code
         where code_id = #{PRI}
     </select>
 

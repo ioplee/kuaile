@@ -37,7 +37,7 @@
     <select id="getAgentInfoByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
-        from member_info
+        from agent_info
         where agent_id = #{PRI}
     </select>
 

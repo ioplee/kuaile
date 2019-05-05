@@ -29,7 +29,7 @@
     <select id="getMemberLevelByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
-        from member_info
+        from member_level
         where level_id = #{PRI}
     </select>
 

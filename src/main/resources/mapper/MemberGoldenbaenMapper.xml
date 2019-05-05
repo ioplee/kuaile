@@ -19,7 +19,7 @@
     <select id="getMemberGoldenbaenByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
-        from member_info
+        from member_goldenbaen
         where bean_id = #{PRI}
     </select>
 

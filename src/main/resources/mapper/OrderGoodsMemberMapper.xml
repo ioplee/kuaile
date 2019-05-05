@@ -39,7 +39,7 @@
     <select id="getOrderGoodsMemberByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
-        from member_info
+        from order_goods_member
         where order_id = #{PRI}
     </select>
 

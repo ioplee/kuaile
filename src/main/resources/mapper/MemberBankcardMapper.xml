@@ -19,7 +19,7 @@
     <select id="getMemberBankcardByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
-        from member_info
+        from member_bankcard
         where card_id = #{PRI}
     </select>
 
