@@ -15,6 +15,7 @@ import java.io.Serializable;
 @Data
 public class QueryBaseNewsByPrimaryKey implements Serializable{
 
+    private static final long serialVersionUID = -8175876918819934492L;
     @ApiModelProperty(value = "新闻ID" , required = true)
     @NotNull(message = "新闻ID不允许为空")
     private Long newsId;

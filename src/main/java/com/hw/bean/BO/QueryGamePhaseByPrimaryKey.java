@@ -15,6 +15,7 @@ import java.io.Serializable;
 @Data
 public class QueryGamePhaseByPrimaryKey implements Serializable{
 
+    private static final long serialVersionUID = 2112101908590237801L;
     @ApiModelProperty(value = "游戏期数记录ID" , required = true)
     @NotNull(message = "游戏期数记录ID不允许为空")
     private Long phaseId;

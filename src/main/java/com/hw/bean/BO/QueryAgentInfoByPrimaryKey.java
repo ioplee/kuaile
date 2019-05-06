@@ -15,6 +15,7 @@ import java.io.Serializable;
 @Data
 public class QueryAgentInfoByPrimaryKey implements Serializable{
 
+    private static final long serialVersionUID = -3258009372262070889L;
     @ApiModelProperty(value = "代理商ID" , required = true)
     @NotNull(message = "代理商ID不允许为空")
     private Long agentId;

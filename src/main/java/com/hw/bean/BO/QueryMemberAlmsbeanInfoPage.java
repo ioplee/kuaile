@@ -12,4 +12,5 @@ import com.hw.utils.BaseQuery;
 @Data
 public class QueryMemberAlmsbeanInfoPage extends BaseQuery {
 
+    private static final long serialVersionUID = 8901382538270044965L;
 }

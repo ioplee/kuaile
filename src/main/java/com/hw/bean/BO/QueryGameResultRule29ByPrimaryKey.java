@@ -15,6 +15,7 @@ import java.io.Serializable;
 @Data
 public class QueryGameResultRule29ByPrimaryKey implements Serializable{
 
+    private static final long serialVersionUID = 2434461994099418382L;
     @ApiModelProperty(value = "出奖记录ID" , required = true)
     @NotNull(message = "出奖记录ID不允许为空")
     private Long recordId;

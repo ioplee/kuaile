@@ -17,6 +17,7 @@ import java.lang.String;
 @Data
 public class GameOrgSourcePO implements Serializable {
 
+    private static final long serialVersionUID = -4671713580049479915L;
     /**
     *   记录ID
     */

@@ -15,6 +15,7 @@ import java.io.Serializable;
 @Data
 public class QueryAgentGoldenbeanByPrimaryKey implements Serializable{
 
+    private static final long serialVersionUID = -7037092938368703955L;
     @ApiModelProperty(value = "记录ID" , required = true)
     @NotNull(message = "记录ID不允许为空")
     private Long infoId;

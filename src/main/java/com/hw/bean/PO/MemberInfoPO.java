@@ -17,6 +17,7 @@ import java.lang.String;
 @Data
 public class MemberInfoPO implements Serializable {
 
+    private static final long serialVersionUID = 8645229797715483685L;
     /**
     *   会员ID
     */

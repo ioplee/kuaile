@@ -12,4 +12,5 @@ import com.hw.utils.BaseQuery;
 @Data
 public class QueryBaseBannerPage extends BaseQuery {
 
+    private static final long serialVersionUID = 6773452970025559341L;
 }

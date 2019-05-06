@@ -15,6 +15,7 @@ import java.io.Serializable;
 @Data
 public class QueryMemberAccountChangeByPrimaryKey implements Serializable{
 
+    private static final long serialVersionUID = 6252677837427935001L;
     @ApiModelProperty(value = "记录ID" , required = true)
     @NotNull(message = "记录ID不允许为空")
     private Long infoId;

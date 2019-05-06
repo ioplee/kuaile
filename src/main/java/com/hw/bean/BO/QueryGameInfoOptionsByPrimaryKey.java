@@ -15,6 +15,7 @@ import java.io.Serializable;
 @Data
 public class QueryGameInfoOptionsByPrimaryKey implements Serializable{
 
+    private static final long serialVersionUID = -2448495028445249537L;
     @ApiModelProperty(value = "选项ID" , required = true)
     @NotNull(message = "选项ID不允许为空")
     private Long optionId;

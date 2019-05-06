@@ -15,6 +15,7 @@ import java.io.Serializable;
 @Data
 public class ADDMemberBankcardDTO implements Serializable {
 
+    private static final long serialVersionUID = 706733102559055954L;
     /**
     *   会员ID
     */

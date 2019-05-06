@@ -15,6 +15,7 @@ import javax.validation.constraints.NotNull;
 @Data
 public class ModifyActivityLotteryDTO extends ADDActivityLotteryDTO {
 
+    private static final long serialVersionUID = 8463333830342266110L;
     @ApiModelProperty(value = "奖项ID" , required = true)
     @NotNull(message = "奖项ID不允许为空")
     private Long itemId;

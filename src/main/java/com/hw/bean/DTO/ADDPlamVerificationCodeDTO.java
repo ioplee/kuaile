@@ -15,6 +15,7 @@ import java.io.Serializable;
 @Data
 public class ADDPlamVerificationCodeDTO implements Serializable {
 
+    private static final long serialVersionUID = 7300749483264176930L;
     /**
     *   业务类型
     */

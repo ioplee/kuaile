@@ -17,6 +17,7 @@ import java.lang.String;
 @Data
 public class MemberLevelVO implements Serializable {
 
+    private static final long serialVersionUID = 3302440234104440356L;
     /**
     *   等级ID
     */

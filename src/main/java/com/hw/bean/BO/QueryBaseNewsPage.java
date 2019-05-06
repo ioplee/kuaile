@@ -12,4 +12,5 @@ import com.hw.utils.BaseQuery;
 @Data
 public class QueryBaseNewsPage extends BaseQuery {
 
+    private static final long serialVersionUID = 2090906165123736935L;
 }

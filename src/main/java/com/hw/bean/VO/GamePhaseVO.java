@@ -17,6 +17,7 @@ import java.lang.String;
 @Data
 public class GamePhaseVO implements Serializable {
 
+    private static final long serialVersionUID = 7341473421072542608L;
     /**
     *   游戏期数记录ID
     */

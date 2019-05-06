@@ -12,4 +12,5 @@ import com.hw.utils.BaseQuery;
 @Data
 public class QuerySecurityTokenPage extends BaseQuery {
 
+    private static final long serialVersionUID = -2473169179538394518L;
 }

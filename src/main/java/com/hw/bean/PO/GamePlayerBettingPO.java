@@ -17,6 +17,7 @@ import java.lang.String;
 @Data
 public class GamePlayerBettingPO implements Serializable {
 
+    private static final long serialVersionUID = 5242426805253905363L;
     /**
     *   投注记录ID
     */

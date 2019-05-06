@@ -17,6 +17,7 @@ import java.lang.String;
 @Data
 public class GameResultRule10PO implements Serializable {
 
+    private static final long serialVersionUID = -1174164308512161576L;
     /**
     *   出奖记录ID
     */

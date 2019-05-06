@@ -15,6 +15,7 @@ import javax.validation.constraints.NotNull;
 @Data
 public class ModifyAgentInfoDTO extends ADDAgentInfoDTO {
 
+    private static final long serialVersionUID = 1332159889808013628L;
     @ApiModelProperty(value = "代理商ID" , required = true)
     @NotNull(message = "代理商ID不允许为空")
     private Long agentId;

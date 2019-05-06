@@ -12,4 +12,5 @@ import com.hw.utils.BaseQuery;
 @Data
 public class QueryBaseLotteryInfoPage extends BaseQuery {
 
+    private static final long serialVersionUID = -7206675588664030338L;
 }

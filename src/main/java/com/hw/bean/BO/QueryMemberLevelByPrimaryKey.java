@@ -15,6 +15,7 @@ import java.io.Serializable;
 @Data
 public class QueryMemberLevelByPrimaryKey implements Serializable{
 
+    private static final long serialVersionUID = 1095095291335501235L;
     @ApiModelProperty(value = "等级ID" , required = true)
     @NotNull(message = "等级ID不允许为空")
     private Long levelId;

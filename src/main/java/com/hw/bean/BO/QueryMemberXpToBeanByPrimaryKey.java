@@ -15,6 +15,7 @@ import java.io.Serializable;
 @Data
 public class QueryMemberXpToBeanByPrimaryKey implements Serializable{
 
+    private static final long serialVersionUID = -9110022270856972791L;
     @ApiModelProperty(value = "兑换记录ID" , required = true)
     @NotNull(message = "兑换记录ID不允许为空")
     private Long exchangeId;

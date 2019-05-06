@@ -15,6 +15,7 @@ import java.io.Serializable;
 @Data
 public class ADDBaseNewsDTO implements Serializable {
 
+    private static final long serialVersionUID = 5626060519331593201L;
     /**
     *   新闻标题
     */

@@ -17,6 +17,7 @@ import java.lang.String;
 @Data
 public class ActivityLotteryInfoVO implements Serializable {
 
+    private static final long serialVersionUID = -8717564023952994009L;
     /**
     *   中奖记录ID
     */

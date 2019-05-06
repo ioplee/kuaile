@@ -17,6 +17,7 @@ import java.lang.String;
 @Data
 public class SecurityTokenPO implements Serializable {
 
+    private static final long serialVersionUID = 8673046883021473043L;
     /**
     *   授信记录ID
     */

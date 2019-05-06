@@ -15,6 +15,7 @@ import java.io.Serializable;
 @Data
 public class QueryOrderGoodsMemberByPrimaryKey implements Serializable{
 
+    private static final long serialVersionUID = 8882848168618720417L;
     @ApiModelProperty(value = "交易记录ID" , required = true)
     @NotNull(message = "交易记录ID不允许为空")
     private Long orderId;

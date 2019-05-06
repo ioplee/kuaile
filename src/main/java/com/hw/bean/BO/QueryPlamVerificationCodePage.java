@@ -12,4 +12,5 @@ import com.hw.utils.BaseQuery;
 @Data
 public class QueryPlamVerificationCodePage extends BaseQuery {
 
+    private static final long serialVersionUID = 3225533350195445973L;
 }

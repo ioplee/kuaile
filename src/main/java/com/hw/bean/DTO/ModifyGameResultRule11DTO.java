@@ -15,6 +15,7 @@ import javax.validation.constraints.NotNull;
 @Data
 public class ModifyGameResultRule11DTO extends ADDGameResultRule11DTO {
 
+    private static final long serialVersionUID = -1443200410840742512L;
     @ApiModelProperty(value = "出奖记录ID" , required = true)
     @NotNull(message = "出奖记录ID不允许为空")
     private Long recordId;

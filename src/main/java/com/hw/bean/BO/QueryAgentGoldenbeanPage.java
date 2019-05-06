@@ -12,4 +12,5 @@ import com.hw.utils.BaseQuery;
 @Data
 public class QueryAgentGoldenbeanPage extends BaseQuery {
 
+    private static final long serialVersionUID = -6663533532643927906L;
 }

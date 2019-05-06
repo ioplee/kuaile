@@ -15,6 +15,7 @@ import javax.validation.constraints.NotNull;
 @Data
 public class ModifyMemberSigninInfoDTO extends ADDMemberSigninInfoDTO {
 
+    private static final long serialVersionUID = 3811575678023095562L;
     @ApiModelProperty(value = "签到记录ID" , required = true)
     @NotNull(message = "签到记录ID不允许为空")
     private Long infoId;

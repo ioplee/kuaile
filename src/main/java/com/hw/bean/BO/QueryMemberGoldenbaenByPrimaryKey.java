@@ -15,6 +15,7 @@ import java.io.Serializable;
 @Data
 public class QueryMemberGoldenbaenByPrimaryKey implements Serializable{
 
+    private static final long serialVersionUID = 6160965037515989481L;
     @ApiModelProperty(value = "记录ID" , required = true)
     @NotNull(message = "记录ID不允许为空")
     private Long beanId;

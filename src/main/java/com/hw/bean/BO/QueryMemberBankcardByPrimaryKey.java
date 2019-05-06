@@ -15,6 +15,7 @@ import java.io.Serializable;
 @Data
 public class QueryMemberBankcardByPrimaryKey implements Serializable{
 
+    private static final long serialVersionUID = -3204104742592779935L;
     @ApiModelProperty(value = "卡ID" , required = true)
     @NotNull(message = "卡ID不允许为空")
     private Long cardId;

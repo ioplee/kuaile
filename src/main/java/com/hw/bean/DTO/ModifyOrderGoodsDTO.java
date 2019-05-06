@@ -15,6 +15,7 @@ import javax.validation.constraints.NotNull;
 @Data
 public class ModifyOrderGoodsDTO extends ADDOrderGoodsDTO {
 
+    private static final long serialVersionUID = 6244767017601965960L;
     @ApiModelProperty(value = "商品ID" , required = true)
     @NotNull(message = "商品ID不允许为空")
     private Long goodsId;

@@ -17,6 +17,7 @@ import java.lang.String;
 @Data
 public class MemberLevelPO implements Serializable {
 
+    private static final long serialVersionUID = -6512631523516459708L;
     /**
     *   等级ID
     */

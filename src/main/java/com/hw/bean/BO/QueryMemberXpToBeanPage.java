@@ -12,4 +12,5 @@ import com.hw.utils.BaseQuery;
 @Data
 public class QueryMemberXpToBeanPage extends BaseQuery {
 
+    private static final long serialVersionUID = -512053026907356726L;
 }

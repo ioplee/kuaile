@@ -17,6 +17,7 @@ import java.lang.String;
 @Data
 public class BaseLotteryInfoVO implements Serializable {
 
+    private static final long serialVersionUID = 5585043711670178262L;
     /**
     *   福利ID
     */

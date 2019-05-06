@@ -15,6 +15,7 @@ import javax.validation.constraints.NotNull;
 @Data
 public class ModifyMemberXpInfoDTO extends ADDMemberXpInfoDTO {
 
+    private static final long serialVersionUID = -4466684276003836676L;
     @ApiModelProperty(value = "明细记录ID" , required = true)
     @NotNull(message = "明细记录ID不允许为空")
     private Long infoId;

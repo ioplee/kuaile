@@ -17,6 +17,7 @@ import java.lang.String;
 @Data
 public class OrderGoodsPO implements Serializable {
 
+    private static final long serialVersionUID = -9202942629297434813L;
     /**
     *   商品ID
     */

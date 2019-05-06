@@ -15,6 +15,7 @@ import java.io.Serializable;
 @Data
 public class QueryMemberXpInfoByPrimaryKey implements Serializable{
 
+    private static final long serialVersionUID = -3676314794019401127L;
     @ApiModelProperty(value = "明细记录ID" , required = true)
     @NotNull(message = "明细记录ID不允许为空")
     private Long infoId;

@@ -15,6 +15,7 @@ import java.io.Serializable;
 @Data
 public class ADDMemberXpInfoDTO implements Serializable {
 
+    private static final long serialVersionUID = 1634441209757583617L;
     /**
     *   会员ID
     */

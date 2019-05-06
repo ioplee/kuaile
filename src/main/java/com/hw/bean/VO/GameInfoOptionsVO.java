@@ -17,6 +17,7 @@ import java.lang.String;
 @Data
 public class GameInfoOptionsVO implements Serializable {
 
+    private static final long serialVersionUID = 7427950529639649961L;
     /**
     *   选项ID
     */

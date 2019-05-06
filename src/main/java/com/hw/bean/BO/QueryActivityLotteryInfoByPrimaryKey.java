@@ -15,6 +15,7 @@ import java.io.Serializable;
 @Data
 public class QueryActivityLotteryInfoByPrimaryKey implements Serializable{
 
+    private static final long serialVersionUID = 5568352559495792698L;
     @ApiModelProperty(value = "中奖记录ID" , required = true)
     @NotNull(message = "中奖记录ID不允许为空")
     private Long infoId;

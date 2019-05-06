@@ -17,6 +17,7 @@ import java.lang.String;
 @Data
 public class GameResultRule36VO implements Serializable {
 
+    private static final long serialVersionUID = 2133213277470934171L;
     /**
     *   出奖记录ID
     */

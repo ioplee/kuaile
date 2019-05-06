@@ -15,6 +15,7 @@ import java.io.Serializable;
 @Data
 public class ADDGameOrgSourceDTO implements Serializable {
 
+    private static final long serialVersionUID = 5920466515462226984L;
     /**
     *   游戏类型ID
     */

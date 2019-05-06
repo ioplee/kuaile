@@ -15,6 +15,7 @@ import javax.validation.constraints.NotNull;
 @Data
 public class ModifyMemberXpToBeanDTO extends ADDMemberXpToBeanDTO {
 
+    private static final long serialVersionUID = -2915847940648803854L;
     @ApiModelProperty(value = "兑换记录ID" , required = true)
     @NotNull(message = "兑换记录ID不允许为空")
     private Long exchangeId;

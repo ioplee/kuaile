@@ -17,6 +17,7 @@ import java.lang.String;
 @Data
 public class MemberRelationVO implements Serializable {
 
+    private static final long serialVersionUID = 1261681793461680273L;
     /**
     *   关系记录ID
     */

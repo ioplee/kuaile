@@ -12,4 +12,5 @@ import com.hw.utils.BaseQuery;
 @Data
 public class QueryMemberBankcardInfoPage extends BaseQuery {
 
+    private static final long serialVersionUID = -7017377462041806153L;
 }

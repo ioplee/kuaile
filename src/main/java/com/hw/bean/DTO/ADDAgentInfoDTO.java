@@ -15,6 +15,7 @@ import java.io.Serializable;
 @Data
 public class ADDAgentInfoDTO implements Serializable {
 
+    private static final long serialVersionUID = -3406945813433984003L;
     /**
     *   代理商名称
     */

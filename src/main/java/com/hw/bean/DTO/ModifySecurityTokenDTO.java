@@ -15,6 +15,7 @@ import javax.validation.constraints.NotNull;
 @Data
 public class ModifySecurityTokenDTO extends ADDSecurityTokenDTO {
 
+    private static final long serialVersionUID = 1111776549154096089L;
     @ApiModelProperty(value = "授信记录ID" , required = true)
     @NotNull(message = "授信记录ID不允许为空")
     private Long tokenId;

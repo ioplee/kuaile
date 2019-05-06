@@ -15,6 +15,7 @@ import javax.validation.constraints.NotNull;
 @Data
 public class ModifyBaseNewsDTO extends ADDBaseNewsDTO {
 
+    private static final long serialVersionUID = -2611734173126499304L;
     @ApiModelProperty(value = "新闻ID" , required = true)
     @NotNull(message = "新闻ID不允许为空")
     private Long newsId;

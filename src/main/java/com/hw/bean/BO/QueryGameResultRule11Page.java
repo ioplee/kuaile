@@ -12,4 +12,5 @@ import com.hw.utils.BaseQuery;
 @Data
 public class QueryGameResultRule11Page extends BaseQuery {
 
+    private static final long serialVersionUID = -2395600353495484781L;
 }

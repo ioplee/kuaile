@@ -15,6 +15,7 @@ import java.io.Serializable;
 @Data
 public class ADDMemberAlmsbeanInfoDTO implements Serializable {
 
+    private static final long serialVersionUID = 6366946773806435401L;
     /**
     *   会员ID
     */

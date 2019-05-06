@@ -12,4 +12,5 @@ import com.hw.utils.BaseQuery;
 @Data
 public class QueryMemberGoldenbaenPage extends BaseQuery {
 
+    private static final long serialVersionUID = 2272470178264799897L;
 }

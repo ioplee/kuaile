@@ -15,6 +15,7 @@ import java.io.Serializable;
 @Data
 public class QuerySecurityTokenByPrimaryKey implements Serializable{
 
+    private static final long serialVersionUID = 3789252627902136498L;
     @ApiModelProperty(value = "授信记录ID" , required = true)
     @NotNull(message = "授信记录ID不允许为空")
     private Long tokenId;

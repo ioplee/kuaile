@@ -15,6 +15,7 @@ import java.io.Serializable;
 @Data
 public class QueryMemberAlmsbeanInfoByPrimaryKey implements Serializable{
 
+    private static final long serialVersionUID = -8174541182125581750L;
     @ApiModelProperty(value = "领取记录ID" , required = true)
     @NotNull(message = "领取记录ID不允许为空")
     private Long infoId;

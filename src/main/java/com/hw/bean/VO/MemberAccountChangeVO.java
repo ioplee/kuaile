@@ -17,6 +17,7 @@ import java.lang.String;
 @Data
 public class MemberAccountChangeVO implements Serializable {
 
+    private static final long serialVersionUID = -8202558953648974814L;
     /**
     *   记录ID
     */

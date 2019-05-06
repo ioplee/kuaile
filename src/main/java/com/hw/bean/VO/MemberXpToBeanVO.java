@@ -17,6 +17,7 @@ import java.lang.String;
 @Data
 public class MemberXpToBeanVO implements Serializable {
 
+    private static final long serialVersionUID = -3807653620685951180L;
     /**
     *   兑换记录ID
     */

@@ -15,6 +15,7 @@ import javax.validation.constraints.NotNull;
 @Data
 public class ModifyMemberAlmsbeanInfoDTO extends ADDMemberAlmsbeanInfoDTO {
 
+    private static final long serialVersionUID = 4110868955382531906L;
     @ApiModelProperty(value = "领取记录ID" , required = true)
     @NotNull(message = "领取记录ID不允许为空")
     private Long infoId;

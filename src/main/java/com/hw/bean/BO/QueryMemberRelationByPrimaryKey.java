@@ -15,6 +15,7 @@ import java.io.Serializable;
 @Data
 public class QueryMemberRelationByPrimaryKey implements Serializable{
 
+    private static final long serialVersionUID = -4245788485686479490L;
     @ApiModelProperty(value = "关系记录ID" , required = true)
     @NotNull(message = "关系记录ID不允许为空")
     private Long realtionId;
