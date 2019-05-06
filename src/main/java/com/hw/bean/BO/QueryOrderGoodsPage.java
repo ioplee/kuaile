@@ -5,8 +5,8 @@ import com.hw.utils.BaseQuery;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:31:31
-* @description: [BO query bean]平台商品表（用于金豆和资金转换）
+* @create: 2019-05-07 00:52:39
+* @description: [BO query bean]商品表
 **/
 
 @Data

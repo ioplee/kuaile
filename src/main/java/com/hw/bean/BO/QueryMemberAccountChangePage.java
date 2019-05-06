@@ -5,8 +5,8 @@ import com.hw.utils.BaseQuery;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:31:31
-* @description: [BO query bean]会员 金豆账户和虚拟银行账户之间转换记录
+* @create: 2019-05-07 00:52:38
+* @description: [BO query bean]会员金豆和银行账户转账记录
 **/
 
 @Data

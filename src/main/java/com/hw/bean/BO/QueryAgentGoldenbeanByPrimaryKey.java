@@ -8,14 +8,14 @@ import java.io.Serializable;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:31:30
-* @description: [BO query bean]代理商金豆信息表
+* @create: 2019-05-07 00:52:38
+* @description: [BO query bean]代理商金豆表
 **/
 
 @Data
 public class QueryAgentGoldenbeanByPrimaryKey implements Serializable{
 
-    @ApiModelProperty(value = "主键ID" , required = true)
-    @NotNull(message = "主键ID不允许为空")
+    @ApiModelProperty(value = "记录ID" , required = true)
+    @NotNull(message = "记录ID不允许为空")
     private Long infoId;
 }

@@ -8,14 +8,14 @@ import java.io.Serializable;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:31:30
-* @description: [BO query bean]平台提供的各种福利活动列表
+* @create: 2019-05-07 00:52:38
+* @description: [BO query bean]玩家福利列表
 **/
 
 @Data
 public class QueryBaseLotteryInfoByPrimaryKey implements Serializable{
 
-    @ApiModelProperty(value = "主键ID" , required = true)
-    @NotNull(message = "主键ID不允许为空")
+    @ApiModelProperty(value = "福利ID" , required = true)
+    @NotNull(message = "福利ID不允许为空")
     private Long lotteryId;
 }

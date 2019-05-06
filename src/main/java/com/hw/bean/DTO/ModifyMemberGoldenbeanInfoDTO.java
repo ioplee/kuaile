@@ -8,18 +8,15 @@ import javax.validation.constraints.NotNull;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:36:26
-* @description: [ADD DTO Bean]会员金豆明细流水
-（会员金豆明细分为几类记录：
-1、 投注消耗金豆 减金豆
-2、 投
+* @create: 2019-05-07 00:53:30
+* @description: [ADD DTO Bean]会员金豆账户明细表
 **/
 
 @Data
 public class ModifyMemberGoldenbeanInfoDTO extends ADDMemberGoldenbeanInfoDTO {
 
-    @ApiModelProperty(value = "主键ID" , required = true)
-    @NotNull(message = "主键ID不允许为空")
+    @ApiModelProperty(value = "明细记录ID" , required = true)
+    @NotNull(message = "明细记录ID不允许为空")
     private Long infoId;
 
 }

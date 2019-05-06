@@ -5,11 +5,8 @@ import com.hw.utils.BaseQuery;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:31:31
-* @description: [BO query bean]会员金豆明细流水
-（会员金豆明细分为几类记录：
-1、 投注消耗金豆 减金豆
-2、 投
+* @create: 2019-05-07 00:52:39
+* @description: [BO query bean]会员金豆账户明细表
 **/
 
 @Data

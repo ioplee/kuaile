@@ -8,15 +8,15 @@ import javax.validation.constraints.NotNull;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:36:26
-* @description: [ADD DTO Bean]会员经验值兑换金豆记录明细表
+* @create: 2019-05-07 00:53:31
+* @description: [ADD DTO Bean]会员经验兑换金豆记录表
 **/
 
 @Data
 public class ModifyMemberXpToBeanDTO extends ADDMemberXpToBeanDTO {
 
-    @ApiModelProperty(value = "主键ID" , required = true)
-    @NotNull(message = "主键ID不允许为空")
+    @ApiModelProperty(value = "兑换记录ID" , required = true)
+    @NotNull(message = "兑换记录ID不允许为空")
     private Long exchangeId;
 
 }

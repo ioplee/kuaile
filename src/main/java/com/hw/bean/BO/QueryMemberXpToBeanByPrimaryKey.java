@@ -8,14 +8,14 @@ import java.io.Serializable;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:31:31
-* @description: [BO query bean]会员经验值兑换金豆记录明细表
+* @create: 2019-05-07 00:52:39
+* @description: [BO query bean]会员经验兑换金豆记录表
 **/
 
 @Data
 public class QueryMemberXpToBeanByPrimaryKey implements Serializable{
 
-    @ApiModelProperty(value = "主键ID" , required = true)
-    @NotNull(message = "主键ID不允许为空")
+    @ApiModelProperty(value = "兑换记录ID" , required = true)
+    @NotNull(message = "兑换记录ID不允许为空")
     private Long exchangeId;
 }

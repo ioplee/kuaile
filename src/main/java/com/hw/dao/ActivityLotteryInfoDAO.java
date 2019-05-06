@@ -1,7 +1,6 @@
 package com.hw.dao;
 
 import com.hw.bean.BO.QueryActivityLotteryInfoPage;
-import com.hw.bean.PO.ActivityLotteryInfoPO;
 import com.hw.bean.VO.ActivityLotteryInfoVO;
 
 import org.apache.ibatis.annotations.Param;

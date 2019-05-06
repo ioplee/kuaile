@@ -8,14 +8,14 @@ import java.io.Serializable;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:31:31
-* @description: [BO query bean]会员银行账户（平台虚拟银行账户卡）表，用于记录当前用户可用取现或兑换金豆的虚拟货币数值
+* @create: 2019-05-07 00:52:38
+* @description: [BO query bean]会员银行账户表
 **/
 
 @Data
 public class QueryMemberBankcardByPrimaryKey implements Serializable{
 
-    @ApiModelProperty(value = "主键ID" , required = true)
-    @NotNull(message = "主键ID不允许为空")
+    @ApiModelProperty(value = "卡ID" , required = true)
+    @NotNull(message = "卡ID不允许为空")
     private Long cardId;
 }

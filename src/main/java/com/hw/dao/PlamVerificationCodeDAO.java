@@ -1,7 +1,6 @@
 package com.hw.dao;
 
 import com.hw.bean.BO.QueryPlamVerificationCodePage;
-import com.hw.bean.PO.PlamVerificationCodePO;
 import com.hw.bean.VO.PlamVerificationCodeVO;
 
 import org.apache.ibatis.annotations.Param;

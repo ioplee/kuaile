@@ -8,15 +8,15 @@ import javax.validation.constraints.NotNull;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:36:26
-* @description: [ADD DTO Bean]会员 金豆账户和虚拟银行账户之间转换记录
+* @create: 2019-05-07 00:53:30
+* @description: [ADD DTO Bean]会员金豆和银行账户转账记录
 **/
 
 @Data
 public class ModifyMemberAccountChangeDTO extends ADDMemberAccountChangeDTO {
 
-    @ApiModelProperty(value = "主键ID" , required = true)
-    @NotNull(message = "主键ID不允许为空")
+    @ApiModelProperty(value = "记录ID" , required = true)
+    @NotNull(message = "记录ID不允许为空")
     private Long infoId;
 
 }

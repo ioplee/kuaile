@@ -10,51 +10,43 @@ import java.lang.String;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:16:14
-* @description: [数据库实体BEAN]平台提供的各种福利活动列表
+* @create: 2019-05-07 00:49:10
+* @description: [数据库实体BEAN]玩家福利列表
 **/
 
 @Data
 public class BaseLotteryInfoPO implements Serializable {
 
     /**
-    *   
+    *   福利ID
     */
     private Long lotteryId;
     /**
-    *   
+    *   福利标题
     */
     private String lotteryTitle;
     /**
-    *   
+    *   福利内容
     */
     private String lotteryContent;
     /**
-    *   
+    *   活动开始日期
     */
     private String beginDate;
     /**
-    *   
+    *   活动结束日期
     */
     private String endDate;
     /**
-    *   
+    *   活动宣传图片地址
     */
     private String imgUrl;
     /**
-    *   -1全体会员
-            0 p0会员及以上
-            1 p1会员及以
-            2 p2会员及以
-            3 p3会员及以
-            4 p4会员及以
-            5 p5会员及以
-            6 p6会员及以
-            7 p7会员及以
+    *   活动参与对象
     */
     private Integer targetMember;
     /**
-    *   -1删除 0停用 1有效
+    *   活动状态
     */
     private Integer lotteryStatus;
 }

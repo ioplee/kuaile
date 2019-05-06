@@ -1,7 +1,6 @@
 package com.hw.dao;
 
 import com.hw.bean.BO.QueryMemberAlmsbeanInfoPage;
-import com.hw.bean.PO.MemberAlmsbeanInfoPO;
 import com.hw.bean.VO.MemberAlmsbeanInfoVO;
 
 import org.apache.ibatis.annotations.Param;

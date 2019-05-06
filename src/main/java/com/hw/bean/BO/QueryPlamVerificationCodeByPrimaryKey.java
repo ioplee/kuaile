@@ -8,14 +8,14 @@ import java.io.Serializable;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:31:31
-* @description: [BO query bean]平台验证码
+* @create: 2019-05-07 00:52:39
+* @description: [BO query bean]验证码记录表
 **/
 
 @Data
 public class QueryPlamVerificationCodeByPrimaryKey implements Serializable{
 
-    @ApiModelProperty(value = "主键ID" , required = true)
-    @NotNull(message = "主键ID不允许为空")
+    @ApiModelProperty(value = "验证码记录ID" , required = true)
+    @NotNull(message = "验证码记录ID不允许为空")
     private Long codeId;
 }

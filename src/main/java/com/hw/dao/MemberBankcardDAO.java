@@ -1,7 +1,6 @@
 package com.hw.dao;
 
 import com.hw.bean.BO.QueryMemberBankcardPage;
-import com.hw.bean.PO.MemberBankcardPO;
 import com.hw.bean.VO.MemberBankcardVO;
 
 import org.apache.ibatis.annotations.Param;

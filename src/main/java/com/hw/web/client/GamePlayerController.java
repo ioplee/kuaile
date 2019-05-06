@@ -3,7 +3,6 @@ package com.hw.web.client;/**
  */
 
 import com.hw.bean.DTO.memberInfo.AddMemberInfoDTO;
-import com.hw.bean.PO.MemberInfoPO;
 import com.hw.services.MemberInfoService;
 import com.hw.utils.BaseResultDTO;
 import com.hw.utils.JWTUtil;

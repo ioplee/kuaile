@@ -10,43 +10,39 @@ import java.lang.String;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:16:14
-* @description: [数据库实体BEAN]平台验证码
+* @create: 2019-05-07 00:49:11
+* @description: [数据库实体BEAN]验证码记录表
 **/
 
 @Data
 public class PlamVerificationCodePO implements Serializable {
 
     /**
-    *   
+    *   验证码记录ID
     */
     private Long codeId;
     /**
-    *   1、 注册短信验证码
-            2、 找回密码短信验证码
-            3、 业务操作
+    *   业务类型
     */
     private Integer codeType;
     /**
-    *   当时业务操作时，需要记录当前验证码对应的会员ID
+    *   会员ID
     */
     private Long memberId;
     /**
-    *   
+    *   手机号码
     */
     private String mobileNo;
     /**
-    *   6位随机数字
+    *   验证码
     */
     private String codeInfo;
     /**
-    *   验证码有效时间（一般发送后有效期为客户端发起时间的5分钟），一期先写死，后续可按业务模块配置相关有效期限时长
+    *   有效期限
     */
     private String limitTime;
     /**
-    *   -1 冻结 0 未验证 1已验证
-            冻结代表多次验证同一验证码，此验证码失效
-            
+    *   记录状态
     */
     private Integer codeStatus;
 }

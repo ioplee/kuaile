@@ -8,17 +8,14 @@ import java.io.Serializable;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:31:31
-* @description: [BO query bean]会员虚拟银行账户明细记录表，
-记录类型（来源）为：
-1、 购买商品 消耗账户余额 减余额
-                                         -&
+* @create: 2019-05-07 00:52:38
+* @description: [BO query bean]会员银行账户明细表
 **/
 
 @Data
 public class QueryMemberBankcardInfoByPrimaryKey implements Serializable{
 
-    @ApiModelProperty(value = "主键ID" , required = true)
-    @NotNull(message = "主键ID不允许为空")
+    @ApiModelProperty(value = "明细ID" , required = true)
+    @NotNull(message = "明细ID不允许为空")
     private Long infoId;
 }

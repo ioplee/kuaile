@@ -10,32 +10,31 @@ import java.lang.String;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:17:19
-* @description: [数据库View BEAN]会员每日领取救济金豆记录表（领取救济金豆需要少于会员等级配置的金豆数才可以领取相对应的金豆数），
-例如VIP
+* @create: 2019-05-07 00:54:06
+* @description: [数据库View BEAN]会员每日救济金豆领取记录表
 **/
 
 @Data
 public class MemberAlmsbeanInfoVO implements Serializable {
 
     /**
-    *   
+    *   领取记录ID
     */
     private Long infoId;
     /**
-    *   
+    *   会员ID
     */
     private Long memberId;
     /**
-    *   
+    *   领取日期
     */
     private String getDate;
     /**
-    *   
+    *   领取救济金豆数
     */
     private Long beanCounts;
     /**
-    *   
+    *   记录状态
     */
     private Integer infoStatus;
 }

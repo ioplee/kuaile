@@ -8,33 +8,33 @@ import java.io.Serializable;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:32:18
-* @description: [ADD DTO Bean]系统banner图片维护
+* @create: 2019-05-07 00:53:17
+* @description: [ADD DTO Bean]banner广告图
 **/
 
 @Data
 public class ADDBaseBannerDTO implements Serializable {
 
     /**
-    *   
+    *   图片地址
     */
     @ApiModelProperty(value = "bannerUrl" , required = true)
     @NotNull(message = "bannerUrl不允许为空")
     private String bannerUrl;
     /**
-    *   
+    *   图片链接配置
     */
     @ApiModelProperty(value = "bannerLinks" , required = true)
     @NotNull(message = "bannerLinks不允许为空")
     private String bannerLinks;
     /**
-    *   
+    *   图片排序位
     */
     @ApiModelProperty(value = "bannerIndex" , required = true)
     @NotNull(message = "bannerIndex不允许为空")
     private Integer bannerIndex;
     /**
-    *   
+    *   图片状态
     */
     @ApiModelProperty(value = "bannerStatus" , required = true)
     @NotNull(message = "bannerStatus不允许为空")

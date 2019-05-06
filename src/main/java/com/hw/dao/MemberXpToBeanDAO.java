@@ -1,7 +1,6 @@
 package com.hw.dao;
 
 import com.hw.bean.BO.QueryMemberXpToBeanPage;
-import com.hw.bean.PO.MemberXpToBeanPO;
 import com.hw.bean.VO.MemberXpToBeanVO;
 
 import org.apache.ibatis.annotations.Param;

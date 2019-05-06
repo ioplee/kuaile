@@ -8,15 +8,14 @@ import java.io.Serializable;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:31:31
-* @description: [BO query bean]会员每日领取救济金豆记录表（领取救济金豆需要少于会员等级配置的金豆数才可以领取相对应的金豆数），
-例如VIP
+* @create: 2019-05-07 00:52:38
+* @description: [BO query bean]会员每日救济金豆领取记录表
 **/
 
 @Data
 public class QueryMemberAlmsbeanInfoByPrimaryKey implements Serializable{
 
-    @ApiModelProperty(value = "主键ID" , required = true)
-    @NotNull(message = "主键ID不允许为空")
+    @ApiModelProperty(value = "领取记录ID" , required = true)
+    @NotNull(message = "领取记录ID不允许为空")
     private Long infoId;
 }

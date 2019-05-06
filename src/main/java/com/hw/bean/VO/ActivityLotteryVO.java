@@ -10,35 +10,35 @@ import java.lang.String;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:17:19
-* @description: [数据库View BEAN]大转盘定义表
+* @create: 2019-05-07 00:54:05
+* @description: [数据库View BEAN]大转盘配置表
 **/
 
 @Data
 public class ActivityLotteryVO implements Serializable {
 
     /**
-    *   
+    *   奖项ID
     */
     private Long itemId;
     /**
-    *   
+    *   奖项名称
     */
     private String itemTitle;
     /**
-    *   
+    *   奖项图片
     */
     private String itemImgUrl;
     /**
-    *   
+    *   奖项金豆数
     */
     private Long itemBeanCounts;
     /**
-    *   中奖几率 0-100,0表示不会中，100代表肯定中
+    *   中奖几率
     */
     private Integer itemProbability;
     /**
-    *   -1 删除 0停用 1有效
+    *   记录状态
     */
     private Integer itemStatus;
 }

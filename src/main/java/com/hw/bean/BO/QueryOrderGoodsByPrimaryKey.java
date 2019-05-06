@@ -8,14 +8,14 @@ import java.io.Serializable;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:31:31
-* @description: [BO query bean]平台商品表（用于金豆和资金转换）
+* @create: 2019-05-07 00:52:39
+* @description: [BO query bean]商品表
 **/
 
 @Data
 public class QueryOrderGoodsByPrimaryKey implements Serializable{
 
-    @ApiModelProperty(value = "主键ID" , required = true)
-    @NotNull(message = "主键ID不允许为空")
+    @ApiModelProperty(value = "商品ID" , required = true)
+    @NotNull(message = "商品ID不允许为空")
     private Long goodsId;
 }

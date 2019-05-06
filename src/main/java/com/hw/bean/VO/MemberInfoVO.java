@@ -1,91 +1,112 @@
-package com.hw.bean.VO;/**
- * Created by robin on 2019/4/15.
- */
+package com.hw.bean.VO;
 
 import lombok.Data;
 
 import java.io.Serializable;
 
+import java.lang.Long;
+import java.lang.Integer;
+import java.lang.String;
+
 /**
- * @author: Robin
- * @create: 2019-04-15 22:34
- * @description: 玩家展示BEAN
- **/
+* @author: Robin
+* @create: 2019-05-07 00:54:06
+* @description: [数据库View BEAN]会员表
+**/
 
 @Data
-public class MemberInfoVO implements Serializable{
-    private static final long serialVersionUID = -2396572224468208692L;
+public class MemberInfoVO implements Serializable {
 
+    /**
+    *   会员ID
+    */
     private Long memberId;
-
     /**
-     * 平台唯一有序会员编码,业务交易及核心业务主要验证身份依据.
-     */
+    *   会员编码
+    */
     private String memberName;
-
+    /**
+    *   会员昵称
+    */
     private String memberNickname;
-
+    /**
+    *   真实姓名
+    */
     private String userName;
-
     /**
-     * 头像icon链接地址,可以是系统默认的图片路径,也可以配置在词典表或头像维护表中
-     */
+    *   头像
+    */
     private String memberIconUrl;
-
     /**
-     * 手机号码,需前段对手机号码合法性进行校验
-     */
+    *   手机号码
+    */
     private String memberMobile;
-
+    /**
+    *   QQ
+    */
     private String memberQq;
-
+    /**
+    *   常用邮箱
+    */
     private String memberEmail;
-
+    /**
+    *   微信
+    */
     private String memberWx;
-
     /**
-     * 0不需要1需要微信验证
-     */
+    *   登录是否微信验证
+    */
     private Integer isWxcheck;
-
     /**
-     * 会员等级 从0-7 八个等级(等级不允许修改,随会员经验值增加而自动调整会员等级)
-
-     */
+    *   会员等级
+    */
     private Integer memberLevel;
-
     /**
-     * 会员经验值,根据经验值明细表实时(需要定时校验刷新)
-     */
+    *   会员经验值
+    */
     private Long memberXp;
-
+    /**
+    *   注册日期
+    */
     private String registerDate;
-
     /**
-     * -1删除0停用或冻结1有效
-     */
+    *   会员状态
+    */
     private Integer memberStatus;
-
+    /**
+    *   推广链接地址
+    */
     private String extendLinks;
-
     /**
-     * 注册时，注册地址带的会员编码所对应的会员ID
-     */
+    *   上级会员ID
+    */
     private Long parentId;
-
+    /**
+    *   上次登录ip地址
+    */
     private String lastIp;
-
     /**
-     * 上一次登录系统时间
-     */
+    *   上次登录时间
+    */
     private String lastLogintime;
-
     /**
-     * 用于累计用户签到次数，不用复杂运算，使用此字段来进行逻辑判断。
-     */
+    *   连续签到数
+    */
     private Integer singinCounts;
-
-    private String gmtCreate;
-
-    private String gmtModified;
+    /**
+    *   登录密码
+    */
+    private String loginPass;
+    /**
+    *   银行密码
+    */
+    private String bankPass;
+    /**
+    *   玩家类型
+    */
+    private Integer memberType;
+    /**
+    *   抽成比例
+    */
+    private String gameRate;
 }

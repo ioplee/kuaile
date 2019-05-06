@@ -8,14 +8,14 @@ import java.io.Serializable;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:31:31
-* @description: [BO query bean]会员等级定义表
+* @create: 2019-05-07 00:52:39
+* @description: [BO query bean]会员等级表
 **/
 
 @Data
 public class QueryMemberLevelByPrimaryKey implements Serializable{
 
-    @ApiModelProperty(value = "主键ID" , required = true)
-    @NotNull(message = "主键ID不允许为空")
+    @ApiModelProperty(value = "等级ID" , required = true)
+    @NotNull(message = "等级ID不允许为空")
     private Long levelId;
 }

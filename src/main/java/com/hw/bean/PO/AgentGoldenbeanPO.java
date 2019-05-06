@@ -9,27 +9,27 @@ import java.lang.Integer;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:16:13
-* @description: [数据库实体BEAN]代理商金豆信息表
+* @create: 2019-05-07 00:49:09
+* @description: [数据库实体BEAN]代理商金豆表
 **/
 
 @Data
 public class AgentGoldenbeanPO implements Serializable {
 
     /**
-    *   
+    *   记录ID
     */
     private Long infoId;
     /**
-    *   
+    *   代理商ID
     */
     private Long agentId;
     /**
-    *   
+    *   金豆数
     */
     private Long beanCounts;
     /**
-    *   -1删除 0冻结停用 1有效
+    *   账户状态
     */
     private Integer agentStatus;
 }

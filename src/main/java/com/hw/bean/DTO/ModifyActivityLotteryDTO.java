@@ -8,15 +8,15 @@ import javax.validation.constraints.NotNull;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:36:25
-* @description: [ADD DTO Bean]大转盘定义表
+* @create: 2019-05-07 00:53:29
+* @description: [ADD DTO Bean]大转盘配置表
 **/
 
 @Data
 public class ModifyActivityLotteryDTO extends ADDActivityLotteryDTO {
 
-    @ApiModelProperty(value = "主键ID" , required = true)
-    @NotNull(message = "主键ID不允许为空")
+    @ApiModelProperty(value = "奖项ID" , required = true)
+    @NotNull(message = "奖项ID不允许为空")
     private Long itemId;
 
 }

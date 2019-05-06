@@ -1,0 +1,72 @@
+package com.hw.bean.DTO;
+
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
+
+/**
+* @author: Robin
+* @create: 2019-05-07 00:53:18
+* @description: [ADD DTO Bean]游戏开奖结果-二数求和 11
+**/
+
+@Data
+public class ADDGameResultRule11DTO implements Serializable {
+
+    /**
+    *   游戏类型ID
+    */
+    @ApiModelProperty(value = "gameTypeId" , required = true)
+    @NotNull(message = "gameTypeId不允许为空")
+    private Long gameTypeId;
+    /**
+    *   游戏ID
+    */
+    @ApiModelProperty(value = "gameId" , required = true)
+    @NotNull(message = "gameId不允许为空")
+    private Long gameId;
+    /**
+    *   游戏期数ID
+    */
+    @ApiModelProperty(value = "gamePhaseId" , required = true)
+    @NotNull(message = "gamePhaseId不允许为空")
+    private Long gamePhaseId;
+    /**
+    *   游戏日期
+    */
+    @ApiModelProperty(value = "gameDate" , required = true)
+    @NotNull(message = "gameDate不允许为空")
+    private String gameDate;
+    /**
+    *   第一组数值
+    */
+    @ApiModelProperty(value = "groupValue1" , required = true)
+    @NotNull(message = "groupValue1不允许为空")
+    private Integer groupValue1;
+    /**
+    *   第二组数值
+    */
+    @ApiModelProperty(value = "groupValue2" , required = true)
+    @NotNull(message = "groupValue2不允许为空")
+    private Integer groupValue2;
+    /**
+    *   和数
+    */
+    @ApiModelProperty(value = "groupSumValue" , required = true)
+    @NotNull(message = "groupSumValue不允许为空")
+    private Integer groupSumValue;
+    /**
+    *   记录状态
+    */
+    @ApiModelProperty(value = "recordStatus" , required = true)
+    @NotNull(message = "recordStatus不允许为空")
+    private Integer recordStatus;
+    /**
+    *   最后修改时间
+    */
+    @ApiModelProperty(value = "gmtModify" , required = true)
+    @NotNull(message = "gmtModify不允许为空")
+    private String gmtModify;
+}

@@ -8,27 +8,27 @@ import java.io.Serializable;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:32:18
-* @description: [ADD DTO Bean]代理商金豆信息表
+* @create: 2019-05-07 00:53:17
+* @description: [ADD DTO Bean]代理商金豆表
 **/
 
 @Data
 public class ADDAgentGoldenbeanDTO implements Serializable {
 
     /**
-    *   
+    *   代理商ID
     */
     @ApiModelProperty(value = "agentId" , required = true)
     @NotNull(message = "agentId不允许为空")
     private Long agentId;
     /**
-    *   
+    *   金豆数
     */
     @ApiModelProperty(value = "beanCounts" , required = true)
     @NotNull(message = "beanCounts不允许为空")
     private Long beanCounts;
     /**
-    *   -1删除 0冻结停用 1有效
+    *   账户状态
     */
     @ApiModelProperty(value = "agentStatus" , required = true)
     @NotNull(message = "agentStatus不允许为空")

@@ -10,31 +10,31 @@ import java.lang.String;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:16:14
-* @description: [数据库实体BEAN]平台新闻
+* @create: 2019-05-07 00:49:10
+* @description: [数据库实体BEAN]新闻公告表
 **/
 
 @Data
 public class BaseNewsPO implements Serializable {
 
     /**
-    *   
+    *   新闻ID
     */
     private Long newsId;
     /**
-    *   
+    *   新闻标题
     */
     private String newsTitle;
     /**
-    *   
+    *   新闻时间
     */
     private String newsDate;
     /**
-    *   
+    *   新闻内容
     */
     private String newsContent;
     /**
-    *   -1删除 0撤回 1有效
+    *   新闻状态
     */
     private Integer newsStatus;
 }

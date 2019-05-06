@@ -8,27 +8,27 @@ import java.io.Serializable;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:32:18
-* @description: [ADD DTO Bean]会员金豆表，用于记录会员当前可使用金豆（注意此表不是金豆明细，仅为会员当前可用金豆）
+* @create: 2019-05-07 00:53:18
+* @description: [ADD DTO Bean]会员金豆账户表
 **/
 
 @Data
 public class ADDMemberGoldenbaenDTO implements Serializable {
 
     /**
-    *   
+    *   会员ID
     */
     @ApiModelProperty(value = "memberId" , required = true)
     @NotNull(message = "memberId不允许为空")
     private Long memberId;
     /**
-    *   会员当前金豆可用数值（整数）
+    *   金豆总数
     */
     @ApiModelProperty(value = "beanCount" , required = true)
     @NotNull(message = "beanCount不允许为空")
     private Long beanCount;
     /**
-    *   -1 删除 0 冻结 1有效
+    *   账户状态
     */
     @ApiModelProperty(value = "beanStatus" , required = true)
     @NotNull(message = "beanStatus不允许为空")

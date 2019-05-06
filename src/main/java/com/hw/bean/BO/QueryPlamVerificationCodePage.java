@@ -5,8 +5,8 @@ import com.hw.utils.BaseQuery;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:31:31
-* @description: [BO query bean]平台验证码
+* @create: 2019-05-07 00:52:39
+* @description: [BO query bean]验证码记录表
 **/
 
 @Data

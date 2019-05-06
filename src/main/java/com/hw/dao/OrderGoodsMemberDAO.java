@@ -1,7 +1,6 @@
 package com.hw.dao;
 
 import com.hw.bean.BO.QueryOrderGoodsMemberPage;
-import com.hw.bean.PO.OrderGoodsMemberPO;
 import com.hw.bean.VO.OrderGoodsMemberVO;
 
 import org.apache.ibatis.annotations.Param;

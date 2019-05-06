@@ -5,8 +5,8 @@ import com.hw.utils.BaseQuery;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:31:30
-* @description: [BO query bean]代理商金豆信息表
+* @create: 2019-05-07 00:52:38
+* @description: [BO query bean]代理商金豆表
 **/
 
 @Data

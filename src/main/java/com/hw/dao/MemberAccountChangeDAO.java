@@ -1,7 +1,6 @@
 package com.hw.dao;
 
 import com.hw.bean.BO.QueryMemberAccountChangePage;
-import com.hw.bean.PO.MemberAccountChangePO;
 import com.hw.bean.VO.MemberAccountChangeVO;
 
 import org.apache.ibatis.annotations.Param;

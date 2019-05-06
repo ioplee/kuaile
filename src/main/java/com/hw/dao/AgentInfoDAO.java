@@ -1,7 +1,6 @@
 package com.hw.dao;
 
 import com.hw.bean.BO.QueryAgentInfoPage;
-import com.hw.bean.PO.AgentInfoPO;
 import com.hw.bean.VO.AgentInfoVO;
 
 import org.apache.ibatis.annotations.Param;

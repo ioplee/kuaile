@@ -8,17 +8,14 @@ import java.io.Serializable;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:31:31
-* @description: [BO query bean]会员金豆明细流水
-（会员金豆明细分为几类记录：
-1、 投注消耗金豆 减金豆
-2、 投
+* @create: 2019-05-07 00:52:39
+* @description: [BO query bean]会员金豆账户明细表
 **/
 
 @Data
 public class QueryMemberGoldenbeanInfoByPrimaryKey implements Serializable{
 
-    @ApiModelProperty(value = "主键ID" , required = true)
-    @NotNull(message = "主键ID不允许为空")
+    @ApiModelProperty(value = "明细记录ID" , required = true)
+    @NotNull(message = "明细记录ID不允许为空")
     private Long infoId;
 }

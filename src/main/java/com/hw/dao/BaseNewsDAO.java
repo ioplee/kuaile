@@ -1,7 +1,6 @@
 package com.hw.dao;
 
 import com.hw.bean.BO.QueryBaseNewsPage;
-import com.hw.bean.PO.BaseNewsPO;
 import com.hw.bean.VO.BaseNewsVO;
 
 import org.apache.ibatis.annotations.Param;

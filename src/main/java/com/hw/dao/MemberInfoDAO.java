@@ -1,7 +1,6 @@
 package com.hw.dao;
 
 import com.hw.bean.BO.memberInfo.QueryMemberInfoListBO;
-import com.hw.bean.PO.MemberInfoPO;
 import com.hw.bean.VO.MemberInfoVO;
 import org.apache.ibatis.annotations.Param;
 

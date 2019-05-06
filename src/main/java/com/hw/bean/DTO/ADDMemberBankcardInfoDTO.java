@@ -8,44 +8,39 @@ import java.io.Serializable;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:32:18
-* @description: [ADD DTO Bean]会员虚拟银行账户明细记录表，
-记录类型（来源）为：
-1、 购买商品 消耗账户余额 减余额
-                                         -&
+* @create: 2019-05-07 00:53:18
+* @description: [ADD DTO Bean]会员银行账户明细表
 **/
 
 @Data
 public class ADDMemberBankcardInfoDTO implements Serializable {
 
     /**
-    *   
+    *   会员ID
     */
     @ApiModelProperty(value = "memberId" , required = true)
     @NotNull(message = "memberId不允许为空")
     private Long memberId;
     /**
-    *   1、 购买商品 消耗账户余额 减余额
-            2、 金豆转银行账户  加余额
-            3、 现金转金豆 减余额
+    *   明细类型
     */
     @ApiModelProperty(value = "infoType" , required = true)
     @NotNull(message = "infoType不允许为空")
     private Integer infoType;
     /**
-    *   
+    *   现金金额
     */
     @ApiModelProperty(value = "infoFee" , required = true)
     @NotNull(message = "infoFee不允许为空")
     private Long infoFee;
     /**
-    *   
+    *   业务记录ID
     */
     @ApiModelProperty(value = "bizId" , required = true)
     @NotNull(message = "bizId不允许为空")
     private Long bizId;
     /**
-    *   -1 删除 0 停用、冻结 1 有效记录
+    *   记录状态
     */
     @ApiModelProperty(value = "infoStatus" , required = true)
     @NotNull(message = "infoStatus不允许为空")

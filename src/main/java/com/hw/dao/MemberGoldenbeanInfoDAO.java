@@ -1,7 +1,6 @@
 package com.hw.dao;
 
 import com.hw.bean.BO.QueryMemberGoldenbeanInfoPage;
-import com.hw.bean.PO.MemberGoldenbeanInfoPO;
 import com.hw.bean.VO.MemberGoldenbeanInfoVO;
 
 import org.apache.ibatis.annotations.Param;

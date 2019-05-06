@@ -2,7 +2,6 @@ package com.hw.services;
 
 import com.hw.bean.BO.memberInfo.QueryMemberInfoByKeyBO;
 import com.hw.bean.BO.memberInfo.QueryMemberInfoListBO;
-import com.hw.bean.PO.MemberInfoPO;
 import com.hw.bean.VO.MemberInfoVO;
 import com.hw.utils.BaseResultDTO;
 import com.hw.utils.BatchResultDTO;

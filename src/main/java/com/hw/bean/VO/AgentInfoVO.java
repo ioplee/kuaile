@@ -10,63 +10,63 @@ import java.lang.String;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:17:19
-* @description: [数据库View BEAN]平台代理商信息
+* @create: 2019-05-07 00:54:05
+* @description: [数据库View BEAN]代理商信息表
 **/
 
 @Data
 public class AgentInfoVO implements Serializable {
 
     /**
-    *   
+    *   代理商ID
     */
     private Long agentId;
     /**
-    *   
+    *   代理商名称
     */
     private String agentName;
     /**
-    *   代理商编码，用于代理商充值时平台录入查询确定代理商身份
+    *   代理商编码
     */
     private Integer agentCode;
     /**
-    *   
+    *   QQ号码
     */
     private String qq;
     /**
-    *   
+    *   商家说明
     */
     private String agentDesc;
     /**
-    *   
+    *   手机号码
     */
     private String mobile;
     /**
-    *   -1删除 0停用冻结 1有效
+    *   商家状态
     */
     private Integer agentStatus;
     /**
-    *   
+    *   创建人
     */
     private String creator;
     /**
-    *   0-99的整数（会员充值返点，金豆）
+    *   充值返点
     */
     private Integer rechargePoint;
     /**
-    *   0-99整数（商品提现时，返回金豆数）
+    *   提现返点
     */
     private Integer cashPoint;
     /**
-    *   
+    *   入住平台日期
     */
     private String registerDate;
     /**
-    *   默认登录账户为手机号码
+    *   登录账户
     */
     private String agentAccount;
     /**
-    *   数字和字母组成的6-16位密码，md5加密
+    *   登录密码
     */
     private String agentPassword;
 }

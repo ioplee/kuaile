@@ -9,27 +9,27 @@ import java.lang.Integer;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:16:14
-* @description: [数据库实体BEAN]会员金豆表，用于记录会员当前可使用金豆（注意此表不是金豆明细，仅为会员当前可用金豆）
+* @create: 2019-05-07 00:49:10
+* @description: [数据库实体BEAN]会员金豆账户表
 **/
 
 @Data
 public class MemberGoldenbaenPO implements Serializable {
 
     /**
-    *   
+    *   记录ID
     */
     private Long beanId;
     /**
-    *   
+    *   会员ID
     */
     private Long memberId;
     /**
-    *   会员当前金豆可用数值（整数）
+    *   金豆总数
     */
     private Long beanCount;
     /**
-    *   -1 删除 0 冻结 1有效
+    *   账户状态
     */
     private Integer beanStatus;
 }

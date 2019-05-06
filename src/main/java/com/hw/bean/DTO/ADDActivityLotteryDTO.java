@@ -8,39 +8,39 @@ import java.io.Serializable;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:32:18
-* @description: [ADD DTO Bean]大转盘定义表
+* @create: 2019-05-07 00:53:17
+* @description: [ADD DTO Bean]大转盘配置表
 **/
 
 @Data
 public class ADDActivityLotteryDTO implements Serializable {
 
     /**
-    *   
+    *   奖项名称
     */
     @ApiModelProperty(value = "itemTitle" , required = true)
     @NotNull(message = "itemTitle不允许为空")
     private String itemTitle;
     /**
-    *   
+    *   奖项图片
     */
     @ApiModelProperty(value = "itemImgUrl" , required = true)
     @NotNull(message = "itemImgUrl不允许为空")
     private String itemImgUrl;
     /**
-    *   
+    *   奖项金豆数
     */
     @ApiModelProperty(value = "itemBeanCounts" , required = true)
     @NotNull(message = "itemBeanCounts不允许为空")
     private Long itemBeanCounts;
     /**
-    *   中奖几率 0-100,0表示不会中，100代表肯定中
+    *   中奖几率
     */
     @ApiModelProperty(value = "itemProbability" , required = true)
     @NotNull(message = "itemProbability不允许为空")
     private Integer itemProbability;
     /**
-    *   -1 删除 0停用 1有效
+    *   记录状态
     */
     @ApiModelProperty(value = "itemStatus" , required = true)
     @NotNull(message = "itemStatus不允许为空")

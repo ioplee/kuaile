@@ -1,7 +1,6 @@
 package com.hw.dao;
 
 import com.hw.bean.BO.QueryMemberSigninInfoPage;
-import com.hw.bean.PO.MemberSigninInfoPO;
 import com.hw.bean.VO.MemberSigninInfoVO;
 
 import org.apache.ibatis.annotations.Param;

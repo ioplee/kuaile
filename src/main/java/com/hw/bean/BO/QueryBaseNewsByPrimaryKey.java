@@ -8,14 +8,14 @@ import java.io.Serializable;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:31:30
-* @description: [BO query bean]平台新闻
+* @create: 2019-05-07 00:52:38
+* @description: [BO query bean]新闻公告表
 **/
 
 @Data
 public class QueryBaseNewsByPrimaryKey implements Serializable{
 
-    @ApiModelProperty(value = "主键ID" , required = true)
-    @NotNull(message = "主键ID不允许为空")
+    @ApiModelProperty(value = "新闻ID" , required = true)
+    @NotNull(message = "新闻ID不允许为空")
     private Long newsId;
 }

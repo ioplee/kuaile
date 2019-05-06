@@ -5,7 +5,7 @@ import com.hw.utils.BaseQuery;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:31:30
+* @create: 2019-05-07 00:52:38
 * @description: [BO query bean]代理商金豆明细表
 **/
 

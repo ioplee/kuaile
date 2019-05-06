@@ -8,14 +8,14 @@ import java.io.Serializable;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:31:31
-* @description: [BO query bean]会员签到记录明细表（签到获取金豆明细表）
+* @create: 2019-05-07 00:52:39
+* @description: [BO query bean]会员签到记录表
 **/
 
 @Data
 public class QueryMemberSigninInfoByPrimaryKey implements Serializable{
 
-    @ApiModelProperty(value = "主键ID" , required = true)
-    @NotNull(message = "主键ID不允许为空")
+    @ApiModelProperty(value = "签到记录ID" , required = true)
+    @NotNull(message = "签到记录ID不允许为空")
     private Long infoId;
 }

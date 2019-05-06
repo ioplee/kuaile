@@ -1,7 +1,6 @@
 package com.hw.dao;
 
 import com.hw.bean.BO.QueryBaseLotteryInfoPage;
-import com.hw.bean.PO.BaseLotteryInfoPO;
 import com.hw.bean.VO.BaseLotteryInfoVO;
 
 import org.apache.ibatis.annotations.Param;

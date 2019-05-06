@@ -10,40 +10,39 @@ import java.lang.String;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:16:14
-* @description: [数据库实体BEAN]会员 金豆账户和虚拟银行账户之间转换记录
+* @create: 2019-05-07 00:49:10
+* @description: [数据库实体BEAN]会员金豆和银行账户转账记录
 **/
 
 @Data
 public class MemberAccountChangePO implements Serializable {
 
     /**
-    *   
+    *   记录ID
     */
     private Long infoId;
     /**
-    *   
+    *   会员ID
     */
     private Long memberId;
     /**
-    *   1 金豆存入银行账户
-            2 从银行账户取金豆
+    *   记录类型
     */
     private Integer infoType;
     /**
-    *   
+    *   变动金豆数
     */
     private Long changeCounts;
     /**
-    *   
+    *   记录状态
     */
     private Integer infoStatus;
     /**
-    *   
+    *   记录时间
     */
     private String infoTime;
     /**
-    *   
+    *   备注
     */
     private String infoDesc;
 }

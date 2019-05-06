@@ -8,34 +8,33 @@ import java.io.Serializable;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:32:18
-* @description: [ADD DTO Bean]会员每日领取救济金豆记录表（领取救济金豆需要少于会员等级配置的金豆数才可以领取相对应的金豆数），
-例如VIP
+* @create: 2019-05-07 00:53:18
+* @description: [ADD DTO Bean]会员每日救济金豆领取记录表
 **/
 
 @Data
 public class ADDMemberAlmsbeanInfoDTO implements Serializable {
 
     /**
-    *   
+    *   会员ID
     */
     @ApiModelProperty(value = "memberId" , required = true)
     @NotNull(message = "memberId不允许为空")
     private Long memberId;
     /**
-    *   
+    *   领取日期
     */
     @ApiModelProperty(value = "getDate" , required = true)
     @NotNull(message = "getDate不允许为空")
     private String getDate;
     /**
-    *   
+    *   领取救济金豆数
     */
     @ApiModelProperty(value = "beanCounts" , required = true)
     @NotNull(message = "beanCounts不允许为空")
     private Long beanCounts;
     /**
-    *   
+    *   记录状态
     */
     @ApiModelProperty(value = "infoStatus" , required = true)
     @NotNull(message = "infoStatus不允许为空")

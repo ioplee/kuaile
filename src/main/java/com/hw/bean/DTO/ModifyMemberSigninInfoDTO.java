@@ -8,15 +8,15 @@ import javax.validation.constraints.NotNull;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:36:26
-* @description: [ADD DTO Bean]会员签到记录明细表（签到获取金豆明细表）
+* @create: 2019-05-07 00:53:31
+* @description: [ADD DTO Bean]会员签到记录表
 **/
 
 @Data
 public class ModifyMemberSigninInfoDTO extends ADDMemberSigninInfoDTO {
 
-    @ApiModelProperty(value = "主键ID" , required = true)
-    @NotNull(message = "主键ID不允许为空")
+    @ApiModelProperty(value = "签到记录ID" , required = true)
+    @NotNull(message = "签到记录ID不允许为空")
     private Long infoId;
 
 }

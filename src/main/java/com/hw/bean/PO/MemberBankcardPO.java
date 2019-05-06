@@ -9,27 +9,27 @@ import java.lang.Integer;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:16:14
-* @description: [数据库实体BEAN]会员银行账户（平台虚拟银行账户卡）表，用于记录当前用户可用取现或兑换金豆的虚拟货币数值
+* @create: 2019-05-07 00:49:10
+* @description: [数据库实体BEAN]会员银行账户表
 **/
 
 @Data
 public class MemberBankcardPO implements Serializable {
 
     /**
-    *   
+    *   卡ID
     */
     private Long cardId;
     /**
-    *   
+    *   会员ID
     */
     private Long memberId;
     /**
-    *   用户当前账户余额（整数，平台自动在核算时扣除小数位）
+    *   存款金额
     */
     private Long accountBalance;
     /**
-    *   -1 删除 0 冻结 1有效
+    *   银行账户状态
     */
     private Integer cardStatus;
 }

@@ -10,31 +10,31 @@ import java.lang.String;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:17:19
-* @description: [数据库View BEAN]系统banner图片维护
+* @create: 2019-05-07 00:54:06
+* @description: [数据库View BEAN]banner广告图
 **/
 
 @Data
 public class BaseBannerVO implements Serializable {
 
     /**
-    *   
+    *   图片ID
     */
     private Long bannerId;
     /**
-    *   
+    *   图片地址
     */
     private String bannerUrl;
     /**
-    *   
+    *   图片链接配置
     */
     private String bannerLinks;
     /**
-    *   
+    *   图片排序位
     */
     private Integer bannerIndex;
     /**
-    *   
+    *   图片状态
     */
     private Integer bannerStatus;
 }

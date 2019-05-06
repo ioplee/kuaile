@@ -9,7 +9,7 @@ import java.lang.Integer;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:17:19
+* @create: 2019-05-07 00:54:05
 * @description: [数据库View BEAN]代理商金豆明细表
 **/
 
@@ -17,38 +17,35 @@ import java.lang.Integer;
 public class AgentGoldenbeanInfoVO implements Serializable {
 
     /**
-    *   
+    *   明细记录ID
     */
     private Long infoId;
     /**
-    *   
+    *   代理商iD
     */
     private Long agentId;
     /**
-    *   1 购买金豆（从平台购买金豆）加金豆
-            2 向用户售卖金豆  减金豆
-            3 商品出售给平台  加金豆
+    *   记录类型
     */
     private Integer infoType;
     /**
-    *   本次业务记录对应的金豆总数
+    *   金豆数值
     */
     private Long beanCounts;
     /**
-    *   
+    *   业务记录ID
     */
     private Long bizId;
     /**
-    *   
+    *   记录状态
     */
     private Integer infoStatus;
     /**
-    *   
+    *   基础金豆数
     */
     private Long baseCounts;
     /**
-    *   1、 向平台购买金豆时，此字段记录赠送的金豆数
-            2、 向平台出售礼品卡时，返点金豆数
+    *   返点金豆数
     */
     private Long rebateCounts;
 }

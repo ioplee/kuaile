@@ -1,7 +1,6 @@
 package com.hw.dao;
 
 import com.hw.bean.BO.QueryBaseBannerPage;
-import com.hw.bean.PO.BaseBannerPO;
 import com.hw.bean.VO.BaseBannerVO;
 
 import org.apache.ibatis.annotations.Param;

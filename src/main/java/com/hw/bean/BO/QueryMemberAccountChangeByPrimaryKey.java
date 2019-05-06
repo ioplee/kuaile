@@ -8,14 +8,14 @@ import java.io.Serializable;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:31:31
-* @description: [BO query bean]会员 金豆账户和虚拟银行账户之间转换记录
+* @create: 2019-05-07 00:52:38
+* @description: [BO query bean]会员金豆和银行账户转账记录
 **/
 
 @Data
 public class QueryMemberAccountChangeByPrimaryKey implements Serializable{
 
-    @ApiModelProperty(value = "主键ID" , required = true)
-    @NotNull(message = "主键ID不允许为空")
+    @ApiModelProperty(value = "记录ID" , required = true)
+    @NotNull(message = "记录ID不允许为空")
     private Long infoId;
 }

@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:32:18
+* @create: 2019-05-07 00:53:17
 * @description: [ADD DTO Bean]代理商金豆明细表
 **/
 
@@ -16,46 +16,43 @@ import java.io.Serializable;
 public class ADDAgentGoldenbeanInfoDTO implements Serializable {
 
     /**
-    *   
+    *   代理商iD
     */
     @ApiModelProperty(value = "agentId" , required = true)
     @NotNull(message = "agentId不允许为空")
     private Long agentId;
     /**
-    *   1 购买金豆（从平台购买金豆）加金豆
-            2 向用户售卖金豆  减金豆
-            3 商品出售给平台  加金豆
+    *   记录类型
     */
     @ApiModelProperty(value = "infoType" , required = true)
     @NotNull(message = "infoType不允许为空")
     private Integer infoType;
     /**
-    *   本次业务记录对应的金豆总数
+    *   金豆数值
     */
     @ApiModelProperty(value = "beanCounts" , required = true)
     @NotNull(message = "beanCounts不允许为空")
     private Long beanCounts;
     /**
-    *   
+    *   业务记录ID
     */
     @ApiModelProperty(value = "bizId" , required = true)
     @NotNull(message = "bizId不允许为空")
     private Long bizId;
     /**
-    *   
+    *   记录状态
     */
     @ApiModelProperty(value = "infoStatus" , required = true)
     @NotNull(message = "infoStatus不允许为空")
     private Integer infoStatus;
     /**
-    *   
+    *   基础金豆数
     */
     @ApiModelProperty(value = "baseCounts" , required = true)
     @NotNull(message = "baseCounts不允许为空")
     private Long baseCounts;
     /**
-    *   1、 向平台购买金豆时，此字段记录赠送的金豆数
-            2、 向平台出售礼品卡时，返点金豆数
+    *   返点金豆数
     */
     @ApiModelProperty(value = "rebateCounts" , required = true)
     @NotNull(message = "rebateCounts不允许为空")

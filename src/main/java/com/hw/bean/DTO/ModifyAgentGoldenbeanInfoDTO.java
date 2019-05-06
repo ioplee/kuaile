@@ -8,15 +8,15 @@ import javax.validation.constraints.NotNull;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:36:25
+* @create: 2019-05-07 00:53:29
 * @description: [ADD DTO Bean]代理商金豆明细表
 **/
 
 @Data
 public class ModifyAgentGoldenbeanInfoDTO extends ADDAgentGoldenbeanInfoDTO {
 
-    @ApiModelProperty(value = "主键ID" , required = true)
-    @NotNull(message = "主键ID不允许为空")
+    @ApiModelProperty(value = "明细记录ID" , required = true)
+    @NotNull(message = "明细记录ID不允许为空")
     private Long infoId;
 
 }

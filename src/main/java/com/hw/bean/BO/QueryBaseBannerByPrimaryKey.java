@@ -8,14 +8,14 @@ import java.io.Serializable;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:31:30
-* @description: [BO query bean]系统banner图片维护
+* @create: 2019-05-07 00:52:38
+* @description: [BO query bean]banner广告图
 **/
 
 @Data
 public class QueryBaseBannerByPrimaryKey implements Serializable{
 
-    @ApiModelProperty(value = "主键ID" , required = true)
-    @NotNull(message = "主键ID不允许为空")
+    @ApiModelProperty(value = "图片ID" , required = true)
+    @NotNull(message = "图片ID不允许为空")
     private Long bannerId;
 }

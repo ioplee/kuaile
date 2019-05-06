@@ -8,15 +8,15 @@ import javax.validation.constraints.NotNull;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:36:26
-* @description: [ADD DTO Bean]平台新闻
+* @create: 2019-05-07 00:53:30
+* @description: [ADD DTO Bean]新闻公告表
 **/
 
 @Data
 public class ModifyBaseNewsDTO extends ADDBaseNewsDTO {
 
-    @ApiModelProperty(value = "主键ID" , required = true)
-    @NotNull(message = "主键ID不允许为空")
+    @ApiModelProperty(value = "新闻ID" , required = true)
+    @NotNull(message = "新闻ID不允许为空")
     private Long newsId;
 
 }

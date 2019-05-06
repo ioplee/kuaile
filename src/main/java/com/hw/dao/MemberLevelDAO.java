@@ -1,7 +1,6 @@
 package com.hw.dao;
 
 import com.hw.bean.BO.QueryMemberLevelPage;
-import com.hw.bean.PO.MemberLevelPO;
 import com.hw.bean.VO.MemberLevelVO;
 
 import org.apache.ibatis.annotations.Param;

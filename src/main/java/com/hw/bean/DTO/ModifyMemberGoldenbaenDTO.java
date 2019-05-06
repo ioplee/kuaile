@@ -8,15 +8,15 @@ import javax.validation.constraints.NotNull;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:36:26
-* @description: [ADD DTO Bean]会员金豆表，用于记录会员当前可使用金豆（注意此表不是金豆明细，仅为会员当前可用金豆）
+* @create: 2019-05-07 00:53:30
+* @description: [ADD DTO Bean]会员金豆账户表
 **/
 
 @Data
 public class ModifyMemberGoldenbaenDTO extends ADDMemberGoldenbaenDTO {
 
-    @ApiModelProperty(value = "主键ID" , required = true)
-    @NotNull(message = "主键ID不允许为空")
+    @ApiModelProperty(value = "记录ID" , required = true)
+    @NotNull(message = "记录ID不允许为空")
     private Long beanId;
 
 }

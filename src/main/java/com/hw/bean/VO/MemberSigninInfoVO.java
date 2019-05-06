@@ -10,31 +10,31 @@ import java.lang.String;
 
 /**
 * @author: Robin
-* @create: 2019-04-24 02:17:20
-* @description: [数据库View BEAN]会员签到记录明细表（签到获取金豆明细表）
+* @create: 2019-05-07 00:54:07
+* @description: [数据库View BEAN]会员签到记录表
 **/
 
 @Data
 public class MemberSigninInfoVO implements Serializable {
 
     /**
-    *   
+    *   签到记录ID
     */
     private Long infoId;
     /**
-    *   
+    *   会员ID
     */
     private Long memberId;
     /**
-    *   
+    *   签到日期
     */
     private String signinDate;
     /**
-    *   
+    *   签到获得金豆数
     */
     private Integer beanCounts;
     /**
-    *   
+    *   记录状态
     */
     private Integer infoStatus;
 }
