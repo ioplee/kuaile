@@ -1,6 +1,7 @@
 package com.hw.dao;
 
 import com.hw.bean.BO.QueryAgentGoldenbeanInfoPage;
+import com.hw.bean.PO.AgentGoldenbeanInfoPO;
 import com.hw.bean.VO.AgentGoldenbeanInfoVO;
 
 import org.apache.ibatis.annotations.Param;
@@ -9,7 +10,7 @@ import java.util.List;
 
 /**
 * @author: Robin
-* @create: 2019-04-25 01:58:43
+* @create: 2019-05-07 01:20:16
 * @description: 代理商金豆明细表 DAO 数据库操作对象 Mybatis接口
 **/
 
@@ -53,6 +54,6 @@ public interface AgentGoldenbeanInfoDAO{
     * @param PRI 记录ID
     * @return the AgentGoldenbeanInfoVO  指定 代理商金豆明细表 信息VO
     */
-    public AgentGoldenbeanInfoVO getAgentGoldenbeanInfoByPrimaryKey(@Param(value = "PRI") Long PRI);
+    public AgentGoldenbeanInfoVO getAgentGoldenbeanInfoByPrimaryKey(@Param(value="PRI")Long PRI);
 
 }

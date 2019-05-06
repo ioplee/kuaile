@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hw.dao.GameResultRule10DAO">
+
+    <resultMap id="BaseResultMap" type="com.hw.bean.VO.GameResultRule10VO">
+        <id column="record_id" property="recordId" />
+        <result column="game_type_id" property="gameTypeId" />
+        <result column="game_id" property="gameId" />
+        <result column="game_phase_id" property="gamePhaseId" />
+        <result column="game_date" property="gameDate" />
+        <result column="rule_type" property="ruleType" />
+        <result column="value_1" property="value1" />
+        <result column="value_2" property="value2" />
+        <result column="value_3" property="value3" />
+        <result column="value_4" property="value4" />
+        <result column="value_5" property="value5" />
+        <result column="value_6" property="value6" />
+        <result column="value_7" property="value7" />
+        <result column="value_8" property="value8" />
+        <result column="value_9" property="value9" />
+        <result column="value_10" property="value10" />
+        <result column="group_sum_value" property="groupSumValue" />
+        <result column="record_status" property="recordStatus" />
+        <result column="gmt_modify" property="gmtModify" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        game_type_id,
+        game_id,
+        game_phase_id,
+        game_date,
+        rule_type,
+        value_1,
+        value_2,
+        value_3,
+        value_4,
+        value_5,
+        value_6,
+        value_7,
+        value_8,
+        value_9,
+        value_10,
+        group_sum_value,
+        record_status,
+        gmt_modify,
+        record_id
+    </sql>
+
+    <select id="getGameResultRule10ByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from game_result_rule_10
+        where record_id = #{PRI}
+    </select>
+
+    <insert id="insertGameResultRule10" keyColumn="record_id" keyProperty="recordId" parameterType="com.hw.bean.PO.GameResultRule10PO" useGeneratedKeys="true">
+        insert into game_result_rule_10 (
+            game_type_id,
+            game_id,
+            game_phase_id,
+            game_date,
+            rule_type,
+            value_1,
+            value_2,
+            value_3,
+            value_4,
+            value_5,
+            value_6,
+            value_7,
+            value_8,
+            value_9,
+            value_10,
+            group_sum_value,
+            record_status,
+            gmt_modify,
+            gmt_create,
+            gmt_modified
+        ) values (
+            #{gameTypeId},
+            #{gameId},
+            #{gamePhaseId},
+            #{gameDate},
+            #{ruleType},
+            #{value1},
+            #{value2},
+            #{value3},
+            #{value4},
+            #{value5},
+            #{value6},
+            #{value7},
+            #{value8},
+            #{value9},
+            #{value10},
+            #{groupSumValue},
+            #{recordStatus},
+            #{gmtModify},
+            NOW(),
+            NOW()
+        )
+    </insert>
+
+    <update id="updateGameResultRule10" parameterType="com.hw.bean.PO.GameResultRule10PO">
+        update game_result_rule_10 set
+            game_type_id = #{gameTypeId},
+            game_id = #{gameId},
+            game_phase_id = #{gamePhaseId},
+            game_date = #{gameDate},
+            rule_type = #{ruleType},
+            value_1 = #{value1},
+            value_2 = #{value2},
+            value_3 = #{value3},
+            value_4 = #{value4},
+            value_5 = #{value5},
+            value_6 = #{value6},
+            value_7 = #{value7},
+            value_8 = #{value8},
+            value_9 = #{value9},
+            value_10 = #{value10},
+            group_sum_value = #{groupSumValue},
+            record_status = #{recordStatus},
+            gmt_modify = #{gmtModify},
+            gmt_modified = NOW()
+        where record_id = #{recordId}
+    </update>
+
+    <select id="getPageList" parameterType="com.hw.bean.BO.QueryGameResultRule10Page" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from game_result_rule_10
+        limit #{pageIndex},#{pageSize}
+    </select>
+
+    <select id="getPageCount" parameterType="com.hw.bean.BO.QueryGameResultRule10Page" resultType="java.lang.Integer">
+        select
+            count(1)
+        from game_result_rule_10
+    </select>
+
+</mapper>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hw.dao.GameInfoDAO">
+
+    <resultMap id="BaseResultMap" type="com.hw.bean.VO.GameInfoVO">
+        <id column="game_id" property="gameId" />
+        <result column="game_name" property="gameName" />
+        <result column="game_help" property="gameHelp" />
+        <result column="game_time" property="gameTime" />
+        <result column="game_step" property="gameStep" />
+        <result column="game_count" property="gameCount" />
+        <result column="game_begin_time" property="gameBeginTime" />
+        <result column="game_edn_time" property="gameEdnTime" />
+        <result column="game_bet_min" property="gameBetMin" />
+        <result column="game_bet_max" property="gameBetMax" />
+        <result column="game_winner_amount" property="gameWinnerAmount" />
+        <result column="game_status" property="gameStatus" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        game_name,
+        game_help,
+        game_time,
+        game_step,
+        game_count,
+        game_begin_time,
+        game_edn_time,
+        game_bet_min,
+        game_bet_max,
+        game_winner_amount,
+        game_status,
+        game_id
+    </sql>
+
+    <select id="getGameInfoByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from game_info
+        where game_id = #{PRI}
+    </select>
+
+    <insert id="insertGameInfo" keyColumn="game_id" keyProperty="gameId" parameterType="com.hw.bean.PO.GameInfoPO" useGeneratedKeys="true">
+        insert into game_info (
+            game_name,
+            game_help,
+            game_time,
+            game_step,
+            game_count,
+            game_begin_time,
+            game_edn_time,
+            game_bet_min,
+            game_bet_max,
+            game_winner_amount,
+            game_status,
+            gmt_create,
+            gmt_modified
+        ) values (
+            #{gameName},
+            #{gameHelp},
+            #{gameTime},
+            #{gameStep},
+            #{gameCount},
+            #{gameBeginTime},
+            #{gameEdnTime},
+            #{gameBetMin},
+            #{gameBetMax},
+            #{gameWinnerAmount},
+            #{gameStatus},
+            NOW(),
+            NOW()
+        )
+    </insert>
+
+    <update id="updateGameInfo" parameterType="com.hw.bean.PO.GameInfoPO">
+        update game_info set
+            game_name = #{gameName},
+            game_help = #{gameHelp},
+            game_time = #{gameTime},
+            game_step = #{gameStep},
+            game_count = #{gameCount},
+            game_begin_time = #{gameBeginTime},
+            game_edn_time = #{gameEdnTime},
+            game_bet_min = #{gameBetMin},
+            game_bet_max = #{gameBetMax},
+            game_winner_amount = #{gameWinnerAmount},
+            game_status = #{gameStatus},
+            gmt_modified = NOW()
+        where game_id = #{gameId}
+    </update>
+
+    <select id="getPageList" parameterType="com.hw.bean.BO.QueryGameInfoPage" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from game_info
+        limit #{pageIndex},#{pageSize}
+    </select>
+
+    <select id="getPageCount" parameterType="com.hw.bean.BO.QueryGameInfoPage" resultType="java.lang.Integer">
+        select
+            count(1)
+        from game_info
+    </select>
+
+</mapper>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hw.dao.GamePlayerBettingDAO">
+
+    <resultMap id="BaseResultMap" type="com.hw.bean.VO.GamePlayerBettingVO">
+        <id column="betting_id" property="bettingId" />
+        <result column="game_id" property="gameId" />
+        <result column="player_id" property="playerId" />
+        <result column="game_phase" property="gamePhase" />
+        <result column="option_id" property="optionId" />
+        <result column="betting_amount" property="bettingAmount" />
+        <result column="betting_status" property="bettingStatus" />
+        <result column="gmt_modify" property="gmtModify" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        game_id,
+        player_id,
+        game_phase,
+        option_id,
+        betting_amount,
+        betting_status,
+        gmt_modify,
+        betting_id
+    </sql>
+
+    <select id="getGamePlayerBettingByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from game_player_betting
+        where betting_id = #{PRI}
+    </select>
+
+    <insert id="insertGamePlayerBetting" keyColumn="betting_id" keyProperty="bettingId" parameterType="com.hw.bean.PO.GamePlayerBettingPO" useGeneratedKeys="true">
+        insert into game_player_betting (
+            game_id,
+            player_id,
+            game_phase,
+            option_id,
+            betting_amount,
+            betting_status,
+            gmt_modify,
+            gmt_create,
+            gmt_modified
+        ) values (
+            #{gameId},
+            #{playerId},
+            #{gamePhase},
+            #{optionId},
+            #{bettingAmount},
+            #{bettingStatus},
+            #{gmtModify},
+            NOW(),
+            NOW()
+        )
+    </insert>
+
+    <update id="updateGamePlayerBetting" parameterType="com.hw.bean.PO.GamePlayerBettingPO">
+        update game_player_betting set
+            game_id = #{gameId},
+            player_id = #{playerId},
+            game_phase = #{gamePhase},
+            option_id = #{optionId},
+            betting_amount = #{bettingAmount},
+            betting_status = #{bettingStatus},
+            gmt_modify = #{gmtModify},
+            gmt_modified = NOW()
+        where betting_id = #{bettingId}
+    </update>
+
+    <select id="getPageList" parameterType="com.hw.bean.BO.QueryGamePlayerBettingPage" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from game_player_betting
+        limit #{pageIndex},#{pageSize}
+    </select>
+
+    <select id="getPageCount" parameterType="com.hw.bean.BO.QueryGamePlayerBettingPage" resultType="java.lang.Integer">
+        select
+            count(1)
+        from game_player_betting
+    </select>
+
+</mapper>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hw.dao.MemberInfoDAO">
+
+    <resultMap id="BaseResultMap" type="com.hw.bean.VO.MemberInfoVO">
+        <id column="member_id" property="memberId" />
+        <result column="member_name" property="memberName" />
+        <result column="member_nickname" property="memberNickname" />
+        <result column="user_name" property="userName" />
+        <result column="member_icon_url" property="memberIconUrl" />
+        <result column="member_mobile" property="memberMobile" />
+        <result column="member_qq" property="memberQq" />
+        <result column="member_email" property="memberEmail" />
+        <result column="member_wx" property="memberWx" />
+        <result column="is_wxcheck" property="isWxcheck" />
+        <result column="member_level" property="memberLevel" />
+        <result column="member_xp" property="memberXp" />
+        <result column="register_date" property="registerDate" />
+        <result column="member_status" property="memberStatus" />
+        <result column="extend_links" property="extendLinks" />
+        <result column="parent_id" property="parentId" />
+        <result column="last_ip" property="lastIp" />
+        <result column="last_logintime" property="lastLogintime" />
+        <result column="singin_counts" property="singinCounts" />
+        <result column="login_pass" property="loginPass" />
+        <result column="bank_pass" property="bankPass" />
+        <result column="member_type" property="memberType" />
+        <result column="game_rate" property="gameRate" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        member_name,
+        member_nickname,
+        user_name,
+        member_icon_url,
+        member_mobile,
+        member_qq,
+        member_email,
+        member_wx,
+        is_wxcheck,
+        member_level,
+        member_xp,
+        register_date,
+        member_status,
+        extend_links,
+        parent_id,
+        last_ip,
+        last_logintime,
+        singin_counts,
+        login_pass,
+        bank_pass,
+        member_type,
+        game_rate,
+        member_id
+    </sql>
+
+    <select id="getMemberInfoByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from member_info
+        where member_id = #{PRI}
+    </select>
+
+    <insert id="insertMemberInfo" keyColumn="member_id" keyProperty="memberId" parameterType="com.hw.bean.PO.MemberInfoPO" useGeneratedKeys="true">
+        insert into member_info (
+            member_name,
+            member_nickname,
+            user_name,
+            member_icon_url,
+            member_mobile,
+            member_qq,
+            member_email,
+            member_wx,
+            is_wxcheck,
+            member_level,
+            member_xp,
+            register_date,
+            member_status,
+            extend_links,
+            parent_id,
+            last_ip,
+            last_logintime,
+            singin_counts,
+            login_pass,
+            bank_pass,
+            member_type,
+            game_rate,
+            gmt_create,
+            gmt_modified
+        ) values (
+            #{memberName},
+            #{memberNickname},
+            #{userName},
+            #{memberIconUrl},
+            #{memberMobile},
+            #{memberQq},
+            #{memberEmail},
+            #{memberWx},
+            #{isWxcheck},
+            #{memberLevel},
+            #{memberXp},
+            #{registerDate},
+            #{memberStatus},
+            #{extendLinks},
+            #{parentId},
+            #{lastIp},
+            #{lastLogintime},
+            #{singinCounts},
+            #{loginPass},
+            #{bankPass},
+            #{memberType},
+            #{gameRate},
+            NOW(),
+            NOW()
+        )
+    </insert>
+
+    <update id="updateMemberInfo" parameterType="com.hw.bean.PO.MemberInfoPO">
+        update member_info set
+            member_name = #{memberName},
+            member_nickname = #{memberNickname},
+            user_name = #{userName},
+            member_icon_url = #{memberIconUrl},
+            member_mobile = #{memberMobile},
+            member_qq = #{memberQq},
+            member_email = #{memberEmail},
+            member_wx = #{memberWx},
+            is_wxcheck = #{isWxcheck},
+            member_level = #{memberLevel},
+            member_xp = #{memberXp},
+            register_date = #{registerDate},
+            member_status = #{memberStatus},
+            extend_links = #{extendLinks},
+            parent_id = #{parentId},
+            last_ip = #{lastIp},
+            last_logintime = #{lastLogintime},
+            singin_counts = #{singinCounts},
+            login_pass = #{loginPass},
+            bank_pass = #{bankPass},
+            member_type = #{memberType},
+            game_rate = #{gameRate},
+            gmt_modified = NOW()
+        where member_id = #{memberId}
+    </update>
+
+    <select id="getPageList" parameterType="com.hw.bean.BO.QueryMemberInfoPage" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from member_info
+        limit #{pageIndex},#{pageSize}
+    </select>
+
+    <select id="getPageCount" parameterType="com.hw.bean.BO.QueryMemberInfoPage" resultType="java.lang.Integer">
+        select
+            count(1)
+        from member_info
+    </select>
+
+</mapper>

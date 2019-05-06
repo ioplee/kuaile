@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hw.dao.GameOrgSourceDAO">
+
+    <resultMap id="BaseResultMap" type="com.hw.bean.VO.GameOrgSourceVO">
+        <id column="record_id" property="recordId" />
+        <result column="game_org_id" property="gameOrgId" />
+        <result column="org_value" property="orgValue" />
+        <result column="org_index" property="orgIndex" />
+        <result column="org_group" property="orgGroup" />
+        <result column="gmt_modify" property="gmtModify" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        game_org_id,
+        org_value,
+        org_index,
+        org_group,
+        gmt_modify,
+        record_id
+    </sql>
+
+    <select id="getGameOrgSourceByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from game_org_source
+        where record_id = #{PRI}
+    </select>
+
+    <insert id="insertGameOrgSource" keyColumn="record_id" keyProperty="recordId" parameterType="com.hw.bean.PO.GameOrgSourcePO" useGeneratedKeys="true">
+        insert into game_org_source (
+            game_org_id,
+            org_value,
+            org_index,
+            org_group,
+            gmt_modify,
+            gmt_create,
+            gmt_modified
+        ) values (
+            #{gameOrgId},
+            #{orgValue},
+            #{orgIndex},
+            #{orgGroup},
+            #{gmtModify},
+            NOW(),
+            NOW()
+        )
+    </insert>
+
+    <update id="updateGameOrgSource" parameterType="com.hw.bean.PO.GameOrgSourcePO">
+        update game_org_source set
+            game_org_id = #{gameOrgId},
+            org_value = #{orgValue},
+            org_index = #{orgIndex},
+            org_group = #{orgGroup},
+            gmt_modify = #{gmtModify},
+            gmt_modified = NOW()
+        where record_id = #{recordId}
+    </update>
+
+    <select id="getPageList" parameterType="com.hw.bean.BO.QueryGameOrgSourcePage" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from game_org_source
+        limit #{pageIndex},#{pageSize}
+    </select>
+
+    <select id="getPageCount" parameterType="com.hw.bean.BO.QueryGameOrgSourcePage" resultType="java.lang.Integer">
+        select
+            count(1)
+        from game_org_source
+    </select>
+
+</mapper>

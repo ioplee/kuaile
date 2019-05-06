@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hw.dao.GameTypeDAO">
+
+    <resultMap id="BaseResultMap" type="com.hw.bean.VO.GameTypeVO">
+        <id column="type_id" property="typeId" />
+        <result column="type_name" property="typeName" />
+        <result column="type_summary" property="typeSummary" />
+        <result column="type_content" property="typeContent" />
+        <result column="type_status" property="typeStatus" />
+        <result column="org_type" property="orgType" />
+        <result column="org_code" property="orgCode" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        type_name,
+        type_summary,
+        type_content,
+        type_status,
+        org_type,
+        org_code,
+        type_id
+    </sql>
+
+    <select id="getGameTypeByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from game_type
+        where type_id = #{PRI}
+    </select>
+
+    <insert id="insertGameType" keyColumn="type_id" keyProperty="typeId" parameterType="com.hw.bean.PO.GameTypePO" useGeneratedKeys="true">
+        insert into game_type (
+            type_name,
+            type_summary,
+            type_content,
+            type_status,
+            org_type,
+            org_code,
+            gmt_create,
+            gmt_modified
+        ) values (
+            #{typeName},
+            #{typeSummary},
+            #{typeContent},
+            #{typeStatus},
+            #{orgType},
+            #{orgCode},
+            NOW(),
+            NOW()
+        )
+    </insert>
+
+    <update id="updateGameType" parameterType="com.hw.bean.PO.GameTypePO">
+        update game_type set
+            type_name = #{typeName},
+            type_summary = #{typeSummary},
+            type_content = #{typeContent},
+            type_status = #{typeStatus},
+            org_type = #{orgType},
+            org_code = #{orgCode},
+            gmt_modified = NOW()
+        where type_id = #{typeId}
+    </update>
+
+    <select id="getPageList" parameterType="com.hw.bean.BO.QueryGameTypePage" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from game_type
+        limit #{pageIndex},#{pageSize}
+    </select>
+
+    <select id="getPageCount" parameterType="com.hw.bean.BO.QueryGameTypePage" resultType="java.lang.Integer">
+        select
+            count(1)
+        from game_type
+    </select>
+
+</mapper>

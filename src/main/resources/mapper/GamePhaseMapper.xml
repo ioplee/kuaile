@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hw.dao.GamePhaseDAO">
+
+    <resultMap id="BaseResultMap" type="com.hw.bean.VO.GamePhaseVO">
+        <id column="phase_id" property="phaseId" />
+        <result column="phase_no" property="phaseNo" />
+        <result column="game_id" property="gameId" />
+        <result column="phase_date" property="phaseDate" />
+        <result column="phase_status" property="phaseStatus" />
+        <result column="gmt_modify" property="gmtModify" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        phase_no,
+        game_id,
+        phase_date,
+        phase_status,
+        gmt_modify,
+        phase_id
+    </sql>
+
+    <select id="getGamePhaseByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from game_phase
+        where phase_id = #{PRI}
+    </select>
+
+    <insert id="insertGamePhase" keyColumn="phase_id" keyProperty="phaseId" parameterType="com.hw.bean.PO.GamePhasePO" useGeneratedKeys="true">
+        insert into game_phase (
+            phase_no,
+            game_id,
+            phase_date,
+            phase_status,
+            gmt_modify,
+            gmt_create,
+            gmt_modified
+        ) values (
+            #{phaseNo},
+            #{gameId},
+            #{phaseDate},
+            #{phaseStatus},
+            #{gmtModify},
+            NOW(),
+            NOW()
+        )
+    </insert>
+
+    <update id="updateGamePhase" parameterType="com.hw.bean.PO.GamePhasePO">
+        update game_phase set
+            phase_no = #{phaseNo},
+            game_id = #{gameId},
+            phase_date = #{phaseDate},
+            phase_status = #{phaseStatus},
+            gmt_modify = #{gmtModify},
+            gmt_modified = NOW()
+        where phase_id = #{phaseId}
+    </update>
+
+    <select id="getPageList" parameterType="com.hw.bean.BO.QueryGamePhasePage" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from game_phase
+        limit #{pageIndex},#{pageSize}
+    </select>
+
+    <select id="getPageCount" parameterType="com.hw.bean.BO.QueryGamePhasePage" resultType="java.lang.Integer">
+        select
+            count(1)
+        from game_phase
+    </select>
+
+</mapper>

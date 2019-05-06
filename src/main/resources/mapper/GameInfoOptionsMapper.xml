@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hw.dao.GameInfoOptionsDAO">
+
+    <resultMap id="BaseResultMap" type="com.hw.bean.VO.GameInfoOptionsVO">
+        <id column="option_id" property="optionId" />
+        <result column="option_title" property="optionTitle" />
+        <result column="option_value" property="optionValue" />
+        <result column="option_odds" property="optionOdds" />
+        <result column="option_status" property="optionStatus" />
+        <result column="游戏ID" property="游戏ID" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        option_title,
+        option_value,
+        option_odds,
+        option_status,
+        游戏ID,
+        option_id
+    </sql>
+
+    <select id="getGameInfoOptionsByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from game_info_options
+        where option_id = #{PRI}
+    </select>
+
+    <insert id="insertGameInfoOptions" keyColumn="option_id" keyProperty="optionId" parameterType="com.hw.bean.PO.GameInfoOptionsPO" useGeneratedKeys="true">
+        insert into game_info_options (
+            option_title,
+            option_value,
+            option_odds,
+            option_status,
+            游戏ID,
+            gmt_create,
+            gmt_modified
+        ) values (
+            #{optionTitle},
+            #{optionValue},
+            #{optionOdds},
+            #{optionStatus},
+            #{游戏ID},
+            NOW(),
+            NOW()
+        )
+    </insert>
+
+    <update id="updateGameInfoOptions" parameterType="com.hw.bean.PO.GameInfoOptionsPO">
+        update game_info_options set
+            option_title = #{optionTitle},
+            option_value = #{optionValue},
+            option_odds = #{optionOdds},
+            option_status = #{optionStatus},
+            游戏ID = #{游戏ID},
+            gmt_modified = NOW()
+        where option_id = #{optionId}
+    </update>
+
+    <select id="getPageList" parameterType="com.hw.bean.BO.QueryGameInfoOptionsPage" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from game_info_options
+        limit #{pageIndex},#{pageSize}
+    </select>
+
+    <select id="getPageCount" parameterType="com.hw.bean.BO.QueryGameInfoOptionsPage" resultType="java.lang.Integer">
+        select
+            count(1)
+        from game_info_options
+    </select>
+
+</mapper>

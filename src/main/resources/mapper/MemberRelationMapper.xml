@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hw.dao.MemberRelationDAO">
+
+    <resultMap id="BaseResultMap" type="com.hw.bean.VO.MemberRelationVO">
+        <id column="realtion_id" property="realtionId" />
+        <result column="player_id" property="playerId" />
+        <result column="parent_id" property="parentId" />
+        <result column="relation_level" property="relationLevel" />
+        <result column="current_cut" property="currentCut" />
+        <result column="parent_cut" property="parentCut" />
+        <result column="relation_status" property="relationStatus" />
+        <result column="gmt_modify" property="gmtModify" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        player_id,
+        parent_id,
+        relation_level,
+        current_cut,
+        parent_cut,
+        relation_status,
+        gmt_modify,
+        realtion_id
+    </sql>
+
+    <select id="getMemberRelationByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from member_relation
+        where realtion_id = #{PRI}
+    </select>
+
+    <insert id="insertMemberRelation" keyColumn="realtion_id" keyProperty="realtionId" parameterType="com.hw.bean.PO.MemberRelationPO" useGeneratedKeys="true">
+        insert into member_relation (
+            player_id,
+            parent_id,
+            relation_level,
+            current_cut,
+            parent_cut,
+            relation_status,
+            gmt_modify,
+            gmt_create,
+            gmt_modified
+        ) values (
+            #{playerId},
+            #{parentId},
+            #{relationLevel},
+            #{currentCut},
+            #{parentCut},
+            #{relationStatus},
+            #{gmtModify},
+            NOW(),
+            NOW()
+        )
+    </insert>
+
+    <update id="updateMemberRelation" parameterType="com.hw.bean.PO.MemberRelationPO">
+        update member_relation set
+            player_id = #{playerId},
+            parent_id = #{parentId},
+            relation_level = #{relationLevel},
+            current_cut = #{currentCut},
+            parent_cut = #{parentCut},
+            relation_status = #{relationStatus},
+            gmt_modify = #{gmtModify},
+            gmt_modified = NOW()
+        where realtion_id = #{realtionId}
+    </update>
+
+    <select id="getPageList" parameterType="com.hw.bean.BO.QueryMemberRelationPage" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from member_relation
+        limit #{pageIndex},#{pageSize}
+    </select>
+
+    <select id="getPageCount" parameterType="com.hw.bean.BO.QueryMemberRelationPage" resultType="java.lang.Integer">
+        select
+            count(1)
+        from member_relation
+    </select>
+
+</mapper>
