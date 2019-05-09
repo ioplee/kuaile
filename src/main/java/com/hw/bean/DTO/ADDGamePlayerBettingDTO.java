@@ -8,14 +8,13 @@ import java.io.Serializable;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:53:18
+* @create: 2019-05-10 00:11:52
 * @description: [ADD DTO Bean]玩家投注表
 **/
 
 @Data
 public class ADDGamePlayerBettingDTO implements Serializable {
 
-    private static final long serialVersionUID = 8662265913334481205L;
     /**
     *   游戏ID
     */

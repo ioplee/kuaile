@@ -10,14 +10,13 @@ import java.lang.String;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:49:10
+* @create: 2019-05-10 00:12:28
 * @description: [数据库实体BEAN]会员金豆和银行账户转账记录
 **/
 
 @Data
 public class MemberAccountChangePO implements Serializable {
 
-    private static final long serialVersionUID = -7468939231443881111L;
     /**
     *   记录ID
     */

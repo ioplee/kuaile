@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:52:38
+* @create: 2019-05-10 00:11:27
 * @description: [BO query bean]游戏开奖结果-三数求和-28
 **/
 

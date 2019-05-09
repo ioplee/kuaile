@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:52:39
+* @create: 2019-05-10 00:11:27
 * @description: [BO query bean]会员金豆账户表
 **/
 

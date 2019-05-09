@@ -10,14 +10,13 @@ import java.lang.String;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:49:10
+* @create: 2019-05-10 00:12:28
 * @description: [数据库实体BEAN]游戏开奖结果-三数组合类分类 36
 **/
 
 @Data
 public class GameResultRule36PO implements Serializable {
 
-    private static final long serialVersionUID = -5577578791237745133L;
     /**
     *   出奖记录ID
     */

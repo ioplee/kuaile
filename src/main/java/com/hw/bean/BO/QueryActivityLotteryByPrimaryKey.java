@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:52:37
+* @create: 2019-05-10 00:11:26
 * @description: [BO query bean]大转盘配置表
 **/
 

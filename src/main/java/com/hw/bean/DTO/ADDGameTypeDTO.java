@@ -8,14 +8,13 @@ import java.io.Serializable;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:53:18
+* @create: 2019-05-10 00:11:52
 * @description: [ADD DTO Bean]游戏类型表
 **/
 
 @Data
 public class ADDGameTypeDTO implements Serializable {
 
-    private static final long serialVersionUID = 850207464391995236L;
     /**
     *   类型名称
     */
@@ -44,7 +43,7 @@ public class ADDGameTypeDTO implements Serializable {
     */
     @ApiModelProperty(value = "orgType" , required = true)
     @NotNull(message = "orgType不允许为空")
-    private Integer orgType;
+    private Long orgType;
     /**
     *   数据源业务编码
     */

@@ -10,14 +10,13 @@ import java.lang.String;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:49:10
+* @create: 2019-05-10 00:12:27
 * @description: [数据库实体BEAN]玩家福利列表
 **/
 
 @Data
 public class BaseLotteryInfoPO implements Serializable {
 
-    private static final long serialVersionUID = -2721220194420075119L;
     /**
     *   福利ID
     */

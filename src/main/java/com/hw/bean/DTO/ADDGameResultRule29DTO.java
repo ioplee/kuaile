@@ -8,14 +8,13 @@ import java.io.Serializable;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:53:18
+* @create: 2019-05-10 00:11:52
 * @description: [ADD DTO Bean]游戏开奖结果-三数求和-16
 **/
 
 @Data
 public class ADDGameResultRule29DTO implements Serializable {
 
-    private static final long serialVersionUID = -581588349251159809L;
     /**
     *   游戏类型ID
     */

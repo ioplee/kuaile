@@ -8,14 +8,13 @@ import java.io.Serializable;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:53:18
+* @create: 2019-05-10 00:11:53
 * @description: [ADD DTO Bean]会员经验兑换金豆记录表
 **/
 
 @Data
 public class ADDMemberXpToBeanDTO implements Serializable {
 
-    private static final long serialVersionUID = 7302406715795702416L;
     /**
     *   会员ID
     */

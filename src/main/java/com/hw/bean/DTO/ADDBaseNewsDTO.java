@@ -8,14 +8,13 @@ import java.io.Serializable;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:53:17
+* @create: 2019-05-10 00:11:52
 * @description: [ADD DTO Bean]新闻公告表
 **/
 
 @Data
 public class ADDBaseNewsDTO implements Serializable {
 
-    private static final long serialVersionUID = 5626060519331593201L;
     /**
     *   新闻标题
     */

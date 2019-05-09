@@ -1,16 +1,19 @@
 package com.hw.services;
 
-import com.hw.bean.BO.QueryAgentInfoByPrimaryKey;
-import com.hw.bean.BO.QueryAgentInfoPage;
-import com.hw.bean.PO.AgentInfoPO;
-import com.hw.bean.VO.AgentInfoVO;
 import com.hw.utils.BaseResultDTO;
 import com.hw.utils.BatchResultDTO;
 import com.hw.utils.ResultDTO;
 
+import com.hw.bean.PO.AgentInfoPO;
+import com.hw.bean.VO.AgentInfoVO;
+import com.hw.bean.BO.QueryAgentInfoPage;
+import com.hw.bean.BO.QueryAgentInfoByPrimaryKey;
+
+import java.util.List;
+
 /**
 * @author: Robin
-* @create: 2019-05-07 01:40:30
+* @create: 2019-05-10 00:12:39
 * @description: 代理商信息表 Service 接口
 **/
 

@@ -9,14 +9,13 @@ import java.lang.Integer;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:49:10
+* @create: 2019-05-10 00:12:28
 * @description: [数据库实体BEAN]会员金豆账户明细表
 **/
 
 @Data
 public class MemberGoldenbeanInfoPO implements Serializable {
 
-    private static final long serialVersionUID = -2990638465260936430L;
     /**
     *   明细记录ID
     */

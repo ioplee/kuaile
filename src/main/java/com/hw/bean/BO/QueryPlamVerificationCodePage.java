@@ -5,7 +5,7 @@ import com.hw.utils.BaseQuery;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:52:39
+* @create: 2019-05-10 00:11:28
 * @description: [BO query bean]验证码记录表
 **/
 

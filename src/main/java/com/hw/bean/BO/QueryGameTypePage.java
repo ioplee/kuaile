@@ -5,7 +5,7 @@ import com.hw.utils.BaseQuery;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:52:38
+* @create: 2019-05-10 00:11:27
 * @description: [BO query bean]游戏类型表
 **/
 

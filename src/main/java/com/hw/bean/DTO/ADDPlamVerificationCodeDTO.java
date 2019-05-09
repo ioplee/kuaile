@@ -8,14 +8,13 @@ import java.io.Serializable;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:53:19
+* @create: 2019-05-10 00:11:53
 * @description: [ADD DTO Bean]验证码记录表
 **/
 
 @Data
 public class ADDPlamVerificationCodeDTO implements Serializable {
 
-    private static final long serialVersionUID = 7300749483264176930L;
     /**
     *   业务类型
     */

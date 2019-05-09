@@ -8,14 +8,13 @@ import java.io.Serializable;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:53:17
+* @create: 2019-05-10 00:11:51
 * @description: [ADD DTO Bean]大转盘获奖记录表
 **/
 
 @Data
 public class ADDActivityLotteryInfoDTO implements Serializable {
 
-    private static final long serialVersionUID = -2999175403397994218L;
     /**
     *   中奖会员ID
     */

@@ -10,14 +10,13 @@ import java.lang.String;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:49:10
+* @create: 2019-05-10 00:12:28
 * @description: [数据库实体BEAN]游戏开奖结果-群数第一位 10
 **/
 
 @Data
 public class GameResultRule10PO implements Serializable {
 
-    private static final long serialVersionUID = -1174164308512161576L;
     /**
     *   出奖记录ID
     */

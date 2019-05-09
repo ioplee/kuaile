@@ -10,14 +10,13 @@ import java.lang.String;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:54:06
+* @create: 2019-05-10 00:13:05
 * @description: [数据库View BEAN]游戏期数信息
 **/
 
 @Data
 public class GamePhaseVO implements Serializable {
 
-    private static final long serialVersionUID = 7341473421072542608L;
     /**
     *   游戏期数记录ID
     */

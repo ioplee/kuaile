@@ -10,14 +10,13 @@ import java.lang.String;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:54:06
+* @create: 2019-05-10 00:13:05
 * @description: [数据库View BEAN]会员每日救济金豆领取记录表
 **/
 
 @Data
 public class MemberAlmsbeanInfoVO implements Serializable {
 
-    private static final long serialVersionUID = 6990284071525815949L;
     /**
     *   领取记录ID
     */

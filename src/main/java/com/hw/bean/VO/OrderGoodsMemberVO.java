@@ -10,14 +10,13 @@ import java.lang.String;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:54:07
+* @create: 2019-05-10 00:13:06
 * @description: [数据库View BEAN]玩家购买商品表
 **/
 
 @Data
 public class OrderGoodsMemberVO implements Serializable {
 
-    private static final long serialVersionUID = 3258750598780672495L;
     /**
     *   交易记录ID
     */

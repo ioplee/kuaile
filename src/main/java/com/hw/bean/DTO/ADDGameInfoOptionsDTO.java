@@ -8,14 +8,13 @@ import java.io.Serializable;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:53:17
+* @create: 2019-05-10 00:11:52
 * @description: [ADD DTO Bean]游戏投注项
 **/
 
 @Data
 public class ADDGameInfoOptionsDTO implements Serializable {
 
-    private static final long serialVersionUID = 5526107080815426204L;
     /**
     *   选项标题
     */
@@ -46,4 +45,10 @@ public class ADDGameInfoOptionsDTO implements Serializable {
     @ApiModelProperty(value = "游戏ID" , required = true)
     @NotNull(message = "游戏ID不允许为空")
     private Long 游戏ID;
+    /**
+    *   
+    */
+    @ApiModelProperty(value = "optionMaxValue" , required = true)
+    @NotNull(message = "optionMaxValue不允许为空")
+    private Long optionMaxValue;
 }

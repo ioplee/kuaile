@@ -9,6 +9,7 @@
         <result column="option_odds" property="optionOdds" />
         <result column="option_status" property="optionStatus" />
         <result column="游戏ID" property="游戏ID" />
+        <result column="option_max_value" property="optionMaxValue" />
     </resultMap>
 
     <sql id="Base_Column_List">
@@ -17,6 +18,7 @@
         option_odds,
         option_status,
         游戏ID,
+        option_max_value,
         option_id
     </sql>
 
@@ -34,6 +36,7 @@
             option_odds,
             option_status,
             游戏ID,
+            option_max_value,
             gmt_create,
             gmt_modified
         ) values (
@@ -42,6 +45,7 @@
             #{optionOdds},
             #{optionStatus},
             #{游戏ID},
+            #{optionMaxValue},
             NOW(),
             NOW()
         )
@@ -54,6 +58,7 @@
             option_odds = #{optionOdds},
             option_status = #{optionStatus},
             游戏ID = #{游戏ID},
+            option_max_value = #{optionMaxValue},
             gmt_modified = NOW()
         where option_id = #{optionId}
     </update>

@@ -10,14 +10,13 @@ import java.lang.String;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:54:07
+* @create: 2019-05-10 00:13:06
 * @description: [数据库View BEAN]会员经验值明细表
 **/
 
 @Data
 public class MemberXpInfoVO implements Serializable {
 
-    private static final long serialVersionUID = -4477569764499285899L;
     /**
     *   明细记录ID
     */

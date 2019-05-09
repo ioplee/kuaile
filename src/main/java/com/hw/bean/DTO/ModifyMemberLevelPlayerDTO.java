@@ -8,14 +8,13 @@ import javax.validation.constraints.NotNull;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:53:31
-* @description: [ADD DTO Bean]会员等级表
+* @create: 2019-05-10 00:12:05
+* @description: [ADD DTO Bean]玩家会员等级表
 **/
 
 @Data
-public class ModifyMemberLevelDTO extends ADDMemberLevelDTO {
+public class ModifyMemberLevelPlayerDTO extends ADDMemberLevelPlayerDTO {
 
-    private static final long serialVersionUID = -7356362337693676146L;
     @ApiModelProperty(value = "等级ID" , required = true)
     @NotNull(message = "等级ID不允许为空")
     private Long levelId;

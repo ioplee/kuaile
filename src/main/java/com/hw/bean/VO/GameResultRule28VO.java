@@ -10,14 +10,13 @@ import java.lang.String;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:54:06
+* @create: 2019-05-10 00:13:05
 * @description: [数据库View BEAN]游戏开奖结果-三数求和-28
 **/
 
 @Data
 public class GameResultRule28VO implements Serializable {
 
-    private static final long serialVersionUID = 4861526065907044335L;
     /**
     *   出奖记录ID
     */

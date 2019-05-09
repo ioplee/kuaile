@@ -10,14 +10,13 @@ import java.lang.String;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:54:06
+* @create: 2019-05-10 00:13:05
 * @description: [数据库View BEAN]玩家投注表
 **/
 
 @Data
 public class GamePlayerBettingVO implements Serializable {
 
-    private static final long serialVersionUID = -2575962959354643577L;
     /**
     *   投注记录ID
     */

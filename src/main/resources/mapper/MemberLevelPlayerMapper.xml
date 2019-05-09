@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.hw.dao.MemberLevelDAO">
+<mapper namespace="com.hw.dao.MemberLevelPlayerDAO">
 
-    <resultMap id="BaseResultMap" type="com.hw.bean.VO.MemberLevelVO">
+    <resultMap id="BaseResultMap" type="com.hw.bean.VO.MemberLevelPlayerVO">
         <id column="level_id" property="levelId" />
         <result column="level_title" property="levelTitle" />
         <result column="level_xp" property="levelXp" />
@@ -26,15 +26,15 @@
         level_id
     </sql>
 
-    <select id="getMemberLevelByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <select id="getMemberLevelPlayerByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
-        from member_level
+        from member_level_player
         where level_id = #{PRI}
     </select>
 
-    <insert id="insertMemberLevel" keyColumn="level_id" keyProperty="levelId" parameterType="com.hw.bean.PO.MemberLevelPO" useGeneratedKeys="true">
-        insert into member_level (
+    <insert id="insertMemberLevelPlayer" keyColumn="level_id" keyProperty="levelId" parameterType="com.hw.bean.PO.MemberLevelPlayerPO" useGeneratedKeys="true">
+        insert into member_level_player (
             level_title,
             level_xp,
             level_up_reward,
@@ -59,8 +59,8 @@
         )
     </insert>
 
-    <update id="updateMemberLevel" parameterType="com.hw.bean.PO.MemberLevelPO">
-        update member_level set
+    <update id="updateMemberLevelPlayer" parameterType="com.hw.bean.PO.MemberLevelPlayerPO">
+        update member_level_player set
             level_title = #{levelTitle},
             level_xp = #{levelXp},
             level_up_reward = #{levelUpReward},
@@ -73,17 +73,17 @@
         where level_id = #{levelId}
     </update>
 
-    <select id="getPageList" parameterType="com.hw.bean.BO.QueryMemberLevelPage" resultMap="BaseResultMap">
+    <select id="getPageList" parameterType="com.hw.bean.BO.QueryMemberLevelPlayerPage" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
-        from member_level
+        from member_level_player
         limit #{pageIndex},#{pageSize}
     </select>
 
-    <select id="getPageCount" parameterType="com.hw.bean.BO.QueryMemberLevelPage" resultType="java.lang.Integer">
+    <select id="getPageCount" parameterType="com.hw.bean.BO.QueryMemberLevelPlayerPage" resultType="java.lang.Integer">
         select
             count(1)
-        from member_level
+        from member_level_player
     </select>
 
 </mapper>

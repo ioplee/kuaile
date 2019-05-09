@@ -10,14 +10,13 @@ import java.lang.String;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:54:07
+* @create: 2019-05-10 00:13:06
 * @description: [数据库View BEAN]会员经验兑换金豆记录表
 **/
 
 @Data
 public class MemberXpToBeanVO implements Serializable {
 
-    private static final long serialVersionUID = -3807653620685951180L;
     /**
     *   兑换记录ID
     */

@@ -8,14 +8,13 @@ import java.io.Serializable;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:53:17
+* @create: 2019-05-10 00:11:52
 * @description: [ADD DTO Bean]代理商金豆明细表
 **/
 
 @Data
 public class ADDAgentGoldenbeanInfoDTO implements Serializable {
 
-    private static final long serialVersionUID = 3819465892123845316L;
     /**
     *   代理商iD
     */

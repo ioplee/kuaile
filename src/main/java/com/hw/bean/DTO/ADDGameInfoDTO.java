@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:53:17
+* @create: 2019-05-10 00:11:52
 * @description: [ADD DTO Bean]游戏信息表
 **/
 
@@ -81,4 +81,10 @@ public class ADDGameInfoDTO implements Serializable {
     @ApiModelProperty(value = "gameStatus" , required = true)
     @NotNull(message = "gameStatus不允许为空")
     private Integer gameStatus;
+    /**
+    *   游戏类型ID
+    */
+    @ApiModelProperty(value = "gameTypeId" , required = true)
+    @NotNull(message = "gameTypeId不允许为空")
+    private Long gameTypeId;
 }

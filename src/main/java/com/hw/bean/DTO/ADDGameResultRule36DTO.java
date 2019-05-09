@@ -8,14 +8,13 @@ import java.io.Serializable;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:53:18
+* @create: 2019-05-10 00:11:52
 * @description: [ADD DTO Bean]游戏开奖结果-三数组合类分类 36
 **/
 
 @Data
 public class ADDGameResultRule36DTO implements Serializable {
 
-    private static final long serialVersionUID = 3111872044893138806L;
     /**
     *   游戏类型ID
     */

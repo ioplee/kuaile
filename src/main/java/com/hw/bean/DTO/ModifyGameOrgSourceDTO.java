@@ -8,14 +8,13 @@ import javax.validation.constraints.NotNull;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:53:30
+* @create: 2019-05-10 00:12:04
 * @description: [ADD DTO Bean]开奖数据源记录表
 **/
 
 @Data
 public class ModifyGameOrgSourceDTO extends ADDGameOrgSourceDTO {
 
-    private static final long serialVersionUID = -7169919877591644327L;
     @ApiModelProperty(value = "记录ID" , required = true)
     @NotNull(message = "记录ID不允许为空")
     private Long recordId;

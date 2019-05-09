@@ -8,14 +8,14 @@ import java.io.Serializable;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:52:39
-* @description: [BO query bean]会员等级表
+* @create: 2019-05-10 00:11:27
+* @description: [BO query bean]代理会员等级（直充模式下代理玩家各个等级的配置信息）
 **/
 
 @Data
-public class QueryMemberLevelByPrimaryKey implements Serializable{
+public class QueryMemberLevelAgentByPrimaryKey implements Serializable{
 
-    private static final long serialVersionUID = 1095095291335501235L;
+    private static final long serialVersionUID = -8484771470647347225L;
     @ApiModelProperty(value = "等级ID" , required = true)
     @NotNull(message = "等级ID不允许为空")
     private Long levelId;

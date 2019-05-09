@@ -8,14 +8,13 @@ import java.io.Serializable;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:53:18
+* @create: 2019-05-10 00:11:53
 * @description: [ADD DTO Bean]会员表
 **/
 
 @Data
 public class ADDMemberInfoDTO implements Serializable {
 
-    private static final long serialVersionUID = -99559232602831796L;
     /**
     *   会员编码
     */
@@ -132,7 +131,8 @@ public class ADDMemberInfoDTO implements Serializable {
     @NotNull(message = "bankPass不允许为空")
     private String bankPass;
     /**
-    *   玩家类型
+    *   玩家类型 
+            1 玩家 2代理玩家
     */
     @ApiModelProperty(value = "memberType" , required = true)
     @NotNull(message = "memberType不允许为空")

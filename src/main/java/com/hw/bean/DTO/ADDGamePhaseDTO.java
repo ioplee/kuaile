@@ -8,14 +8,13 @@ import java.io.Serializable;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:53:18
+* @create: 2019-05-10 00:11:52
 * @description: [ADD DTO Bean]游戏期数信息
 **/
 
 @Data
 public class ADDGamePhaseDTO implements Serializable {
 
-    private static final long serialVersionUID = -4617731345254195617L;
     /**
     *   游戏期数编号
     */

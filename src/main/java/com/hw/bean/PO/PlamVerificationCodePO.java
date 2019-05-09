@@ -10,14 +10,13 @@ import java.lang.String;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:49:11
+* @create: 2019-05-10 00:12:29
 * @description: [数据库实体BEAN]验证码记录表
 **/
 
 @Data
 public class PlamVerificationCodePO implements Serializable {
 
-    private static final long serialVersionUID = -1244805312582028349L;
     /**
     *   验证码记录ID
     */

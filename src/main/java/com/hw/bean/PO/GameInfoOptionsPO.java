@@ -10,14 +10,13 @@ import java.lang.String;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:49:10
+* @create: 2019-05-10 00:12:27
 * @description: [数据库实体BEAN]游戏投注项
 **/
 
 @Data
 public class GameInfoOptionsPO implements Serializable {
 
-    private static final long serialVersionUID = -2773544146840986990L;
     /**
     *   选项ID
     */
@@ -42,4 +41,8 @@ public class GameInfoOptionsPO implements Serializable {
     *   游戏ID
     */
     private Long 游戏ID;
+    /**
+    *   
+    */
+    private Long optionMaxValue;
 }

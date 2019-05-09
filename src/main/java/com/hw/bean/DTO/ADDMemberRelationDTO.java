@@ -8,14 +8,13 @@ import java.io.Serializable;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:53:18
+* @create: 2019-05-10 00:11:53
 * @description: [ADD DTO Bean]玩家关系族谱表
 **/
 
 @Data
 public class ADDMemberRelationDTO implements Serializable {
 
-    private static final long serialVersionUID = -943779217254880196L;
     /**
     *   玩家ID
     */

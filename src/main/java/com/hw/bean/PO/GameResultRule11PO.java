@@ -10,14 +10,13 @@ import java.lang.String;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:49:10
+* @create: 2019-05-10 00:12:28
 * @description: [数据库实体BEAN]游戏开奖结果-二数求和 11
 **/
 
 @Data
 public class GameResultRule11PO implements Serializable {
 
-    private static final long serialVersionUID = 7548367713376649542L;
     /**
     *   出奖记录ID
     */

@@ -10,14 +10,13 @@ import java.lang.String;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:54:05
+* @create: 2019-05-10 00:13:04
 * @description: [数据库View BEAN]大转盘配置表
 **/
 
 @Data
 public class ActivityLotteryVO implements Serializable {
 
-    private static final long serialVersionUID = -3151077102151422768L;
     /**
     *   奖项ID
     */

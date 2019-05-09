@@ -10,14 +10,13 @@ import java.lang.String;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:54:07
+* @create: 2019-05-10 00:13:06
 * @description: [数据库View BEAN]用户授信记录表
 **/
 
 @Data
 public class SecurityTokenVO implements Serializable {
 
-    private static final long serialVersionUID = -3322034757001801706L;
     /**
     *   授信记录ID
     */

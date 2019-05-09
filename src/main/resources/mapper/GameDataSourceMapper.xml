@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hw.dao.GameDataSourceDAO">
+
+    <resultMap id="BaseResultMap" type="com.hw.bean.VO.GameDataSourceVO">
+        <id column="source_id" property="sourceId" />
+        <result column="source_name" property="sourceName" />
+        <result column="source_desc" property="sourceDesc" />
+        <result column="source_step_time" property="sourceStepTime" />
+        <result column="source_start_time" property="sourceStartTime" />
+        <result column="source_end_time" property="sourceEndTime" />
+        <result column="source_status" property="sourceStatus" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        source_name,
+        source_desc,
+        source_step_time,
+        source_start_time,
+        source_end_time,
+        source_status,
+        source_id
+    </sql>
+
+    <select id="getGameDataSourceByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from game_data_source
+        where source_id = #{PRI}
+    </select>
+
+    <insert id="insertGameDataSource" keyColumn="source_id" keyProperty="sourceId" parameterType="com.hw.bean.PO.GameDataSourcePO" useGeneratedKeys="true">
+        insert into game_data_source (
+            source_name,
+            source_desc,
+            source_step_time,
+            source_start_time,
+            source_end_time,
+            source_status,
+            gmt_create,
+            gmt_modified
+        ) values (
+            #{sourceName},
+            #{sourceDesc},
+            #{sourceStepTime},
+            #{sourceStartTime},
+            #{sourceEndTime},
+            #{sourceStatus},
+            NOW(),
+            NOW()
+        )
+    </insert>
+
+    <update id="updateGameDataSource" parameterType="com.hw.bean.PO.GameDataSourcePO">
+        update game_data_source set
+            source_name = #{sourceName},
+            source_desc = #{sourceDesc},
+            source_step_time = #{sourceStepTime},
+            source_start_time = #{sourceStartTime},
+            source_end_time = #{sourceEndTime},
+            source_status = #{sourceStatus},
+            gmt_modified = NOW()
+        where source_id = #{sourceId}
+    </update>
+
+    <select id="getPageList" parameterType="com.hw.bean.BO.QueryGameDataSourcePage" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from game_data_source
+        limit #{pageIndex},#{pageSize}
+    </select>
+
+    <select id="getPageCount" parameterType="com.hw.bean.BO.QueryGameDataSourcePage" resultType="java.lang.Integer">
+        select
+            count(1)
+        from game_data_source
+    </select>
+
+</mapper>

@@ -10,14 +10,13 @@ import java.lang.String;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:54:06
+* @create: 2019-05-10 00:13:05
 * @description: [数据库View BEAN]游戏类型表
 **/
 
 @Data
 public class GameTypeVO implements Serializable {
 
-    private static final long serialVersionUID = -3926140598849066164L;
     /**
     *   类型ID
     */
@@ -41,7 +40,7 @@ public class GameTypeVO implements Serializable {
     /**
     *   数据源类型
     */
-    private Integer orgType;
+    private Long orgType;
     /**
     *   数据源业务编码
     */

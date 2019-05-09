@@ -10,14 +10,13 @@ import java.lang.String;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:49:11
+* @create: 2019-05-10 00:12:28
 * @description: [数据库实体BEAN]会员表
 **/
 
 @Data
 public class MemberInfoPO implements Serializable {
 
-    private static final long serialVersionUID = 8645229797715483685L;
     /**
     *   会员ID
     */
@@ -103,7 +102,8 @@ public class MemberInfoPO implements Serializable {
     */
     private String bankPass;
     /**
-    *   玩家类型
+    *   玩家类型 
+            1 玩家 2代理玩家
     */
     private Integer memberType;
     /**

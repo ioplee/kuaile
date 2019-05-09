@@ -8,14 +8,13 @@ import java.io.Serializable;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:53:18
+* @create: 2019-05-10 00:11:52
 * @description: [ADD DTO Bean]会员金豆和银行账户转账记录
 **/
 
 @Data
 public class ADDMemberAccountChangeDTO implements Serializable {
 
-    private static final long serialVersionUID = -790255537366975800L;
     /**
     *   会员ID
     */

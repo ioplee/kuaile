@@ -10,14 +10,13 @@ import java.lang.String;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:54:06
+* @create: 2019-05-10 00:13:05
 * @description: [数据库View BEAN]banner广告图
 **/
 
 @Data
 public class BaseBannerVO implements Serializable {
 
-    private static final long serialVersionUID = 8977338256354661084L;
     /**
     *   图片ID
     */

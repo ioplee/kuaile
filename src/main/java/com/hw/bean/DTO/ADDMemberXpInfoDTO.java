@@ -8,14 +8,13 @@ import java.io.Serializable;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:53:18
+* @create: 2019-05-10 00:11:53
 * @description: [ADD DTO Bean]会员经验值明细表
 **/
 
 @Data
 public class ADDMemberXpInfoDTO implements Serializable {
 
-    private static final long serialVersionUID = 1634441209757583617L;
     /**
     *   会员ID
     */

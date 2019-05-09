@@ -8,14 +8,13 @@ import java.io.Serializable;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:53:19
+* @create: 2019-05-10 00:11:53
 * @description: [ADD DTO Bean]用户授信记录表
 **/
 
 @Data
 public class ADDSecurityTokenDTO implements Serializable {
 
-    private static final long serialVersionUID = 7721696447587175740L;
     /**
     *   用户类型
     */

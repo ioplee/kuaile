@@ -8,14 +8,13 @@ import javax.validation.constraints.NotNull;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:53:31
+* @create: 2019-05-10 00:12:05
 * @description: [ADD DTO Bean]会员经验兑换金豆记录表
 **/
 
 @Data
 public class ModifyMemberXpToBeanDTO extends ADDMemberXpToBeanDTO {
 
-    private static final long serialVersionUID = -2915847940648803854L;
     @ApiModelProperty(value = "兑换记录ID" , required = true)
     @NotNull(message = "兑换记录ID不允许为空")
     private Long exchangeId;

@@ -10,14 +10,13 @@ import java.lang.String;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:49:11
+* @create: 2019-05-10 00:12:28
 * @description: [数据库实体BEAN]玩家关系族谱表
 **/
 
 @Data
 public class MemberRelationPO implements Serializable {
 
-    private static final long serialVersionUID = -4774018996942507942L;
     /**
     *   关系记录ID
     */

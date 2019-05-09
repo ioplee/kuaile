@@ -10,14 +10,13 @@ import java.lang.String;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:49:11
-* @description: [数据库实体BEAN]会员等级表
+* @create: 2019-05-10 00:12:28
+* @description: [数据库实体BEAN]玩家会员等级表
 **/
 
 @Data
-public class MemberLevelPO implements Serializable {
+public class MemberLevelPlayerPO implements Serializable {
 
-    private static final long serialVersionUID = -6512631523516459708L;
     /**
     *   等级ID
     */

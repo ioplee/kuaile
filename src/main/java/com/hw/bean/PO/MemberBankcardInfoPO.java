@@ -9,14 +9,13 @@ import java.lang.Integer;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:49:10
+* @create: 2019-05-10 00:12:28
 * @description: [数据库实体BEAN]会员银行账户明细表
 **/
 
 @Data
 public class MemberBankcardInfoPO implements Serializable {
 
-    private static final long serialVersionUID = 6827513280613241469L;
     /**
     *   明细ID
     */

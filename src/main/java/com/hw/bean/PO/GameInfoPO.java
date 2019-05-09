@@ -10,14 +10,13 @@ import java.lang.String;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:49:10
+* @create: 2019-05-10 00:12:27
 * @description: [数据库实体BEAN]游戏信息表
 **/
 
 @Data
 public class GameInfoPO implements Serializable {
 
-    private static final long serialVersionUID = -8295992092116060628L;
     /**
     *   游戏ID
     */
@@ -66,4 +65,8 @@ public class GameInfoPO implements Serializable {
     *   游戏状态
     */
     private Integer gameStatus;
+    /**
+    *   游戏类型ID
+    */
+    private Long gameTypeId;
 }

@@ -8,14 +8,13 @@ import java.io.Serializable;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:53:17
+* @create: 2019-05-10 00:11:52
 * @description: [ADD DTO Bean]开奖数据源记录表
 **/
 
 @Data
 public class ADDGameOrgSourceDTO implements Serializable {
 
-    private static final long serialVersionUID = 5920466515462226984L;
     /**
     *   游戏类型ID
     */

@@ -10,14 +10,13 @@ import java.lang.String;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:54:06
+* @create: 2019-05-10 00:13:05
 * @description: [数据库View BEAN]新闻公告表
 **/
 
 @Data
 public class BaseNewsVO implements Serializable {
 
-    private static final long serialVersionUID = 8606862461559577898L;
     /**
     *   新闻ID
     */

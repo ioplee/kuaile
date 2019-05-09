@@ -8,14 +8,13 @@ import java.io.Serializable;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:53:18
-* @description: [ADD DTO Bean]会员等级表
+* @create: 2019-05-10 00:11:53
+* @description: [ADD DTO Bean]玩家会员等级表
 **/
 
 @Data
-public class ADDMemberLevelDTO implements Serializable {
+public class ADDMemberLevelPlayerDTO implements Serializable {
 
-    private static final long serialVersionUID = -3597956901721212540L;
     /**
     *   等级标题
     */

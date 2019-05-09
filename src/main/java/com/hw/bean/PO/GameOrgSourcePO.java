@@ -10,14 +10,13 @@ import java.lang.String;
 
 /**
 * @author: Robin
-* @create: 2019-05-07 00:49:10
+* @create: 2019-05-10 00:12:27
 * @description: [数据库实体BEAN]开奖数据源记录表
 **/
 
 @Data
 public class GameOrgSourcePO implements Serializable {
 
-    private static final long serialVersionUID = -4671713580049479915L;
     /**
     *   记录ID
     */
