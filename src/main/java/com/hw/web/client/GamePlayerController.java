@@ -2,21 +2,15 @@ package com.hw.web.client;/**
  * Created by robin on 2019/4/16.
  */
 
-import com.hw.bean.DTO.memberInfo.AddMemberInfoDTO;
 import com.hw.services.MemberInfoService;
-import com.hw.utils.BaseResultDTO;
-import com.hw.utils.JWTUtil;
-import com.hw.utils.PropertiesCopyUtil;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * @author: Robin
@@ -34,7 +28,7 @@ public class GamePlayerController implements Serializable{
 
     @Autowired
     private MemberInfoService memberInfoService;
-
+/**
     @ApiOperation(value = "玩家注册")
     @PostMapping(value = "register")
     public BaseResultDTO register(@RequestBody @Validated @ModelAttribute(value = "")AddMemberInfoDTO addMemberInfoDTO,HttpServletRequest request){
@@ -54,7 +48,7 @@ public class GamePlayerController implements Serializable{
         return memberInfoService.addMember(memberInfoPO);
     }
 
-
+*/
 
 
 }

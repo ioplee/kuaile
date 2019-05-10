@@ -47,4 +47,26 @@ public class Swagger2 {
                 .version("1.0")
                 .build();
     }
+
+    @Bean
+    public Docket createServerRestApi(){
+        return new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(serverApiInfo())
+                .enable(enableSwagger)
+                .groupName("server")
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.hw.web.server"))
+                .paths(PathSelectors.any())
+                .build();
+    }
+
+    private ApiInfo serverApiInfo() {
+        return new ApiInfoBuilder()
+                .title("gameapi server")
+                .description("hw-game V1.0")
+                .termsOfServiceUrl("")
+                .contact("我是谁")
+                .version("1.0")
+                .build();
+    }
 }
