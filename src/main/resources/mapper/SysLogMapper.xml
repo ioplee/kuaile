@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hw.dao.SysLogDAO">
+
+    <resultMap id="BaseResultMap" type="com.hw.bean.VO.SysLogVO">
+        <id column="log_id" property="logId" />
+        <result column="log_sys" property="logSys" />
+        <result column="log_module" property="logModule" />
+        <result column="log_function" property="logFunction" />
+        <result column="log_user_id" property="logUserId" />
+        <result column="log_biz_message" property="logBizMessage" />
+        <result column="log_biz_time" property="logBizTime" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        log_sys,
+        log_module,
+        log_function,
+        log_user_id,
+        log_biz_message,
+        log_biz_time,
+        log_id
+    </sql>
+
+    <select id="getSysLogByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from sys_log
+        where log_id = #{PRI}
+    </select>
+
+    <insert id="insertSysLog" keyColumn="log_id" keyProperty="logId" parameterType="com.hw.bean.PO.SysLogPO" useGeneratedKeys="true">
+        insert into sys_log (
+            log_sys,
+            log_module,
+            log_function,
+            log_user_id,
+            log_biz_message,
+            log_biz_time,
+            gmt_create,
+            gmt_modified
+        ) values (
+            #{logSys},
+            #{logModule},
+            #{logFunction},
+            #{logUserId},
+            #{logBizMessage},
+            #{logBizTime},
+            NOW(),
+            NOW()
+        )
+    </insert>
+
+    <update id="updateSysLog" parameterType="com.hw.bean.PO.SysLogPO">
+        update sys_log set
+            log_sys = #{logSys},
+            log_module = #{logModule},
+            log_function = #{logFunction},
+            log_user_id = #{logUserId},
+            log_biz_message = #{logBizMessage},
+            log_biz_time = #{logBizTime},
+            gmt_modified = NOW()
+        where log_id = #{logId}
+    </update>
+
+    <select id="getPageList" parameterType="com.hw.bean.BO.QuerySysLogPage" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from sys_log
+        limit #{pageIndex},#{pageSize}
+    </select>
+
+    <select id="getPageCount" parameterType="com.hw.bean.BO.QuerySysLogPage" resultType="java.lang.Integer">
+        select
+            count(1)
+        from sys_log
+    </select>
+
+</mapper>

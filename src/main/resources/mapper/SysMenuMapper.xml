@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hw.dao.SysMenuDAO">
+
+    <resultMap id="BaseResultMap" type="com.hw.bean.VO.SysMenuVO">
+        <id column="menu_id" property="menuId" />
+        <result column="menu_name" property="menuName" />
+        <result column="menu_desc" property="menuDesc" />
+        <result column="menu_url" property="menuUrl" />
+        <result column="menu_parent" property="menuParent" />
+        <result column="menu_type" property="menuType" />
+        <result column="menu_status" property="menuStatus" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        menu_name,
+        menu_desc,
+        menu_url,
+        menu_parent,
+        menu_type,
+        menu_status,
+        menu_id
+    </sql>
+
+    <select id="getSysMenuByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from sys_menu
+        where menu_id = #{PRI}
+    </select>
+
+    <insert id="insertSysMenu" keyColumn="menu_id" keyProperty="menuId" parameterType="com.hw.bean.PO.SysMenuPO" useGeneratedKeys="true">
+        insert into sys_menu (
+            menu_name,
+            menu_desc,
+            menu_url,
+            menu_parent,
+            menu_type,
+            menu_status,
+            gmt_create,
+            gmt_modified
+        ) values (
+            #{menuName},
+            #{menuDesc},
+            #{menuUrl},
+            #{menuParent},
+            #{menuType},
+            #{menuStatus},
+            NOW(),
+            NOW()
+        )
+    </insert>
+
+    <update id="updateSysMenu" parameterType="com.hw.bean.PO.SysMenuPO">
+        update sys_menu set
+            menu_name = #{menuName},
+            menu_desc = #{menuDesc},
+            menu_url = #{menuUrl},
+            menu_parent = #{menuParent},
+            menu_type = #{menuType},
+            menu_status = #{menuStatus},
+            gmt_modified = NOW()
+        where menu_id = #{menuId}
+    </update>
+
+    <select id="getPageList" parameterType="com.hw.bean.BO.QuerySysMenuPage" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from sys_menu
+        limit #{pageIndex},#{pageSize}
+    </select>
+
+    <select id="getPageCount" parameterType="com.hw.bean.BO.QuerySysMenuPage" resultType="java.lang.Integer">
+        select
+            count(1)
+        from sys_menu
+    </select>
+
+</mapper>
