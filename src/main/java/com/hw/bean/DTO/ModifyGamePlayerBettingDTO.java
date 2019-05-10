@@ -15,6 +15,7 @@ import javax.validation.constraints.NotNull;
 @Data
 public class ModifyGamePlayerBettingDTO extends ADDGamePlayerBettingDTO {
 
+    private static final long serialVersionUID = -702531997686712978L;
     @ApiModelProperty(value = "投注记录ID" , required = true)
     @NotNull(message = "投注记录ID不允许为空")
     private Long bettingId;

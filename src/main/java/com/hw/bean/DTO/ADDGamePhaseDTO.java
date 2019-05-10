@@ -15,6 +15,7 @@ import java.io.Serializable;
 @Data
 public class ADDGamePhaseDTO implements Serializable {
 
+    private static final long serialVersionUID = -4617731345254195617L;
     /**
     *   游戏期数编号
     */

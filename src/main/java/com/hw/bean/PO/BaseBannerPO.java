@@ -17,6 +17,7 @@ import java.lang.String;
 @Data
 public class BaseBannerPO implements Serializable {
 
+    private static final long serialVersionUID = 8317685277389481041L;
     /**
     *   图片ID
     */

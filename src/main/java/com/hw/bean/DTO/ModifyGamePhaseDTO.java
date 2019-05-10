@@ -15,6 +15,7 @@ import javax.validation.constraints.NotNull;
 @Data
 public class ModifyGamePhaseDTO extends ADDGamePhaseDTO {
 
+    private static final long serialVersionUID = 9131716170604251944L;
     @ApiModelProperty(value = "游戏期数记录ID" , required = true)
     @NotNull(message = "游戏期数记录ID不允许为空")
     private Long phaseId;

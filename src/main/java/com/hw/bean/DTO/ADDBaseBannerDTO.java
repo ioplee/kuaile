@@ -15,6 +15,7 @@ import java.io.Serializable;
 @Data
 public class ADDBaseBannerDTO implements Serializable {
 
+    private static final long serialVersionUID = -7658344228623550559L;
     /**
     *   图片地址
     */

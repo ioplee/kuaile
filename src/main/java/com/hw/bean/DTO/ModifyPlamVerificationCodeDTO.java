@@ -15,6 +15,7 @@ import javax.validation.constraints.NotNull;
 @Data
 public class ModifyPlamVerificationCodeDTO extends ADDPlamVerificationCodeDTO {
 
+    private static final long serialVersionUID = -8302618591483324944L;
     @ApiModelProperty(value = "验证码记录ID" , required = true)
     @NotNull(message = "验证码记录ID不允许为空")
     private Long codeId;

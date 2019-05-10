@@ -15,6 +15,7 @@ import java.io.Serializable;
 @Data
 public class ADDMemberLevelPlayerDTO implements Serializable {
 
+    private static final long serialVersionUID = -4835488924530817743L;
     /**
     *   等级标题
     */

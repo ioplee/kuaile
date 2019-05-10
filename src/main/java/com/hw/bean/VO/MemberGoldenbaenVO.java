@@ -16,6 +16,7 @@ import java.lang.Integer;
 @Data
 public class MemberGoldenbaenVO implements Serializable {
 
+    private static final long serialVersionUID = 2141532142689494496L;
     /**
     *   记录ID
     */

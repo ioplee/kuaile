@@ -16,6 +16,7 @@ import java.lang.Integer;
 @Data
 public class MemberBankcardPO implements Serializable {
 
+    private static final long serialVersionUID = -1057407366294732119L;
     /**
     *   卡ID
     */

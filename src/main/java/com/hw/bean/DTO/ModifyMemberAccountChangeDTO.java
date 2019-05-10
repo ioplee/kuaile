@@ -15,6 +15,7 @@ import javax.validation.constraints.NotNull;
 @Data
 public class ModifyMemberAccountChangeDTO extends ADDMemberAccountChangeDTO {
 
+    private static final long serialVersionUID = -2818619133960675571L;
     @ApiModelProperty(value = "记录ID" , required = true)
     @NotNull(message = "记录ID不允许为空")
     private Long infoId;

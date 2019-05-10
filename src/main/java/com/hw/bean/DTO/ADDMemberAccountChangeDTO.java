@@ -15,6 +15,7 @@ import java.io.Serializable;
 @Data
 public class ADDMemberAccountChangeDTO implements Serializable {
 
+    private static final long serialVersionUID = -790255537366975800L;
     /**
     *   会员ID
     */

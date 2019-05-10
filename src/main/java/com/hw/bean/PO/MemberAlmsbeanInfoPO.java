@@ -17,6 +17,7 @@ import java.lang.String;
 @Data
 public class MemberAlmsbeanInfoPO implements Serializable {
 
+    private static final long serialVersionUID = -1270148247022081336L;
     /**
     *   领取记录ID
     */

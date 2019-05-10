@@ -15,6 +15,7 @@ import javax.validation.constraints.NotNull;
 @Data
 public class ModifyMemberBankcardDTO extends ADDMemberBankcardDTO {
 
+    private static final long serialVersionUID = 4181446786216465787L;
     @ApiModelProperty(value = "卡ID" , required = true)
     @NotNull(message = "卡ID不允许为空")
     private Long cardId;

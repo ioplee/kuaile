@@ -16,6 +16,7 @@ import java.lang.Integer;
 @Data
 public class AgentGoldenbeanInfoVO implements Serializable {
 
+    private static final long serialVersionUID = -6561589173904286648L;
     /**
     *   明细记录ID
     */

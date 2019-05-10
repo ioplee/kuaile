@@ -15,6 +15,7 @@ import java.io.Serializable;
 @Data
 public class ADDOrderGoodsMemberDTO implements Serializable {
 
+    private static final long serialVersionUID = 5321308583527073563L;
     /**
     *   玩家ID
     */

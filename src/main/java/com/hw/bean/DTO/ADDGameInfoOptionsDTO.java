@@ -15,6 +15,7 @@ import java.io.Serializable;
 @Data
 public class ADDGameInfoOptionsDTO implements Serializable {
 
+    private static final long serialVersionUID = -7267773426080877127L;
     /**
     *   选项标题
     */

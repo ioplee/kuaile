@@ -15,6 +15,7 @@ import javax.validation.constraints.NotNull;
 @Data
 public class ModifyGameInfoDTO extends ADDGameInfoDTO {
 
+    private static final long serialVersionUID = -5814423641353797484L;
     @ApiModelProperty(value = "游戏ID" , required = true)
     @NotNull(message = "游戏ID不允许为空")
     private Long gameId;

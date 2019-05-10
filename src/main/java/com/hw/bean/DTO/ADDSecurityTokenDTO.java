@@ -15,6 +15,7 @@ import java.io.Serializable;
 @Data
 public class ADDSecurityTokenDTO implements Serializable {
 
+    private static final long serialVersionUID = 7721696447587175740L;
     /**
     *   用户类型
     */

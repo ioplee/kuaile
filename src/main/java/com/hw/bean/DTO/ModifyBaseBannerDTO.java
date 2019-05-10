@@ -15,6 +15,7 @@ import javax.validation.constraints.NotNull;
 @Data
 public class ModifyBaseBannerDTO extends ADDBaseBannerDTO {
 
+    private static final long serialVersionUID = 1908284149514981601L;
     @ApiModelProperty(value = "图片ID" , required = true)
     @NotNull(message = "图片ID不允许为空")
     private Long bannerId;

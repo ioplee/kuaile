@@ -17,6 +17,7 @@ import java.lang.String;
 @Data
 public class BaseNewsPO implements Serializable {
 
+    private static final long serialVersionUID = 1747264664376877289L;
     /**
     *   新闻ID
     */

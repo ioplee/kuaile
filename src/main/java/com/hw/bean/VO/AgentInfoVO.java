@@ -17,6 +17,7 @@ import java.lang.String;
 @Data
 public class AgentInfoVO implements Serializable {
 
+    private static final long serialVersionUID = 5635721870603063395L;
     /**
     *   代理商ID
     */

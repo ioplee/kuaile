@@ -15,6 +15,7 @@ import javax.validation.constraints.NotNull;
 @Data
 public class ModifyMemberLevelPlayerDTO extends ADDMemberLevelPlayerDTO {
 
+    private static final long serialVersionUID = -6708903989781625611L;
     @ApiModelProperty(value = "等级ID" , required = true)
     @NotNull(message = "等级ID不允许为空")
     private Long levelId;

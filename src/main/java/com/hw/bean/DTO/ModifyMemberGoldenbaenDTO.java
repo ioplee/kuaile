@@ -15,6 +15,7 @@ import javax.validation.constraints.NotNull;
 @Data
 public class ModifyMemberGoldenbaenDTO extends ADDMemberGoldenbaenDTO {
 
+    private static final long serialVersionUID = 1029364235736637411L;
     @ApiModelProperty(value = "记录ID" , required = true)
     @NotNull(message = "记录ID不允许为空")
     private Long beanId;

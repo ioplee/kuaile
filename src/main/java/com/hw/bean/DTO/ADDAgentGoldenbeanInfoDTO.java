@@ -15,6 +15,7 @@ import java.io.Serializable;
 @Data
 public class ADDAgentGoldenbeanInfoDTO implements Serializable {
 
+    private static final long serialVersionUID = 3819465892123845316L;
     /**
     *   代理商iD
     */

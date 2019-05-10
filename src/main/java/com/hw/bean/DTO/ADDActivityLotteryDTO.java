@@ -15,6 +15,7 @@ import java.io.Serializable;
 @Data
 public class ADDActivityLotteryDTO implements Serializable {
 
+    private static final long serialVersionUID = -7228923657434888189L;
     /**
     *   奖项名称
     */

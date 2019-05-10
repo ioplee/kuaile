@@ -17,6 +17,7 @@ import java.lang.String;
 @Data
 public class MemberSigninInfoVO implements Serializable {
 
+    private static final long serialVersionUID = 6040669472503938595L;
     /**
     *   签到记录ID
     */

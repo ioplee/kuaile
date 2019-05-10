@@ -15,6 +15,7 @@ import java.io.Serializable;
 @Data
 public class ADDMemberLevelAgentDTO implements Serializable {
 
+    private static final long serialVersionUID = 8868278762794394928L;
     /**
     *   等级名称
     */

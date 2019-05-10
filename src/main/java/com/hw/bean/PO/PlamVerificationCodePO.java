@@ -17,6 +17,7 @@ import java.lang.String;
 @Data
 public class PlamVerificationCodePO implements Serializable {
 
+    private static final long serialVersionUID = -1244805312582028349L;
     /**
     *   验证码记录ID
     */
