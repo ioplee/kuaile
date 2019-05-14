@@ -1,7 +1,7 @@
 package com.hw.bean.BO;
 
-import lombok.Data;
 import com.hw.utils.BaseQuery;
+import lombok.Data;
 
 /**
 * @author: Robin
@@ -13,4 +13,5 @@ import com.hw.utils.BaseQuery;
 public class QuerySysRelationRoleResourcePage extends BaseQuery {
 
     private static final long serialVersionUID = -4116498441495013124L;
+
 }

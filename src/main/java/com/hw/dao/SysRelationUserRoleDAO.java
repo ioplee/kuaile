@@ -4,6 +4,7 @@ import com.hw.bean.BO.QuerySysRelationUserRolePage;
 import com.hw.bean.PO.SysRelationUserRolePO;
 import com.hw.bean.VO.SysRelationUserRoleVO;
 
+import com.hw.bean.VO.SysRoleVO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -55,5 +56,11 @@ public interface SysRelationUserRoleDAO{
     * @return the SysRelationUserRoleVO  指定 用户具有角色记录表 信息VO
     */
     public SysRelationUserRoleVO getSysRelationUserRoleByPrimaryKey(@Param(value="PRI")Long PRI);
+
+    public Integer insertUserRoles(List<SysRelationUserRolePO> sysRelationUserRolePOs);
+
+    public Integer removeRoleByUser(@Param("userID") Long userID);
+
+    public List<SysRoleVO> getRoleListByUser(@Param("userID") Long userID);
 
 }

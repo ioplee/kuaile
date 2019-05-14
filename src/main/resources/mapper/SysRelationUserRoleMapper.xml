@@ -9,6 +9,13 @@
         <result column="info_status" property="infoStatus" />
     </resultMap>
 
+    <resultMap id="RoleResultMap" type="com.hw.bean.VO.SysRoleVO">
+        <id column="role_id" property="roleId" />
+        <result column="role_name" property="roleName" />
+        <result column="role_desc" property="roleDesc" />
+        <result column="role_status" property="roleStatus" />
+    </resultMap>
+
     <sql id="Base_Column_List">
         user_id,
         role_id,
@@ -38,6 +45,24 @@
             NOW()
         )
     </insert>
+    <insert id="insertUserRoles">
+        insert into sys_relation_user_role (
+            user_id,
+            role_id,
+            info_status,
+            gmt_create,
+            gmt_modified
+        ) values
+        <foreach collection ="list" item="po" index= "index" separator =",">
+        (
+            #{po.userId},
+            #{po.roleId},
+            #{po.infoStatus},
+            NOW(),
+            NOW()
+        )
+        </foreach>
+    </insert>
 
     <update id="updateSysRelationUserRole" parameterType="com.hw.bean.PO.SysRelationUserRolePO">
         update sys_relation_user_role set
@@ -46,6 +71,12 @@
             info_status = #{infoStatus},
             gmt_modified = NOW()
         where info_id = #{infoId}
+    </update>
+    <update id="removeRoleByUser">
+        update sys_relation_user_role set
+            info_status = -1,
+            gmt_modified = NOW()
+        where user_id = #{userID} and info_status = 1
     </update>
 
     <select id="getPageList" parameterType="com.hw.bean.BO.QuerySysRelationUserRolePage" resultMap="BaseResultMap">
@@ -59,6 +90,19 @@
         select
             count(1)
         from sys_relation_user_role
+    </select>
+    <select id="getRoleListByUser" resultMap="RoleResultMap">
+        SELECT
+            r.role_id ,
+            r.role_name ,
+            r.role_desc ,
+            r.role_status
+        FROM
+            sys_relation_user_role t
+        LEFT JOIN sys_role r ON t.role_id = r.role_id
+        AND t.info_status = 1
+        AND r.role_status = 1
+        AND t.user_id = #{userID}
     </select>
 
 </mapper>

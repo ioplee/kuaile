@@ -3,10 +3,7 @@ package com.hw.bean.VO;
 import lombok.Data;
 
 import java.io.Serializable;
-
-import java.lang.Long;
-import java.lang.Integer;
-import java.lang.String;
+import java.util.List;
 
 /**
 * @author: Robin
@@ -54,4 +51,9 @@ public class SysUserVO implements Serializable {
     *   用户最后登录时间
     */
     private String lastLoginTime;
+
+    /**
+     * 用户具有角色集合
+     */
+    private List<SysRoleVO> roleVOList;
 }

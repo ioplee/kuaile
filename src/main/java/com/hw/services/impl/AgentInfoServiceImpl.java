@@ -1,5 +1,6 @@
 package com.hw.services.impl;
 
+import com.hw.utils.MD5;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,14 +39,22 @@ public class AgentInfoServiceImpl implements AgentInfoService{
     public BaseResultDTO addAgentInfo(AgentInfoPO agentInfoPO){
         BaseResultDTO addResultDTO = new BaseResultDTO();
         try{
-            Integer number = agentInfoDAO.insertAgentInfo(agentInfoPO);
-            if(number == 1){
+            if (agentInfoDAO.exisitAccount(agentInfoPO.getAgentAccount()) == 0){
+                String password = MD5.md5(agentInfoPO.getAgentPassword());
+                agentInfoPO.setAgentPassword(password);
+                Integer number = agentInfoDAO.insertAgentInfo(agentInfoPO);
+                if(number == 1){
+                    addResultDTO.setResultCode("1");
+                    addResultDTO.setSuccess(true);
+                }else{
+                    addResultDTO.setErrorDetail("添加代理商信息表信息失败");
+                    addResultDTO.setSuccess(true);
+                    addResultDTO.setResultCode("0");
+                }
+            }else {
+                addResultDTO.setErrorDetail("账户已经存在,请使用不重复的登录账户");
+                addResultDTO.setSuccess(true);
                 addResultDTO.setResultCode("1");
-                addResultDTO.setSuccess(true);
-            }else{
-                addResultDTO.setErrorDetail("添加代理商信息表信息失败");
-                addResultDTO.setSuccess(true);
-                addResultDTO.setResultCode("0");
             }
         }catch (Exception e){
             log.error("#AgentInfoServiceImpl called addAgentInfo error#",e);
@@ -61,14 +70,22 @@ public class AgentInfoServiceImpl implements AgentInfoService{
     public BaseResultDTO modifyAgentInfo(AgentInfoPO agentInfoPO){
         BaseResultDTO modifyResultDTO = new BaseResultDTO();
         try{
-            Integer number = agentInfoDAO.updateAgentInfo(agentInfoPO);
-            if(number == 1){
-                modifyResultDTO.setResultCode("1");
-                modifyResultDTO.setSuccess(true);
+            if (agentInfoDAO.exisitAccountByUser(agentInfoPO.getAgentAccount(),agentInfoPO.getAgentId()) == 0){
+                String password = MD5.md5(agentInfoPO.getAgentPassword());
+                agentInfoPO.setAgentPassword(password);
+                Integer number = agentInfoDAO.updateAgentInfo(agentInfoPO);
+                if(number == 1){
+                    modifyResultDTO.setResultCode("1");
+                    modifyResultDTO.setSuccess(true);
+                }else{
+                    modifyResultDTO.setErrorDetail("修改代理商信息表信息失败");
+                    modifyResultDTO.setSuccess(true);
+                    modifyResultDTO.setResultCode("0");
+                }
             }else{
-                modifyResultDTO.setErrorDetail("修改代理商信息表信息失败");
+                modifyResultDTO.setErrorDetail("账户已经被其他用户使用,请使用不重复的登录账户");
                 modifyResultDTO.setSuccess(true);
-                modifyResultDTO.setResultCode("0");
+                modifyResultDTO.setResultCode("1");
             }
         }catch (Exception e){
             log.error("#AgentInfoServiceImpl called modifyAgentInfo error#",e);

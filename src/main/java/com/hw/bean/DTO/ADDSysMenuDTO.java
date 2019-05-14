@@ -19,35 +19,37 @@ public class ADDSysMenuDTO implements Serializable {
     /**
     *   菜单名称
     */
-    @ApiModelProperty(value = "menuName" , required = true)
+    @ApiModelProperty(value = "menuName(菜单名称)" , required = true)
     @NotNull(message = "menuName不允许为空")
     private String menuName;
     /**
     *   菜单描述
     */
-    @ApiModelProperty(value = "menuDesc")
+    @ApiModelProperty(value = "menuDesc(菜单描述)")
     private String menuDesc;
     /**
     *   菜单链接地址
     */
-    @ApiModelProperty(value = "menuUrl")
+    @ApiModelProperty(value = "menuUrl(菜单对应连接地址)")
     private String menuUrl;
     /**
     *   上级菜单ID（如果是一级菜单，则此字段属性为-1）
     */
-    @ApiModelProperty(value = "menuParent" , required = true)
+    @ApiModelProperty(value = "menuParent(上级菜单ID,默认为-1)" , required = true)
     @NotNull(message = "menuParent不允许为空")
     private Long menuParent;
     /**
     *   菜单类型 0 系统菜单 1外部菜单
     */
-    @ApiModelProperty(value = "menuType" , required = true)
+    @ApiModelProperty(value = "menuType(菜单类型1内部 2外部)" , required = true)
     @NotNull(message = "menuType不允许为空")
     private Integer menuType;
     /**
     *   菜单状态 -1删除 0停用 1有效
     */
-    @ApiModelProperty(value = "menuStatus" , required = true)
+    @ApiModelProperty(value = "menuStatus(菜单状态-1删除 0停用 1有效)" , required = true)
     @NotNull(message = "menuStatus不允许为空")
     private Integer menuStatus;
+
+
 }

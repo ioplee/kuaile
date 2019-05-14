@@ -1,21 +1,22 @@
 package com.hw.services.impl;
 
+import com.hw.bean.BO.QuerySysUserByPrimaryKey;
+import com.hw.bean.BO.QuerySysUserPage;
+import com.hw.bean.PO.SysRelationUserRolePO;
+import com.hw.bean.PO.SysUserPO;
+import com.hw.bean.VO.SysRoleVO;
+import com.hw.bean.VO.SysUserVO;
+import com.hw.dao.SysRelationUserRoleDAO;
+import com.hw.dao.SysUserDAO;
+import com.hw.services.SysUserService;
+import com.hw.utils.BaseResultDTO;
+import com.hw.utils.BatchResultDTO;
+import com.hw.utils.ResultDTO;
 import lombok.extern.slf4j.Slf4j;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
-
-import com.hw.utils.BaseResultDTO;
-import com.hw.utils.BatchResultDTO;
-import com.hw.utils.ResultDTO;
-import com.hw.dao.SysUserDAO;
-import com.hw.bean.PO.SysUserPO;
-import com.hw.bean.VO.SysUserVO;
-import com.hw.bean.BO.QuerySysUserPage;
-import com.hw.bean.BO.QuerySysUserByPrimaryKey;
-import com.hw.services.SysUserService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,12 +35,26 @@ public class SysUserServiceImpl implements SysUserService{
     @Autowired
     private SysUserDAO sysUserDAO;
 
+    @Autowired
+    private SysRelationUserRoleDAO sysRelationUserRoleDAO;
+
     @Override
     public BaseResultDTO addSysUser(SysUserPO sysUserPO){
         BaseResultDTO addResultDTO = new BaseResultDTO();
         try{
             Integer number = sysUserDAO.insertSysUser(sysUserPO);
             if(number == 1){
+                //添加用户具有的角色集合
+                if (null != sysUserPO.getUserRolePOList() && !sysUserPO.getUserRolePOList().isEmpty()){
+                    List<SysRelationUserRolePO> sysRelationUserRolePOList = new ArrayList<SysRelationUserRolePO>();
+                    for (SysRelationUserRolePO sysRelationUserRolePO : sysUserPO.getUserRolePOList()){
+                        sysRelationUserRolePO.setUserId(sysUserPO.getUserId());//设置用户ID
+                        sysRelationUserRolePO.setInfoStatus(1);//设置记录状态为有效
+                        sysRelationUserRolePOList.add(sysRelationUserRolePO);
+                    }
+                    //添加用户具有角色集合
+                    sysRelationUserRoleDAO.insertUserRoles(sysRelationUserRolePOList);
+                }
                 addResultDTO.setResultCode("1");
                 addResultDTO.setSuccess(true);
             }else{
@@ -63,6 +78,19 @@ public class SysUserServiceImpl implements SysUserService{
         try{
             Integer number = sysUserDAO.updateSysUser(sysUserPO);
             if(number == 1){
+                //清除用户具有的角色集合
+                sysRelationUserRoleDAO.removeRoleByUser(sysUserPO.getUserId());
+                //添加用户具有的角色集合
+                if (null != sysUserPO.getUserRolePOList() && !sysUserPO.getUserRolePOList().isEmpty()) {
+                    List<SysRelationUserRolePO> sysRelationUserRolePOList = new ArrayList<SysRelationUserRolePO>();
+                    for (SysRelationUserRolePO sysRelationUserRolePO : sysUserPO.getUserRolePOList()) {
+                        sysRelationUserRolePO.setUserId(sysUserPO.getUserId());//设置用户ID
+                        sysRelationUserRolePO.setInfoStatus(1);//设置记录状态为有效
+                        sysRelationUserRolePOList.add(sysRelationUserRolePO);
+                    }
+                    //添加用户具有角色集合
+                    sysRelationUserRoleDAO.insertUserRoles(sysRelationUserRolePOList);
+                }
                 modifyResultDTO.setResultCode("1");
                 modifyResultDTO.setSuccess(true);
             }else{
@@ -98,6 +126,16 @@ public class SysUserServiceImpl implements SysUserService{
             resultDTO.setResultCode("1");
             resultDTO.setSuccess(true);
             if (null != module && !module.isEmpty()){
+                //循环用户列表,获取用户具有角色集合
+                for (SysUserVO sysUserVO : module){
+                    List<SysRoleVO> sysRoleVOs = new ArrayList<SysRoleVO>();
+                    sysRoleVOs = sysRelationUserRoleDAO.getRoleListByUser(sysUserVO.getUserId());
+                    if( null != sysRoleVOs && !sysRoleVOs.isEmpty()){
+                        sysUserVO.setRoleVOList(sysRoleVOs);
+                    }else {
+                        sysUserVO.setRoleVOList(new ArrayList<>());
+                    }
+                }
                 resultDTO.setModule(module);
             }else {
                 resultDTO.setModule(new ArrayList<>());
@@ -121,6 +159,14 @@ public class SysUserServiceImpl implements SysUserService{
             if(null != sysUserVO){
                 resultDTO.setResultCode("1");
                 resultDTO.setSuccess(true);
+                //获取用户具有角色集合
+                List<SysRoleVO> sysRoleVOs = new ArrayList<SysRoleVO>();
+                sysRoleVOs = sysRelationUserRoleDAO.getRoleListByUser(querySysUserByPrimaryKey.getUserId());
+                if( null != sysRoleVOs && !sysRoleVOs.isEmpty()){
+                    sysUserVO.setRoleVOList(sysRoleVOs);
+                }else {
+                    sysUserVO.setRoleVOList(new ArrayList<>());
+                }
                 resultDTO.setModule(sysUserVO);
             }else{
                 resultDTO.setResultCode("0");

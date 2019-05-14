@@ -5,6 +5,7 @@ import lombok.Data;
 
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.List;
 
 /**
 * @author: Robin
@@ -52,16 +53,10 @@ public class ADDSysUserDTO implements Serializable {
     @ApiModelProperty(value = "userStatus" , required = true)
     @NotNull(message = "userStatus不允许为空")
     private Integer userStatus;
+
     /**
-    *   用户最后登录IP地址
-    */
-    @ApiModelProperty(value = "lastLoginIp" , required = true)
-    @NotNull(message = "lastLoginIp不允许为空")
-    private String lastLoginIp;
-    /**
-    *   用户最后登录时间
-    */
-    @ApiModelProperty(value = "lastLoginTime" , required = true)
-    @NotNull(message = "lastLoginTime不允许为空")
-    private String lastLoginTime;
+     * 角色赋予的菜单集合
+     */
+    @ApiModelProperty(value = "菜单ID集合,例如1,2")
+    private List<Long> resourceID;
 }

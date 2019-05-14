@@ -105,5 +105,11 @@
             count(1)
         from agent_info
     </select>
+    <select id="exisitAccount" resultType="java.lang.Integer">
+        SELECT count(1) FROM agent_info WHERE agent_account = #{account}
+    </select>
+    <select id="exisitAccountByUser" resultType="java.lang.Integer">
+        SELECT count(1) FROM agent_info WHERE agent_id != #{agentID} AND agent_account = #{account}
+    </select>
 
 </mapper>

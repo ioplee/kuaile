@@ -6,6 +6,7 @@ import com.hw.bean.BO.QuerySysRoleByPrimaryKey;
 import com.hw.bean.BO.QuerySysRolePage;
 import com.hw.bean.DTO.ADDSysRoleDTO;
 import com.hw.bean.DTO.ModifySysRoleDTO;
+import com.hw.bean.PO.SysRelationRoleResourcePO;
 import com.hw.bean.PO.SysRolePO;
 import com.hw.bean.VO.SysRoleVO;
 import com.hw.services.SysRoleService;
@@ -21,6 +22,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author: Robin
@@ -45,6 +48,15 @@ public class SysRoleController implements Serializable {
     @PostMapping(value = "add")
     public BaseResultDTO addRole(@RequestBody @Validated @ModelAttribute(value = "")ADDSysRoleDTO addSysRoleDTO){
         SysRolePO sysRolePO = PropertiesCopyUtil.copyProperties(addSysRoleDTO,SysRolePO.class);
+        if (null != addSysRoleDTO.getResourceID() && !addSysRoleDTO.getResourceID().isEmpty()){
+            List<SysRelationRoleResourcePO> resourcePOList = new ArrayList<SysRelationRoleResourcePO>();
+            for (Long resourceID : addSysRoleDTO.getResourceID()){
+                SysRelationRoleResourcePO sysRelationRoleResourcePO =  new SysRelationRoleResourcePO();
+                sysRelationRoleResourcePO.setResourceId(resourceID);
+                resourcePOList.add(sysRelationRoleResourcePO);
+            }
+            sysRolePO.setResourcePOList(resourcePOList);
+        }
         return sysRoleService.addSysRole(sysRolePO);
     }
 
@@ -52,6 +64,15 @@ public class SysRoleController implements Serializable {
     @PostMapping(value = "modify")
     public BaseResultDTO modifyRole(@RequestBody @Validated @ModelAttribute(value = "")ModifySysRoleDTO modifySysRoleDTO){
         SysRolePO sysRolePO = PropertiesCopyUtil.copyProperties(modifySysRoleDTO,SysRolePO.class);
+        if (null != modifySysRoleDTO.getResourceID() && !modifySysRoleDTO.getResourceID().isEmpty()){
+            List<SysRelationRoleResourcePO> resourcePOList = new ArrayList<SysRelationRoleResourcePO>();
+            for (Long resourceID : modifySysRoleDTO.getResourceID()){
+                SysRelationRoleResourcePO sysRelationRoleResourcePO =  new SysRelationRoleResourcePO();
+                sysRelationRoleResourcePO.setResourceId(resourceID);
+                resourcePOList.add(sysRelationRoleResourcePO);
+            }
+            sysRolePO.setResourcePOList(resourcePOList);
+        }
         return sysRoleService.modifySysRole(sysRolePO);
     }
 

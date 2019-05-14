@@ -3,10 +3,7 @@ package com.hw.bean.PO;
 import lombok.Data;
 
 import java.io.Serializable;
-
-import java.lang.Long;
-import java.lang.Integer;
-import java.lang.String;
+import java.util.List;
 
 /**
 * @author: Robin
@@ -19,19 +16,24 @@ public class SysRolePO implements Serializable {
 
     private static final long serialVersionUID = 4934737972148160737L;
     /**
-    *   
+    *   角色ID
     */
     private Long roleId;
     /**
-    *   
+    *   角色名称
     */
     private String roleName;
     /**
-    *   
+    *   角色描述
     */
     private String roleDesc;
     /**
-    *   
+    *  角色状态-1删除 0停用 1有效
     */
     private Integer roleStatus;
+
+    /**
+     * 角色赋予的权限集合
+     */
+    private List<SysRelationRoleResourcePO> resourcePOList;
 }

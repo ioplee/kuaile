@@ -3,10 +3,7 @@ package com.hw.bean.VO;
 import lombok.Data;
 
 import java.io.Serializable;
-
-import java.lang.Long;
-import java.lang.Integer;
-import java.lang.String;
+import java.util.List;
 
 /**
 * @author: Robin
@@ -34,4 +31,9 @@ public class SysRoleVO implements Serializable {
     *   
     */
     private Integer roleStatus;
+
+    /**
+     * 角色具有的菜单权限
+     */
+    private List<SysMenuVO> menuVOList;
 }

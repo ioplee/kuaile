@@ -10,6 +10,13 @@
         <result column="info_status" property="infoStatus" />
     </resultMap>
 
+    <resultMap id="menuResultMap" type="com.hw.bean.VO.SysMenuVO">
+        <id column="menu_id" property="menuId" />
+        <result column="menu_name" property="menuName" />
+        <result column="menu_desc" property="menuDesc" />
+        <result column="menu_url" property="menuUrl" />
+    </resultMap>
+
     <sql id="Base_Column_List">
         role_id,
         resource_id,
@@ -42,6 +49,26 @@
             NOW()
         )
     </insert>
+    <insert id="addResources" parameterType="java.util.List">
+        insert into sys_relation_role_resource (
+            role_id,
+            resource_id,
+            resource_type,
+            info_status,
+            gmt_create,
+            gmt_modified
+        ) values
+        <foreach collection ="list" item="po" index= "index" separator =",">
+        (
+            #{po.roleId},
+            #{po.resourceId},
+            #{po.resourceType},
+            #{po.infoStatus},
+            NOW(),
+            NOW()
+        )
+        </foreach>
+    </insert>
 
     <update id="updateSysRelationRoleResource" parameterType="com.hw.bean.PO.SysRelationRoleResourcePO">
         update sys_relation_role_resource set
@@ -51,6 +78,11 @@
             info_status = #{infoStatus},
             gmt_modified = NOW()
         where info_id = #{infoId}
+    </update>
+    <update id="removeResource">
+        update sys_relation_role_resource set
+          info_status = -1
+        where role_id = #{roleID}
     </update>
 
     <select id="getPageList" parameterType="com.hw.bean.BO.QuerySysRelationRoleResourcePage" resultMap="BaseResultMap">
@@ -64,6 +96,20 @@
         select
             count(1)
         from sys_relation_role_resource
+    </select>
+
+    <select id="getResourceListByRoleID" resultMap="menuResultMap">
+        SELECT
+            m.menu_id ,
+            m.menu_name ,
+            m.menu_desc ,
+            m.menu_url
+        FROM
+            sys_relation_role_resource t
+        LEFT JOIN sys_menu m ON t.resource_id = m.menu_id
+        AND t.info_status = 1
+        AND m.menu_status = 1
+        AND t.role_id = #{roleID}
     </select>
 
 </mapper>

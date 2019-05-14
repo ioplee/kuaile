@@ -6,6 +6,7 @@ import com.hw.bean.BO.QuerySysUserByPrimaryKey;
 import com.hw.bean.BO.QuerySysUserPage;
 import com.hw.bean.DTO.ADDSysUserDTO;
 import com.hw.bean.DTO.ModifySysUserDTO;
+import com.hw.bean.PO.SysRelationUserRolePO;
 import com.hw.bean.PO.SysUserPO;
 import com.hw.bean.VO.SysUserVO;
 import com.hw.services.SysUserService;
@@ -21,6 +22,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author: Robin
@@ -43,6 +46,15 @@ public class SysUserController implements Serializable{
     @PostMapping(value = "add")
     public BaseResultDTO addUser(@RequestBody @Validated @ModelAttribute(value = "")ADDSysUserDTO addSysUserDTO){
         SysUserPO sysUserPO = PropertiesCopyUtil.copyProperties(addSysUserDTO,SysUserPO.class);
+        if(null != addSysUserDTO.getResourceID() && !addSysUserDTO.getResourceID().isEmpty()){
+            List<SysRelationUserRolePO> sysRelationUserRolePOList = new ArrayList<SysRelationUserRolePO>();
+            for(Long roleID : addSysUserDTO.getResourceID()){
+                SysRelationUserRolePO sysRelationUserRolePO = new SysRelationUserRolePO();
+                sysRelationUserRolePO.setRoleId(roleID);
+                sysRelationUserRolePOList.add(sysRelationUserRolePO);
+            }
+            sysUserPO.setUserRolePOList(sysRelationUserRolePOList);
+        }
         return sysUserService.addSysUser(sysUserPO);
     }
 
@@ -50,6 +62,15 @@ public class SysUserController implements Serializable{
     @PostMapping(value = "modify")
     public BaseResultDTO modifyUser(@RequestBody @Validated @ModelAttribute(value = "")ModifySysUserDTO modifySysUserDTO){
         SysUserPO sysUserPO = PropertiesCopyUtil.copyProperties(modifySysUserDTO,SysUserPO.class);
+        if(null != modifySysUserDTO.getResourceID() && !modifySysUserDTO.getResourceID().isEmpty()){
+            List<SysRelationUserRolePO> sysRelationUserRolePOList = new ArrayList<SysRelationUserRolePO>();
+            for(Long roleID : modifySysUserDTO.getResourceID()){
+                SysRelationUserRolePO sysRelationUserRolePO = new SysRelationUserRolePO();
+                sysRelationUserRolePO.setRoleId(roleID);
+                sysRelationUserRolePOList.add(sysRelationUserRolePO);
+            }
+            sysUserPO.setUserRolePOList(sysRelationUserRolePOList);
+        }
         return sysUserService.modifySysUser(sysUserPO);
     }
 

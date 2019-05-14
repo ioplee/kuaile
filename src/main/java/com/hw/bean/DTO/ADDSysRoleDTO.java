@@ -5,6 +5,7 @@ import lombok.Data;
 
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.List;
 
 /**
 * @author: Robin
@@ -19,19 +20,25 @@ public class ADDSysRoleDTO implements Serializable {
     /**
     *   
     */
-    @ApiModelProperty(value = "roleName" , required = true)
+    @ApiModelProperty(value = "roleName(角色名称)" , required = true)
     @NotNull(message = "roleName不允许为空")
     private String roleName;
     /**
     *   
     */
-    @ApiModelProperty(value = "roleDesc" , required = true)
+    @ApiModelProperty(value = "roleDesc(角色描述)" , required = true)
     @NotNull(message = "roleDesc不允许为空")
     private String roleDesc;
     /**
     *   
     */
-    @ApiModelProperty(value = "roleStatus" , required = true)
+    @ApiModelProperty(value = "roleStatus(角色状态-1删除 0停用 1有效)" , required = true)
     @NotNull(message = "roleStatus不允许为空")
     private Integer roleStatus;
+
+    /**
+     * 角色赋予的菜单集合
+     */
+    @ApiModelProperty(value = "菜单ID集合,例如1,2")
+    private List<Long> resourceID;
 }

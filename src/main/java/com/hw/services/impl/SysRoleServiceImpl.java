@@ -1,5 +1,8 @@
 package com.hw.services.impl;
 
+import com.hw.bean.PO.SysRelationRoleResourcePO;
+import com.hw.bean.VO.SysMenuVO;
+import com.hw.dao.SysRelationRoleResourceDAO;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,12 +37,25 @@ public class SysRoleServiceImpl implements SysRoleService{
     @Autowired
     private SysRoleDAO sysRoleDAO;
 
+    @Autowired
+    private SysRelationRoleResourceDAO sysRelationRoleResourceDAO;
+
     @Override
     public BaseResultDTO addSysRole(SysRolePO sysRolePO){
         BaseResultDTO addResultDTO = new BaseResultDTO();
         try{
             Integer number = sysRoleDAO.insertSysRole(sysRolePO);
             if(number == 1){
+                //添加角色具有的菜单权限集合
+                if(null != sysRolePO && null != sysRolePO.getResourcePOList()){
+                    List<SysRelationRoleResourcePO> resourcePOList = sysRolePO.getResourcePOList();
+                    for (SysRelationRoleResourcePO sysRelationRoleResourcePO : resourcePOList){
+                        sysRelationRoleResourcePO.setInfoStatus(1);
+                        sysRelationRoleResourcePO.setRoleId(sysRolePO.getRoleId());
+                        sysRelationRoleResourcePO.setResourceType(1);//本期只做到菜单权限管理
+                    }
+                    sysRelationRoleResourceDAO.addResources(resourcePOList);
+                }
                 addResultDTO.setResultCode("1");
                 addResultDTO.setSuccess(true);
             }else{
@@ -63,6 +79,18 @@ public class SysRoleServiceImpl implements SysRoleService{
         try{
             Integer number = sysRoleDAO.updateSysRole(sysRolePO);
             if(number == 1){
+                //删除角色具有的菜单集合
+                sysRelationRoleResourceDAO.removeResource(sysRolePO.getRoleId());
+                //添加角色新的菜单集合
+                if(null != sysRolePO && null != sysRolePO.getResourcePOList()){
+                    List<SysRelationRoleResourcePO> resourcePOList = sysRolePO.getResourcePOList();
+                    for (SysRelationRoleResourcePO sysRelationRoleResourcePO : resourcePOList){
+                        sysRelationRoleResourcePO.setInfoStatus(1);
+                        sysRelationRoleResourcePO.setRoleId(sysRolePO.getRoleId());
+                        sysRelationRoleResourcePO.setResourceType(1);//本期只做到菜单权限管理
+                    }
+                    sysRelationRoleResourceDAO.addResources(resourcePOList);
+                }
                 modifyResultDTO.setResultCode("1");
                 modifyResultDTO.setSuccess(true);
             }else{
@@ -88,13 +116,23 @@ public class SysRoleServiceImpl implements SysRoleService{
             querySysRolePage.setRecord(record);
             resultDTO.setRecord(record);
             if (querySysRolePage.getPageNo() > querySysRolePage.getTotalPages()){
-                resultDTO.setErrorDetail("获取系统角色表列表失败,参悟有误.");
-                resultDTO.setResultCode("0");
+                resultDTO.setResultCode("1");
                 resultDTO.setSuccess(true);
                 resultDTO.setModule(new ArrayList<>());
                 resultDTO.setRecord(0);
             }
             List<SysRoleVO> module = sysRoleDAO.getPageList(querySysRolePage);
+            //如果集合不为空,则对每一个角色对象查询并封装其具有的菜单集合
+            if (null != module && !module.isEmpty()){
+                for (SysRoleVO sysRoleVO : module){
+                    List<SysMenuVO> sysMenuVOList = sysRelationRoleResourceDAO.getResourceListByRoleID(sysRoleVO.getRoleId());
+                    if (null != sysMenuVOList && !sysMenuVOList.isEmpty()){
+                        sysRoleVO.setMenuVOList(sysMenuVOList);
+                    }else {
+                        sysRoleVO.setMenuVOList(new ArrayList<>());
+                    }
+                }
+            }
             resultDTO.setResultCode("1");
             resultDTO.setSuccess(true);
             if (null != module && !module.isEmpty()){
@@ -121,6 +159,13 @@ public class SysRoleServiceImpl implements SysRoleService{
             if(null != sysRoleVO){
                 resultDTO.setResultCode("1");
                 resultDTO.setSuccess(true);
+                //查询并封装角色具有的菜单集合
+                List<SysMenuVO> sysMenuVOList = sysRelationRoleResourceDAO.getResourceListByRoleID(sysRoleVO.getRoleId());
+                if (null != sysMenuVOList && !sysMenuVOList.isEmpty()){
+                    sysRoleVO.setMenuVOList(sysMenuVOList);
+                }else {
+                    sysRoleVO.setMenuVOList(new ArrayList<>());
+                }
                 resultDTO.setModule(sysRoleVO);
             }else{
                 resultDTO.setResultCode("0");
