@@ -1,5 +1,6 @@
 package com.hw.services.impl;
 
+import com.hw.bean.BO.QueryMemberInfoByAgent;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,15 +39,22 @@ public class MemberInfoServiceImpl implements MemberInfoService{
     public BaseResultDTO addMemberInfo(MemberInfoPO memberInfoPO){
         BaseResultDTO addResultDTO = new BaseResultDTO();
         try{
-            Integer number = memberInfoDAO.insertMemberInfo(memberInfoPO);
-            if(number == 1){
-                addResultDTO.setResultCode("1");
-                addResultDTO.setSuccess(true);
-            }else{
-                addResultDTO.setErrorDetail("添加会员表信息失败");
+            if (memberInfoDAO.exist(memberInfoPO.getMemberMobile()) == 0){
+                Integer number = memberInfoDAO.insertMemberInfo(memberInfoPO);
+                if(number == 1){
+                    addResultDTO.setResultCode("1");
+                    addResultDTO.setSuccess(true);
+                }else{
+                    addResultDTO.setErrorDetail("添加会员表信息失败");
+                    addResultDTO.setSuccess(true);
+                    addResultDTO.setResultCode("0");
+                }
+            }else {
+                addResultDTO.setErrorDetail("玩家手机已经被注册过");
                 addResultDTO.setSuccess(true);
                 addResultDTO.setResultCode("0");
             }
+
         }catch (Exception e){
             log.error("#MemberInfoServiceImpl called addMemberInfo error#",e);
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
@@ -61,12 +69,18 @@ public class MemberInfoServiceImpl implements MemberInfoService{
     public BaseResultDTO modifyMemberInfo(MemberInfoPO memberInfoPO){
         BaseResultDTO modifyResultDTO = new BaseResultDTO();
         try{
-            Integer number = memberInfoDAO.updateMemberInfo(memberInfoPO);
-            if(number == 1){
-                modifyResultDTO.setResultCode("1");
-                modifyResultDTO.setSuccess(true);
-            }else{
-                modifyResultDTO.setErrorDetail("修改会员表信息失败");
+            if (memberInfoDAO.existByUser(memberInfoPO.getMemberMobile(),memberInfoPO.getMemberId()) == 0){
+                Integer number = memberInfoDAO.updateMemberInfo(memberInfoPO);
+                if(number == 1){
+                    modifyResultDTO.setResultCode("1");
+                    modifyResultDTO.setSuccess(true);
+                }else{
+                    modifyResultDTO.setErrorDetail("修改会员表信息失败");
+                    modifyResultDTO.setSuccess(true);
+                    modifyResultDTO.setResultCode("0");
+                }
+            }else {
+                modifyResultDTO.setErrorDetail("玩家手机已经被注册过");
                 modifyResultDTO.setSuccess(true);
                 modifyResultDTO.setResultCode("0");
             }
@@ -87,13 +101,13 @@ public class MemberInfoServiceImpl implements MemberInfoService{
             Integer record = memberInfoDAO.getPageCount(queryMemberInfoPage);
             queryMemberInfoPage.setRecord(record);
             resultDTO.setRecord(record);
-            if (queryMemberInfoPage.getPageNo() > queryMemberInfoPage.getTotalPages()){
-                resultDTO.setErrorDetail("获取会员表列表失败,参悟有误.");
-                resultDTO.setResultCode("0");
-                resultDTO.setSuccess(true);
-                resultDTO.setModule(new ArrayList<>());
-                resultDTO.setRecord(0);
-            }
+//            if (queryMemberInfoPage.getPageNo() > queryMemberInfoPage.getTotalPages()){
+//                resultDTO.setErrorDetail("获取会员表列表失败,参悟有误.");
+//                resultDTO.setResultCode("0");
+//                resultDTO.setSuccess(true);
+//                resultDTO.setModule(new ArrayList<>());
+//                resultDTO.setRecord(0);
+//            }
             List<MemberInfoVO> module = memberInfoDAO.getPageList(queryMemberInfoPage);
             resultDTO.setResultCode("1");
             resultDTO.setSuccess(true);
@@ -107,6 +121,32 @@ public class MemberInfoServiceImpl implements MemberInfoService{
             resultDTO.setResultCode("0");
             resultDTO.setSuccess(false);
             resultDTO.setErrorDetail("获取会员表列表失败");
+            resultDTO.setModule(new ArrayList<>());
+            resultDTO.setRecord(0);
+        }
+        return resultDTO;
+    }
+
+    @Override
+    public BatchResultDTO<MemberInfoVO> getMemberInfoListByAgent(QueryMemberInfoByAgent queryMemberInfoByAgent) {
+        BatchResultDTO<MemberInfoVO> resultDTO = new BatchResultDTO<MemberInfoVO>();
+        try{
+            Integer record = memberInfoDAO.getPageListCountByAgent(queryMemberInfoByAgent);
+            queryMemberInfoByAgent.setRecord(record);
+            resultDTO.setRecord(record);
+            List<MemberInfoVO> module = memberInfoDAO.getPageListByAgent(queryMemberInfoByAgent);
+            resultDTO.setResultCode("1");
+            resultDTO.setSuccess(true);
+            if (null != module && !module.isEmpty()){
+                resultDTO.setModule(module);
+            }else {
+                resultDTO.setModule(new ArrayList<>());
+            }
+        }catch (Exception e){
+            log.error("#MemberInfoServiceImpl called getMemberInfoListByAgent error#",e);
+            resultDTO.setResultCode("0");
+            resultDTO.setSuccess(false);
+            resultDTO.setErrorDetail("获取代理商的会员表列表失败");
             resultDTO.setModule(new ArrayList<>());
             resultDTO.setRecord(0);
         }

@@ -26,6 +26,7 @@
         <result column="bank_pass" property="bankPass" />
         <result column="member_type" property="memberType" />
         <result column="game_rate" property="gameRate" />
+        <result column="agent_id" property="agentID"/>
     </resultMap>
 
     <sql id="Base_Column_List">
@@ -51,7 +52,8 @@
         bank_pass,
         member_type,
         game_rate,
-        member_id
+        member_id,
+        agent_id
     </sql>
 
     <select id="getMemberInfoByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
@@ -78,15 +80,13 @@
             member_status,
             extend_links,
             parent_id,
-            last_ip,
-            last_logintime,
-            singin_counts,
             login_pass,
             bank_pass,
             member_type,
             game_rate,
             gmt_create,
-            gmt_modified
+            gmt_modified,
+            agent_id
         ) values (
             #{memberName},
             #{memberNickname},
@@ -103,15 +103,13 @@
             #{memberStatus},
             #{extendLinks},
             #{parentId},
-            #{lastIp},
-            #{lastLogintime},
-            #{singinCounts},
             #{loginPass},
             #{bankPass},
             #{memberType},
             #{gameRate},
             NOW(),
-            NOW()
+            NOW(),
+            #{agentID}
         )
     </insert>
 
@@ -134,12 +132,12 @@
             parent_id = #{parentId},
             last_ip = #{lastIp},
             last_logintime = #{lastLogintime},
-            singin_counts = #{singinCounts},
             login_pass = #{loginPass},
             bank_pass = #{bankPass},
             member_type = #{memberType},
             game_rate = #{gameRate},
-            gmt_modified = NOW()
+            gmt_modified = NOW(),
+            agent_id = #{agentID}
         where member_id = #{memberId}
     </update>
 
@@ -147,6 +145,15 @@
         select
         <include refid="Base_Column_List" />
         from member_info
+        <where>
+            member_status != -1
+        <if test="playerCode != null">
+            AND member_name LIKE CONTCAT('%',#{playerCode},'%')
+        </if>
+        <if test="mobile != null">
+            AND member_mobile LIKE CONCAT('%',#{mobile},'%')
+        </if>
+        </where>
         limit #{pageIndex},#{pageSize}
     </select>
 
@@ -154,6 +161,56 @@
         select
             count(1)
         from member_info
+        <where>
+            member_status != -1
+            <if test="playerCode != null">
+                AND member_name LIKE CONCAT('%',#{playerCode},'%')
+            </if>
+            <if test="mobile != null">
+                AND member_mobile LIKE CONCAT('%',#{mobile},'%')
+            </if>
+        </where>
+    </select>
+    <select id="exist" resultType="java.lang.Integer">
+        SELECT count(1) FROM member_info WHERE member_mobile = #{account} and member_status != -1
+    </select>
+    <select id="existByUser" resultType="java.lang.Integer">
+        SELECT count(1) FROM member_info WHERE member_mobile = #{account} and member_status != -1 and member_id != #{userID}
+    </select>
+    <select id="getPageListByAgent" parameterType="com.hw.bean.BO.QueryMemberInfoByAgent" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from member_info
+        <where>
+            member_status != -1
+            <if test="playerCode != null">
+                AND member_name LIKE CONCAT('%',#{playerCode},'%')
+            </if>
+            <if test="mobile != null">
+                AND member_mobile LIKE CONCAT('%',#{mobile},'%')
+            </if>
+            <if test="agentID != -1">
+                AND agent_id = ${agentID}
+            </if>
+        </where>
+        limit #{pageIndex},#{pageSize}
+    </select>
+    <select id="getPageListCountByAgent" parameterType="com.hw.bean.BO.QueryMemberInfoByAgent" resultType="java.lang.Integer">
+        select
+          count(1)
+        from member_info
+        <where>
+            member_status != -1
+            <if test="playerCode != null">
+                AND member_name LIKE CONCAT('%',#{playerCode},'%')
+            </if>
+            <if test="mobile != null">
+                AND member_mobile LIKE CONCAT('%',#{mobile},'%')
+            </if>
+            <if test="agentID != -1">
+                AND agent_id = ${agentID}
+            </if>
+        </where>
     </select>
 
 </mapper>

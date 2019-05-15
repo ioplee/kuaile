@@ -1,15 +1,13 @@
 package com.hw.services;
 
+import com.hw.bean.BO.QueryMemberInfoByAgent;
+import com.hw.bean.BO.QueryMemberInfoByPrimaryKey;
+import com.hw.bean.BO.QueryMemberInfoPage;
+import com.hw.bean.PO.MemberInfoPO;
+import com.hw.bean.VO.MemberInfoVO;
 import com.hw.utils.BaseResultDTO;
 import com.hw.utils.BatchResultDTO;
 import com.hw.utils.ResultDTO;
-
-import com.hw.bean.PO.MemberInfoPO;
-import com.hw.bean.VO.MemberInfoVO;
-import com.hw.bean.BO.QueryMemberInfoPage;
-import com.hw.bean.BO.QueryMemberInfoByPrimaryKey;
-
-import java.util.List;
 
 /**
 * @author: Robin
@@ -50,4 +48,6 @@ public interface MemberInfoService {
     * @return the agent info list
     */
     public BatchResultDTO<MemberInfoVO> getMemberInfoList(QueryMemberInfoPage queryMemberInfoPage);
+
+    public BatchResultDTO<MemberInfoVO> getMemberInfoListByAgent(QueryMemberInfoByAgent queryMemberInfoByAgent);
 }

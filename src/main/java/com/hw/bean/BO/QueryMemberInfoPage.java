@@ -1,7 +1,8 @@
 package com.hw.bean.BO;
 
-import lombok.Data;
 import com.hw.utils.BaseQuery;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 
 /**
 * @author: Robin
@@ -13,4 +14,15 @@ import com.hw.utils.BaseQuery;
 public class QueryMemberInfoPage extends BaseQuery {
 
     private static final long serialVersionUID = 4706961537826195956L;
+
+    /**
+     * 玩家ID
+     */
+    @ApiModelProperty(value = "玩家ID")
+    private String playerCode;
+    /**
+     * 手机号码
+     */
+    @ApiModelProperty(value = "玩家手机号码")
+    private String mobile;
 }

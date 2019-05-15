@@ -69,4 +69,48 @@ public class Swagger2 {
                 .version("1.0")
                 .build();
     }
+
+    @Bean
+    public Docket createAgentRestApi(){
+        return new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(agentApiInfo())
+                .enable(enableSwagger)
+                .groupName("agent")
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.hw.web.client.agent"))
+                .paths(PathSelectors.any())
+                .build();
+    }
+
+    private ApiInfo agentApiInfo(){
+        return new ApiInfoBuilder()
+                .title("game api agent")
+                .description("hwgame V1.0")
+                .termsOfServiceUrl("")
+                .contact("who am i")
+                .version("1.0")
+                .build();
+    }
+
+    @Bean
+    public Docket createPlayerRestApi(){
+        return new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(playerApiInfo())
+                .enable(enableSwagger)
+                .groupName("player")
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.hw.web.client.player"))
+                .paths(PathSelectors.any())
+                .build();
+    }
+
+    private ApiInfo playerApiInfo(){
+        return new ApiInfoBuilder()
+                .title("game api player")
+                .description("hwgame V1.0")
+                .termsOfServiceUrl("")
+                .contact("who am i")
+                .version("1.0")
+                .build();
+    }
 }

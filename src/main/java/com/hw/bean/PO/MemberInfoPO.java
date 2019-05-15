@@ -111,4 +111,9 @@ public class MemberInfoPO implements Serializable {
     *   抽成比例
     */
     private String gameRate;
+
+    /**
+     * 代理商ID
+     */
+    private Long agentID;
 }
