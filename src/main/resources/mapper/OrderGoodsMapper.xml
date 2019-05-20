@@ -122,6 +122,7 @@
         select
         <include refid="Base_Column_List" />
         from order_goods
+        WHERE goods_status != -1
         limit #{pageIndex},#{pageSize}
     </select>
 
@@ -129,6 +130,7 @@
         select
             count(1)
         from order_goods
+        WHERE goods_status != -1
     </select>
 
 </mapper>

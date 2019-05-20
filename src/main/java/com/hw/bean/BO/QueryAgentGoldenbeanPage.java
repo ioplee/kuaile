@@ -1,7 +1,10 @@
 package com.hw.bean.BO;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import com.hw.utils.BaseQuery;
+
+import javax.validation.constraints.NotNull;
 
 /**
 * @author: Robin
@@ -13,4 +16,8 @@ import com.hw.utils.BaseQuery;
 public class QueryAgentGoldenbeanPage extends BaseQuery {
 
     private static final long serialVersionUID = -6663533532643927906L;
+
+    @ApiModelProperty(value = "代理商编码(必须输入完全,上下分使用时不允许模糊查询)" , required = true)
+    @NotNull(message = "代理商编码不允许为空")
+    private Integer agentCode;
 }

@@ -62,6 +62,7 @@
         select
         <include refid="Base_Column_List" />
         from game_phase
+        WHERE phase_status != -1
         limit #{pageIndex},#{pageSize}
     </select>
 
@@ -69,6 +70,7 @@
         select
             count(1)
         from game_phase
+        WHERE phase_status != -1
     </select>
 
 </mapper>

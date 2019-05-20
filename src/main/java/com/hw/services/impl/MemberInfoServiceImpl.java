@@ -1,6 +1,7 @@
 package com.hw.services.impl;
 
 import com.hw.bean.BO.QueryMemberInfoByAgent;
+import com.hw.utils.MD5;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,7 @@ public class MemberInfoServiceImpl implements MemberInfoService{
         BaseResultDTO addResultDTO = new BaseResultDTO();
         try{
             if (memberInfoDAO.exist(memberInfoPO.getMemberMobile()) == 0){
+                memberInfoPO.setLoginPass(MD5.md5(memberInfoPO.getLoginPass()));
                 Integer number = memberInfoDAO.insertMemberInfo(memberInfoPO);
                 if(number == 1){
                     addResultDTO.setResultCode("1");

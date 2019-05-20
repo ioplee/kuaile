@@ -47,18 +47,45 @@
             gmt_modified = NOW()
         where info_id = #{infoId}
     </update>
+    <update id="upAgentGoldenBean">
+        UPDATE agent_goldenbean SET
+          bean_counts = bean_counts + #{beanCounts},
+          gmt_modified = NOW()
+        where agent_id = #{agentID}
+    </update>
+    <update id="downAgentGoldenBean">
+        UPDATE agent_goldenbean SET
+          bean_counts = bean_counts - #{beanCounts},
+          gmt_modified = NOW()
+        where agent_id = #{agentID} AND bean_counts >= #{beanCounts}
+    </update>
 
     <select id="getPageList" parameterType="com.hw.bean.BO.QueryAgentGoldenbeanPage" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
-        from agent_goldenbean
+        from agent_goldenbean t
+        LEFT JOIN agent_info i ON t.agent_id = i.agent_id
+        WHERE agent_status != -1 AND i.agent_status != -1
+        AND i.agent_code = #{agentCode}
         limit #{pageIndex},#{pageSize}
     </select>
 
     <select id="getPageCount" parameterType="com.hw.bean.BO.QueryAgentGoldenbeanPage" resultType="java.lang.Integer">
         select
             count(1)
-        from agent_goldenbean
+        from agent_goldenbean t
+        LEFT JOIN agent_info i ON t.agent_id = i.agent_id
+        WHERE agent_status != -1 AND i.agent_status != -1
+        AND i.agent_code = #{agentCode}
+    </select>
+    <select id="existAgentGoldenBeanRecord" resultType="java.lang.Integer">
+        SELECT
+            COUNT(1)
+        FROM
+            agent_goldenbean t
+        LEFT JOIN agent_info i ON t.agent_id = i.agent_id
+        WHERE
+            i.agent_code = #{agentID}
     </select>
 
 </mapper>

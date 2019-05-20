@@ -19,19 +19,19 @@ public class ADDAgentGoldenbeanDTO implements Serializable {
     /**
     *   代理商ID
     */
-    @ApiModelProperty(value = "agentId" , required = true)
+    @ApiModelProperty(value = "agentId 代理商ID" , required = true)
     @NotNull(message = "agentId不允许为空")
     private Long agentId;
     /**
     *   金豆数
     */
-    @ApiModelProperty(value = "beanCounts" , required = true)
+    @ApiModelProperty(value = "beanCounts 上分(金豆)数值 必须为整数" , required = true)
     @NotNull(message = "beanCounts不允许为空")
     private Long beanCounts;
     /**
     *   账户状态
     */
-    @ApiModelProperty(value = "agentStatus" , required = true)
+    @ApiModelProperty(value = "agentStatus 1有效 0停用 -1删除" , required = true)
     @NotNull(message = "agentStatus不允许为空")
     private Integer agentStatus;
 }

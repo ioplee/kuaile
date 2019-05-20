@@ -132,8 +132,6 @@
             parent_id = #{parentId},
             last_ip = #{lastIp},
             last_logintime = #{lastLogintime},
-            login_pass = #{loginPass},
-            bank_pass = #{bankPass},
             member_type = #{memberType},
             game_rate = #{gameRate},
             gmt_modified = NOW(),

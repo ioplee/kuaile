@@ -72,6 +72,7 @@
         select
         <include refid="Base_Column_List" />
         from base_lottery_info
+        WHERE lottery_status != -1
         limit #{pageIndex},#{pageSize}
     </select>
 
@@ -79,6 +80,7 @@
         select
             count(1)
         from base_lottery_info
+        WHERE lottery_status != -1
     </select>
 
 </mapper>

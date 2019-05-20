@@ -33,4 +33,9 @@ public class AgentGoldenbeanPO implements Serializable {
     *   账户状态
     */
     private Integer agentStatus;
+
+    /**
+     * 代理商编码
+     */
+    private Integer agentCode;
 }

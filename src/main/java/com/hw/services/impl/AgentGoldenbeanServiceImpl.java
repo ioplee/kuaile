@@ -1,5 +1,8 @@
 package com.hw.services.impl;
 
+import com.hw.bean.PO.AgentGoldenbeanInfoPO;
+import com.hw.dao.AgentGoldenbeanInfoDAO;
+import com.hw.utils.biz.AgentGoldenBeanType;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +36,9 @@ public class AgentGoldenbeanServiceImpl implements AgentGoldenbeanService{
 
     @Autowired
     private AgentGoldenbeanDAO agentGoldenbeanDAO;
+
+    @Autowired
+    private AgentGoldenbeanInfoDAO agentGoldenbeanInfoDAO;
 
     @Override
     public BaseResultDTO addAgentGoldenbean(AgentGoldenbeanPO agentGoldenbeanPO){
@@ -111,6 +117,98 @@ public class AgentGoldenbeanServiceImpl implements AgentGoldenbeanService{
             resultDTO.setRecord(0);
         }
         return resultDTO;
+    }
+
+    @Override
+    public BaseResultDTO upAgentGoldenBean(AgentGoldenbeanPO agentGoldenbeanPO) {
+        BaseResultDTO upResultDTO = new BaseResultDTO();
+        try {
+            //首先判断代理商金豆记录是否存在,存在则直接上分,不存在则创建一条代理商金豆总数记录
+            Integer agentGoldenBeanRecord = agentGoldenbeanDAO.existAgentGoldenBeanRecord(agentGoldenbeanPO.getAgentCode());
+            if (agentGoldenBeanRecord == 0){
+                //如果代理商没有金豆总记录数,则创建一条金豆总记录数
+                agentGoldenbeanDAO.insertAgentGoldenbean(agentGoldenbeanPO);
+                //添加金豆记录明细
+                AgentGoldenbeanInfoPO infoPO = new AgentGoldenbeanInfoPO();
+                infoPO.setAgentId(agentGoldenbeanPO.getAgentId());
+                infoPO.setBeanCounts(agentGoldenbeanPO.getBeanCounts());//添加金豆数
+                infoPO.setBaseCounts(agentGoldenbeanPO.getBeanCounts());//基础金豆数,此处为0
+                infoPO.setInfoType(AgentGoldenBeanType.UPGoldenBeanPlam.getValue());//金豆明细记录类型
+                infoPO.setInfoStatus(1);//记录状态 1有效
+                infoPO.setRebateCounts(0l);//返点0
+                agentGoldenbeanInfoDAO.insertAgentGoldenbeanInfo(infoPO);
+            }else if (agentGoldenBeanRecord == 1){
+                //累加代理商金豆数
+                agentGoldenbeanDAO.upAgentGoldenBean(agentGoldenbeanPO.getBeanCounts(),agentGoldenbeanPO.getAgentId());
+                //添加金豆记录明细
+                AgentGoldenbeanInfoPO infoPO = new AgentGoldenbeanInfoPO();
+                infoPO.setAgentId(agentGoldenbeanPO.getAgentId());
+                infoPO.setBeanCounts(agentGoldenbeanPO.getBeanCounts());//添加金豆数
+                infoPO.setBaseCounts(agentGoldenbeanPO.getBeanCounts());//基础金豆数,此处为0
+                infoPO.setInfoType(AgentGoldenBeanType.UPGoldenBeanPlam.getValue());//金豆明细记录类型
+                infoPO.setInfoStatus(1);//记录状态 1有效
+                infoPO.setRebateCounts(0l);//返点0
+                agentGoldenbeanInfoDAO.insertAgentGoldenbeanInfo(infoPO);
+            }else {
+                //如果不是0/1 说明代理商总金豆数有问题.则提示用户代理商存在问题.运维上线查看
+                upResultDTO.setResultCode("0");
+                upResultDTO.setSuccess(false);
+                upResultDTO.setErrorDetail("代理商记录异常,请运维人员进行排查.");
+                return upResultDTO;
+            }
+            upResultDTO.setResultCode("1");
+            upResultDTO.setSuccess(true);
+        }catch (Exception e){
+            log.error("#AgentGoldenbeanServiceImpl called upAgentGoldenBean error#",e);
+            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+            upResultDTO.setResultCode("0");
+            upResultDTO.setSuccess(false);
+            upResultDTO.setErrorDetail("代理商上分出错");
+        }
+        return upResultDTO;
+    }
+
+    @Override
+    public BaseResultDTO downAgentGoldenBean(AgentGoldenbeanPO agentGoldenbeanPO) {
+        BaseResultDTO downResultDTO = new BaseResultDTO();
+        try {
+            //首先判断代理商金豆记录是否存在,存在则直接上分,不存在则创建一条代理商金豆总数记录
+            Integer agentGoldenBeanRecord = agentGoldenbeanDAO.existAgentGoldenBeanRecord(agentGoldenbeanPO.getAgentCode());
+            if (agentGoldenBeanRecord == 0){
+                //如果代理商没有金豆总记录数,则创建一条金豆总记录数
+                downResultDTO.setResultCode("0");
+                downResultDTO.setSuccess(false);
+                downResultDTO.setErrorDetail("代理商记录异常,不允许没有上分的代理商进行下分操作,请运维人员进行排查.");
+                return downResultDTO;
+            }else if (agentGoldenBeanRecord == 1){
+                //扣减代理商金豆数
+                agentGoldenbeanDAO.downAgentGoldenBean(agentGoldenbeanPO.getBeanCounts(),agentGoldenbeanPO.getAgentId());
+                //添加金豆记录明细
+                AgentGoldenbeanInfoPO infoPO = new AgentGoldenbeanInfoPO();
+                infoPO.setAgentId(agentGoldenbeanPO.getAgentId());
+                infoPO.setBeanCounts(agentGoldenbeanPO.getBeanCounts());//添加金豆数
+                infoPO.setBaseCounts(agentGoldenbeanPO.getBeanCounts());//基础金豆数,此处为0
+                infoPO.setInfoType(AgentGoldenBeanType.DownGoldenBeanToSellUser.getValue());//金豆明细记录类型(平台给代理商下分)
+                infoPO.setInfoStatus(1);//记录状态 1有效
+                infoPO.setRebateCounts(0l);//返点0
+                agentGoldenbeanInfoDAO.insertAgentGoldenbeanInfo(infoPO);
+            }else {
+                //如果不是0/1 说明代理商总金豆数有问题.则提示用户代理商存在问题.运维上线查看
+                downResultDTO.setResultCode("0");
+                downResultDTO.setSuccess(false);
+                downResultDTO.setErrorDetail("代理商记录异常,请运维人员进行排查.");
+                return downResultDTO;
+            }
+            downResultDTO.setResultCode("1");
+            downResultDTO.setSuccess(true);
+        }catch (Exception e){
+            log.error("#AgentGoldenbeanServiceImpl called downAgentGoldenBean error#",e);
+            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+            downResultDTO.setResultCode("0");
+            downResultDTO.setSuccess(false);
+            downResultDTO.setErrorDetail("代理商下分出错");
+        }
+        return downResultDTO;
     }
 
     @Override

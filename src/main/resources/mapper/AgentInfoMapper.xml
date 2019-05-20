@@ -97,6 +97,7 @@
         select
         <include refid="Base_Column_List" />
         from agent_info
+        WHERE agent_status != -1
         limit #{pageIndex},#{pageSize}
     </select>
 
@@ -104,6 +105,7 @@
         select
             count(1)
         from agent_info
+        WHERE agent_status != -1
     </select>
     <select id="exisitAccount" resultType="java.lang.Integer">
         SELECT count(1) FROM agent_info WHERE agent_account = #{account}
