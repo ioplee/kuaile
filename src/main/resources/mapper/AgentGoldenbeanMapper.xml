@@ -7,13 +7,17 @@
         <result column="agent_id" property="agentId" />
         <result column="bean_counts" property="beanCounts" />
         <result column="agent_status" property="agentStatus" />
+        <result column="agent_name" property="agentName"/>
+        <result column="mobile" property="mobile"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        agent_id,
-        bean_counts,
-        agent_status,
-        info_id
+        t.agent_id,
+        t.bean_counts,
+        t.agent_status,
+        t.info_id,
+        i.agent_name ,
+	    i.mobile
     </sql>
 
     <select id="getAgentGoldenbeanByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">

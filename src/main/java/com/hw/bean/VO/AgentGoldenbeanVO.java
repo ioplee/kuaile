@@ -33,4 +33,14 @@ public class AgentGoldenbeanVO implements Serializable {
     *   账户状态
     */
     private Integer agentStatus;
+
+    /**
+     * 代理商名称
+     */
+    private String agentName;
+
+    /**
+     * 代理商手机号码
+     */
+    private String mobile;
 }
