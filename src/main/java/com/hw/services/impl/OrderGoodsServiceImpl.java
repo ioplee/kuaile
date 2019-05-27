@@ -107,6 +107,29 @@ public class OrderGoodsServiceImpl implements OrderGoodsService{
     }
 
     @Override
+    public BaseResultDTO setOrderGoodsStatus(OrderGoodsPO orderGoodsPO) {
+        BaseResultDTO resultDTO = new BaseResultDTO();
+        try {
+            Integer number = orderGoodsDAO.setOrderGoodsStatus(orderGoodsPO.getGoodsId(),orderGoodsPO.getGoodsStatus());
+            if (number == 1){
+                resultDTO.setResultCode("1");
+                resultDTO.setSuccess(true);
+            }else {
+                resultDTO.setResultCode("0");
+                resultDTO.setSuccess(false);
+                resultDTO.setErrorDetail("设置商品状态失败");
+            }
+        }catch (Exception e){
+            log.error("#OrderGoodsServiceImpl called setOrderGoodsStatus error#",e);
+            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+            resultDTO.setResultCode("0");
+            resultDTO.setSuccess(false);
+            resultDTO.setErrorDetail("设置商品状态出错");
+        }
+        return resultDTO;
+    }
+
+    @Override
     public ResultDTO<OrderGoodsVO> getorderGoods(QueryOrderGoodsByPrimaryKey queryOrderGoodsByPrimaryKey){
         ResultDTO<OrderGoodsVO> resultDTO = new ResultDTO<OrderGoodsVO>();
         try{

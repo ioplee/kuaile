@@ -117,6 +117,12 @@
             gmt_modified = NOW()
         where goods_id = #{goodsId}
     </update>
+    <update id="setOrderGoodsStatus">
+        update order_goods set
+            goods_status = #{status},
+            gmt_modified = NOW()
+        where goods_id = #{goodsID}
+    </update>
 
     <select id="getPageList" parameterType="com.hw.bean.BO.QueryOrderGoodsPage" resultMap="BaseResultMap">
         select

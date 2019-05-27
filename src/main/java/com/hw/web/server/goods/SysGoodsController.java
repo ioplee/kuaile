@@ -6,6 +6,7 @@ import com.hw.bean.BO.QueryOrderGoodsByPrimaryKey;
 import com.hw.bean.BO.QueryOrderGoodsPage;
 import com.hw.bean.DTO.ADDOrderGoodsDTO;
 import com.hw.bean.DTO.ModifyOrderGoodsDTO;
+import com.hw.bean.DTO.SetOrderGoodsStatusDTO;
 import com.hw.bean.PO.OrderGoodsPO;
 import com.hw.bean.VO.OrderGoodsVO;
 import com.hw.services.OrderGoodsService;
@@ -64,5 +65,14 @@ public class SysGoodsController implements Serializable{
     public BatchResultDTO<OrderGoodsVO> getGoodsPage(@RequestBody @Validated @ModelAttribute(value = "")QueryOrderGoodsPage queryOrderGoodsPage){
         return orderGoodsService.getOrderGoodsList(queryOrderGoodsPage);
     }
+
+    @ApiOperation(value = "设置奖品状态")
+    @PostMapping(value = "setGoodsStatus")
+    BaseResultDTO setOrderGoodsStatus(@RequestBody @Validated @ModelAttribute(value = "")SetOrderGoodsStatusDTO setOrderGoodsStatusDTO){
+        OrderGoodsPO orderGoodsPO = PropertiesCopyUtil.copyProperties(setOrderGoodsStatusDTO,OrderGoodsPO.class);
+        return orderGoodsService.setOrderGoodsStatus(orderGoodsPO);
+    }
+
+
 
 }
