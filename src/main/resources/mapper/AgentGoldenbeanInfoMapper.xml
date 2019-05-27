@@ -73,6 +73,7 @@
         <include refid="Base_Column_List" />
         from agent_goldenbean_info
         WHERE info_status != -1
+        AND agent_id = #{agentID}
         limit #{pageIndex},#{pageSize}
     </select>
 
@@ -81,6 +82,7 @@
             count(1)
         from agent_goldenbean_info
         WHERE info_status != -1
+        AND agent_id = #{agentID}
     </select>
 
 </mapper>

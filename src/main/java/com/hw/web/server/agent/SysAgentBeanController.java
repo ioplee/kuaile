@@ -2,11 +2,14 @@ package com.hw.web.server.agent;/**
  * Created by robin on 2019/5/20.
  */
 
+import com.hw.bean.BO.QueryAgentGoldenbeanInfoPage;
 import com.hw.bean.BO.QueryAgentGoldenbeanPage;
 import com.hw.bean.DTO.ADDAgentGoldenbeanDTO;
 import com.hw.bean.DTO.ModifyAgentGoldenbeanDTO;
 import com.hw.bean.PO.AgentGoldenbeanPO;
+import com.hw.bean.VO.AgentGoldenbeanInfoVO;
 import com.hw.bean.VO.AgentGoldenbeanVO;
+import com.hw.services.AgentGoldenbeanInfoService;
 import com.hw.services.AgentGoldenbeanService;
 import com.hw.utils.BaseResultDTO;
 import com.hw.utils.BatchResultDTO;
@@ -37,6 +40,9 @@ public class SysAgentBeanController implements Serializable {
     @Autowired
     private AgentGoldenbeanService agentGoldenbeanService;
 
+    @Autowired
+    private AgentGoldenbeanInfoService agentGoldenbeanInfoService;
+
     @ApiOperation(value = "平台给代理商上分")
     @PostMapping(value = "upGoldenBean")
     public BaseResultDTO upAgentGoldenBean(@RequestBody @Validated @ModelAttribute(value = "")ADDAgentGoldenbeanDTO addAgentGoldenbeanDTO){
@@ -51,14 +57,16 @@ public class SysAgentBeanController implements Serializable {
         return agentGoldenbeanService.downAgentGoldenBean(agentGoldenbeanPO);
     }
 
-    @ApiOperation(value = "读取代理商金豆总数")
+    @ApiOperation(value = "读取代理商金豆记录明细")
     @PostMapping(value = "getAgentGoldenBean")
     public BatchResultDTO<AgentGoldenbeanVO> getAgentGoldenBean(@RequestBody @Validated @ModelAttribute(value = "")QueryAgentGoldenbeanPage queryAgentGoldenbeanPage){
         return agentGoldenbeanService.getAgentGoldenbeanList(queryAgentGoldenbeanPage);
     }
 
-
-
-
+    @ApiOperation(value = "查询代理商金豆明细记录(分页)")
+    @PostMapping(value = "getAgentGoldenBeanInfo")
+    public BatchResultDTO<AgentGoldenbeanInfoVO> getAgentGoldenBeanInfoPage(@RequestBody @Validated @ModelAttribute(value = "")QueryAgentGoldenbeanInfoPage queryAgentGoldenbeanInfoPage){
+        return agentGoldenbeanInfoService.getAgentGoldenbeanInfoList(queryAgentGoldenbeanInfoPage);
+    }
 
 }

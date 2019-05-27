@@ -87,13 +87,6 @@ public class OrderGoodsServiceImpl implements OrderGoodsService{
             Integer record = orderGoodsDAO.getPageCount(queryOrderGoodsPage);
             queryOrderGoodsPage.setRecord(record);
             resultDTO.setRecord(record);
-            if (queryOrderGoodsPage.getPageNo() > queryOrderGoodsPage.getTotalPages()){
-                resultDTO.setErrorDetail("获取商品表列表失败,参悟有误.");
-                resultDTO.setResultCode("0");
-                resultDTO.setSuccess(true);
-                resultDTO.setModule(new ArrayList<>());
-                resultDTO.setRecord(0);
-            }
             List<OrderGoodsVO> module = orderGoodsDAO.getPageList(queryOrderGoodsPage);
             resultDTO.setResultCode("1");
             resultDTO.setSuccess(true);

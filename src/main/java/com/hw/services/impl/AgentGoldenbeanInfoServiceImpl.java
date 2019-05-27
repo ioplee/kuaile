@@ -87,13 +87,6 @@ public class AgentGoldenbeanInfoServiceImpl implements AgentGoldenbeanInfoServic
             Integer record = agentGoldenbeanInfoDAO.getPageCount(queryAgentGoldenbeanInfoPage);
             queryAgentGoldenbeanInfoPage.setRecord(record);
             resultDTO.setRecord(record);
-            if (queryAgentGoldenbeanInfoPage.getPageNo() > queryAgentGoldenbeanInfoPage.getTotalPages()){
-                resultDTO.setErrorDetail("获取代理商金豆明细表列表失败,参悟有误.");
-                resultDTO.setResultCode("0");
-                resultDTO.setSuccess(true);
-                resultDTO.setModule(new ArrayList<>());
-                resultDTO.setRecord(0);
-            }
             List<AgentGoldenbeanInfoVO> module = agentGoldenbeanInfoDAO.getPageList(queryAgentGoldenbeanInfoPage);
             resultDTO.setResultCode("1");
             resultDTO.setSuccess(true);

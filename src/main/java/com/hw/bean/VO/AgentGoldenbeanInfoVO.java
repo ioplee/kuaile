@@ -26,7 +26,7 @@ public class AgentGoldenbeanInfoVO implements Serializable {
     */
     private Long agentId;
     /**
-    *   记录类型
+    *   记录类型(1代理商上分增加记录 2代理商下分扣减记录 3代理商给玩家上分扣减)
     */
     private Integer infoType;
     /**
@@ -38,7 +38,7 @@ public class AgentGoldenbeanInfoVO implements Serializable {
     */
     private Long bizId;
     /**
-    *   记录状态
+    *   记录状态(-1删除 0停用 1有效)
     */
     private Integer infoStatus;
     /**

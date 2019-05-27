@@ -26,7 +26,7 @@ public class AgentGoldenbeanInfoPO implements Serializable {
     */
     private Long agentId;
     /**
-    *   记录类型
+    *   记录类型(1平台给代理商上分 2平台给代理商下分 3代理商给玩家上分联动下分)
     */
     private Integer infoType;
     /**
