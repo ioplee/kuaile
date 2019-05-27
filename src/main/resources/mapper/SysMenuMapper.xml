@@ -67,6 +67,7 @@
         select
         <include refid="Base_Column_List" />
         from sys_menu
+        AND menu_status != -1
         limit #{pageIndex},#{pageSize}
     </select>
 
@@ -74,6 +75,7 @@
         select
             count(1)
         from sys_menu
+        AND menu_status != -1
     </select>
 
 </mapper>

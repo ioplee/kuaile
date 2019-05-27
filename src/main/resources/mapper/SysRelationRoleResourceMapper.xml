@@ -89,6 +89,7 @@
         select
         <include refid="Base_Column_List" />
         from sys_relation_role_resource
+        AND info_status != -1
         limit #{pageIndex},#{pageSize}
     </select>
 
@@ -96,6 +97,7 @@
         select
             count(1)
         from sys_relation_role_resource
+        AND info_status != -1
     </select>
 
     <select id="getResourceListByRoleID" resultMap="menuResultMap">

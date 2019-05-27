@@ -22,7 +22,7 @@ import java.io.Serializable;
  * @description: 玩家端 玩家信息 控制类
  **/
 
-@Api(value = "玩家端 - 个人信息管理")
+@Api(value = "[玩家端] - 个人信息管理")
 @CrossOrigin(origins = "*", maxAge = 3600, allowCredentials = "true")
 @RestController
 @RequestMapping(value = "player/info")
