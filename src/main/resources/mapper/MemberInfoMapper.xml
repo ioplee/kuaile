@@ -138,6 +138,28 @@
             agent_id = #{agentID}
         where member_id = #{memberId}
     </update>
+    <update id="resetMemberInfo" parameterType="com.hw.bean.PO.MemberInfoPO">
+        update member_info set
+            member_nickname = #{memberNickname},
+            user_name = #{userName},
+            member_icon_url = #{memberIconUrl},
+            member_qq = #{memberQq},
+            member_email = #{memberEmail},
+            gmt_modified = NOW()
+        where member_id = #{memberId}
+    </update>
+    <update id="resetPassword" parameterType="com.hw.bean.PO.MemberInfoPO">
+        update member_info set
+          login_pass = #{loginPass},
+          gmt_modified = NOW()
+        where member_id = #{memberId}
+    </update>
+    <update id="resetBankPassword" parameterType="com.hw.bean.PO.MemberInfoPO">
+        update member_info set
+          bank_pass = #{bankPass},
+          gmt_modified = NOW()
+        where member_id = #{memberId}
+    </update>
 
     <select id="getPageList" parameterType="com.hw.bean.BO.QueryMemberInfoPage" resultMap="BaseResultMap">
         select

@@ -103,13 +103,6 @@ public class MemberInfoServiceImpl implements MemberInfoService{
             Integer record = memberInfoDAO.getPageCount(queryMemberInfoPage);
             queryMemberInfoPage.setRecord(record);
             resultDTO.setRecord(record);
-//            if (queryMemberInfoPage.getPageNo() > queryMemberInfoPage.getTotalPages()){
-//                resultDTO.setErrorDetail("获取会员表列表失败,参悟有误.");
-//                resultDTO.setResultCode("0");
-//                resultDTO.setSuccess(true);
-//                resultDTO.setModule(new ArrayList<>());
-//                resultDTO.setRecord(0);
-//            }
             List<MemberInfoVO> module = memberInfoDAO.getPageList(queryMemberInfoPage);
             resultDTO.setResultCode("1");
             resultDTO.setSuccess(true);

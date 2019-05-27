@@ -1,4 +1,4 @@
-package com.hw.bean.DTO;/**
+package com.hw.bean.DTO.player;/**
  * Created by robin on 2019/5/15.
  */
 

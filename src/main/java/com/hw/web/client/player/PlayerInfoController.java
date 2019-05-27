@@ -2,9 +2,10 @@ package com.hw.web.client.player;/**
  * Created by robin on 2019/5/15.
  */
 
-import com.hw.bean.DTO.PlayerRegisterDTO;
+import com.hw.bean.DTO.player.*;
 import com.hw.bean.PO.MemberInfoPO;
 import com.hw.services.MemberInfoService;
+import com.hw.services.player.PlayerInfoService;
 import com.hw.utils.BaseResultDTO;
 import com.hw.utils.PropertiesCopyUtil;
 import io.swagger.annotations.Api;
@@ -33,6 +34,9 @@ public class PlayerInfoController implements Serializable {
     @Autowired
     private MemberInfoService memberInfoService;
 
+    @Autowired
+    private PlayerInfoService playerInfoService;
+
     @ApiOperation(value = "玩家注册")
     @PostMapping(value = "register")
     public BaseResultDTO register(@RequestBody @Validated @ModelAttribute(value = "")PlayerRegisterDTO playerRegisterDTO){
@@ -46,6 +50,33 @@ public class PlayerInfoController implements Serializable {
         memberInfoPO.setMemberXp(0l);//玩家经验值
 
         return memberInfoService.addMemberInfo(memberInfoPO);
+    }
+
+    @ApiOperation(value = "玩家修改个人信息")
+    @PostMapping(value = "resetPlayerInfo")
+    public BaseResultDTO modifyMemberInfo(@RequestBody @Validated @ModelAttribute(value = "")ResetPlayerInfoDTO resetPlayerInfoDTO){
+        MemberInfoPO memberInfoPO = PropertiesCopyUtil.copyProperties(resetPlayerInfoDTO,MemberInfoPO.class);
+        return playerInfoService.resetPlayerInfo(memberInfoPO);
+    }
+
+    @ApiOperation(value = "玩家修改个人登录密码")
+    @PostMapping(value = "resetLoginPassword")
+    public BaseResultDTO resetLoginPassword(@RequestBody @Validated @ModelAttribute(value = "")ResetPlayerPasswordDTO resetPlayerPasswordDTO){
+        MemberInfoPO memberInfoPO = PropertiesCopyUtil.copyProperties(resetPlayerPasswordDTO,MemberInfoPO.class);
+        return playerInfoService.resetLoginPassword(memberInfoPO);
+    }
+
+    @ApiOperation(value = "玩家修改个人银行密码")
+    @PostMapping(value = "resetBankPassword")
+    public BaseResultDTO resetBankPassword(@RequestBody @Validated @ModelAttribute(value = "")ResetPlayerBankPasswordDTO resetPlayerBankPasswordDTO){
+        MemberInfoPO memberInfoPO = PropertiesCopyUtil.copyProperties(resetPlayerBankPasswordDTO,MemberInfoPO.class);
+        return playerInfoService.resetBankPassword(memberInfoPO);
+    }
+
+    @ApiOperation(value = "发送短信验证码")
+    @PostMapping(value = "sendVerifyCode")
+    public BaseResultDTO sendVeryCode(@RequestBody @Validated @ModelAttribute(value = "")SendVeryCodeDTO sendVeryCodeDTO){
+        return null;
     }
 
 

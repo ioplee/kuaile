@@ -74,8 +74,48 @@ public interface MemberInfoDAO{
      */
     public Integer existByUser(@Param("account")String account,@Param("userID")Long userID);
 
+    /**
+     * Gets page list by agent.
+     *
+     * @param query the query
+     * @return the page list by agent
+     */
     public List<MemberInfoVO> getPageListByAgent(QueryMemberInfoPage query);
 
+    /**
+     * Gets page list count by agent.
+     *
+     * @param query the query
+     * @return the page list count by agent
+     */
     public Integer getPageListCountByAgent(QueryMemberInfoPage query);
+
+    /**
+     * 玩家段方法
+     */
+
+    /**
+     * 玩家修改个人信息
+     *
+     * @param memberInfoPO the member info po
+     * @return integer integer
+     */
+    public Integer resetMemberInfo(MemberInfoPO memberInfoPO);
+
+    /**
+     * Reset password integer.  玩家修改个人密码
+     *
+     * @param memberInfoPO the member info po
+     * @return the integer
+     */
+    public Integer resetPassword(MemberInfoPO memberInfoPO);
+
+    /**
+     * Reset bank password integer. 玩家修改个人银行密码
+     *
+     * @param memberInfoPO the member info po
+     * @return the integer
+     */
+    public Integer resetBankPassword(MemberInfoPO memberInfoPO);
 
 }
