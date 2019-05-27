@@ -45,7 +45,7 @@ public class SysAgentBeanController implements Serializable {
     }
 
     @ApiOperation(value = "平台给代理商上分")
-    @PostMapping(value = "upGoldenBean")
+    @PostMapping(value = "downGoldenBean")
     public BaseResultDTO downAgentGoldenBean(@RequestBody @Validated @ModelAttribute(value = "")ModifyAgentGoldenbeanDTO modifyAgentGoldenbeanDTO){
         AgentGoldenbeanPO agentGoldenbeanPO = PropertiesCopyUtil.copyProperties(modifyAgentGoldenbeanDTO,AgentGoldenbeanPO.class);
         return agentGoldenbeanService.downAgentGoldenBean(agentGoldenbeanPO);
