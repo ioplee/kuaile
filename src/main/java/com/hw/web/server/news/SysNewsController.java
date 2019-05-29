@@ -6,6 +6,7 @@ import com.hw.bean.BO.QueryBaseNewsByPrimaryKey;
 import com.hw.bean.BO.QueryBaseNewsPage;
 import com.hw.bean.DTO.ADDBaseNewsDTO;
 import com.hw.bean.DTO.ModifyBaseNewsDTO;
+import com.hw.bean.DTO.RemoveNewsDTO;
 import com.hw.bean.PO.BaseNewsPO;
 import com.hw.bean.VO.BaseNewsVO;
 import com.hw.services.BaseNewsService;
@@ -63,6 +64,13 @@ public class SysNewsController implements Serializable {
     @PostMapping(value = "getNewsInfo")
     public ResultDTO<BaseNewsVO> getNewsInfo(@RequestBody @Validated @ModelAttribute(value = "")QueryBaseNewsByPrimaryKey queryBaseNewsByPrimaryKey){
         return baseNewsService.getbaseNews(queryBaseNewsByPrimaryKey);
+    }
+
+    @ApiOperation(value = "设置公告状态")
+    @PostMapping(value = "setNewsStatus")
+    public BaseResultDTO setNewsStatus(@RequestBody @Validated @ModelAttribute(value = "")RemoveNewsDTO removeNewsDTO){
+        BaseNewsPO baseNewsPO = PropertiesCopyUtil.copyProperties(removeNewsDTO,BaseNewsPO.class);
+        return baseNewsService.resetNewsStatus(baseNewsPO);
     }
 
 

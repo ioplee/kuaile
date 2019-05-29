@@ -87,13 +87,7 @@ public class BaseNewsServiceImpl implements BaseNewsService{
             Integer record = baseNewsDAO.getPageCount(queryBaseNewsPage);
             queryBaseNewsPage.setRecord(record);
             resultDTO.setRecord(record);
-            if (queryBaseNewsPage.getPageNo() > queryBaseNewsPage.getTotalPages()){
-                resultDTO.setErrorDetail("获取新闻公告表列表失败,参悟有误.");
-                resultDTO.setResultCode("0");
-                resultDTO.setSuccess(true);
-                resultDTO.setModule(new ArrayList<>());
-                resultDTO.setRecord(0);
-            }
+
             List<BaseNewsVO> module = baseNewsDAO.getPageList(queryBaseNewsPage);
             resultDTO.setResultCode("1");
             resultDTO.setSuccess(true);
@@ -109,6 +103,27 @@ public class BaseNewsServiceImpl implements BaseNewsService{
             resultDTO.setErrorDetail("获取新闻公告表列表失败");
             resultDTO.setModule(new ArrayList<>());
             resultDTO.setRecord(0);
+        }
+        return resultDTO;
+    }
+
+    @Override
+    public BaseResultDTO resetNewsStatus(BaseNewsPO baseNewsPO) {
+        BaseResultDTO resultDTO = new BaseResultDTO();
+        try {
+            Integer number = baseNewsDAO.resetNewsStatus(baseNewsPO);
+            if (number == 1){
+                resultDTO.setResultCode("1");
+            }else {
+                resultDTO.setResultCode("0");
+                resultDTO.setErrorDetail("设置公告状态失败");
+            }
+            resultDTO.setSuccess(true);
+        }catch (Exception e){
+            log.error("#BaseNewsServiceImpl called resetNewsStatus error#",e);
+            resultDTO.setErrorDetail("设置公告状态出错");
+            resultDTO.setResultCode("0");
+            resultDTO.setSuccess(false);
         }
         return resultDTO;
     }

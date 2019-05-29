@@ -93,13 +93,7 @@ public class AgentGoldenbeanServiceImpl implements AgentGoldenbeanService{
             Integer record = agentGoldenbeanDAO.getPageCount(queryAgentGoldenbeanPage);
             queryAgentGoldenbeanPage.setRecord(record);
             resultDTO.setRecord(record);
-            if (queryAgentGoldenbeanPage.getPageNo() > queryAgentGoldenbeanPage.getTotalPages()){
-                resultDTO.setErrorDetail("获取代理商金豆表列表失败,参悟有误.");
-                resultDTO.setResultCode("0");
-                resultDTO.setSuccess(true);
-                resultDTO.setModule(new ArrayList<>());
-                resultDTO.setRecord(0);
-            }
+
             List<AgentGoldenbeanVO> module = agentGoldenbeanDAO.getPageList(queryAgentGoldenbeanPage);
             resultDTO.setResultCode("1");
             resultDTO.setSuccess(true);
@@ -124,7 +118,7 @@ public class AgentGoldenbeanServiceImpl implements AgentGoldenbeanService{
         BaseResultDTO upResultDTO = new BaseResultDTO();
         try {
             //首先判断代理商金豆记录是否存在,存在则直接上分,不存在则创建一条代理商金豆总数记录
-            Integer agentGoldenBeanRecord = agentGoldenbeanDAO.existAgentGoldenBeanRecord(agentGoldenbeanPO.getAgentCode());
+            Integer agentGoldenBeanRecord = agentGoldenbeanDAO.existAgentGoldenBeanRecord(agentGoldenbeanPO.getAgentId());
             if (agentGoldenBeanRecord == 0){
                 //如果代理商没有金豆总记录数,则创建一条金豆总记录数
                 agentGoldenbeanDAO.insertAgentGoldenbean(agentGoldenbeanPO);
@@ -173,7 +167,7 @@ public class AgentGoldenbeanServiceImpl implements AgentGoldenbeanService{
         BaseResultDTO downResultDTO = new BaseResultDTO();
         try {
             //首先判断代理商金豆记录是否存在,存在则直接上分,不存在则创建一条代理商金豆总数记录
-            Integer agentGoldenBeanRecord = agentGoldenbeanDAO.existAgentGoldenBeanRecord(agentGoldenbeanPO.getAgentCode());
+            Integer agentGoldenBeanRecord = agentGoldenbeanDAO.existAgentGoldenBeanRecord(agentGoldenbeanPO.getAgentId());
             if (agentGoldenBeanRecord == 0){
                 //如果代理商没有金豆总记录数,则创建一条金豆总记录数
                 downResultDTO.setResultCode("0");

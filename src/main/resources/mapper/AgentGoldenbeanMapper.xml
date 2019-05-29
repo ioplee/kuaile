@@ -69,7 +69,7 @@
         <include refid="Base_Column_List" />
         from agent_goldenbean t
         LEFT JOIN agent_info i ON t.agent_id = i.agent_id
-        WHERE agent_status != -1 AND i.agent_status != -1
+        WHERE t.agent_status != -1 AND i.agent_status != -1
         AND i.agent_code = #{agentCode}
         limit #{pageIndex},#{pageSize}
     </select>
@@ -79,7 +79,7 @@
             count(1)
         from agent_goldenbean t
         LEFT JOIN agent_info i ON t.agent_id = i.agent_id
-        WHERE agent_status != -1 AND i.agent_status != -1
+        WHERE t.agent_status != -1 AND i.agent_status != -1
         AND i.agent_code = #{agentCode}
     </select>
     <select id="existAgentGoldenBeanRecord" resultType="java.lang.Integer">
@@ -87,9 +87,8 @@
             COUNT(1)
         FROM
             agent_goldenbean t
-        LEFT JOIN agent_info i ON t.agent_id = i.agent_id
         WHERE
-            i.agent_code = #{agentID}
+            t.agent_id = #{agentID}
     </select>
 
 </mapper>

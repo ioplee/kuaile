@@ -52,6 +52,12 @@
             gmt_modified = NOW()
         where news_id = #{newsId}
     </update>
+    <update id="resetNewsStatus">
+        update base_news set
+            news_status = #{newsStatus},
+            gmt_modified = NOW()
+        where news_id = #{newsId}
+    </update>
 
     <select id="getPageList" parameterType="com.hw.bean.BO.QueryBaseNewsPage" resultMap="BaseResultMap">
         select

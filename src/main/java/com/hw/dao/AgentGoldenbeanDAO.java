@@ -72,7 +72,7 @@ public interface AgentGoldenbeanDAO{
      * @param agentID the agent id              代理商编号,不是自增系列,是系统配置的有序序列
      * @return the integer                      返回值如果为0,则表明不存在,如果为1则表明已存在,非0/1 则代表代理商存在问题,需运维人员进行维护.
      */
-    public Integer existAgentGoldenBeanRecord(@Param("agentID")Integer agentID);
+    public Integer existAgentGoldenBeanRecord(@Param("agentID")Long agentID);
 
     /**
      * Down agent golden bean integer.  代理商下分

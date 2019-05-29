@@ -1,9 +1,6 @@
 package com.hw.bean.DTO;
 
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-
-import javax.validation.constraints.NotNull;
 
 
 /**
@@ -16,8 +13,8 @@ import javax.validation.constraints.NotNull;
 public class ModifyAgentGoldenbeanDTO extends ADDAgentGoldenbeanDTO {
 
     private static final long serialVersionUID = -6542883448834695960L;
-    @ApiModelProperty(value = "记录ID" , required = true)
-    @NotNull(message = "记录ID不允许为空")
-    private Long infoId;
+//    @ApiModelProperty(value = "记录ID" , required = true)
+//    @NotNull(message = "记录ID不允许为空")
+//    private Long infoId;
 
 }
