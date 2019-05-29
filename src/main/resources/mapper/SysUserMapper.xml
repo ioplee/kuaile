@@ -41,8 +41,6 @@
             user_account,
             user_password,
             user_status,
-            last_login_ip,
-            last_login_time,
             gmt_create,
             gmt_modified
         ) values (
@@ -52,8 +50,6 @@
             #{userAccount},
             #{userPassword},
             #{userStatus},
-            #{lastLoginIp},
-            #{lastLoginTime},
             NOW(),
             NOW()
         )
@@ -66,9 +62,13 @@
             user_email = #{userEmail},
             user_account = #{userAccount},
             user_password = #{userPassword},
+            user_status = #{userStatus}
+            gmt_modified = NOW()
+        where user_id = #{userId}
+    </update>
+    <update id="resetUserStatus">
+        update sys_user set
             user_status = #{userStatus},
-            last_login_ip = #{lastLoginIp},
-            last_login_time = #{lastLoginTime},
             gmt_modified = NOW()
         where user_id = #{userId}
     </update>

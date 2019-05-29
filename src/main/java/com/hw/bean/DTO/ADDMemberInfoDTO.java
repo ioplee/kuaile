@@ -129,7 +129,7 @@ public class ADDMemberInfoDTO implements Serializable {
     /**
      * 代理商ID
      */
-    @ApiModelProperty(value = "代理商ID" , required = true)
+    @ApiModelProperty(value = "代理商ID(-1为系统添加玩家 其他大于0的值为代理商ID)" , required = true)
     @NotNull(message = "代理商ID 不允许为空")
     private Long agentID;
 }

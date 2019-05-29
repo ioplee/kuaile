@@ -5,6 +5,8 @@ package com.hw.web.server.player;/**
 import com.hw.bean.BO.QueryMemberInfoByPrimaryKey;
 import com.hw.bean.BO.QueryMemberInfoPage;
 import com.hw.bean.DTO.ADDMemberInfoDTO;
+import com.hw.bean.DTO.ModifyMemberInfoDTO;
+import com.hw.bean.DTO.ResetMemberInfoStatusDTO;
 import com.hw.bean.PO.MemberInfoPO;
 import com.hw.bean.VO.MemberInfoVO;
 import com.hw.services.MemberInfoService;
@@ -55,6 +57,20 @@ public class SysPlayerController implements Serializable {
     public BaseResultDTO createPlayer(@RequestBody @Validated @ModelAttribute(value = "")ADDMemberInfoDTO addMemberInfoDTO){
         MemberInfoPO memberInfoPO = PropertiesCopyUtil.copyProperties(addMemberInfoDTO,MemberInfoPO.class);
         return memberInfoService.addMemberInfo(memberInfoPO);
+    }
+
+    @ApiOperation(value = "编辑玩家信息")
+    @PostMapping(value = "editPlayer")
+    public BaseResultDTO editPlayer(@RequestBody @Validated @ModelAttribute(value = "")ModifyMemberInfoDTO modifyMemberInfoDTO){
+        MemberInfoPO memberInfoPO = PropertiesCopyUtil.copyProperties(modifyMemberInfoDTO,MemberInfoPO.class);
+        return memberInfoService.modifyMemberInfo(memberInfoPO);
+    }
+
+    @ApiOperation(value = "编辑玩家状态")
+    @PostMapping(value = "resetPlayerStatus")
+    public BaseResultDTO resetPlayerStatus(@RequestBody @Validated @ModelAttribute(value = "")ResetMemberInfoStatusDTO resetMemberInfoStatusDTO){
+        MemberInfoPO memberInfoPO = PropertiesCopyUtil.copyProperties(resetMemberInfoStatusDTO,MemberInfoPO.class);
+        return memberInfoService.resetMemberStatus(memberInfoPO);
     }
 
 

@@ -150,6 +150,12 @@
           gmt_modified = NOW()
         where member_id = #{memberId}
     </update>
+    <update id="resetStatus" parameterType="com.hw.bean.PO.MemberInfoPO">
+        update member_info set
+          member_status = #{memberStatus},
+          gmt_modified = NOW()
+        where member_id = #{memberId}
+    </update>
 
     <select id="getPageList" parameterType="com.hw.bean.BO.QueryMemberInfoPage" resultMap="BaseResultMap">
         select

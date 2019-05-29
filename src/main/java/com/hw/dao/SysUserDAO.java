@@ -75,4 +75,12 @@ public interface SysUserDAO{
      */
     public SysUserVO getUserInfo(@Param("account")String account,@Param("password")String password);
 
+    /**
+     * Reset user status integer.      修改平台用户状态
+     *
+     * @param sysUserPO the sys user po
+     * @return the integer
+     */
+    public Integer resetUserStatus(SysUserPO sysUserPO);
+
 }

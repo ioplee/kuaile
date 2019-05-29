@@ -118,4 +118,12 @@ public interface MemberInfoDAO{
      */
     public Integer resetBankPassword(MemberInfoPO memberInfoPO);
 
+    /**
+     * Reset status integer.    设置玩家状态
+     *
+     * @param memberInfoPO the member info po
+     * @return the integer
+     */
+    public Integer resetStatus(MemberInfoPO memberInfoPO);
+
 }

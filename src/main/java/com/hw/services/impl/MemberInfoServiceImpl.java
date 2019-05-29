@@ -149,6 +149,27 @@ public class MemberInfoServiceImpl implements MemberInfoService{
     }
 
     @Override
+    public BaseResultDTO resetMemberStatus(MemberInfoPO memberInfoPO) {
+        BaseResultDTO resultDTO = new BaseResultDTO();
+        try {
+            Integer number = memberInfoDAO.resetStatus(memberInfoPO);
+            resultDTO.setSuccess(true);
+            if (number == 1){
+                resultDTO.setResultCode("1");
+            }else {
+                resultDTO.setResultCode("0");
+                resultDTO.setErrorDetail("设置玩家状态失败");
+            }
+        }catch (Exception e){
+            log.error("#MemberInfoServiceImpl called resetMemberStatus error#",e);
+            resultDTO.setResultCode("0");
+            resultDTO.setSuccess(false);
+            resultDTO.setErrorDetail("设置玩家状态出错");
+        }
+        return resultDTO;
+    }
+
+    @Override
     public ResultDTO<MemberInfoVO> getmemberInfo(QueryMemberInfoByPrimaryKey queryMemberInfoByPrimaryKey){
         ResultDTO<MemberInfoVO> resultDTO = new ResultDTO<MemberInfoVO>();
         try{

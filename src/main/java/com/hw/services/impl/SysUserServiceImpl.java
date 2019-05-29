@@ -11,6 +11,7 @@ import com.hw.dao.SysUserDAO;
 import com.hw.services.SysUserService;
 import com.hw.utils.BaseResultDTO;
 import com.hw.utils.BatchResultDTO;
+import com.hw.utils.MD5;
 import com.hw.utils.ResultDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,7 @@ public class SysUserServiceImpl implements SysUserService{
     public BaseResultDTO addSysUser(SysUserPO sysUserPO){
         BaseResultDTO addResultDTO = new BaseResultDTO();
         try{
+            sysUserPO.setUserPassword(MD5.md5(sysUserPO.getUserPassword()));
             Integer number = sysUserDAO.insertSysUser(sysUserPO);
             if(number == 1){
                 //添加用户具有的角色集合
@@ -76,6 +78,7 @@ public class SysUserServiceImpl implements SysUserService{
     public BaseResultDTO modifySysUser(SysUserPO sysUserPO){
         BaseResultDTO modifyResultDTO = new BaseResultDTO();
         try{
+            sysUserPO.setUserPassword(MD5.md5(sysUserPO.getUserPassword()));
             Integer number = sysUserDAO.updateSysUser(sysUserPO);
             if(number == 1){
                 //清除用户具有的角色集合
@@ -179,6 +182,27 @@ public class SysUserServiceImpl implements SysUserService{
             resultDTO.setResultCode("0");
             resultDTO.setSuccess(false);
             resultDTO.setErrorDetail("平台用户登录失败");
+        }
+        return resultDTO;
+    }
+
+    @Override
+    public BaseResultDTO resetUserStatus(SysUserPO sysUserPO) {
+        BaseResultDTO resultDTO = new BaseResultDTO();
+        try {
+            Integer number = sysUserDAO.resetUserStatus(sysUserPO);
+            resultDTO.setSuccess(true);
+            if (number == 1){
+                resultDTO.setResultCode("1");
+            }else {
+                resultDTO.setResultCode("0");
+                resultDTO.setErrorDetail("修改平台用户状态失败");
+            }
+        }catch (Exception e){
+            log.error("#SysUserServiceImpl called resetUserStatus error#",e);
+            resultDTO.setResultCode("0");
+            resultDTO.setSuccess(false);
+            resultDTO.setErrorDetail("修改平台用户状态出错");
         }
         return resultDTO;
     }

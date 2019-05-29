@@ -6,6 +6,7 @@ import com.hw.bean.BO.QuerySysUserByPrimaryKey;
 import com.hw.bean.BO.QuerySysUserPage;
 import com.hw.bean.DTO.ADDSysUserDTO;
 import com.hw.bean.DTO.ModifySysUserDTO;
+import com.hw.bean.DTO.ResetUserStatusDTO;
 import com.hw.bean.PO.SysRelationUserRolePO;
 import com.hw.bean.PO.SysUserPO;
 import com.hw.bean.VO.SysUserVO;
@@ -58,7 +59,7 @@ public class SysUserController implements Serializable{
         return sysUserService.addSysUser(sysUserPO);
     }
 
-    @ApiOperation(value = "修改菜单")
+    @ApiOperation(value = "修改用户信息")
     @PostMapping(value = "modify")
     public BaseResultDTO modifyUser(@RequestBody @Validated @ModelAttribute(value = "")ModifySysUserDTO modifySysUserDTO){
         SysUserPO sysUserPO = PropertiesCopyUtil.copyProperties(modifySysUserDTO,SysUserPO.class);
@@ -84,5 +85,12 @@ public class SysUserController implements Serializable{
     @PostMapping(value = "getUserPage")
     public BatchResultDTO<SysUserVO> getUserPage(@RequestBody @Validated @ModelAttribute(value = "")QuerySysUserPage querySysUserPage){
         return sysUserService.getSysUserList(querySysUserPage);
+    }
+
+    @ApiOperation(value = "查询用户列表")
+    @PostMapping(value = "resetUserStatus")
+    public BaseResultDTO resetUserStatus(@RequestBody @Validated @ModelAttribute(value = "")ResetUserStatusDTO resetUserStatusDTO){
+        SysUserPO sysUserPO = PropertiesCopyUtil.copyProperties(resetUserStatusDTO,SysUserPO.class);
+        return sysUserService.resetUserStatus(sysUserPO);
     }
 }

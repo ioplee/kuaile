@@ -56,4 +56,12 @@ public interface SysUserService {
      * @return the result dto
      */
     public ResultDTO<SysUserVO> sysLogin(SysUserPO sysUserPO);
+
+    /**
+     * Reset user status base result dto.       修改平台用户状态
+     *
+     * @param sysUserPO the sys user po
+     * @return the base result dto
+     */
+    public BaseResultDTO resetUserStatus(SysUserPO sysUserPO);
 }
