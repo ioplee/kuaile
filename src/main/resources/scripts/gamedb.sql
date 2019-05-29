@@ -5,15 +5,16 @@
  Source Server Type    : MySQL
  Source Server Version : 50615
  Source Host           : localhost
- Source Database       : gamedb
+ Source Database       : game-testdb
 
  Target Server Type    : MySQL
  Target Server Version : 50615
  File Encoding         : utf-8
 
- Date: 05/28/2019 17:19:49 PM
+ Date: 05/29/2019 17:15:37 PM
 */
 
+SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
@@ -60,7 +61,14 @@ CREATE TABLE `agent_goldenbean` (
   `gmt_create` datetime NOT NULL COMMENT '创建时间',
   `gmt_modified` datetime NOT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`info_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=DYNAMIC COMMENT='代理商金豆表';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=DYNAMIC COMMENT='代理商金豆表';
+
+-- ----------------------------
+--  Records of `agent_goldenbean`
+-- ----------------------------
+BEGIN;
+INSERT INTO `agent_goldenbean` VALUES ('4', '4', '45000', '1', '2019-05-29 15:33:31', '2019-05-29 15:34:20');
+COMMIT;
 
 -- ----------------------------
 --  Table structure for `agent_goldenbean_info`
@@ -71,14 +79,21 @@ CREATE TABLE `agent_goldenbean_info` (
   `agent_id` bigint(11) NOT NULL COMMENT '代理商iD',
   `info_type` tinyint(1) NOT NULL COMMENT '记录类型',
   `bean_counts` bigint(11) NOT NULL COMMENT '金豆数值',
-  `biz_id` bigint(11) NOT NULL COMMENT '业务记录ID',
+  `biz_id` bigint(11) DEFAULT '-1' COMMENT '业务记录ID',
   `info_status` tinyint(1) NOT NULL COMMENT '记录状态',
   `gmt_create` datetime NOT NULL COMMENT '创建时间',
   `gmt_modified` datetime NOT NULL COMMENT '最后修改时间',
   `base_counts` bigint(11) NOT NULL COMMENT '基础金豆数',
   `rebate_counts` bigint(11) NOT NULL COMMENT '返点金豆数',
   PRIMARY KEY (`info_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=DYNAMIC COMMENT='代理商金豆明细表';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=DYNAMIC COMMENT='代理商金豆明细表';
+
+-- ----------------------------
+--  Records of `agent_goldenbean_info`
+-- ----------------------------
+BEGIN;
+INSERT INTO `agent_goldenbean_info` VALUES ('3', '4', '1', '1000', null, '1', '2019-05-29 15:33:31', '2019-05-29 15:33:31', '1000', '0'), ('4', '4', '1', '50000', null, '1', '2019-05-29 15:33:42', '2019-05-29 15:33:42', '50000', '0'), ('5', '4', '3', '6000', null, '1', '2019-05-29 15:34:20', '2019-05-29 15:34:20', '6000', '0');
+COMMIT;
 
 -- ----------------------------
 --  Table structure for `agent_info`
@@ -101,13 +116,13 @@ CREATE TABLE `agent_info` (
   `gmt_create` datetime NOT NULL COMMENT '创建时间',
   `gmt_modified` datetime NOT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`agent_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=DYNAMIC COMMENT='代理商信息表';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=DYNAMIC COMMENT='代理商信息表';
 
 -- ----------------------------
 --  Records of `agent_info`
 -- ----------------------------
 BEGIN;
-INSERT INTO `agent_info` VALUES ('1', '1', '1', '1', '1', '1', '1', '-1', '1', '1', '2019-10-30 11:11:11', 'asf', 'd68f6095c3e6d78a3ed9d01218e0040f', '2019-05-14 17:08:06', '2019-05-14 17:36:36'), ('2', '代理商1', '10001', '123123123', '测试代理商', '1313131313', '1', '10001', '2', '0', '2019-10-12 23:23:23', 'try111', '123456', '2019-05-14 17:30:49', '2019-05-14 17:30:49'), ('3', '代理商1', '10002', '123123123', '测试代理商', '1313131313', '1', '10001', '2', '0', '2019-10-12 23:23:23', 'try11123', 'a448410bdcbb4d7cfb32830909f6aa08', '2019-05-14 17:31:49', '2019-05-14 17:31:49');
+INSERT INTO `agent_info` VALUES ('1', '1', '1', '1', '1', '1', '1', '-1', '1', '1', '2019-10-30 11:11:11', 'asf', 'd68f6095c3e6d78a3ed9d01218e0040f', '2019-05-14 17:08:06', '2019-05-14 17:36:36'), ('2', '代理商1', '10001', '123123123', '测试代理商', '1313131313', '1', '10001', '2', '0', '2019-10-12 23:23:23', 'try111', '123456', '2019-05-14 17:30:49', '2019-05-14 17:30:49'), ('3', '代理商12', '10002', '123123123', '测试代理商', '1313341313', '1', '10001', '2', '0', '2019-10-12 23:23:23', 'try11123', 'a448410bdcbb4d7cfb32830909f6aa08', '2019-05-14 17:31:49', '2019-05-14 17:31:49'), ('4', '北京二傻子', '101', '123', '123', '123123123', '-1', null, '12', '2', '2019-05-15 11:11:11', '123', 'a448410bdcbb4d7cfb32830909f6aa08', '2019-05-29 13:04:29', '2019-05-29 13:22:25');
 COMMIT;
 
 -- ----------------------------
@@ -156,13 +171,13 @@ CREATE TABLE `base_news` (
   `gmt_create` datetime NOT NULL COMMENT '创建时间',
   `gmt_modified` datetime NOT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`news_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=DYNAMIC COMMENT='新闻公告表';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=DYNAMIC COMMENT='新闻公告表';
 
 -- ----------------------------
 --  Records of `base_news`
 -- ----------------------------
 BEGIN;
-INSERT INTO `base_news` VALUES ('1', '??1', '2019-05-25 11:11:11', '????????????', '1', '2019-05-27 12:22:46', '2019-05-27 12:22:46');
+INSERT INTO `base_news` VALUES ('2', '公告11', '2019-10-10 11:11:11', '新闻内容', '1', '2019-05-29 16:59:12', '2019-05-29 17:14:26');
 COMMIT;
 
 -- ----------------------------
@@ -377,23 +392,6 @@ CREATE TABLE `game_result_rule_36` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=DYNAMIC COMMENT='游戏开奖结果-三数组合类分类 36';
 
 -- ----------------------------
---  Table structure for `game_type`
--- ----------------------------
-DROP TABLE IF EXISTS `game_type`;
-CREATE TABLE `game_type` (
-  `type_id` bigint(11) NOT NULL AUTO_INCREMENT COMMENT '类型ID',
-  `type_name` varchar(50) COLLATE utf8_bin NOT NULL COMMENT '类型名称',
-  `type_summary` varchar(200) COLLATE utf8_bin NOT NULL COMMENT '类型描述',
-  `type_content` varchar(2000) COLLATE ututf8_binf8mb4_bin DEFAULT NULL COMMENT '游戏介绍',
-  `type_status` tinyint(1) NOT NULL COMMENT '类型状态',
-  `gmt_create` datetime NOT NULL COMMENT '创建时间',
-  `gmt_modified` datetime NOT NULL COMMENT '最后修改时间',
-  `org_type` bigint(11) NOT NULL COMMENT '数据源类型',
-  `org_code` varchar(50) COLLATE utf8_bin NOT NULL COMMENT '数据源业务编码',
-  PRIMARY KEY (`type_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=DYNAMIC COMMENT='游戏类型表';
-
--- ----------------------------
 --  Table structure for `member_account_change`
 -- ----------------------------
 DROP TABLE IF EXISTS `member_account_change`;
@@ -500,10 +498,10 @@ CREATE TABLE `member_info` (
   `member_email` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT '常用邮箱',
   `member_wx` varchar(64) COLLATE utf8_bin DEFAULT NULL COMMENT '微信',
   `is_wxcheck` tinyint(1) DEFAULT '0' COMMENT '登录是否微信验证 0不需要 1需要',
-  `member_level` tinyint(1) NOT NULL DEFAULT '1' COMMENT '会员等级',
-  `member_xp` bigint(11) NOT NULL DEFAULT '0' COMMENT '会员经验值',
+  `member_level` tinyint(1) DEFAULT '1' COMMENT '会员等级',
+  `member_xp` bigint(11) DEFAULT '0' COMMENT '会员经验值',
   `register_date` datetime NOT NULL COMMENT '注册日期',
-  `member_status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '会员状态 -1删除 0停用 1有效',
+  `member_status` tinyint(1) DEFAULT '1' COMMENT '会员状态 -1删除 0停用 1有效',
   `extend_links` varchar(100) COLLATE utf8_bin DEFAULT NULL COMMENT '推广链接地址',
   `parent_id` bigint(11) DEFAULT NULL COMMENT '上级会员ID',
   `last_ip` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '上次登录ip地址',
@@ -517,13 +515,13 @@ CREATE TABLE `member_info` (
   `gmt_modified` datetime NOT NULL COMMENT '最后修改时间',
   `agent_id` bigint(11) DEFAULT '-1' COMMENT '代理商ID',
   PRIMARY KEY (`member_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=DYNAMIC COMMENT='会员表';
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=DYNAMIC COMMENT='会员表';
 
 -- ----------------------------
 --  Records of `member_info`
 -- ----------------------------
 BEGIN;
-INSERT INTO `member_info` VALUES ('1', '123', '123', '13', '13', '123', '123', '123', '123', '0', '1', '0', '2019-05-15 11:11:23', '1', '123', '-1', null, null, '0', '123123', '123123', '2', null, '2019-05-15 16:54:12', '2019-05-15 17:07:34', '2'), ('2', '321', '321', '321', '321', '321', '123', '1231', '23', '1', '1', '1', '2019-05-15 11:11:11', '1', '1', '-1', null, null, '0', '321', '123', '2', null, '2019-05-15 17:04:50', '2019-05-15 17:04:50', null), ('3', '321', '321', '321', '321', '321543', '123', '1231', '23', '1', '1', '1', '2019-05-15 11:11:11', '1', '1', '-1', null, null, '0', '321', '123', '2', null, '2019-05-15 17:06:23', '2019-05-15 17:06:23', '1'), ('4', '', null, null, '', '13334564545', null, null, null, null, '1', '0', '2019-05-15 11:11:11', '1', null, null, null, null, '0', '123456', null, '1', null, '2019-05-17 10:35:15', '2019-05-17 10:35:15', null);
+INSERT INTO `member_info` VALUES ('1', '张三', '123', '13', '13', '123', '123', '123', '123', '0', '1', '0', '2019-05-15 11:11:23', '1', '123', '-1', null, null, '0', '123123', '123123', '2', null, '2019-05-15 16:54:12', '2019-05-15 17:07:34', '2'), ('2', '李四', '32四1', '321', '321', '321', '123', '1231', '23', '1', '1', '1', '2019-05-15 11:11:11', '1', '1', '-1', null, null, '0', '321', '123', '2', null, '2019-05-15 17:04:50', '2019-05-15 17:04:50', null), ('3', '王五', '321', '321', '321', '321543', '123', '1231', '23', '1', '1', '1', '2019-05-15 11:11:11', '1', '1', '-1', null, null, '0', '321', '123', '2', null, '2019-05-15 17:06:23', '2019-05-15 17:06:23', '1'), ('4', '赵大仙', null, null, '', '13334564545', null, null, null, null, '1', '0', '2019-05-15 11:11:11', '1', null, null, null, null, '0', '123456', null, '1', null, '2019-05-17 10:35:15', '2019-05-17 10:35:15', null), ('5', '455', '五行之神', '不知道', '随便一个地址吧', '13305714554', null, null, null, '0', '1', '0', '2019-05-15 11:11:11', '1', null, null, null, null, '0', 'a448410bdcbb4d7cfb32830909f6aa08', '123456', '2', null, '2019-05-29 10:56:34', '2019-05-29 11:08:52', '1'), ('6', '446', '玩家1', null, '466', '13305714664', null, null, null, '0', '1', '0', '2019-05-15 11:11:11', '1', null, null, null, null, '0', 'a448410bdcbb4d7cfb32830909f6aa08', '123456', '1', null, '2019-05-29 11:14:12', '2019-05-29 12:07:30', '-1');
 COMMIT;
 
 -- ----------------------------
@@ -764,7 +762,7 @@ CREATE TABLE `sys_menu` (
 --  Records of `sys_menu`
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_menu` VALUES ('1', '权限管理', null, null, '-1', '1', '1', '2019-05-10 11:42:15', '2019-05-10 11:42:57'), ('2', '财务', null, null, '-1', '1', '1', '2019-05-10 22:48:58', '2019-05-10 22:48:58'), ('3', '角色管理', null, null, '1', '1', '1', '2019-05-10 22:49:15', '2019-05-10 22:49:15'), ('4', '用户管理', null, null, '1', '1', '1', '2019-05-10 22:49:21', '2019-05-10 22:49:21');
+INSERT INTO `sys_menu` VALUES ('1', '权限管理', null, '/po', '-1', '1', '1', '2019-05-10 11:42:15', '2019-05-10 11:42:57'), ('2', '财务', null, '/ca', '-1', '1', '1', '2019-05-10 22:48:58', '2019-05-10 22:48:58'), ('3', '角色管理', null, '/role', '1', '1', '1', '2019-05-10 22:49:15', '2019-05-10 22:49:15'), ('4', '用户管理', null, '/user', '1', '1', '1', '2019-05-10 22:49:21', '2019-05-10 22:49:21');
 COMMIT;
 
 -- ----------------------------
@@ -801,13 +799,13 @@ CREATE TABLE `sys_relation_user_role` (
   `gmt_create` datetime NOT NULL,
   `gmt_modified` datetime NOT NULL,
   PRIMARY KEY (`info_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=DYNAMIC COMMENT='用户具有角色记录表';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=DYNAMIC COMMENT='用户具有角色记录表';
 
 -- ----------------------------
 --  Records of `sys_relation_user_role`
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_relation_user_role` VALUES ('1', '2', '3', '-1', '2019-05-14 16:39:22', '2019-05-14 16:44:19'), ('2', '2', '3', '1', '2019-05-14 16:44:19', '2019-05-14 16:44:19');
+INSERT INTO `sys_relation_user_role` VALUES ('1', '2', '3', '-1', '2019-05-14 16:39:22', '2019-05-14 16:44:19'), ('2', '2', '3', '1', '2019-05-14 16:44:19', '2019-05-14 16:44:19'), ('3', '3', '3', '-1', '2019-05-29 12:10:52', '2019-05-29 12:12:50'), ('4', '3', '3', '1', '2019-05-29 12:38:09', '2019-05-29 12:38:09');
 COMMIT;
 
 -- ----------------------------
@@ -848,13 +846,13 @@ CREATE TABLE `sys_user` (
   `last_login_ip` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '用户最后登录IP地址',
   `last_login_time` datetime DEFAULT NULL COMMENT '用户最后登录时间',
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=DYNAMIC COMMENT='系统用户表';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=DYNAMIC COMMENT='系统用户表';
 
 -- ----------------------------
 --  Records of `sys_user`
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_user` VALUES ('1', '管理员1', '13333456789', '123@qq.om', '123123123', '123123123', '1', '2019-05-14 16:29:04', '2019-05-14 16:29:04', null, null), ('2', '用户1', '23453123', '123124@qw.com', '123123132213', '34234234', '1', '2019-05-14 16:39:22', '2019-05-14 16:44:19', null, null);
+INSERT INTO `sys_user` VALUES ('1', '管理员1', '13333456789', '123@qq.om', '123123123', '123123123', '1', '2019-05-14 16:29:04', '2019-05-14 16:29:04', null, null), ('2', '用户1', '23453123', '123124@qw.com', '123123132213', '34234234', '1', '2019-05-14 16:39:22', '2019-05-14 16:44:19', null, null), ('3', '权限管理员', '13305717777', '123@123.com', '13333', 'a448410bdcbb4d7cfb32830909f6aa08', '1', '2019-05-29 12:10:52', '2019-05-29 12:38:09', null, null);
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
