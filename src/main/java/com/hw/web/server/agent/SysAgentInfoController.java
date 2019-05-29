@@ -6,6 +6,7 @@ import com.hw.bean.BO.QueryAgentInfoByPrimaryKey;
 import com.hw.bean.BO.QueryAgentInfoPage;
 import com.hw.bean.DTO.ADDAgentInfoDTO;
 import com.hw.bean.DTO.ModifyAgentInfoDTO;
+import com.hw.bean.DTO.ResetAgentStatusDTO;
 import com.hw.bean.PO.AgentInfoPO;
 import com.hw.bean.VO.AgentInfoVO;
 import com.hw.services.AgentInfoService;
@@ -60,6 +61,13 @@ public class SysAgentInfoController implements Serializable{
     @PostMapping(value = "agentInfoPage")
     public BatchResultDTO<AgentInfoVO> getAgentInfoPage(@RequestBody @Validated @ModelAttribute(value = "")QueryAgentInfoPage queryAgentInfoPage){
         return agentInfoService.getAgentInfoList(queryAgentInfoPage);
+    }
+
+    @ApiOperation(value = "修改代理商状态")
+    @PostMapping(value = "resetAgentStatus")
+    public BaseResultDTO resetAgentStatus(@RequestBody @Validated @ModelAttribute(value = "")ResetAgentStatusDTO resetAgentStatusDTO){
+        AgentInfoPO agentInfoPO = PropertiesCopyUtil.copyProperties(resetAgentStatusDTO,AgentInfoPO.class);
+        return agentInfoService.resetAgentStatus(agentInfoPO);
     }
 
 }

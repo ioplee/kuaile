@@ -74,4 +74,12 @@ public interface AgentInfoDAO{
      */
     public Integer exisitAccountByUser(@Param("account")String account,@Param("agentID")Long agentID);
 
+    /**
+     * Reset status integer.    修改代理商状态
+     *
+     * @param agentInfoPO the agent info po
+     * @return the integer
+     */
+    public Integer resetStatus(AgentInfoPO agentInfoPO);
+
 }

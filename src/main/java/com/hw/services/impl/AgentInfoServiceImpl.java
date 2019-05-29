@@ -104,13 +104,6 @@ public class AgentInfoServiceImpl implements AgentInfoService{
             Integer record = agentInfoDAO.getPageCount(queryAgentInfoPage);
             queryAgentInfoPage.setRecord(record);
             resultDTO.setRecord(record);
-            if (queryAgentInfoPage.getPageNo() > queryAgentInfoPage.getTotalPages()){
-                resultDTO.setErrorDetail("获取代理商信息表列表失败,参悟有误.");
-                resultDTO.setResultCode("0");
-                resultDTO.setSuccess(true);
-                resultDTO.setModule(new ArrayList<>());
-                resultDTO.setRecord(0);
-            }
             List<AgentInfoVO> module = agentInfoDAO.getPageList(queryAgentInfoPage);
             resultDTO.setResultCode("1");
             resultDTO.setSuccess(true);
@@ -126,6 +119,27 @@ public class AgentInfoServiceImpl implements AgentInfoService{
             resultDTO.setErrorDetail("获取代理商信息表列表失败");
             resultDTO.setModule(new ArrayList<>());
             resultDTO.setRecord(0);
+        }
+        return resultDTO;
+    }
+
+    @Override
+    public BaseResultDTO resetAgentStatus(AgentInfoPO agentInfoPO) {
+        BaseResultDTO resultDTO = new BaseResultDTO();
+        try {
+            Integer number = agentInfoDAO.resetStatus(agentInfoPO);
+            resultDTO.setSuccess(true);
+            if (number == 1){
+                resultDTO.setResultCode("1");
+            }else {
+                resultDTO.setResultCode("0");
+                resultDTO.setErrorDetail("修改代理商状态失败");
+            }
+        }catch (Exception e){
+            log.error("#AgentInfoServiceImpl called resetAgentStatus error#",e);
+            resultDTO.setResultCode("0");
+            resultDTO.setSuccess(false);
+            resultDTO.setErrorDetail("修改代理商状态出错");
         }
         return resultDTO;
     }

@@ -78,17 +78,19 @@
     <update id="updateAgentInfo" parameterType="com.hw.bean.PO.AgentInfoPO">
         update agent_info set
             agent_name = #{agentName},
-            agent_code = #{agentCode},
             qq = #{qq},
             agent_desc = #{agentDesc},
             mobile = #{mobile},
             agent_status = #{agentStatus},
-            creator = #{creator},
             recharge_point = #{rechargePoint},
             cash_point = #{cashPoint},
-            register_date = #{registerDate},
             agent_account = #{agentAccount},
-            agent_password = #{agentPassword},
+            gmt_modified = NOW()
+        where agent_id = #{agentId}
+    </update>
+    <update id="resetStatus">
+        update agent_info set
+            agent_status = #{agentStatus},
             gmt_modified = NOW()
         where agent_id = #{agentId}
     </update>
@@ -98,6 +100,12 @@
         <include refid="Base_Column_List" />
         from agent_info
         WHERE agent_status != -1
+        <if test="agentName != null">
+            AND agent_name LIKE CONCAT('%',#{agentName},'%')
+        </if>
+        <if test="mobile != null">
+            AND mobile LIKE CONCAT('%',#{mobile},'%')
+        </if>
         limit #{pageIndex},#{pageSize}
     </select>
 
@@ -106,6 +114,12 @@
             count(1)
         from agent_info
         WHERE agent_status != -1
+        <if test="agentName != null">
+            AND agent_name LIKE CONCAT('%',#{agentName},'%')
+        </if>
+        <if test="mobile != null">
+            AND mobile LIKE CONCAT('%',#{mobile},'%')
+        </if>
     </select>
     <select id="exisitAccount" resultType="java.lang.Integer">
         SELECT count(1) FROM agent_info WHERE agent_account = #{account}

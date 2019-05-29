@@ -1,7 +1,8 @@
 package com.hw.bean.BO;
 
-import lombok.Data;
 import com.hw.utils.BaseQuery;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 
 /**
 * @author: Robin
@@ -13,4 +14,16 @@ import com.hw.utils.BaseQuery;
 public class QueryAgentInfoPage extends BaseQuery {
 
     private static final long serialVersionUID = 2478919155835792526L;
+
+    /**
+     *   代理商名称
+     */
+    @ApiModelProperty(value = "agentName 代理商名称")
+    private String agentName;
+
+    /**
+     *   手机号码
+     */
+    @ApiModelProperty(value = "mobile 代理商联系电话")
+    private String mobile;
 }
