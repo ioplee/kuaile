@@ -102,7 +102,7 @@
         FROM
             sys_relation_user_role t
         LEFT JOIN sys_role r ON t.role_id = r.role_id
-        AND t.info_status = 1
+        WHERE t.info_status = 1
         AND r.role_status = 1
         AND t.user_id = #{userID}
     </select>

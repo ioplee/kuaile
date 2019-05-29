@@ -62,7 +62,7 @@
             user_email = #{userEmail},
             user_account = #{userAccount},
             user_password = #{userPassword},
-            user_status = #{userStatus}
+            user_status = #{userStatus},
             gmt_modified = NOW()
         where user_id = #{userId}
     </update>
@@ -78,6 +78,12 @@
         <include refid="Base_Column_List" />
         from sys_user
         WHERE user_status != -1
+        <if test="userName != null">
+            AND user_name LIKE CONCAT('%',#{userName},'%')
+        </if>
+        <if test="userAccount != null">
+            AND user_account LIKE CONCAT('%',#{userAccount},'%')
+        </if>
         limit #{pageIndex},#{pageSize}
     </select>
 
@@ -86,6 +92,12 @@
             count(1)
         from sys_user
         WHERE user_status != -1
+        <if test="userName != null">
+           AND user_name LIKE CONCAT('%',#{userName},'%')
+        </if>
+        <if test="userAccount != null">
+           AND user_account LIKE CONCAT('%',#{userAccount},'%')
+        </if>
     </select>
     <select id="getUserExsit" resultType="java.lang.Integer">
         SELECT count(1)

@@ -109,7 +109,7 @@
         FROM
             sys_relation_role_resource t
         LEFT JOIN sys_menu m ON t.resource_id = m.menu_id
-        AND t.info_status = 1
+        WHERE t.info_status = 1
         AND m.menu_status = 1
         AND t.role_id = #{roleID}
     </select>
