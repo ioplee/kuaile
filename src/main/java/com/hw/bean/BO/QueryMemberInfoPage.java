@@ -25,4 +25,7 @@ public class QueryMemberInfoPage extends BaseQuery {
      */
     @ApiModelProperty(value = "玩家手机号码")
     private String mobile;
+
+    @ApiModelProperty(value = "玩家昵称")
+    private String nickName;
 }

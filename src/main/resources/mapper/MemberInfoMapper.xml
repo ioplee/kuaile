@@ -115,7 +115,6 @@
 
     <update id="updateMemberInfo" parameterType="com.hw.bean.PO.MemberInfoPO">
         update member_info set
-            member_name = #{memberName},
             member_nickname = #{memberNickname},
             user_name = #{userName},
             member_icon_url = #{memberIconUrl},
@@ -123,19 +122,10 @@
             member_qq = #{memberQq},
             member_email = #{memberEmail},
             member_wx = #{memberWx},
-            is_wxcheck = #{isWxcheck},
             member_level = #{memberLevel},
-            member_xp = #{memberXp},
-            register_date = #{registerDate},
             member_status = #{memberStatus},
             extend_links = #{extendLinks},
-            parent_id = #{parentId},
-            last_ip = #{lastIp},
-            last_logintime = #{lastLogintime},
-            member_type = #{memberType},
-            game_rate = #{gameRate},
-            gmt_modified = NOW(),
-            agent_id = #{agentID}
+            gmt_modified = NOW()
         where member_id = #{memberId}
     </update>
     <update id="resetMemberInfo" parameterType="com.hw.bean.PO.MemberInfoPO">
@@ -168,10 +158,13 @@
         <where>
             member_status != -1
         <if test="playerCode != null">
-            AND member_name LIKE CONTCAT('%',#{playerCode},'%')
+            AND member_name LIKE CONCAT('%',#{playerCode},'%')
         </if>
         <if test="mobile != null">
             AND member_mobile LIKE CONCAT('%',#{mobile},'%')
+        </if>
+        <if test="nickName != null">
+            AND member_nickname LIKE CONCAT('%',#{nickName},'%')
         </if>
         </where>
         limit #{pageIndex},#{pageSize}
@@ -188,6 +181,9 @@
             </if>
             <if test="mobile != null">
                 AND member_mobile LIKE CONCAT('%',#{mobile},'%')
+            </if>
+            <if test="nickName != null">
+                AND member_nickname LIKE CONCAT('%',#{nickName},'%')
             </if>
         </where>
     </select>
@@ -210,7 +206,7 @@
                 AND member_mobile LIKE CONCAT('%',#{mobile},'%')
             </if>
             <if test="agentID != -1">
-                AND agent_id = ${agentID}
+                AND agent_id = #{agentID}
             </if>
         </where>
         limit #{pageIndex},#{pageSize}
@@ -228,7 +224,7 @@
                 AND member_mobile LIKE CONCAT('%',#{mobile},'%')
             </if>
             <if test="agentID != -1">
-                AND agent_id = ${agentID}
+                AND agent_id = #{agentID}
             </if>
         </where>
     </select>

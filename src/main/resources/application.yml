@@ -15,8 +15,8 @@ spring:
           filters: stat
           driver-class-name: com.mysql.jdbc.Driver
           #基本属性
-          #url: jdbc:mysql://148.70.77.67:33666/game-dev?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
-          url: jdbc:mysql://localhost:3306/gamedb?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+          #url: jdbc:mysql://148.70.77.67:33666/hwgame?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+          url: jdbc:mysql://localhost:3306/game-testdb?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
           #username: gameuser
           username: game
           #password: game1Power.

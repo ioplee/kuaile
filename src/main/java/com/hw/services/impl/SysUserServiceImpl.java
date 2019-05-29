@@ -152,6 +152,38 @@ public class SysUserServiceImpl implements SysUserService{
     }
 
     @Override
+    public ResultDTO<SysUserVO> sysLogin(SysUserPO sysUserPO) {
+        ResultDTO<SysUserVO> resultDTO = new ResultDTO<SysUserVO>();
+        try {
+            Integer record = sysUserDAO.getUserExsit(sysUserPO.getUserAccount(),sysUserPO.getUserPassword());
+            if (record == 1){
+                SysUserVO sysUserVO = sysUserDAO.getUserInfo(sysUserPO.getUserAccount(),sysUserPO.getUserPassword());
+                if(null != sysUserVO){
+                    resultDTO.setModule(sysUserVO);
+                    resultDTO.setResultCode("1");
+                    resultDTO.setSuccess(true);
+                    log.debug("11");
+                }else {
+                    resultDTO.setErrorDetail("用户名或密码错误,或者用户不存在.");
+                    resultDTO.setResultCode("0");
+                    resultDTO.setSuccess(true);
+                    log.debug("00");
+                }
+            }else {
+                resultDTO.setErrorDetail("用户名或密码错误,或者用户不存在.");
+                resultDTO.setResultCode("0");
+                resultDTO.setSuccess(true);
+            }
+        }catch (Exception e){
+            log.error("#SysUserServiceImpl called sysLogin error#",e);
+            resultDTO.setResultCode("0");
+            resultDTO.setSuccess(false);
+            resultDTO.setErrorDetail("平台用户登录失败");
+        }
+        return resultDTO;
+    }
+
+    @Override
     public ResultDTO<SysUserVO> getsysUser(QuerySysUserByPrimaryKey querySysUserByPrimaryKey){
         ResultDTO<SysUserVO> resultDTO = new ResultDTO<SysUserVO>();
         try{

@@ -4,9 +4,13 @@ package com.hw.web.server.player;/**
 
 import com.hw.bean.BO.QueryMemberInfoByPrimaryKey;
 import com.hw.bean.BO.QueryMemberInfoPage;
+import com.hw.bean.DTO.ADDMemberInfoDTO;
+import com.hw.bean.PO.MemberInfoPO;
 import com.hw.bean.VO.MemberInfoVO;
 import com.hw.services.MemberInfoService;
+import com.hw.utils.BaseResultDTO;
 import com.hw.utils.BatchResultDTO;
+import com.hw.utils.PropertiesCopyUtil;
 import com.hw.utils.ResultDTO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -44,6 +48,13 @@ public class SysPlayerController implements Serializable {
     @PostMapping(value = "getPlayerInfo")
     public ResultDTO<MemberInfoVO> getPlayerInfo(@RequestBody @Validated @ModelAttribute(value = "")QueryMemberInfoByPrimaryKey queryMemberInfoByPrimaryKey){
         return memberInfoService.getmemberInfo(queryMemberInfoByPrimaryKey);
+    }
+
+    @ApiOperation(value = "创建玩家")
+    @PostMapping(value = "createPlayer")
+    public BaseResultDTO createPlayer(@RequestBody @Validated @ModelAttribute(value = "")ADDMemberInfoDTO addMemberInfoDTO){
+        MemberInfoPO memberInfoPO = PropertiesCopyUtil.copyProperties(addMemberInfoDTO,MemberInfoPO.class);
+        return memberInfoService.addMemberInfo(memberInfoPO);
     }
 
 

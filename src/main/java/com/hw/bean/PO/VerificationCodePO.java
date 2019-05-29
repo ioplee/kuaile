@@ -29,7 +29,7 @@ public class VerificationCodePO implements Serializable {
      */
     private Long userID;
     /**
-     * 发送事件
+     * 发送时间
      */
     private String sendTime;
 }

@@ -6,7 +6,6 @@ import com.hw.bean.DTO.player.SendVeryCodeDTO;
 import com.hw.services.utils.VerificatioCodeService;
 import com.hw.utils.BaseResultDTO;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,9 +20,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class VerificatioCodeServiceImpl implements VerificatioCodeService {
 
-    @Autowired
-
-
     @Override
     public BaseResultDTO sendCode(SendVeryCodeDTO sendVeryCodeDTO) {
         BaseResultDTO resultDTO = new BaseResultDTO();
@@ -35,6 +31,6 @@ public class VerificatioCodeServiceImpl implements VerificatioCodeService {
             resultDTO.setSuccess(false);
             resultDTO.setErrorDetail("发送短信验证码失败");
         }
-        return null;
+        return resultDTO;
     }
 }
