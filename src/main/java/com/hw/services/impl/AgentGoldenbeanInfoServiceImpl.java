@@ -128,7 +128,7 @@ public class AgentGoldenbeanInfoServiceImpl implements AgentGoldenbeanInfoServic
             resultDTO.setSuccess(false);
             resultDTO.setErrorDetail("按条件查询代理商金豆明细出错");
         }
-        return null;
+        return resultDTO;
     }
 
     @Override
