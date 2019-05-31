@@ -28,6 +28,16 @@
         <result column="game_rate" property="gameRate" />
         <result column="agent_id" property="agentID"/>
     </resultMap>
+    
+    <resultMap id="playerGoldenBeanMapper" type="com.hw.bean.VO.PlayerGoldenBeanShowVO">
+        <result column="bean_count" property="beanCounts"/>
+        <result column="member_name" property="memberCode"/>
+        <result column="member_icon_url" property="memberIconUrl"/>
+        <result column="member_mobile" property="memberMobile"/>
+        <result column="member_nickname" property="memberNickname"/>
+        <result column="user_name" property="userName"/>
+        <result column="member_id" property="memberId"/>
+    </resultMap>
 
     <sql id="Base_Column_List">
         member_name,
@@ -233,6 +243,49 @@
                 AND agent_id = #{agentID}
             </if>
         </where>
+    </select>
+    <select id="getPlayerCount" resultType="java.lang.Integer" parameterType="com.hw.bean.BO.QueryMemberInfoPage">
+        SELECT
+            count(1)
+        FROM
+            member_info t
+        LEFT JOIN member_goldenbaen g ON t.member_id = g.member_id
+        WHERE
+            t.member_status = 1
+        <if test="playerCode != null">
+            AND t.member_name LIKE CONCAT('%',#{playerCode},'%')
+        </if>
+        <if test="nickName != null">
+            AND member_nickname LIKE CONCAT('%',#{nickName},'%')
+        </if>
+        <if test="mobile != null">
+            AND t.member_mobile LIKE CONCAT('%',#{mobile},'%')
+        </if>
+    </select>
+    <select id="getPlayerList" resultMap="playerGoldenBeanMapper" parameterType="com.hw.bean.BO.QueryMemberInfoPage">
+        SELECT
+            t.member_id ,
+            t.member_name ,
+            t.member_nickname ,
+            t.user_name ,
+            t.member_icon_url ,
+            t.member_mobile ,
+            IFNULL(g.bean_count , 0) bean_count
+        FROM
+            member_info t
+        LEFT JOIN member_goldenbaen g ON t.member_id = g.member_id
+        WHERE
+            t.member_status = 1
+        <if test="playerCode != null">
+            AND t.member_name LIKE CONCAT('%',#{playerCode},'%')
+        </if>
+        <if test="nickName != null">
+            AND member_nickname LIKE CONCAT('%',#{nickName},'%')
+        </if>
+        <if test="mobile != null">
+            AND t.member_mobile LIKE CONCAT('%',#{mobile},'%')
+        </if>
+        limit #{pageIndex},#{pageSize}
     </select>
 
 </mapper>

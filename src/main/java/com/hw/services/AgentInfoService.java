@@ -3,6 +3,7 @@ package com.hw.services;
 import com.hw.bean.BO.QueryAgentInfoByPrimaryKey;
 import com.hw.bean.BO.QueryAgentInfoPage;
 import com.hw.bean.PO.AgentInfoPO;
+import com.hw.bean.VO.AgentGoldenBeanShowVO;
 import com.hw.bean.VO.AgentInfoVO;
 import com.hw.utils.BaseResultDTO;
 import com.hw.utils.BatchResultDTO;
@@ -56,4 +57,12 @@ public interface AgentInfoService {
      * @return the base result dto
      */
     public BaseResultDTO resetAgentStatus(AgentInfoPO agentInfoPO);
+
+    /**
+     * Gets agent info list for gold bean.  按条件查询代理商列表
+     *
+     * @param queryAgentInfoPage the query agent info page
+     * @return the agent info list for gold bean
+     */
+    public BatchResultDTO<AgentGoldenBeanShowVO> getAgentInfoListForGoldBean(QueryAgentInfoPage queryAgentInfoPage);
 }

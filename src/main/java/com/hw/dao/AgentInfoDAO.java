@@ -2,6 +2,7 @@ package com.hw.dao;
 
 import com.hw.bean.BO.QueryAgentInfoPage;
 import com.hw.bean.PO.AgentInfoPO;
+import com.hw.bean.VO.AgentGoldenBeanShowVO;
 import com.hw.bean.VO.AgentInfoVO;
 
 import org.apache.ibatis.annotations.Param;
@@ -81,5 +82,21 @@ public interface AgentInfoDAO{
      * @return the integer
      */
     public Integer resetStatus(AgentInfoPO agentInfoPO);
+
+    /**
+     * Gets agent count.    按条件查询代理商金豆明细查看的代理商列表总数
+     *
+     * @param queryAgentInfoPage the query agent info page
+     * @return the agent count
+     */
+    public Integer getAgentCount(QueryAgentInfoPage queryAgentInfoPage);
+
+    /**
+     * Gets agent list.     按条件查询代理商金豆明细查看的代理商列表
+     *
+     * @param queryAgentInfoPage the query agent info page
+     * @return the agent list
+     */
+    public List<AgentGoldenBeanShowVO> getAgentList(QueryAgentInfoPage queryAgentInfoPage);
 
 }

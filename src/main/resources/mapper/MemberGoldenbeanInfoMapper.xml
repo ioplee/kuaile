@@ -11,6 +11,16 @@
         <result column="infp_status" property="infpStatus" />
     </resultMap>
 
+    <resultMap id="playerGBMapper" type="com.hw.bean.VO.PlayerGoldenBeanInfoShowVO">
+        <result column="bena_counts" property="beanCounts"/>
+        <result column="info_id" property="infoId"/>
+        <result column="info_type" property="infoType"/>
+        <result column="member_name" property="playerCode"/>
+        <result column="member_id" property="playerId"/>
+        <result column="member_nickname" property="playerName"/>
+        <result column="record_date" property="recordDate"/>
+    </resultMap>
+
     <sql id="Base_Column_List">
         member_id,
         info_type,
@@ -69,6 +79,62 @@
         select
             count(1)
         from member_goldenbean_info
+    </select>
+    <select id="getPlayerGBCount" resultType="java.lang.Integer" parameterType="com.hw.bean.BO.QueryPlayerGBCondition">
+      SELECT
+        count(1)
+      FROM
+        member_info t
+      LEFT JOIN member_goldenbean_info i ON t.member_id = i.member_id
+      WHERE
+        t.member_status = 1
+        AND i.infp_status = 1
+        <if test="playerCode != -1">
+            AND t.member_name = #{playerCode}
+        </if>
+        <if test="beanCounts != -1">
+            AND i.bena_counts = #{beanCounts}
+        </if>
+        <if test="playerName != null">
+            AND t.member_nickname LIKE CONCAT('%',#{playerName},'%')
+        </if>
+        <if test="beginDate != null">
+            AND DATE_FORMAT(CONVERT_TZ(i.gmt_create ,@@SESSION .time_zone ,'+9:00') ,'%Y-%m-%d') <![CDATA[>=]]> #{beginDate}
+        </if>
+        <if test="endDate != null">
+            AND DATE_FORMAT(CONVERT_TZ(i.gmt_create ,@@SESSION .time_zone ,'+9:00') ,'%Y-%m-%d') <![CDATA[<=]]> #{endDate}
+        </if>
+    </select>
+    <select id="getPlayerGBList" resultMap="playerGBMapper" parameterType="com.hw.bean.BO.QueryPlayerGBCondition">
+    SELECT
+        t.member_id ,
+        t.member_name ,
+        t.member_nickname ,
+        i.info_id ,
+        i.bena_counts ,
+        i.info_type,
+        DATE_FORMAT(CONVERT_TZ(i.gmt_create ,@@SESSION .time_zone ,'+9:00') ,'%Y-%m-%d') record_date
+    FROM
+        member_info t
+    LEFT JOIN member_goldenbean_info i ON t.member_id = i.member_id
+    WHERE
+        t.member_status = 1
+        AND i.infp_status = 1
+    <if test="playerCode != -1">
+        AND t.member_name = #{playerCode}
+    </if>
+    <if test="beanCounts != -1">
+        AND i.bena_counts = #{beanCounts}
+    </if>
+    <if test="playerName != null">
+        AND t.member_nickname LIKE CONCAT('%',#{playerName},'%')
+    </if>
+    <if test="beginDate != null">
+        AND DATE_FORMAT(CONVERT_TZ(i.gmt_create ,@@SESSION .time_zone ,'+9:00') ,'%Y-%m-%d') <![CDATA[>=]]> #{beginDate}
+    </if>
+    <if test="endDate != null">
+        AND DATE_FORMAT(CONVERT_TZ(i.gmt_create ,@@SESSION .time_zone ,'+9:00') ,'%Y-%m-%d') <![CDATA[<=]]> #{endDate}
+    </if>
     </select>
 
 </mapper>

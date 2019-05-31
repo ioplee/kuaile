@@ -5,6 +5,7 @@ import com.hw.bean.BO.QueryMemberInfoByPrimaryKey;
 import com.hw.bean.BO.QueryMemberInfoPage;
 import com.hw.bean.PO.MemberInfoPO;
 import com.hw.bean.VO.MemberInfoVO;
+import com.hw.bean.VO.PlayerGoldenBeanShowVO;
 import com.hw.utils.BaseResultDTO;
 import com.hw.utils.BatchResultDTO;
 import com.hw.utils.ResultDTO;
@@ -65,4 +66,12 @@ public interface MemberInfoService {
      * @return the base result dto
      */
     public BaseResultDTO resetMemberStatus(MemberInfoPO memberInfoPO);
+
+    /**
+     * Gets player page.        按条件查询玩家金豆明细 玩家列表
+     *
+     * @param queryMemberInfoPage the query member info page
+     * @return the player page
+     */
+    public BatchResultDTO<PlayerGoldenBeanShowVO> getPlayerPage(QueryMemberInfoPage queryMemberInfoPage);
 }

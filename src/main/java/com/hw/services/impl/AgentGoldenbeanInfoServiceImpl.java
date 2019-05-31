@@ -1,21 +1,21 @@
 package com.hw.services.impl;
 
+import com.hw.bean.BO.QueryAgentGBCondtion;
+import com.hw.bean.BO.QueryAgentGoldenbeanInfoByPrimaryKey;
+import com.hw.bean.BO.QueryAgentGoldenbeanInfoPage;
+import com.hw.bean.PO.AgentGoldenbeanInfoPO;
+import com.hw.bean.VO.AgentGoldenbeanInfoShowVO;
+import com.hw.bean.VO.AgentGoldenbeanInfoVO;
+import com.hw.dao.AgentGoldenbeanInfoDAO;
+import com.hw.services.AgentGoldenbeanInfoService;
+import com.hw.utils.BaseResultDTO;
+import com.hw.utils.BatchResultDTO;
+import com.hw.utils.ResultDTO;
 import lombok.extern.slf4j.Slf4j;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
-
-import com.hw.utils.BaseResultDTO;
-import com.hw.utils.BatchResultDTO;
-import com.hw.utils.ResultDTO;
-import com.hw.dao.AgentGoldenbeanInfoDAO;
-import com.hw.bean.PO.AgentGoldenbeanInfoPO;
-import com.hw.bean.VO.AgentGoldenbeanInfoVO;
-import com.hw.bean.BO.QueryAgentGoldenbeanInfoPage;
-import com.hw.bean.BO.QueryAgentGoldenbeanInfoByPrimaryKey;
-import com.hw.services.AgentGoldenbeanInfoService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -104,6 +104,31 @@ public class AgentGoldenbeanInfoServiceImpl implements AgentGoldenbeanInfoServic
             resultDTO.setRecord(0);
         }
         return resultDTO;
+    }
+
+    @Override
+    public BatchResultDTO<AgentGoldenbeanInfoShowVO> getAgentGoldenbeanByCondition(QueryAgentGBCondtion queryAgentGBCondtion) {
+        BatchResultDTO<AgentGoldenbeanInfoShowVO> resultDTO = new BatchResultDTO<AgentGoldenbeanInfoShowVO>();
+        try {
+            Integer record = agentGoldenbeanInfoDAO.getRecordCount(queryAgentGBCondtion);
+            resultDTO.setRecord(record);
+            queryAgentGBCondtion.setRecord(record);
+            List<AgentGoldenbeanInfoShowVO> module = agentGoldenbeanInfoDAO.getRecordList(queryAgentGBCondtion);
+            resultDTO.setSuccess(true);
+            resultDTO.setResultCode("1");
+            if (null != module && !module.isEmpty()){
+                resultDTO.setModule(module);
+            }else {
+                resultDTO.setModule(new ArrayList<>());
+            }
+        }catch (Exception e){
+            log.error("#AgentGoldenbeanInfoServiceImpl called getAgentGoldenbeanByCondition error#",e);
+            resultDTO.setModule(new ArrayList<>());
+            resultDTO.setResultCode("0");
+            resultDTO.setSuccess(false);
+            resultDTO.setErrorDetail("按条件查询代理商金豆明细出错");
+        }
+        return null;
     }
 
     @Override

@@ -4,6 +4,7 @@ import com.hw.bean.BO.QueryMemberInfoPage;
 import com.hw.bean.PO.MemberInfoPO;
 import com.hw.bean.VO.MemberInfoVO;
 
+import com.hw.bean.VO.PlayerGoldenBeanShowVO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -125,5 +126,21 @@ public interface MemberInfoDAO{
      * @return the integer
      */
     public Integer resetStatus(MemberInfoPO memberInfoPO);
+
+    /**
+     * Gets player count.       按条件查询玩家金豆明细 玩家总数
+     *
+     * @param queryMemberInfoPage the query member info page
+     * @return the player count
+     */
+    public Integer getPlayerCount(QueryMemberInfoPage queryMemberInfoPage);
+
+    /**
+     * Gets player list.        按条件查询玩家金豆明细 玩家列表
+     *
+     * @param queryMemberInfoPage the query member info page
+     * @return the player list
+     */
+    public List<PlayerGoldenBeanShowVO> getPlayerList(QueryMemberInfoPage queryMemberInfoPage);
 
 }

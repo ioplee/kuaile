@@ -1,5 +1,7 @@
 package com.hw.services.impl;
 
+import com.hw.bean.BO.QueryPlayerGBCondition;
+import com.hw.bean.VO.PlayerGoldenBeanInfoShowVO;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -109,6 +111,31 @@ public class MemberGoldenbeanInfoServiceImpl implements MemberGoldenbeanInfoServ
             resultDTO.setErrorDetail("获取会员金豆账户明细表列表失败");
             resultDTO.setModule(new ArrayList<>());
             resultDTO.setRecord(0);
+        }
+        return resultDTO;
+    }
+
+    @Override
+    public BatchResultDTO<PlayerGoldenBeanInfoShowVO> getPlayerGBByCondition(QueryPlayerGBCondition queryPlayerGBCondition) {
+        BatchResultDTO<PlayerGoldenBeanInfoShowVO> resultDTO =  new BatchResultDTO<PlayerGoldenBeanInfoShowVO>();
+        try {
+            Integer record = memberGoldenbeanInfoDAO.getPlayerGBCount(queryPlayerGBCondition);
+            resultDTO.setRecord(record);
+            queryPlayerGBCondition.setRecord(record);
+            List<PlayerGoldenBeanInfoShowVO> module = memberGoldenbeanInfoDAO.getPlayerGBList(queryPlayerGBCondition);
+            resultDTO.setResultCode("1");
+            resultDTO.setSuccess(true);
+            if (null != module && !module.isEmpty()){
+                resultDTO.setModule(module);
+            }else {
+                resultDTO.setModule(new ArrayList<>());
+            }
+        }catch (Exception e){
+            log.error("#MemberGoldenbeanInfoServiceImpl called getPlayerGBByCondition error#",e);
+            resultDTO.setModule(new ArrayList<>());
+            resultDTO.setResultCode("0");
+            resultDTO.setSuccess(false);
+            resultDTO.setErrorDetail("按条件查询玩家金豆明细出错");
         }
         return resultDTO;
     }

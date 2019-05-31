@@ -1,5 +1,6 @@
 package com.hw.services.impl;
 
+import com.hw.bean.VO.AgentGoldenBeanShowVO;
 import com.hw.utils.MD5;
 import lombok.extern.slf4j.Slf4j;
 
@@ -140,6 +141,31 @@ public class AgentInfoServiceImpl implements AgentInfoService{
             resultDTO.setResultCode("0");
             resultDTO.setSuccess(false);
             resultDTO.setErrorDetail("修改代理商状态出错");
+        }
+        return resultDTO;
+    }
+
+    @Override
+    public BatchResultDTO<AgentGoldenBeanShowVO> getAgentInfoListForGoldBean(QueryAgentInfoPage queryAgentInfoPage) {
+        BatchResultDTO<AgentGoldenBeanShowVO> resultDTO = new BatchResultDTO<AgentGoldenBeanShowVO>();
+        try {
+            Integer record = agentInfoDAO.getAgentCount(queryAgentInfoPage);
+            queryAgentInfoPage.setRecord(record);
+            resultDTO.setRecord(record);
+            List<AgentGoldenBeanShowVO> module = agentInfoDAO.getAgentList(queryAgentInfoPage);
+            resultDTO.setSuccess(true);
+            resultDTO.setResultCode("1");
+            if (null!= module && !module.isEmpty()){
+                resultDTO.setModule(module);
+            }else {
+                resultDTO.setModule(new ArrayList<>());
+            }
+        }catch (Exception e){
+            log.error("#AgentInfoServiceImpl called getAgentInfoListForGoldBean error#",e);
+            resultDTO.setModule(new ArrayList<>());
+            resultDTO.setResultCode("0");
+            resultDTO.setSuccess(false);
+            resultDTO.setErrorDetail("查询代理商列表出错");
         }
         return resultDTO;
     }

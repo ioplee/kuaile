@@ -13,6 +13,16 @@
         <result column="rebate_counts" property="rebateCounts" />
     </resultMap>
 
+    <resultMap id="agentGoldenbeanMapper" type="com.hw.bean.VO.AgentGoldenbeanInfoShowVO">
+        <result column="agent_code" property="agentCode"/>
+        <result column="agent_id" property="agentId"/>
+        <result column="agent_name" property="agentName"/>
+        <result column="bean_counts" property="beanCounts"/>
+        <result column="info_id" property="infoId"/>
+        <result column="info_type" property="infoType"/>
+        <result column="record_date" property="recordDate"/>
+    </resultMap>
+
     <sql id="Base_Column_List">
         agent_id,
         info_type,
@@ -83,6 +93,63 @@
         from agent_goldenbean_info
         WHERE info_status != -1
         AND agent_id = #{agentID}
+    </select>
+    <select id="getRecordCount" resultType="java.lang.Integer" parameterType="com.hw.bean.BO.QueryAgentGBCondtion">
+        SELECT
+          count(1)
+        FROM
+            agent_info t
+        LEFT JOIN agent_goldenbean_info i ON t.agent_id = i.agent_id
+        WHERE
+            t.agent_status = 1
+            AND i.info_status = 1
+        <if test="agentCode != -1">
+            AND t.agent_code = #{agentCode}
+        </if>
+        <if test="beanCounts != -1">
+            AND i.bean_counts = #{beanCounts}
+        </if>
+        <if test="agentName != null">
+            AND t.agent_name LIKE CONCAT('%',#{agentName},'%')
+        </if>
+        <if test="beginDate != null">
+            AND DATE_FORMAT(CONVERT_TZ(i.gmt_create ,@@SESSION .time_zone ,'+9:00') ,'%Y-%m-%d') <![CDATA[>=]]> #{beginDate}
+        </if>
+        <if test="endDate != null">
+            AND DATE_FORMAT(CONVERT_TZ(i.gmt_create ,@@SESSION .time_zone ,'+9:00') ,'%Y-%m-%d') <![CDATA[<=]]> #{endDate}
+        </if>
+    </select>
+    <select id="getRecordList" resultMap="agentGoldenbeanMapper" parameterType="com.hw.bean.BO.QueryAgentGBCondtion">
+        SELECT
+            t.agent_id ,
+            t.agent_name ,
+            t.agent_code ,
+            i.info_type ,
+            i.bean_counts ,
+            DATE_FORMAT(CONVERT_TZ(i.gmt_create ,@@SESSION .time_zone ,'+9:00') ,'%Y-%m-%d') record_date,
+            i.info_id
+        FROM
+          agent_info t
+        LEFT JOIN agent_goldenbean_info i ON t.agent_id = i.agent_id
+        WHERE
+            t.agent_status = 1
+            AND i.info_status = 1
+        <if test="agentCode != -1">
+            AND t.agent_code = #{agentCode}
+        </if>
+        <if test="beanCounts != -1">
+            AND i.bean_counts = #{beanCounts}
+        </if>
+        <if test="agentName != null">
+            AND t.agent_name LIKE CONCAT('%',#{agentName},'%')
+        </if>
+        <if test="beginDate != null">
+            AND DATE_FORMAT(CONVERT_TZ(i.gmt_create ,@@SESSION .time_zone ,'+9:00') ,'%Y-%m-%d') <![CDATA[>=]]> #{beginDate}
+        </if>
+        <if test="endDate != null">
+            AND DATE_FORMAT(CONVERT_TZ(i.gmt_create ,@@SESSION .time_zone ,'+9:00') ,'%Y-%m-%d') <![CDATA[<=]]> #{endDate}
+        </if>
+        limit #{pageIndex},#{pageSize}
     </select>
 
 </mapper>

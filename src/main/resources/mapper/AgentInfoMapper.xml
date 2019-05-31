@@ -18,6 +18,14 @@
         <result column="agent_password" property="agentPassword" />
     </resultMap>
 
+    <resultMap id="agentGoldenbeanResultMapper" type="com.hw.bean.VO.AgentGoldenBeanShowVO">
+        <result property="agentId" column="agent_id"/>
+        <result property="agentCode" column="agent_code"/>
+        <result property="agentName" column="agent_name"/>
+        <result property="beanCounts" column="bean_counts"/>
+        <result property="mobile" column="mobile"/>
+    </resultMap>
+
     <sql id="Base_Column_List">
         agent_name,
         agent_code,
@@ -126,6 +134,39 @@
     </select>
     <select id="exisitAccountByUser" resultType="java.lang.Integer">
         SELECT count(1) FROM agent_info WHERE agent_id != #{agentID} AND agent_account = #{account}
+    </select>
+    <select id="getAgentCount" resultType="java.lang.Integer" parameterType="com.hw.bean.BO.QueryAgentInfoPage">
+        SELECT
+            count(1)
+        FROM
+            agent_info t
+        WHERE
+            t.agent_status = 1
+        <if test="agentName != null">
+            AND t.agent_name LIKE CONCAT('%',#{agentName},'%')
+        </if>
+        <if test="mobile != null">
+            AND t.mobile LIKE CONCAT('%',#{mobile},'%')
+        </if>
+    </select>
+    <select id="getAgentList" resultMap="agentGoldenbeanResultMapper" parameterType="com.hw.bean.BO.QueryAgentInfoPage">
+        SELECT
+            t.agent_id ,
+            t.agent_name ,
+            t.agent_code ,
+            t.mobile,
+            IFNULL(g.bean_counts,0) bean_counts
+        FROM
+          agent_info t LEFT JOIN agent_goldenbean g ON t.agent_id = g.agent_id
+        WHERE
+            t.agent_status = 1
+        <if test="agentName != null">
+            AND t.agent_name LIKE CONCAT('%',#{agentName},'%')
+        </if>
+        <if test="mobile != null">
+            AND t.mobile LIKE CONCAT('%',#{mobile},'%')
+        </if>
+        limit #{pageIndex},#{pageSize}
     </select>
 
 </mapper>
